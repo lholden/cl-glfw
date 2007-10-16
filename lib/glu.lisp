@@ -189,7 +189,7 @@
 (defconstant +tess-winding-negative+ 100133)
 (defconstant +tess-winding-abs-geq-two+ 100134)
 ;; ***********************************************************
-(defconstant +tess-max-coord+ 1.0e150)
+(defconstant +tess-max-coord+ 1.0d150)
 (defcfun ("gluBeginCurve" begin-curve) :void (nurb :pointer))
 (defcfun ("gluBeginPolygon" begin-polygon) :void (tess :pointer))
 (defcfun ("gluBeginSurface" begin-surface) :void (nurb :pointer))
