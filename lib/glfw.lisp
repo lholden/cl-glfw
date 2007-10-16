@@ -520,16 +520,17 @@ list of the form:
 Notes
 The returned list is sorted, first by color depth (RedBits + GreenBits + BlueBits), and then by
 resolution (Width × Height), with the lowest resolution, fewest bits per pixel mode first. " 
- (with-foreign-object (list 'vidmode maxcount)
+  (declare (optimize (debug 3)))
+  (with-foreign-object (list 'vidmode maxcount)
     (let ((count (%get-video-modes list maxcount)))
       (loop for i below count
-	   for mode in list
 	 collecting
+	 (let ((mode (cffi:mem-aref list 'vidmode i)))
 	   (list (foreign-slot-value mode 'vidmode 'width)
 		 (foreign-slot-value mode 'vidmode 'height)
 		 (foreign-slot-value mode 'vidmode 'redbits)
 		 (foreign-slot-value mode 'vidmode 'greenbits)
-		 (foreign-slot-value mode 'vidmode 'bluebits))))))
+		 (foreign-slot-value mode 'vidmode 'bluebits)))))))
 
 (defcfun ("glfwGetDesktopMode" %get-desktop-mode) :void (mode :pointer))
 (defun get-desktop-mode ()
@@ -550,6 +551,7 @@ The desktop video mode is the video mode used by the desktop, not the current vi
 differ from the desktop video mode if the GLFW window is a fullscreen window).
 "
   (with-foreign-object (mode 'vidmode)
+    (%get-desktop-mode mode)
     (list (foreign-slot-value mode 'vidmode 'width)
 	  (foreign-slot-value mode 'vidmode 'height)
 	  (foreign-slot-value mode 'vidmode 'redbits)
