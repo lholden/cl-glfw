@@ -139,7 +139,7 @@
 
   (defun output-extension (category-name &optional (function-transform #'gl-extension-function-definition) extension-name)
     (unless extension-name (setf extension-name category-name)) 
-    (with-open-file (out (make-pathname :name (format nil "opengl-~a.lisp" extension-name))
+    (with-open-file (out (merge-pathnames (format nil "lib/opengl-~a.lisp" extension-name) *base*)
 			 :direction :output :if-exists :supersede) 
       (print '(in-package #:gl) out)
       (let ((enumerations 
