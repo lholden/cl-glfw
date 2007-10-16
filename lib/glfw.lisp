@@ -52,6 +52,7 @@
 
 
 (load-foreign-library '(:or
+			#+darwin (:framework "GLFW")
 			(:default "glfw") 
 			(:default "libglfw")))
 
