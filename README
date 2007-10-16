@@ -1,0 +1,12 @@
+Hi,
+
+This is the first version of cl-glfw, the glfw wrapper for common lisp.
+
+Features:
+    All of GLFW
+    OpenGL bindings generated from the actual (supposedly) canonical spec-files from opengl.org
+    GLU utility library (hand-made binding)
+
+Enjoy.
+Bill
+airbaggins@users.sourceforge.net
