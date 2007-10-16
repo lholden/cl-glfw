@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require 'string-lispify'
+require 'generators/string-lispify'
 require 'pp'
 
 BASE=File::dirname($0)+'/..'
