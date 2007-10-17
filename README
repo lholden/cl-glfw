@@ -1,12 +1,27 @@
-Hi,
+cl-glfw: The glfw wrapper for Common Lisp.
 
-This is the first version of cl-glfw, the glfw wrapper for common lisp.
+USE AT YOUR OWN RISK!
+
+Platforms tested on:
+    SBCL/Linux x86
+    SBCL/Linux amd64
+    Others: Let me know.
 
 Features:
-    All of GLFW
+    All of GLFW 2.6.0 except threading, mutexes and conditionals (patches welcome, rather you than me).
     OpenGL bindings generated from the actual (supposedly) canonical spec-files from opengl.org
-    GLU utility library (hand-made binding)
+    GLU utility library (almost-hand-made binding)
+    A few of the examples have been translated from C and are in the examples directory.
+    Documentation copied from the GLFW specification documentation.
+
+Links:
+    http://repo.or.cz/w/cl-glfw.git
+    http://glfw.sf.net/
+    http://common-lisp.net/project/cffi/
+    http://www.sbcl.org/
+    http://www.opengl.org/
 
 Enjoy.
 Bill
 airbaggins@users.sourceforge.net
+
