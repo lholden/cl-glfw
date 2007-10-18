@@ -2,13 +2,16 @@ cl-glfw: The glfw wrapper for Common Lisp.
 
 USE AT YOUR OWN RISK!
 
+GLFW threading WILL PROBABLY BREAK YOUR LISP. I would advise seeking other avenues if you
+require threading in your applications. 
+
 Platforms tested on:
     SBCL/Linux x86
     SBCL/Linux amd64
     Others: Let me know.
 
 Features:
-    All of GLFW 2.6.0 except threading, mutexes and conditionals (patches welcome, rather you than me).
+    All of GLFW 2.6.0 (broken threading, mutexes and conditionals).
     OpenGL bindings generated from the actual (supposedly) canonical spec-files from opengl.org
     GLU utility library (almost-hand-made binding)
     A few of the examples have been translated from C and are in the examples directory.
