@@ -6,16 +6,14 @@
 	   #:+accum-alpha-bits+ #:+aux-buffers+ #:+stereo+
 	   #:cond
 	   #:enable #:disable)
-  (:export
-    #:+accelerated+ #:+accum-alpha-bits+ #:+accum-blue-bits+ #:+accum-green-bits+ #:+accum-red-bits+ #:+active+ #:+alpha-bits+ #:+alpha-map-bit+ #:+auto-poll-events+ #:+aux-buffers+ #:+axes+ #:+blue-bits+ #:+build-mipmaps-bit+ #:+buttons+ #:+depth-bits+ #:+fsaa-samples+ #:+fullscreen+ #:+green-bits+ #:+iconified+ #:+infinity+ #:+joystick-1+ #:+joystick-10+ #:+joystick-11+ #:+joystick-12+ #:+joystick-13+ #:+joystick-14+ #:+joystick-15+ #:+joystick-16+ #:+joystick-2+ #:+joystick-3+ #:+joystick-4+ #:+joystick-5+ #:+joystick-6+ #:+joystick-7+ #:+joystick-8+ #:+joystick-9+ #:+joystick-last+ #:+key-backspace+ #:+key-del+ #:+key-down+ #:+key-end+ #:+key-enter+ #:+key-esc+ #:+key-f1+ #:+key-f10+ #:+key-f11+ #:+key-f12+ #:+key-f13+ #:+key-f14+ #:+key-f15+ #:+key-f16+ #:+key-f17+ #:+key-f18+ #:+key-f19+ #:+key-f2+ #:+key-f20+ #:+key-f21+ #:+key-f22+ #:+key-f23+ #:+key-f24+ #:+key-f25+ #:+key-f3+ #:+key-f4+ #:+key-f5+ #:+key-f6+ #:+key-f7+ #:+key-f8+ #:+key-f9+ #:+key-home+ #:+key-insert+ #:+key-kp-0+ #:+key-kp-1+ #:+key-kp-2+ #:+key-kp-3+ #:+key-kp-4+ #:+key-kp-5+ #:+key-kp-6+ #:+key-kp-7+ #:+key-kp-8+ #:+key-kp-9+ #:+key-kp-add+ #:+key-kp-decimal+ #:+key-kp-divide+ #:+key-kp-enter+ #:+key-kp-equal+ #:+key-kp-multiply+ #:+key-kp-subtract+ #:+key-lalt+ #:+key-last+ #:+key-lctrl+ #:+key-left+ #:+key-lshift+ #:+key-pagedown+ #:+key-pageup+ #:+key-ralt+ #:+key-rctrl+ #:+key-repeat+ #:+key-right+ #:+key-rshift+ #:+key-space+ #:+key-special+ #:+key-tab+ #:+key-unknown+ #:+key-up+ #:+mouse-button-1+ #:+mouse-button-2+ #:+mouse-button-3+ #:+mouse-button-4+ #:+mouse-button-5+ #:+mouse-button-6+ #:+mouse-button-7+ #:+mouse-button-8+ #:+mouse-button-last+ #:+mouse-button-left+ #:+mouse-button-middle+ #:+mouse-button-right+ #:+mouse-cursor+ #:+no-rescale-bit+ #:+nowait+ #:+opened+ #:+origin-ul-bit+ #:+present+ #:+press+ #:+red-bits+ #:+refresh-rate+ #:+release+ #:+stencil-bits+ #:+stereo+ #:+sticky-keys+ #:+sticky-mouse-buttons+ #:+system-keys+ #:+wait+ #:+window+ #:+window-no-resize+ #:broadcast-cond #:close-window #:create-cond #:create-mutex #:create-thread #:defcfun+doc #:defcfun+out+doc #:destroy-cond #:destroy-mutex #:destroy-thread #:disable #:enable #:extension-supported #:free-image #:get-desktop-mode #:get-gl-version #:get-joystick-buttons #:get-joystick-param #:get-joystick-pos #:get-key #:get-mouse-button #:get-mouse-pos #:get-mouse-wheel #:get-number-of-processors #:get-proc-address #:get-thread-id #:get-time #:get-version #:get-video-modes #:get-window-param #:get-window-size #:iconify-window #:init #:load-memory-texture-2d #:load-texture-2d #:load-texture-image-2d #:lock-mutex #:open-window #:open-window-hint #:poll-events #:read-image #:read-memory-image #:restore-window #:set-char-callback #:set-key-callback #:set-mouse-button-callback #:set-mouse-pos #:set-mouse-pos-callback #:set-mouse-wheel #:set-mouse-wheel-callback #:set-time #:set-window-close-callback #:set-window-pos #:set-window-refresh-callback #:set-window-size #:set-window-size-callback #:set-window-title #:signal-cond #:sleep #:swap-buffers #:swap-interval #:terminate #:unlock-mutex #:wait-cond #:wait-events #:wait-thread #:with-lock-mutex
-   ))
+  (:export #:+accelerated+ #:+accum-alpha-bits+ #:+accum-blue-bits+ #:+accum-green-bits+ #:+accum-red-bits+ #:+active+ #:+alpha-bits+ #:+alpha-map-bit+ #:+auto-poll-events+ #:+aux-buffers+ #:+axes+ #:+blue-bits+ #:+build-mipmaps-bit+ #:+buttons+ #:+depth-bits+ #:+fsaa-samples+ #:+fullscreen+ #:+green-bits+ #:+iconified+ #:+infinity+ #:+joystick-1+ #:+joystick-10+ #:+joystick-11+ #:+joystick-12+ #:+joystick-13+ #:+joystick-14+ #:+joystick-15+ #:+joystick-16+ #:+joystick-2+ #:+joystick-3+ #:+joystick-4+ #:+joystick-5+ #:+joystick-6+ #:+joystick-7+ #:+joystick-8+ #:+joystick-9+ #:+joystick-last+ #:+key-backspace+ #:+key-del+ #:+key-down+ #:+key-end+ #:+key-enter+ #:+key-esc+ #:+key-f1+ #:+key-f10+ #:+key-f11+ #:+key-f12+ #:+key-f13+ #:+key-f14+ #:+key-f15+ #:+key-f16+ #:+key-f17+ #:+key-f18+ #:+key-f19+ #:+key-f2+ #:+key-f20+ #:+key-f21+ #:+key-f22+ #:+key-f23+ #:+key-f24+ #:+key-f25+ #:+key-f3+ #:+key-f4+ #:+key-f5+ #:+key-f6+ #:+key-f7+ #:+key-f8+ #:+key-f9+ #:+key-home+ #:+key-insert+ #:+key-kp-0+ #:+key-kp-1+ #:+key-kp-2+ #:+key-kp-3+ #:+key-kp-4+ #:+key-kp-5+ #:+key-kp-6+ #:+key-kp-7+ #:+key-kp-8+ #:+key-kp-9+ #:+key-kp-add+ #:+key-kp-decimal+ #:+key-kp-divide+ #:+key-kp-enter+ #:+key-kp-equal+ #:+key-kp-multiply+ #:+key-kp-subtract+ #:+key-lalt+ #:+key-last+ #:+key-lctrl+ #:+key-left+ #:+key-lshift+ #:+key-pagedown+ #:+key-pageup+ #:+key-ralt+ #:+key-rctrl+ #:+key-repeat+ #:+key-right+ #:+key-rshift+ #:+key-space+ #:+key-special+ #:+key-tab+ #:+key-unknown+ #:+key-up+ #:+mouse-button-1+ #:+mouse-button-2+ #:+mouse-button-3+ #:+mouse-button-4+ #:+mouse-button-5+ #:+mouse-button-6+ #:+mouse-button-7+ #:+mouse-button-8+ #:+mouse-button-last+ #:+mouse-button-left+ #:+mouse-button-middle+ #:+mouse-button-right+ #:+mouse-cursor+ #:+no-rescale-bit+ #:+nowait+ #:+opened+ #:+origin-ul-bit+ #:+present+ #:+press+ #:+red-bits+ #:+refresh-rate+ #:+release+ #:+stencil-bits+ #:+stereo+ #:+sticky-keys+ #:+sticky-mouse-buttons+ #:+system-keys+ #:+wait+ #:+window+ #:+window-no-resize+ #:broadcast-cond #:close-window #:create-cond #:create-mutex #:create-thread #:defcfun+doc #:defcfun+out+doc #:destroy-cond #:destroy-mutex #:destroy-thread #:disable #:do-window #:enable #:extension-supported #:free-image #:get-desktop-mode #:get-gl-version #:get-joystick-buttons #:get-joystick-param #:get-joystick-pos #:get-key #:get-mouse-button #:get-mouse-pos #:get-mouse-wheel #:get-number-of-processors #:get-proc-address #:get-thread-id #:get-time #:get-version #:get-video-modes #:get-window-param #:get-window-size #:iconify-window #:init #:load-memory-texture-2d #:load-texture-2d #:load-texture-image-2d #:lock-mutex #:open-window #:open-window-hint #:poll-events #:read-image #:read-memory-image #:restore-window #:set-char-callback #:set-key-callback #:set-mouse-button-callback #:set-mouse-pos #:set-mouse-pos-callback #:set-mouse-wheel #:set-mouse-wheel-callback #:set-time #:set-window-close-callback #:set-window-pos #:set-window-refresh-callback #:set-window-size #:set-window-size-callback #:set-window-title #:signal-cond #:sleep #:swap-buffers #:swap-interval #:terminate #:unlock-mutex #:wait-cond #:wait-events #:wait-thread #:with-init #:with-init-window #:with-lock-mutex #:with-open-window))
 
 #| exports generated by this, after the package is loaded:
 (format t "~{#:~a~^ ~}" 
 	(sort (mapcar #'(lambda (s) (string-downcase (format nil "~a" s)))
 		      (remove-if-not #'(lambda (s)
 					 (and (eql (symbol-package s) (find-package '#:glfw))
-					      (or (constantp s) (fboundp s))))
+					      (or (constantp s) (fboundp s) (macro-function s))))
 				     (loop for s being each symbol in '#:glfw collecting s)))
 	      #'string<))
 |#
@@ -248,19 +246,31 @@ running threads. This function must be called before a program exits.")
 The function returns the major and minor version numbers and the revision for the currently linked
 GLFW library as a list (major minor rev).")
 
+(defmacro with-init (&body forms)
+  "Call glfw:init, execute forms and clean-up with glfw:terminate once finished.
+This makes a nice wrapper to an application higher-level form. 
+Signals an error on failure to initialize. Wrapped in a block named glfw:with-init."
+  `(if (eql (glfw:init) gl:+true+)
+       (unwind-protect
+	    (block with-init ,@forms)
+	 (glfw:terminate))
+       (error "Error initializing glfw")))
 
 ;; (declaim (ftype (function () (member gl:+true+ gl:+false+)) open-window))
-(defcfun+doc ("glfwOpenWindow" open-window) :int
-  ((width :int) (height :int)
-   (redbits :int) (greenbits :int) (bluebits :int) (alphabits :int)
-   (depthbits :int) (stencilbits :int) (mode :int))
+(defcfun ("glfwOpenWindow" %open-window) :int
+  (width :int) (height :int)
+  (redbits :int) (greenbits :int) (bluebits :int) (alphabits :int)
+  (depthbits :int) (stencilbits :int) (mode :int))
+
+(declaim (inline open-window))
+(defun open-window (&optional (width 0) (height 0)
+		    (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
+		    (depthbits 0) (stencilbits 0) (mode +window+))
   "width
-      The width of the window. If width is zero, it will be calculated as width = 4 height, if height is
-                                                                                    3
+      The width of the window. If width is zero, it will be calculated as width = 4/3 height, if height is
       not zero. If both width and height are zero, then width will be set to 640.
 height
-                                                                                      3
-      The height of the window. If height is zero, it will be calculated as height = 4 width, if width is
+      The height of the window. If height is zero, it will be calculated as height = 3/4 width, if width is
       not zero. If both width and height are zero, then height will be set to 480.
 redbits, greenbits, bluebits
       The number of bits to use for each color component of the color buffer (0 means default color
@@ -297,7 +307,9 @@ change the visibility of the mouse cursor, use glfwEnable or glfwDisable with th
 GLFW_MOUSE-CURSOR.
 In order to determine the actual properties of an opened window, use glfwGetWindowParam and
 glfwGetWindowSize (or glfwSetWindowSizeCallback).
-")
+"
+  (%open-window width height redbits greenbits bluebits alphabits depthbits stencilbits mode))
+  
 
 (defcfun+doc ("glfwOpenWindowHint" open-window-hint) :void ((target :int) (hint :int)) 
 	 "target
@@ -325,8 +337,53 @@ the resulting video signal, or in the worst case it may even be damaged!
 (defcfun+doc ("glfwCloseWindow" close-window) :void ()
 	 "The function closes an opened window and destroys the associated OpenGL™ context.")
 
+(defmacro with-open-window ((&optional (title "cl-glfw window") (width 0) (height 0)
+				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
+				       (depthbits 0) (stencilbits 0) (mode +window+))
+			    &body forms)
+  "Wraps forms such that there is an open window for them to execute in and cleans up the
+window afterwards. An error is signalled if there was an error opening the window.
+Takes the same parameters as open-window, with the addition of 'title' which will
+set the window title after opening.
+Wrapped in a block named glfw:with-open-window."
+  `(if (eql (%open-window ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
+	    gl:+true+)
+       (unwind-protect 
+	 (block with-open-window
+	   (glfw:set-window-title ,title)
+	   ,@forms)
+	 (close-window))
+       (error "Error initializing glfw window")))
+
+(defmacro with-init-window ((&optional (title "cl-glfw window") (width 0) (height 0)
+				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
+				       (depthbits 0) (stencilbits 0) (mode +window+))
+			    &body forms)
+  "Wraps forms in with-init, with-open-window. Passes through the other arguments to open-window."
+  `(with-init
+     (with-open-window (,title ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
+       ,@forms)))
+
+(defmacro do-window ((&optional (title "cl-glfw window") (width 0) (height 0)
+				(redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
+				(depthbits 0) (stencilbits 0) (mode +window+))
+		     (&body setup-forms)
+		     &body forms)
+  "High-level convenience macro for initializing glfw, opening a window (given the optional window parameters),
+setting the title given,
+running setup-forms and then running forms in a loop, with calls to swap-buffers after each loop iteration.
+The loop is in a block named do-window [so can be exited by a call to (return-from glfw:do-window)].
+If the window is closed, the loop is also exited."
+  `(with-init-window (,title ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
+     ,@setup-forms
+     (loop named do-window do
+	  ,@forms
+	  (glfw:swap-buffers)
+	  (unless (eql (glfw:get-window-param glfw:+opened+) gl:+true+)	 
+	    (return-from do-window)))))
+
 (defcfun+doc ("glfwSetWindowCloseCallback" set-window-close-callback) :void ((cbfun :pointer))
-"Parameters
+	     "Parameters
 cbfun
       Pointer to a callback function that will be called when a user requests that the window should be
       closed, typically by clicking the window close icon (e.g. the cross in the upper right corner of a

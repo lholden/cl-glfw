@@ -48,7 +48,7 @@
 
 (defctype string :string)
 
-(defctype half :unsigned-short) ;; this is how glext.h defines it anyway
+(defctype half :unsigned-short) ; this is how glext.h defines it anyway
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
   (let ((type-maps (quote @TYPE_MAPS@)))
@@ -72,17 +72,22 @@
 	       (getf type-maps (getf arg :type)))
 	     (conc-symbols (&rest symbols)
 	       (intern (apply #'concatenate (cons 'string (mapcar #'symbol-name symbols)))))
-	     (array-wrappable-p (arg args)
+	     (array-wrappable-p (arg #|args|#)
 	       (let ((resolved-type (getf type-maps (getf arg :type))))
-		 (and (getf arg :array)
+		 (and (getf arg :array)	
+		      ;; we must have a type, ie. not a void* pointer
 		      (not (eql 'void resolved-type))
 		      (not (eql :void resolved-type))
-		      (not (getf arg :retained))
+		      ;; opengl cannot retain this pointer, as we would destroy it after passing it
+		      (not (getf arg :retained))     
+		      ;; can we guarantee a size? - used to do this, but the app programmer must get it right himself for OpenGL anyway
+		      ;; so doing it this way is consistent with the C-interface, though more dangerous
+		      #|
 		      (or (integerp (getf arg :size))
 			  (and (symbolp (getf arg :size))
 			       (find-if #'(lambda (other-arg)
 					    (eql (getf arg :size) (final-arg-name other-arg)))
-					args)))
+					args)))|#
 		      ;; our own hook
 		      (not (getf arg :wrapped)))))
 	     (gl-function-definition (func-spec &optional (c-prefix "gl") (lisp-prefix '#:||))
@@ -100,8 +105,7 @@
 	     (expand-a-wrapping (func-spec final-content)
 	       (let* ((func-spec (copy-tree func-spec)) ; duplicate because we're not supposed to modify macro params
 		      (args (args func-spec))
-		      (first-wrappable (position-if #'(lambda (arg) (array-wrappable-p arg args))
-						    args)))
+		      (first-wrappable (position-if #'array-wrappable-p args)))
 		 (if first-wrappable
 		     (let* ((arg (elt (args func-spec) first-wrappable))
 			    (original-array-name (gensym (symbol-name (final-arg-name arg))))
@@ -110,22 +114,29 @@
 		       (nconc arg (list :wrapped t))
 		       `(if (typep ,array-name 'sequence)
 			    ;; the actual allocation
-			    (let ((,original-array-name ,array-name)
-				  (,array-name (foreign-alloc ',(arg-element-type arg)
-							      :count ,(getf arg :size))))
+			    (let* ((,original-array-name ,array-name)
+				   (,array-name (foreign-alloc ',(arg-element-type arg)
+							       ;; we used to base it on the count of whatever the spec said
+							       #|:count ,(getf arg :size)|#
+							       ;; but now, we'll use the user's sequence size, or just their content
+							       ,@(if (eql (getf arg :direction) :in)
+								     `(:initial-contents ,original-array-name)
+								     `(:count (length ,original-array-name))))))
 			      ;; (format t "Copying ~a elements of ~a: ~a into ~a~%"
 			      ;; ,(getf arg :size) ',array-name ,original-array-name ,array-name)
 			      (unwind-protect
-				   (prog2
-				       ;; custom coersion of input values, before call
+				   (prog1
+				       #| as input values are set above, we don't use this now (and above is a prog1, it was prog2 before)
+				       ;; custom coersion of input values, before call ;
 				       ,(when (eql (getf arg :direction) :in)
-					      `(cond 
-						 ((listp ,original-array-name)
-						  (loop for i upfrom 0 for e in ,original-array-name
-						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
-						 ((vectorp ,original-array-name)
-						  (loop for i upfrom 0 for e across ,original-array-name
-						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
+				       `(cond 
+				       ((listp ,original-array-name)
+				       (loop for i upfrom 0 for e in ,original-array-name
+				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
+				       ((vectorp ,original-array-name)
+				       (loop for i upfrom 0 for e across ,original-array-name
+				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
+				       |#
 				       ;; recurse in case there are more
 				       ,(expand-a-wrapping func-spec final-content)
 				     ;; custom coersion of output values, after call
@@ -134,14 +145,16 @@
 					       ((listp ,original-array-name)
 						(do ((i 0 (1+ i))
 						     (ce ,original-array-name (cdr ce)))
-						    ((or (not ce)
-							 (>= i ,(getf arg :size))))
+						    ((not ce))
+  						    #|((or (not ce)
+						           (>= i ,(getf arg :size))))|#
 						  (setf (car ce)
 							(mem-aref ,array-name ',(arg-element-type arg) i))))
 					       ((vectorp ,original-array-name)
 						(do ((i 0 (1+ i)))
-						    ((or (>= i (length ,original-array-name))
-							 (>= i ,(getf arg :size))))
+						    ((>= i (length ,original-array-name)))
+						  #|((or (>= i (length ,original-array-name))
+						  (>= i ,(getf arg :size))))|#
 						  (setf (aref ,original-array-name i)
 							(mem-aref ,array-name ',(arg-element-type arg) i)))))))
 				(foreign-free ,array-name)))
@@ -164,7 +177,7 @@
 			(args func-spec))
 	     ;; if there is more than 0 wrappable arrays
 	     ,(let ((args (args func-spec)))
-		   (if (some #'(lambda (arg) (array-wrappable-p arg args)) args)
+		   (if (some #'array-wrappable-p args)
 		       (expand-a-wrapping func-spec
 					  (gl-funcall-definition func-spec 'fpointer))
 		       (gl-funcall-definition func-spec 'fpointer))))))
@@ -172,7 +185,7 @@
       (defun wrapped-gl-function-definition (func-spec)
 	(let ((args (args func-spec)))
 	  ;; if there is more than 0 wrappable arrays
-	  (if (some #'(lambda (arg) (array-wrappable-p arg args)) args)
+	  (if (some #'array-wrappable-p args)
 	      `(progn
 		 ;; make an inlined function prefixed with %
 		 (declaim (inline ,(conc-symbols '#:% (lisp-name func-spec))))
