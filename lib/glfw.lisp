@@ -1,5 +1,5 @@
 (defpackage glfw
-  (:use #:cl #:cffi #:gl)
+  (:use #:cl #:cffi)
   (:shadow #:sleep #:+red-bits+ #:+green-bits+ #:+blue-bits+
 	   #:+alpha-bits+ #:+stencil-bits+ #:+depth-bits+
 	   #:+accum-red-bits+ #:+accum-green-bits+ #:+accum-blue-bits+

@@ -60,7 +60,7 @@
 	     (deconstant (symbol)
 	       (if (not (constantp symbol))
 		   symbol
-		   (deconstant (intern (concatenate 'string "_" (symbol-name symbol))))))
+		   (deconstant (intern (concatenate 'cl:string "_" (symbol-name symbol))))))
 	     (final-arg-name (arg)
 	       (deconstant (intern (string-upcase (symbol-name (getf arg :name))))))
 	     (final-arg-type (arg)
@@ -72,7 +72,7 @@
 	     (arg-element-type (arg)
 	       (getf type-maps (getf arg :type)))
 	     (conc-symbols (&rest symbols)
-	       (intern (apply #'concatenate (cons 'string (mapcar #'symbol-name symbols)))))
+	       (intern (apply #'concatenate (cons 'cl:string (mapcar #'symbol-name symbols)))))
 	     (array-wrappable-p (arg #|args|#)
 	       (let ((resolved-type (getf type-maps (getf arg :type))))
 		 (and (getf arg :array)	
@@ -92,7 +92,7 @@
 		      ;; our own hook
 		      (not (getf arg :wrapped)))))
 	     (gl-function-definition (func-spec &optional (c-prefix "gl") (lisp-prefix '#:||))
-	       `(defcfun (,(concatenate 'string c-prefix (c-name func-spec))
+	       `(defcfun (,(concatenate 'cl:string c-prefix (c-name func-spec))
 			   ,(conc-symbols lisp-prefix (lisp-name func-spec)))
 		    ,(getf type-maps (intern (freturn func-spec)))
 		  ,@(mapcar #'(lambda (arg) (list (final-arg-name arg) (final-arg-type arg))) 
@@ -166,7 +166,7 @@
 
       (defun wrapped-win32-gl-function-definition (func-spec)
 	`(let ((fpointer (foreign-funcall "wglGetProcAddress" 
-					  :string ,(concatenate 'string "gl" (c-name func-spec))
+					  :string ,(concatenate 'cl:string "gl" (c-name func-spec))
 					  :pointer)))
 	   ;; I know the CFFI guide recommends against holding pointers, but for extensions on win,
 	   ;; function pointers are the only way to do it. I don't think the locations are compiled

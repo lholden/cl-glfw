@@ -1,6 +1,6 @@
 (defpackage #:opengl-extensions
   (:nicknames #:gl-ext)
-  (:use #:gl #:cl)
+  (:use #:cl)
   (:export #:scan-available-extensions #:available-extensions #:extension-available-p #:load-extension))
 
 (in-package #:gl-ext)
