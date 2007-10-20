@@ -1,6 +1,7 @@
 (defpackage #:opengl
  (:use #:cffi #:cl)
  (:nicknames #:gl)
+ (:shadow boolean byte float char string)
  (:export
   enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
   double clampd void intptr sizeiptr char
