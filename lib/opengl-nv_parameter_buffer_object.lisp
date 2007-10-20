@@ -29,7 +29,7 @@
   :extension ("soft" "WINSOFT" "NV50") :glfflags ("ignore") :glsflags
   ("ignore") :glxflags ("ignore"))) 
 (defglextfun
- (("ProgramBufferParametersfvNV" program-buffer-parametersfv-nv) :args
+ (("ProgramBufferParametersfvNV" program-buffer-parameters-fv-nv) :args
   ((:name |target| :type |ProgramTarget| :direction :in)
    (:name |buffer| :type |UInt32| :direction :in)
    (:name |index| :type |UInt32| :direction :in)

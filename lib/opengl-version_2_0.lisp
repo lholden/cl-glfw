@@ -620,7 +620,7 @@
   ("2.0") :extension nil :glxsingle ("?") :glxflags ("ignore") :glsflags
   ("get") :glsopcode ("?") :offset ("?"))) 
 (defglfun
- (("GetShaderiv" get-shaderiv) :args
+ (("GetShaderiv" get-shader-iv) :args
   ((:name |shader| :type |UInt32| :direction :in)
    (:name |pname| :type |GLenum| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size pname))
@@ -637,7 +637,7 @@
   ("2.0") :extension nil :glxsingle ("?") :glxflags ("ignore") :glsflags
   ("get") :glsopcode ("?") :offset ("?"))) 
 (defglfun
- (("GetProgramiv" get-programiv) :args
+ (("GetProgramiv" get-program-iv) :args
   ((:name |program| :type |UInt32| :direction :in)
    (:name |pname| :type |GLenum| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size pname))

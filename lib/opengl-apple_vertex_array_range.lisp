@@ -10,7 +10,7 @@
 (defconstant +storage-cached-apple+ #x85BE) 
 (defconstant +storage-shared-apple+ #x85BF) 
 (defglextfun
- (("VertexArrayParameteriAPPLE" vertex-array-parameteri-apple) :args
+ (("VertexArrayParameteriAPPLE" vertex-array-parameter-i-apple) :args
   ((:name |pname| :type |VertexArrayPNameAPPLE| :direction :in)
    (:name |param| :type |Int32| :direction :in))
   :return ("void") :category ("APPLE_vertex_array_range") :version ("1.2")

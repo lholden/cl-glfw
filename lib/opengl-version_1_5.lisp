@@ -62,7 +62,7 @@
   ("1.5") :extension nil :glxsingle ("?") :glxflags ("ignore") :glsflags
   ("get") :glsopcode ("?") :offset ("694"))) 
 (defglfun
- (("GetBufferParameteriv" get-buffer-parameteriv) :args
+ (("GetBufferParameteriv" get-buffer-parameter-iv) :args
   ((:name |target| :type |BufferTargetARB| :direction :in)
    (:name |pname| :type |BufferPNameARB| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
@@ -144,7 +144,7 @@
   ("1.5") :extension nil :glxsingle ("165") :glxflags ("ignore") :glsflags
   ("get") :glsopcode ("?") :offset ("706"))) 
 (defglfun
- (("GetQueryiv" get-queryiv) :args
+ (("GetQueryiv" get-query-iv) :args
   ((:name |target| :type |GLenum| :direction :in)
    (:name |pname| :type |GLenum| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size pname))

@@ -25,7 +25,7 @@
   :version ("1.5") :extension nil :alias ("GetQueryObjectiv") :glsalias
   ("GetQueryObjectiv"))) 
 (defglextfun
- (("GetQueryivARB" get-queryiv-arb) :args
+ (("GetQueryivARB" get-query-iv-arb) :args
   ((:name |target| :type |GLenum| :direction :in)
    (:name |pname| :type |GLenum| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size pname))

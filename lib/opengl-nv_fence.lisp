@@ -20,7 +20,7 @@
   ("soft" "WINSOFT" "NV10") :glxvendorpriv ("1312") :glxflags ("ignore")
   :glsflags ("get") :glsopcode ("0x0219") :offset ("652"))) 
 (defglextfun
- (("GetFenceivNV" get-fenceiv-nv) :args
+ (("GetFenceivNV" get-fence-iv-nv) :args
   ((:name |fence| :type |FenceNV| :direction :in)
    (:name |pname| :type |FenceParameterNameNV| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))

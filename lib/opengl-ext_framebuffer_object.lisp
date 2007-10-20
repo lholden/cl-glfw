@@ -61,7 +61,7 @@
   ("4325") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
 (defglextfun
  (("GetFramebufferAttachmentParameterivEXT"
-   get-framebuffer-attachment-parameteriv-ext)
+   get-framebuffer-attachment-parameter-iv-ext)
   :args
   ((:name |target| :type |FramebufferTarget| :direction :in)
    (:name |attachment| :type |FramebufferAttachment| :direction :in)
@@ -143,7 +143,7 @@
   :category ("EXT_framebuffer_object") :version ("1.2") :extension nil
   :glxvendorpriv ("1425") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
 (defglextfun
- (("GetRenderbufferParameterivEXT" get-renderbuffer-parameteriv-ext) :args
+ (("GetRenderbufferParameterivEXT" get-renderbuffer-parameter-iv-ext) :args
   ((:name |target| :type |RenderbufferTarget| :direction :in)
    (:name |pname| :type |GLenum| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))

@@ -528,7 +528,7 @@
   :glsflags ("client" "get") :glsopcode ("0x0232") :alias ("GetVertexAttribdv")
   :glsalias ("GetVertexAttribdv"))) 
 (defglextfun
- (("GetTrackMatrixivNV" get-track-matrixiv-nv) :args
+ (("GetTrackMatrixivNV" get-track-matrix-iv-nv) :args
   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
    (:name |address| :type |UInt32| :direction :in)
    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
@@ -548,7 +548,7 @@
   :glxvendorpriv ("1299") :glsflags ("get") :glsopcode ("0x0230") :offset
   ("586"))) 
 (defglextfun
- (("GetProgramivNV" get-programiv-nv) :args
+ (("GetProgramivNV" get-program-iv-nv) :args
   ((:name |id| :type |UInt32| :direction :in)
    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size #x4))

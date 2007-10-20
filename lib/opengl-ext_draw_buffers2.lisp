@@ -25,7 +25,7 @@
   ("ignore") :glfflags ("ignore") :glsflags ("ignore") :extension
   ("soft" "WINSOFT"))) 
 (defglextfun
- (("GetIntegerIndexedvEXT" get-integer-indexedv-ext) :args
+ (("GetIntegerIndexedvEXT" get-integer-indexed-v-ext) :args
   ((:name |target| :type |GLenum| :direction :in)
    (:name |index| :type |UInt32| :direction :in)
    (:name |data| :type |Int32| :direction :out :array t :size (|target|)))
@@ -33,7 +33,7 @@
   ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
   ("ignore") :extension ("soft" "WINSOFT"))) 
 (defglextfun
- (("GetBooleanIndexedvEXT" get-boolean-indexedv-ext) :args
+ (("GetBooleanIndexedvEXT" get-boolean-indexed-v-ext) :args
   ((:name |target| :type |GLenum| :direction :in)
    (:name |index| :type |UInt32| :direction :in)
    (:name |data| :type |Boolean| :direction :out :array t :size (|target|)))

@@ -14,7 +14,7 @@
   :extension nil :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?")
   :offset ("?"))) 
 (defglextfun
- (("BufferParameteriAPPLE" buffer-parameteri-apple) :args
+ (("BufferParameteriAPPLE" buffer-parameter-i-apple) :args
   ((:name |target| :type |GLenum| :direction :in)
    (:name |pname| :type |GLenum| :direction :in)
    (:name |param| :type |Int32| :direction :in))

@@ -134,7 +134,7 @@
   :version ("1.3") :extension ("soft" "WINSOFT" "NV10") :glsflags ("ignore")
   :glxflags ("ignore") :offset ("681"))) 
 (defglextfun
- (("GetProgramivARB" get-programiv-arb) :args
+ (("GetProgramivARB" get-program-iv-arb) :args
   ((:name |target| :type |ProgramTargetARB| :direction :in)
    (:name |pname| :type |ProgramPropertyARB| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size #x1))

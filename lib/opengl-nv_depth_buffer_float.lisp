@@ -8,14 +8,14 @@
 (defconstant +float-32-unsigned-int-24-8-rev-nv+ #x8DAD) 
 (defconstant +depth-buffer-float-mode-nv+ #x8DAF) 
 (defglextfun
- (("DepthBoundsdNV" depth-boundsd-nv) :args
+ (("DepthBoundsdNV" depth-bounds-d-nv) :args
   ((:name |zmin| :type |Float64| :direction :in)
    (:name |zmax| :type |Float64| :direction :in))
   :return ("void") :category ("NV_depth_buffer_float") :extension
   ("soft" "WINSOFT" "NV50") :version ("2.0") :glfflags ("ignore") :glsflags
   ("ignore") :glxflags ("ignore"))) 
 (defglextfun
- (("ClearDepthdNV" clear-depthd-nv) :args
+ (("ClearDepthdNV" clear-depth-d-nv) :args
   ((:name |depth| :type |Float64| :direction :in)) :return ("void") :category
   ("NV_depth_buffer_float") :extension ("soft" "WINSOFT" "NV50") :version
   ("2.0") :glfflags ("ignore") :glsflags ("ignore") :glxflags ("ignore"))) 

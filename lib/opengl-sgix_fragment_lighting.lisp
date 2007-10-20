@@ -6,7 +6,7 @@
 (defconstant +current-raster-normal-sgix+ #x8406) 
 (defconstant +current-raster-normal-sgix+ #x8406) 
 (defglextfun
- (("LightEnviSGIX" light-envi-sgix) :args
+ (("LightEnviSGIX" light-env-i-sgix) :args
   ((:name |pname| :type |LightEnvParameterSGIX| :direction :in)
    (:name |param| :type |CheckedInt32| :direction :in))
   :return ("void") :category ("SGIX_fragment_lighting") :glxflags ("ignore")

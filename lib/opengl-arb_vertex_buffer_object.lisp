@@ -43,7 +43,7 @@
   ("notlistable") :version ("1.2") :extension nil :alias ("GetBufferPointerv")
   :glsalias ("GetBufferPointerv"))) 
 (defglextfun
- (("GetBufferParameterivARB" get-buffer-parameteriv-arb) :args
+ (("GetBufferParameterivARB" get-buffer-parameter-iv-arb) :args
   ((:name |target| :type |BufferTargetARB| :direction :in)
    (:name |pname| :type |BufferPNameARB| :direction :in)
    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))

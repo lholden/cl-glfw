@@ -2120,7 +2120,7 @@ blend-func-separate
 +src1-alpha+ 
 +src2-alpha+ 
 get-buffer-pointerv 
-get-buffer-parameteriv 
+get-buffer-parameter-iv 
 unmap-buffer 
 map-buffer 
 get-buffer-sub-data 
@@ -2132,7 +2132,7 @@ delete-buffers
 bind-buffer 
 get-query-object-uiv 
 get-query-object-iv 
-get-queryiv 
+get-query-iv 
 end-query 
 begin-query 
 is-query 
@@ -2293,9 +2293,9 @@ get-uniform-fv
 get-uniform-location 
 get-shader-source 
 get-shader-info-log 
-get-shaderiv 
+get-shader-iv 
 get-program-info-log 
-get-programiv 
+get-program-iv 
 get-attrib-location 
 get-attached-shaders 
 get-active-uniform 
@@ -2447,8 +2447,8 @@ begin-transform-feedback-nv
 is-enabled-indexed-ext 
 disable-indexed-ext 
 enable-indexed-ext 
-get-integer-indexedv-ext 
-get-boolean-indexedv-ext 
+get-integer-indexed-v-ext 
+get-boolean-indexed-v-ext 
 color-mask-indexed-ext 
 +max-program-parameter-buffer-bindings-nv+ 
 +max-program-parameter-buffer-size-nv+ 
@@ -2457,7 +2457,7 @@ color-mask-indexed-ext
 +fragment-program-parameter-buffer-nv+ 
 program-buffer-parameters-i-uiv-nv 
 program-buffer-parameters-i-iv-nv 
-program-buffer-parametersfv-nv 
+program-buffer-parameters-fv-nv 
 +renderbuffer-coverage-samples-nv+ 
 +renderbuffer-color-samples-nv+ 
 +max-multisample-coverage-modes-nv+ 
@@ -2467,8 +2467,8 @@ renderbuffer-storage-multisample-coverage-nv
 +depth32f-stencil8-nv+ 
 +float-32-unsigned-int-24-8-rev-nv+ 
 +depth-buffer-float-mode-nv+ 
-depth-boundsd-nv 
-clear-depthd-nv 
+depth-bounds-d-nv 
+clear-depth-d-nv 
 depth-ranged-nv 
 +texture-buffer-ext+ 
 +max-texture-buffer-size-ext+ 
@@ -2592,7 +2592,7 @@ program-local-parameter-i-4i-nv
 +buffer-serialized-modify-apple+ 
 +buffer-flushing-unmap-apple+ 
 flush-mapped-buffer-range-apple 
-buffer-parameteri-apple 
+buffer-parameter-i-apple 
 program-local-parameters-4fv-ext 
 program-env-parameters-4fv-ext 
 +time-elapsed-ext+ 
@@ -2663,7 +2663,7 @@ string-marker-gremedy
 +renderbuffer-depth-size-ext+ 
 +renderbuffer-stencil-size-ext+ 
 generate-mipmap-ext 
-get-framebuffer-attachment-parameteriv-ext 
+get-framebuffer-attachment-parameter-iv-ext 
 framebuffer-renderbuffer-ext 
 framebuffer-texture-3d-ext 
 framebuffer-texture-2d-ext 
@@ -2673,7 +2673,7 @@ gen-framebuffers-ext
 delete-framebuffers-ext 
 bind-framebuffer-ext 
 is-framebuffer-ext 
-get-renderbuffer-parameteriv-ext 
+get-renderbuffer-parameter-iv-ext 
 renderbuffer-storage-ext 
 gen-renderbuffers-ext 
 delete-renderbuffers-ext 
@@ -2791,7 +2791,7 @@ draw-buffers-ati
 +vertex-array-range-pointer-apple+ 
 +storage-cached-apple+ 
 +storage-shared-apple+ 
-vertex-array-parameteri-apple 
+vertex-array-parameter-i-apple 
 flush-vertex-array-range-apple 
 vertex-array-range-apple 
 +vertex-array-binding-apple+ 
@@ -3350,9 +3350,9 @@ get-vertex-attrib-pointerv-nv
 get-vertex-attrib-iv-nv 
 get-vertex-attrib-fv-nv 
 get-vertex-attrib-dv-nv 
-get-track-matrixiv-nv 
+get-track-matrix-iv-nv 
 get-program-string-nv 
-get-programiv-nv 
+get-program-iv-nv 
 get-program-parameter-fv-nv 
 get-program-parameter-dv-nv 
 gen-programs-nv 
@@ -3361,8 +3361,8 @@ delete-programs-nv
 bind-program-nv 
 are-programs-resident-nv 
 +per-stage-constants-nv+ 
-get-combiner-stage-parameterfv-nv 
-combiner-stage-parameterfv-nv 
+get-combiner-stage-parameter-fv-nv 
+combiner-stage-parameter-fv-nv 
 +eval-2d-nv+ 
 +eval-triangular-2d-nv+ 
 +map-tessellation-nv+ 
@@ -3401,7 +3401,7 @@ map-control-points-nv
 +fence-condition-nv+ 
 set-fence-nv 
 finish-fence-nv 
-get-fenceiv-nv 
+get-fence-iv-nv 
 test-fence-nv 
 is-fence-nv 
 gen-fences-nv 
@@ -3945,7 +3945,7 @@ delete-object-arb
 +samples-passed-arb+ 
 get-query-object-uiv-arb 
 get-query-object-iv-arb 
-get-queryiv-arb 
+get-query-iv-arb 
 end-query-arb 
 begin-query-arb 
 is-query-arb 
@@ -3983,7 +3983,7 @@ gen-queries-arb
 +dynamic-read-arb+ 
 +dynamic-copy-arb+ 
 get-buffer-pointerv-arb 
-get-buffer-parameteriv-arb 
+get-buffer-parameter-iv-arb 
 unmap-buffer-arb 
 map-buffer-arb 
 get-buffer-sub-data-arb 
@@ -4078,7 +4078,7 @@ get-vertex-attrib-iv-arb
 get-vertex-attrib-fv-arb 
 get-vertex-attrib-dv-arb 
 get-program-string-arb 
-get-programiv-arb 
+get-program-iv-arb 
 get-program-local-parameter-fv-arb 
 get-program-local-parameter-dv-arb 
 get-program-env-parameter-fv-arb 
@@ -4315,7 +4315,7 @@ multi-tex-coord-1d-arb
 client-active-texture-arb 
 active-texture-arb 
 +current-raster-normal-sgix+ 
-light-envi-sgix 
+light-env-i-sgix 
 get-fragment-material-iv-sgix 
 get-fragment-material-fv-sgix 
 get-fragment-light-iv-sgix 
