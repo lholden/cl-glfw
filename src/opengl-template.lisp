@@ -130,13 +130,13 @@
 				       #| as input values are set above, we don't use this now (and above is a prog1, it was prog2 before)
 				       ;; custom coersion of input values, before call ;
 				       ,(when (eql (getf arg :direction) :in)
-				       `(cond 
-				       ((listp ,original-array-name)
-				       (loop for i upfrom 0 for e in ,original-array-name
-				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
-				       ((vectorp ,original-array-name)
-				       (loop for i upfrom 0 for e across ,original-array-name
-				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
+					      `(cond 
+						 ((listp ,original-array-name)
+						  (loop for i upfrom 0 for e in ,original-array-name
+						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
+						 ((vectorp ,original-array-name)
+						  (loop for i upfrom 0 for e across ,original-array-name
+						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
 				       |#
 				       ;; recurse in case there are more
 				       ,(expand-a-wrapping func-spec final-content)
@@ -155,7 +155,7 @@
 						(do ((i 0 (1+ i)))
 						    ((>= i (length ,original-array-name)))
 						  #|((or (>= i (length ,original-array-name))
-						  (>= i ,(getf arg :size))))|#
+							 (>= i ,(getf arg :size))))|#
 						  (setf (aref ,original-array-name i)
 							(mem-aref ,array-name ',(arg-element-type arg) i)))))))
 				(foreign-free ,array-name)))
