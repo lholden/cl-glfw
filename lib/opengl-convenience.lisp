@@ -59,4 +59,11 @@
      (unwind-protect (progn ,@forms)
        (gl:end-query))))
 
-(export '(with-new-list with-push-name with-begin with-push-attrib with-push-matrix with-setup-projection with-push-client-attrib with-begin))
+(defmacro with-map-buffer ((target access) &body forms)
+  (let ((ntarget (gensym "TARGET-")))
+    `(let ((,ntarget ,target))
+       (gl:map-buffer ,ntarget ,access)
+       (unwind-protect (progn ,@forms)
+	 (gl:unmap-buffer ,ntarget)))))
+
+(export '(with-new-list with-push-name with-begin with-push-attrib with-push-matrix with-setup-projection with-push-client-attrib with-begin-query with-map-buffer))
