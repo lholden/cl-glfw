@@ -1,21 +1,43 @@
 cl-glfw: The glfw wrapper for Common Lisp.
 
-USE AT YOUR OWN RISK!
+A public domain set of CFFI bindings and convenience macros for the GLFW, GLU and OpenGL
+libraries.
+
+The OpenGL bindings are automatically generated from the (supposedly) canonical spec-files from 
+http://www.opengl.org/registry/
+
+The GLU binding was hand-coerced from a tidied up header file, through swig, so it's pretty
+much a direct mapping onto the API.
 
 GLFW threading WILL PROBABLY BREAK YOUR LISP. I would advise seeking other avenues if you
-require threading in your applications. 
+require threading in your applications. The bindings remain in cl-glfw, but, I should emphasise
+once again, that they probably are going to mess up things like garbage collection in your lisp,
+and apparently some things to do with stacks and allocations aswell.
+
+
+NAME MANGLING STYLE
+
+All function/constant names are 'lispified', that is dash-separated, instead of camel-case. 
+Suffixes and acronyms are kept together as one word. Library prefixes are expressed as their
+package. Constants are surrounded by the '+' characters as lisp convention dictates.
+Some examples:
+
+glfwOpenWindow -> glfw:open-window
+glVertex3fv -> gl:vertex-3fv
+gluBuild2DMipmaps -> glu:build-2d-mipmaps
+GL_FOG_INDEX -> gl:+fog-index+
+GL_LIGHT0 -> gl:+light-0+
+
+Functions that take a predictable c-array input or return an output have automatic-translators
+for lisp-sequences. However, this will require an extra allocation. cffi:pointer types will
+be passed straight through. Eg. (gl:vertex-3fv #(1.0 0.0 1.0)) will work as expected.
+
 
 Platforms tested on:
-    SBCL/Linux x86
-    SBCL/Linux amd64
+    SBCL Linux x86
+    SBCL Linux amd64
     Others: Let me know.
 
-Features:
-    All of GLFW 2.6.0 (broken threading, mutexes and conditionals).
-    OpenGL bindings generated from the actual (supposedly) canonical spec-files from opengl.org
-    GLU utility library (almost-hand-made binding)
-    A few of the examples have been translated from C and are in the examples directory.
-    Documentation copied from the GLFW specification documentation.
 
 Links:
     http://repo.or.cz/w/cl-glfw.git
@@ -23,6 +45,7 @@ Links:
     http://common-lisp.net/project/cffi/
     http://www.sbcl.org/
     http://www.opengl.org/
+
 
 Enjoy.
 Bill
