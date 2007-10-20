@@ -14,6 +14,8 @@ require threading in your applications. The bindings remain in cl-glfw, but, I s
 once again, that they probably are going to mess up things like garbage collection in your lisp,
 and apparently some things to do with stacks and allocations aswell.
 
+Check out the examples/ directory for more of a guide through.
+
 
 NAME MANGLING STYLE
 
