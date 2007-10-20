@@ -54,8 +54,9 @@
 
 ;; 1.5 Conveniences
 (defmacro with-begin-query ((target id) &body forms)
-  (gl:begin-query target id)
-  (unwind-protect (progn ,@forms)
-    (gl:end-query)))
+  `(progn
+     (gl:begin-query ,target ,id)
+     (unwind-protect (progn ,@forms)
+       (gl:end-query))))
 
 (export '(with-new-list with-push-name with-begin with-push-attrib with-push-matrix with-setup-projection with-push-client-attrib))
