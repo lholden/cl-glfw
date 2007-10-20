@@ -11,7 +11,7 @@
   :depends-on ("cffi")
   :components ((:module "lib"
 			:components ((:file "opengl")
-				     (:file "opengl-version_1_1" :depends-on ("opengl"))
 				     (:file "opengl-convenience" :depends-on ("opengl"))
-				     (:file "glu" :depends-on ("opengl-version_1_1"))
-				     (:file "glfw" :depends-on ("opengl-version_1_1"))))))
+				     (:file "opengl-extensions" :depends-on ("opengl"))
+				     (:file "glu" :depends-on ("opengl"))
+				     (:file "glfw" :depends-on ("opengl"))))))
