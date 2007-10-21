@@ -4,7 +4,7 @@
  (:shadow boolean byte float char string)
  (:export
   enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
-  double clampd void intptr sizeiptr char
+  double clampd void uint64 int64 intptr sizeiptr handle char string half
   @EXPORTS@))
 
 (in-package #:opengl)
