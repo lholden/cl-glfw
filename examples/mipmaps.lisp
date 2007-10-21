@@ -3,15 +3,14 @@
 
 
 (defun main ()
-  (unless (eql gl:+true+ (glfw:open-window 640 480 0 0 0 0  0 0 glfw:+window+))
+  (unless (glfw:open-window 640 480 0 0 0 0  0 0 glfw:+window+)
     (return-from main))
 
   (glfw:enable glfw:+sticky-keys+)
   (glfw:swap-interval 0)
 
-  (unless (eql gl:+true+
-	       (glfw:load-texture-2d (namestring (merge-pathnames "mipmaps.tga" (or *load-pathname* #P"examples/")))
-				     glfw:+build-mipmaps-bit+))
+  (unless (glfw:load-texture-2d (namestring (merge-pathnames "mipmaps.tga" (or *load-pathname* #P"examples/")))
+				glfw:+build-mipmaps-bit+)
     (return-from main))  
 
   (gl:tex-parameter-i gl:+texture-2d+ gl:+texture-min-filter+ gl:+linear-mipmap-linear+)

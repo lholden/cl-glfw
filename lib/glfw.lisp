@@ -222,11 +222,10 @@
 ;; Time spans longer than this (seconds) are considered to be infinity
 (defconstant +infinity+ 100000d0)
 
-;; (declaim (ftype (function () (member gl:+true+ gl:+false+)) init))
-(defcfun+doc ("glfwInit" init) :int ()
+(defcfun+doc ("glfwInit" init) gl:boolean ()
   "Return values
-If the function succeeds, GL_TRUE is returned.
-If the function fails, GL_FALSE is returned.
+If the function succeeds, t is returned.
+If the function fails, nil is returned.
 
 The glfwInit function initializes GLFW. No other GLFW functions may be used before this function
 has been called.
@@ -250,14 +249,13 @@ GLFW library as a list (major minor rev).")
   "Call glfw:init, execute forms and clean-up with glfw:terminate once finished.
 This makes a nice wrapper to an application higher-level form. 
 Signals an error on failure to initialize. Wrapped in a block named glfw:with-init."
-  `(if (eql (glfw:init) gl:+true+)
+  `(if (glfw:init)
        (unwind-protect
 	    (block with-init ,@forms)
 	 (glfw:terminate))
        (error "Error initializing glfw")))
 
-;; (declaim (ftype (function () (member gl:+true+ gl:+false+)) open-window))
-(defcfun ("glfwOpenWindow" %open-window) :int
+(defcfun ("glfwOpenWindow" %open-window) gl:boolean
   (width :int) (height :int)
   (redbits :int) (greenbits :int) (bluebits :int) (alphabits :int)
   (depthbits :int) (stencilbits :int) (mode :int))
@@ -289,8 +287,8 @@ mode
       mode will be changed to the resolution that closest matches the width and height parameters.
 
 Return values
-If the function succeeds, GL_TRUE is returned.
-If the function fails, GL_FALSE is returned.
+If the function succeeds, t is returned.
+If the function fails, nil is returned.
 
 Description
 The function opens a window that best matches the parameters given to the function. How well the
@@ -346,8 +344,7 @@ window afterwards. An error is signalled if there was an error opening the windo
 Takes the same parameters as open-window, with the addition of 'title' which will
 set the window title after opening.
 Wrapped in a block named glfw:with-open-window."
-  `(if (eql (%open-window ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
-	    gl:+true+)
+  `(if (%open-window ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
        (unwind-protect 
 	 (block with-open-window
 	   (glfw:set-window-title ,title)
@@ -395,6 +392,8 @@ cbfun
       GL_TRUE, the window will be closed. If the function returns GL_FALSE, the window will not
       be closed.
       If cbfun is NULL, any previously selected callback function will be deselected.
+
+      If you declare your callback as returning gl:boolean, you can use t and nil as return types.
 
 Description
 The function selects which function to be called upon a window close event.
@@ -972,7 +971,7 @@ latter should only happen when very short sleep times are specified, if at all. 
   (bytes-per-pixel :int)
   (data :pointer))
 
-(defcfun+doc ("glfwReadImage" read-image) :int
+(defcfun+doc ("glfwReadImage" read-image) gl:boolean
   ((name :string) (img image) (flags :int))
   "Parameters
 name
@@ -983,7 +982,7 @@ img
 flags
       Flags for controlling the image reading process. Valid flags are listed in table 3.6
 Return values
-The function returns GL_TRUE if the image was loaded successfully. Otherwise GL_FALSE is
+The function returns t if the image was loaded successfully. Otherwise nil is
 returned.
 Description
 The function reads an image from the file specified by the parameter name and returns the image
@@ -1014,7 +1013,7 @@ Please note that OpenGL™ 1.0 does not support single component alpha maps, so 
 with Format = GL_ALPHA directly as textures under OpenGL™ 1.0.
 ")
 
-(defcfun+doc ("glfwReadMemoryImage" read-memory-image) :int
+(defcfun+doc ("glfwReadMemoryImage" read-memory-image) gl:boolean
     ((data :pointer) (size :long) (img image) (flags :int))
   "Parameters
 data
@@ -1027,7 +1026,7 @@ img
 flags
       Flags for controlling the image reading process. Valid flags are listed in table 3.6
 Return values
-The function returns GL_TRUE if the image was loaded successfully. Otherwise GL_FALSE is
+The function returns t if the image was loaded successfully. Otherwise nil is
 returned.
 Description
 The function reads an image from the memory buffer specified by the parameter data and returns the
@@ -1068,14 +1067,14 @@ The function frees any memory occupied by a loaded image, and clears all the fie
 struct. Any image that has been loaded by the glfwReadImage function should be deallocated using
 this function, once the image is not needed anymore. ")
 
-(defcfun+doc ("glfwLoadTexture2D" load-texture-2d) :int ((name :string) (flags :int))
+(defcfun+doc ("glfwLoadTexture2D" load-texture-2d) gl:boolean ((name :string) (flags :int))
 	     "Parameters
 name
        An ISO 8859-1 string holding the name of the file that should be loaded.
 flags
        Flags for controlling the texture loading process. Valid flags are listed in table 3.7.
 Return values
-The function returns GL_TRUE if the texture was loaded successfully. Otherwise GL_FALSE is
+The function returns t if the texture was loaded successfully. Otherwise nil is
 returned.
 
 Description
@@ -1104,7 +1103,7 @@ to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and t
 texture is a single component texture. The red, green and blue components are set to 1.0.
 ")
 
-(defcfun+doc ("glfwLoadMemoryTexture2D" load-memory-texture-2d) :int
+(defcfun+doc ("glfwLoadMemoryTexture2D" load-memory-texture-2d) gl:boolean
     ((data :pointer) (size :long) (flags :int))
   "Parameters
 data
@@ -1114,7 +1113,7 @@ size
 flags
        Flags for controlling the texture loading process. Valid flags are listed in table 3.7.
 Return values
-The function returns GL_TRUE if the texture was loaded successfully. Otherwise GL_FALSE is
+The function returns t if the texture was loaded successfully. Otherwise nil is
 returned.
 
 Description
@@ -1144,7 +1143,7 @@ texture is a single component texture. The red, green and blue components are se
 ")
 
 
-(defcfun+doc ("glfwLoadTextureImage2D" load-texture-image-2d) :int ((img image)
+(defcfun+doc ("glfwLoadTextureImage2D" load-texture-image-2d) gl:boolean ((img image)
 								    (flags :int))
 	     "Parameters
 img
@@ -1152,7 +1151,7 @@ img
 flags
       Flags for controlling the texture loading process. Valid flags are listed in table 3.7.
 Return values
-The function returns GL_TRUE if the texture was loaded successfully. Otherwise GL_FALSE is
+The function returns t if the texture was loaded successfully. Otherwise nil is
 returned.
 
 Description
@@ -1181,12 +1180,12 @@ to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and t
 texture is a single component texture. The red, green and blue components are set to 1.0. ")
 
 
-(defcfun+doc ("glfwExtensionSupported" extension-supported) :int ((extension :string))
+(defcfun+doc ("glfwExtensionSupported" extension-supported) gl:boolean ((extension :string))
 	     "Parameters
 extension
       A null terminated ISO 8859-1 string containing the name of an OpenGL™ extension.
 Return values
-The function returns GL_TRUE if the extension is supported. Otherwise it returns GL_FALSE.
+The function returns t if the extension is supported. Otherwise it returns nil.
 Description
 The function does a string search in the list of supported OpenGL™ extensions to find if the specified
 extension is listed.
@@ -1271,16 +1270,16 @@ This function is a very dangerous operation, which may interrupt a thread in the
 operation, and its use is discouraged. You should always try to end a thread in a graceful way using
 thread communication, and use glfwWaitThread in order to wait for the thread to die.
 ")
-(defcfun+doc ("glfwWaitThread" wait-thread) :int ((id thread) (waitmode :int) ) 
+(defcfun+doc ("glfwWaitThread" wait-thread) gl:boolean ((id thread) (waitmode :int) ) 
 "Parameters
 ID
       A thread identification handle, which is returned by glfwCreateThread or glfwGetThreadID.
 waitmode
       Can be either GLFW_WAIT or GLFW_NOWAIT.
 Return values
-The function returns GL_TRUE if the specified thread died after the function was called, or the thread
+The function returns t if the specified thread died after the function was called, or the thread
 did not exist, in which case glfwWaitThread will return immediately regardless of waitmode. The
-function returns GL_FALSE if waitmode is GLFW_NOWAIT, and the specified thread exists and is still
+function returns nil if waitmode is GLFW_NOWAIT, and the specified thread exists and is still
 running.
 ")
 (defcfun+doc ("glfwGetThreadID" get-thread-id) thread () 

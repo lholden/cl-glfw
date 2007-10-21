@@ -1,10 +1,14 @@
 (defpackage #:opengl
  (:use #:cffi #:cl)
  (:nicknames #:gl)
- (:shadow boolean byte float char string)
+ (:shadow #:boolean #:byte #:float #:char #:string)
  (:export
-  enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
-  double clampd void uint64 int64 intptr sizeiptr handle char string half
+  #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
+  #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 
+  #:intptr #:sizeiptr 
+  #:handle
+  #:char #:string
+  #:half
   
 +current-bit+ 
 +point-bit+ 
@@ -4566,101 +4570,145 @@ blend-color-ext ))
 
 (defctype half :unsigned-short) ; this is how glext.h defines it anyway
 
+
 (eval-when (:compile-toplevel :load-toplevel :execute)
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'boolean)))
+    `(if ,value gl:+true+ gl:+false+))
+
+  (defmethod cffi:expand-from-foreign (value (type (eql 'boolean)))
+    `(not (= ,value gl:+false+)))
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'float)))
+    `(coerce ,value 'single-float))
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'double)))
+    `(coerce ,value 'double-float))
+
   (let ((type-maps (quote 
-(|AccumOp| enum |AlphaFunction| enum |AttribMask| bitfield |BeginMode| enum
- |BinormalPointerTypeEXT| enum |BlendEquationMode| enum |BlendEquationModeEXT|
- enum |BlendFuncSeparateParameterEXT| enum |BlendingFactorDest| enum
- |BlendingFactorSrc| enum |Boolean| boolean |BooleanPointer| :pointer |Char|
- char |CharPointer| :pointer |CheckedFloat32| float |CheckedInt32| int
- |ClampColorTargetARB| enum |ClampColorModeARB| enum |ClampedColorF| clampf
- |ClampedFloat32| clampf |ClampedFloat64| clampd |ClampedStencilValue| int
- |ClearBufferMask| bitfield |ClientAttribMask| bitfield |ClipPlaneName| enum
- |ColorB| byte |ColorD| double |ColorF| float |ColorI| int |ColorIndexValueD|
- double |ColorIndexValueF| float |ColorIndexValueI| int |ColorIndexValueS|
- short |ColorIndexValueUB| ubyte |ColorMaterialParameter| enum
- |ColorPointerType| enum |ColorS| short |ColorTableParameterPName| enum
- |ColorTableParameterPNameSGI| enum |ColorTableTarget| enum
- |ColorTableTargetSGI| enum |ColorUB| ubyte |ColorUI| uint |ColorUS| ushort
- |CombinerBiasNV| enum |CombinerComponentUsageNV| enum |CombinerMappingNV| enum
- |CombinerParameterNV| enum |CombinerPortionNV| enum |CombinerRegisterNV| enum
- |CombinerScaleNV| enum |CombinerStageNV| enum |CombinerVariableNV| enum
- |CompressedTextureARB| void |ControlPointNV| void |ControlPointTypeNV| enum
- |ConvolutionParameter| enum |ConvolutionParameterEXT| enum |ConvolutionTarget|
- enum |ConvolutionTargetEXT| enum |CoordD| double |CoordF| float |CoordI| int
- |CoordS| short |CullFaceMode| enum |CullParameterEXT| enum |DepthFunction|
- enum |DrawBufferMode| enum |DrawElementsType| enum |ElementPointerTypeATI|
- enum |EnableCap| enum |ErrorCode| enum |EvalMapsModeNV| enum |EvalTargetNV|
- enum |FeedbackElement| float |FeedbackType| enum |FenceNV| uint
- |FenceConditionNV| enum |FenceParameterNameNV| enum |FfdMaskSGIX| bitfield
- |FfdTargetSGIX| enum |Float32| float |Float32Pointer| :pointer |Float64|
- double |Float64Pointer| :pointer |FogParameter| enum |FogPointerTypeEXT| enum
- |FogPointerTypeIBM| enum |FragmentLightModelParameterSGIX| enum
- |FragmentLightNameSGIX| enum |FragmentLightParameterSGIX| enum
- |FramebufferAttachment| enum |FramebufferTarget| enum |FrontFaceDirection|
- enum |FunctionPointer| :pointer |GetColorTableParameterPName| enum
- |GetColorTableParameterPNameSGI| enum |GetConvolutionParameterPName| enum
- |GetHistogramParameterPName| enum |GetHistogramParameterPNameEXT| enum
- |GetMapQuery| enum |GetMinmaxParameterPName| enum |GetMinmaxParameterPNameEXT|
- enum |GetPName| enum |GetPointervPName| enum |GetTextureParameter| enum
- |HintMode| enum |HintTarget| enum |HintTargetPGI| enum |HistogramTarget| enum
- |HistogramTargetEXT| enum |IglooFunctionSelectSGIX| enum |IglooParameterSGIX|
- void |ImageTransformPNameHP| enum |ImageTransformTargetHP| enum
- |IndexFunctionEXT| enum |IndexMaterialParameterEXT| enum |IndexPointerType|
- enum |Int16| short |Int32| int |Int8| byte |InterleavedArrayFormat| enum
- |LightEnvParameterSGIX| enum |LightModelParameter| enum |LightName| enum
- |LightParameter| enum |LightTextureModeEXT| enum |LightTexturePNameEXT| enum
- |LineStipple| ushort |List| uint |ListMode| enum |ListNameType| enum
- |ListParameterName| enum |LogicOp| enum |MapAttribParameterNV| enum
- |MapParameterNV| enum |MapTarget| enum |MapTargetNV| enum |MapTypeNV| enum
- |MaskedColorIndexValueF| float |MaskedColorIndexValueI| uint
- |MaskedStencilValue| uint |MaterialFace| enum |MaterialParameter| enum
- |MatrixIndexPointerTypeARB| enum |MatrixMode| enum |MatrixTransformNV| enum
- |MeshMode1| enum |MeshMode2| enum |MinmaxTarget| enum |MinmaxTargetEXT| enum
- |NormalPointerType| enum |NurbsCallback| enum |NurbsObj| :pointer
- |NurbsProperty| enum |NurbsTrim| enum |OcclusionQueryParameterNameNV| enum
- |PixelCopyType| enum |PixelFormat| enum |PixelInternalFormat| enum |PixelMap|
- enum |PixelStoreParameter| enum |PixelTexGenModeSGIX| enum
- |PixelTexGenParameterNameSGIS| enum |PixelTransferParameter| enum
- |PixelTransformPNameEXT| enum |PixelTransformTargetEXT| enum |PixelType| enum
- |PointParameterNameARB| enum |PolygonMode| enum |ProgramNV| uint
- |ProgramCharacterNV| ubyte |ProgramParameterNV| enum |ProgramParameterPName|
- enum |QuadricCallback| enum |QuadricDrawStyle| enum |QuadricNormal| enum
- |QuadricObj| :pointer |QuadricOrientation| enum |ReadBufferMode| enum
- |RenderbufferTarget| enum |RenderingMode| enum |ReplacementCodeSUN| uint
- |ReplacementCodeTypeSUN| enum |SamplePassARB| enum |SamplePatternEXT| enum
- |SamplePatternSGIS| enum |SecondaryColorPointerTypeIBM| enum |SelectName| uint
- |SeparableTarget| enum |SeparableTargetEXT| enum |ShadingModel| enum |SizeI|
- sizei |SpriteParameterNameSGIX| enum |StencilFunction| enum
- |StencilFaceDirection| enum |StencilOp| enum |StencilValue| int |String|
- string |StringName| enum |TangentPointerTypeEXT| enum |TessCallback| enum
- |TessContour| enum |TessProperty| enum |TesselatorObj| :pointer
- |TexCoordPointerType| enum |Texture| uint |TextureComponentCount| int
- |TextureCoordName| enum |TextureEnvParameter| enum |TextureEnvTarget| enum
- |TextureFilterSGIS| enum |TextureGenParameter| enum |TextureNormalModeEXT|
- enum |TextureParameterName| enum |TextureTarget| enum |TextureUnit| enum
- |UInt16| ushort |UInt32| uint |UInt8| ubyte |VertexAttribEnum| enum
- |VertexAttribEnumNV| enum |VertexAttribPointerTypeNV| enum |VertexPointerType|
- enum |VertexWeightPointerTypeEXT| enum |Void| void |VoidPointer| :pointer
- |ConstVoidPointer| :pointer |WeightPointerTypeARB| enum |WinCoord| int |void|
- :void |ArrayObjectPNameATI| enum |ArrayObjectUsageATI| enum |ConstFloat32|
- float |ConstInt32| int |ConstUInt32| uint |ConstVoid| void |DataTypeEXT| enum
- |FragmentOpATI| enum |GetTexBumpParameterATI| enum |GetVariantValueEXT| enum
- |ParameterRangeEXT| enum |PreserveModeATI| enum |ProgramFormatARB| enum
- |ProgramTargetARB| enum |ProgramTarget| enum |ProgramPropertyARB| enum
- |ProgramStringPropertyARB| enum |ScalarType| enum |SwizzleOpATI| enum
- |TexBumpParameterATI| enum |VariantCapEXT| enum
- |VertexAttribPointerPropertyARB| enum |VertexAttribPointerTypeARB| enum
- |VertexAttribPropertyARB| enum |VertexShaderCoordOutEXT| enum
- |VertexShaderOpEXT| enum |VertexShaderParameterEXT| enum
- |VertexShaderStorageTypeEXT| enum |VertexShaderTextureUnitParameter| enum
- |VertexShaderWriteMaskEXT| enum |VertexStreamATI| enum |PNTrianglesPNameATI|
- enum |BufferOffset| intptr |BufferSize| sizeiptr |BufferAccessARB| enum
- |BufferOffsetARB| intptr |BufferPNameARB| enum |BufferPointerNameARB| enum
- |BufferSizeARB| sizeiptr |BufferTargetARB| enum |BufferUsageARB| enum
- |ObjectTypeAPPLE| enum |VertexArrayPNameAPPLE| enum |DrawBufferModeATI| enum
- |Half16NV| half |PixelDataRangeTargetNV| enum |GLenum| enum |handleARB| handle
- |charARB| char |charPointerARB| :pointer |Int64EXT| int64 |UInt64EXT| uint64) )))
+(|AccumOp| opengl:enum |AlphaFunction| opengl:enum |AttribMask| opengl:bitfield
+ |BeginMode| opengl:enum |BinormalPointerTypeEXT| opengl:enum
+ |BlendEquationMode| opengl:enum |BlendEquationModeEXT| opengl:enum
+ |BlendFuncSeparateParameterEXT| opengl:enum |BlendingFactorDest| opengl:enum
+ |BlendingFactorSrc| opengl:enum |Boolean| opengl:boolean |BooleanPointer|
+ :pointer |Char| opengl:char |CharPointer| :pointer |CheckedFloat32|
+ opengl:float |CheckedInt32| opengl:int |ClampColorTargetARB| opengl:enum
+ |ClampColorModeARB| opengl:enum |ClampedColorF| opengl:clampf |ClampedFloat32|
+ opengl:clampf |ClampedFloat64| opengl:clampd |ClampedStencilValue| opengl:int
+ |ClearBufferMask| opengl:bitfield |ClientAttribMask| opengl:bitfield
+ |ClipPlaneName| opengl:enum |ColorB| opengl:byte |ColorD| opengl:double
+ |ColorF| opengl:float |ColorI| opengl:int |ColorIndexValueD| opengl:double
+ |ColorIndexValueF| opengl:float |ColorIndexValueI| opengl:int
+ |ColorIndexValueS| opengl:short |ColorIndexValueUB| opengl:ubyte
+ |ColorMaterialParameter| opengl:enum |ColorPointerType| opengl:enum |ColorS|
+ opengl:short |ColorTableParameterPName| opengl:enum
+ |ColorTableParameterPNameSGI| opengl:enum |ColorTableTarget| opengl:enum
+ |ColorTableTargetSGI| opengl:enum |ColorUB| opengl:ubyte |ColorUI| opengl:uint
+ |ColorUS| opengl:ushort |CombinerBiasNV| opengl:enum
+ |CombinerComponentUsageNV| opengl:enum |CombinerMappingNV| opengl:enum
+ |CombinerParameterNV| opengl:enum |CombinerPortionNV| opengl:enum
+ |CombinerRegisterNV| opengl:enum |CombinerScaleNV| opengl:enum
+ |CombinerStageNV| opengl:enum |CombinerVariableNV| opengl:enum
+ |CompressedTextureARB| opengl:void |ControlPointNV| opengl:void
+ |ControlPointTypeNV| opengl:enum |ConvolutionParameter| opengl:enum
+ |ConvolutionParameterEXT| opengl:enum |ConvolutionTarget| opengl:enum
+ |ConvolutionTargetEXT| opengl:enum |CoordD| opengl:double |CoordF|
+ opengl:float |CoordI| opengl:int |CoordS| opengl:short |CullFaceMode|
+ opengl:enum |CullParameterEXT| opengl:enum |DepthFunction| opengl:enum
+ |DrawBufferMode| opengl:enum |DrawElementsType| opengl:enum
+ |ElementPointerTypeATI| opengl:enum |EnableCap| opengl:enum |ErrorCode|
+ opengl:enum |EvalMapsModeNV| opengl:enum |EvalTargetNV| opengl:enum
+ |FeedbackElement| opengl:float |FeedbackType| opengl:enum |FenceNV|
+ opengl:uint |FenceConditionNV| opengl:enum |FenceParameterNameNV| opengl:enum
+ |FfdMaskSGIX| opengl:bitfield |FfdTargetSGIX| opengl:enum |Float32|
+ opengl:float |Float32Pointer| :pointer |Float64| opengl:double
+ |Float64Pointer| :pointer |FogParameter| opengl:enum |FogPointerTypeEXT|
+ opengl:enum |FogPointerTypeIBM| opengl:enum |FragmentLightModelParameterSGIX|
+ opengl:enum |FragmentLightNameSGIX| opengl:enum |FragmentLightParameterSGIX|
+ opengl:enum |FramebufferAttachment| opengl:enum |FramebufferTarget|
+ opengl:enum |FrontFaceDirection| opengl:enum |FunctionPointer| :pointer
+ |GetColorTableParameterPName| opengl:enum |GetColorTableParameterPNameSGI|
+ opengl:enum |GetConvolutionParameterPName| opengl:enum
+ |GetHistogramParameterPName| opengl:enum |GetHistogramParameterPNameEXT|
+ opengl:enum |GetMapQuery| opengl:enum |GetMinmaxParameterPName| opengl:enum
+ |GetMinmaxParameterPNameEXT| opengl:enum |GetPName| opengl:enum
+ |GetPointervPName| opengl:enum |GetTextureParameter| opengl:enum |HintMode|
+ opengl:enum |HintTarget| opengl:enum |HintTargetPGI| opengl:enum
+ |HistogramTarget| opengl:enum |HistogramTargetEXT| opengl:enum
+ |IglooFunctionSelectSGIX| opengl:enum |IglooParameterSGIX| opengl:void
+ |ImageTransformPNameHP| opengl:enum |ImageTransformTargetHP| opengl:enum
+ |IndexFunctionEXT| opengl:enum |IndexMaterialParameterEXT| opengl:enum
+ |IndexPointerType| opengl:enum |Int16| opengl:short |Int32| opengl:int |Int8|
+ opengl:byte |InterleavedArrayFormat| opengl:enum |LightEnvParameterSGIX|
+ opengl:enum |LightModelParameter| opengl:enum |LightName| opengl:enum
+ |LightParameter| opengl:enum |LightTextureModeEXT| opengl:enum
+ |LightTexturePNameEXT| opengl:enum |LineStipple| opengl:ushort |List|
+ opengl:uint |ListMode| opengl:enum |ListNameType| opengl:enum
+ |ListParameterName| opengl:enum |LogicOp| opengl:enum |MapAttribParameterNV|
+ opengl:enum |MapParameterNV| opengl:enum |MapTarget| opengl:enum |MapTargetNV|
+ opengl:enum |MapTypeNV| opengl:enum |MaskedColorIndexValueF| opengl:float
+ |MaskedColorIndexValueI| opengl:uint |MaskedStencilValue| opengl:uint
+ |MaterialFace| opengl:enum |MaterialParameter| opengl:enum
+ |MatrixIndexPointerTypeARB| opengl:enum |MatrixMode| opengl:enum
+ |MatrixTransformNV| opengl:enum |MeshMode1| opengl:enum |MeshMode2|
+ opengl:enum |MinmaxTarget| opengl:enum |MinmaxTargetEXT| opengl:enum
+ |NormalPointerType| opengl:enum |NurbsCallback| opengl:enum |NurbsObj|
+ :pointer |NurbsProperty| opengl:enum |NurbsTrim| opengl:enum
+ |OcclusionQueryParameterNameNV| opengl:enum |PixelCopyType| opengl:enum
+ |PixelFormat| opengl:enum |PixelInternalFormat| opengl:enum |PixelMap|
+ opengl:enum |PixelStoreParameter| opengl:enum |PixelTexGenModeSGIX|
+ opengl:enum |PixelTexGenParameterNameSGIS| opengl:enum
+ |PixelTransferParameter| opengl:enum |PixelTransformPNameEXT| opengl:enum
+ |PixelTransformTargetEXT| opengl:enum |PixelType| opengl:enum
+ |PointParameterNameARB| opengl:enum |PolygonMode| opengl:enum |ProgramNV|
+ opengl:uint |ProgramCharacterNV| opengl:ubyte |ProgramParameterNV| opengl:enum
+ |ProgramParameterPName| opengl:enum |QuadricCallback| opengl:enum
+ |QuadricDrawStyle| opengl:enum |QuadricNormal| opengl:enum |QuadricObj|
+ :pointer |QuadricOrientation| opengl:enum |ReadBufferMode| opengl:enum
+ |RenderbufferTarget| opengl:enum |RenderingMode| opengl:enum
+ |ReplacementCodeSUN| opengl:uint |ReplacementCodeTypeSUN| opengl:enum
+ |SamplePassARB| opengl:enum |SamplePatternEXT| opengl:enum |SamplePatternSGIS|
+ opengl:enum |SecondaryColorPointerTypeIBM| opengl:enum |SelectName|
+ opengl:uint |SeparableTarget| opengl:enum |SeparableTargetEXT| opengl:enum
+ |ShadingModel| opengl:enum |SizeI| opengl:sizei |SpriteParameterNameSGIX|
+ opengl:enum |StencilFunction| opengl:enum |StencilFaceDirection| opengl:enum
+ |StencilOp| opengl:enum |StencilValue| opengl:int |String| opengl:string
+ |StringName| opengl:enum |TangentPointerTypeEXT| opengl:enum |TessCallback|
+ opengl:enum |TessContour| opengl:enum |TessProperty| opengl:enum
+ |TesselatorObj| :pointer |TexCoordPointerType| opengl:enum |Texture|
+ opengl:uint |TextureComponentCount| opengl:int |TextureCoordName| opengl:enum
+ |TextureEnvParameter| opengl:enum |TextureEnvTarget| opengl:enum
+ |TextureFilterSGIS| opengl:enum |TextureGenParameter| opengl:enum
+ |TextureNormalModeEXT| opengl:enum |TextureParameterName| opengl:enum
+ |TextureTarget| opengl:enum |TextureUnit| opengl:enum |UInt16| opengl:ushort
+ |UInt32| opengl:uint |UInt8| opengl:ubyte |VertexAttribEnum| opengl:enum
+ |VertexAttribEnumNV| opengl:enum |VertexAttribPointerTypeNV| opengl:enum
+ |VertexPointerType| opengl:enum |VertexWeightPointerTypeEXT| opengl:enum
+ |Void| opengl:void |VoidPointer| :pointer |ConstVoidPointer| :pointer
+ |WeightPointerTypeARB| opengl:enum |WinCoord| opengl:int |void| :void
+ |ArrayObjectPNameATI| opengl:enum |ArrayObjectUsageATI| opengl:enum
+ |ConstFloat32| opengl:float |ConstInt32| opengl:int |ConstUInt32| opengl:uint
+ |ConstVoid| opengl:void |DataTypeEXT| opengl:enum |FragmentOpATI| opengl:enum
+ |GetTexBumpParameterATI| opengl:enum |GetVariantValueEXT| opengl:enum
+ |ParameterRangeEXT| opengl:enum |PreserveModeATI| opengl:enum
+ |ProgramFormatARB| opengl:enum |ProgramTargetARB| opengl:enum |ProgramTarget|
+ opengl:enum |ProgramPropertyARB| opengl:enum |ProgramStringPropertyARB|
+ opengl:enum |ScalarType| opengl:enum |SwizzleOpATI| opengl:enum
+ |TexBumpParameterATI| opengl:enum |VariantCapEXT| opengl:enum
+ |VertexAttribPointerPropertyARB| opengl:enum |VertexAttribPointerTypeARB|
+ opengl:enum |VertexAttribPropertyARB| opengl:enum |VertexShaderCoordOutEXT|
+ opengl:enum |VertexShaderOpEXT| opengl:enum |VertexShaderParameterEXT|
+ opengl:enum |VertexShaderStorageTypeEXT| opengl:enum
+ |VertexShaderTextureUnitParameter| opengl:enum |VertexShaderWriteMaskEXT|
+ opengl:enum |VertexStreamATI| opengl:enum |PNTrianglesPNameATI| opengl:enum
+ |BufferOffset| opengl:intptr |BufferSize| opengl:sizeiptr |BufferAccessARB|
+ opengl:enum |BufferOffsetARB| opengl:intptr |BufferPNameARB| opengl:enum
+ |BufferPointerNameARB| opengl:enum |BufferSizeARB| opengl:sizeiptr
+ |BufferTargetARB| opengl:enum |BufferUsageARB| opengl:enum |ObjectTypeAPPLE|
+ opengl:enum |VertexArrayPNameAPPLE| opengl:enum |DrawBufferModeATI|
+ opengl:enum |Half16NV| opengl:half |PixelDataRangeTargetNV| opengl:enum
+ |GLenum| opengl:enum |handleARB| opengl:handle |charARB| opengl:char
+ |charPointerARB| :pointer |Int64EXT| opengl:int64 |UInt64EXT| opengl:uint64) )))
     (labels ((c-name (func-spec)    (first (first func-spec)))
 	     (lisp-name (func-spec) (second (first func-spec)))
 	     (freturn (func-spec)   (first (getf (rest func-spec) :return)))
@@ -4693,10 +4741,10 @@ blend-color-ext ))
 		      ;; so doing it this way is consistent with the C-interface, though more dangerous
 		      #|
 		      (or (integerp (getf arg :size))
-			  (and (symbolp (getf arg :size))
-			       (find-if #'(lambda (other-arg)
-					    (eql (getf arg :size) (final-arg-name other-arg)))
-					args)))|#
+		      (and (symbolp (getf arg :size))
+		      (find-if #'(lambda (other-arg)
+		      (eql (getf arg :size) (final-arg-name other-arg)))
+		      args)))|#
 		      ;; our own hook
 		      (not (getf arg :wrapped)))))
 	     (gl-function-definition (func-spec &optional (c-prefix "gl") (lisp-prefix '#:||))
@@ -4736,16 +4784,16 @@ blend-color-ext ))
 			      (unwind-protect
 				   (prog1
 				       #| as input values are set above, we don't use this now (and above is a prog1, it was prog2 before)
-				       ;; custom coersion of input values, before call ;
-				       ,(when (eql (getf arg :direction) :in)
-					      `(cond 
-						 ((listp ,original-array-name)
-						  (loop for i upfrom 0 for e in ,original-array-name
-						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
-						 ((vectorp ,original-array-name)
-						  (loop for i upfrom 0 for e across ,original-array-name
-						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
-				       |#
+				       ;; custom coersion of input values, before call ; ;
+		      ,(when (eql (getf arg :direction) :in)
+				       `(cond 
+				       ((listp ,original-array-name)
+				       (loop for i upfrom 0 for e in ,original-array-name
+				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
+				       ((vectorp ,original-array-name)
+				       (loop for i upfrom 0 for e across ,original-array-name
+				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
+		      |#
 				       ;; recurse in case there are more
 				       ,(expand-a-wrapping func-spec final-content)
 				     ;; custom coersion of output values, after call
@@ -4756,14 +4804,14 @@ blend-color-ext ))
 						     (ce ,original-array-name (cdr ce)))
 						    ((not ce))
   						    #|((or (not ce)
-						           (>= i ,(getf arg :size))))|#
+						  (>= i ,(getf arg :size))))|#
 						  (setf (car ce)
 							(mem-aref ,array-name ',(arg-element-type arg) i))))
 					       ((vectorp ,original-array-name)
 						(do ((i 0 (1+ i)))
 						    ((>= i (length ,original-array-name)))
 						  #|((or (>= i (length ,original-array-name))
-							 (>= i ,(getf arg :size))))|#
+						  (>= i ,(getf arg :size))))|#
 						  (setf (aref ,original-array-name i)
 							(mem-aref ,array-name ',(arg-element-type arg) i)))))))
 				(foreign-free ,array-name)))

@@ -108,29 +108,33 @@
 	       *normals-vbo* (elt buffers 1)
 	       *colours-vbo* (elt buffers 2)
 	       *triangle-indices-vbo* (elt buffers 3)))
+       (format t "Loading in ~d bytes of indices~%" (* *triangle-indices-length* (cffi:foreign-type-size 'gl:uint)) )
        (gl:with-bind-buffer-arb (gl:+element-array-buffer-arb+ *triangle-indices-vbo*)
 	 (gl:buffer-data-arb gl:+element-array-buffer-arb+
 			     (* *triangle-indices-length* (cffi:foreign-type-size 'gl:uint)) 
 			     *triangle-indices*
 			     gl:+static-draw-arb+))
 
+       (format t "Loading in ~d bytes of vertices~%" (* *vertices-array-length* (cffi:foreign-type-size 'gl:float)) )
        (gl:with-bind-buffer-arb (gl:+array-buffer-arb+ *vertices-vbo*)
 	 (gl:buffer-data-arb gl:+array-buffer-arb+
 			     (* *vertices-array-length* (cffi:foreign-type-size 'gl:float))
 			     *vertices-array*
 			     gl:+static-draw-arb+))
 
+       (format t "Loading in ~d bytes of normals~%" (* *vertices-array-length* (cffi:foreign-type-size 'gl:float)) )
        (gl:with-bind-buffer-arb (gl:+array-buffer-arb+ *normals-vbo*)
 	 (gl:buffer-data-arb gl:+array-buffer-arb+
 			     (* *vertices-array-length* (cffi:foreign-type-size 'gl:float))
 			     *normals-array*
 			     gl:+static-draw-arb+))
 
+       (format t "Loading in ~d bytes of colours~%" (* *vertices-array-length* 4/3 (cffi:foreign-type-size 'gl:float)) )
        (gl:with-bind-buffer-arb (gl:+array-buffer-arb+ *colours-vbo*)
 	 (gl:buffer-data-arb gl:+array-buffer-arb+
 			     (* *vertices-array-length* 4/3 (cffi:foreign-type-size 'gl:float))
 			     *colours-array*
-			     gl:+dynamic-draw-arb+)))
+			     gl:+static-draw-arb+)))
      (setf *t0* (glfw:get-time)))
   
   (let ((t1 (glfw:get-time)))

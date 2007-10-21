@@ -3,13 +3,13 @@
 
 (glfw:do-window ("A Simple Example")
     ((gl:with-setup-projection
-       (glu:perspective 45.0d0 (/ 4.0d0 3.0d0) 0.1d0 50.0d0)))
+       (glu:perspective 45 4/3 0.1 50)))
   (gl:clear gl:+color-buffer-bit+)
   (gl:load-identity)
-  (gl:translate-f 0.0 0.0 -5.0)
-  (gl:rotate-d (* 10.0d0 (glfw:get-time)) 1d0 1d0 0d0)
-  (gl:rotate-d (* 90.0d0 (glfw:get-time)) 0d0 0d0 1d0)
+  (gl:translate-f 0 0 -5)
+  (gl:rotate-f (* 10 (glfw:get-time)) 1 1 0)
+  (gl:rotate-f (* 90 (glfw:get-time)) 0 0 1)
   (gl:with-begin gl:+triangles+
-    (gl:color-3f 1.0 0.0 0.0) (gl:vertex-3f  1.0  0.0 0.0)
-    (gl:color-3f 0.0 1.0 0.0) (gl:vertex-3f -1.0  1.0 0.0)
-    (gl:color-3f 0.0 0.0 1.0) (gl:vertex-3f -1.0 -1.0 0.0)))
+    (gl:color-3f 1 0 0) (gl:vertex-3f  1  0 0)
+    (gl:color-3f 0 1 0) (gl:vertex-3f -1  1 0)
+    (gl:color-3f 0 0 1) (gl:vertex-3f -1 -1 0)))

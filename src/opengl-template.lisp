@@ -1,10 +1,14 @@
 (defpackage #:opengl
  (:use #:cffi #:cl)
  (:nicknames #:gl)
- (:shadow boolean byte float char string)
+ (:shadow #:boolean #:byte #:float #:char #:string)
  (:export
-  enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
-  double clampd void uint64 int64 intptr sizeiptr handle char string half
+  #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
+  #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 
+  #:intptr #:sizeiptr 
+  #:handle
+  #:char #:string
+  #:half
   @EXPORTS@))
 
 (in-package #:opengl)
@@ -51,7 +55,21 @@
 
 (defctype half :unsigned-short) ; this is how glext.h defines it anyway
 
+
 (eval-when (:compile-toplevel :load-toplevel :execute)
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'boolean)))
+    `(if ,value gl:+true+ gl:+false+))
+
+  (defmethod cffi:expand-from-foreign (value (type (eql 'boolean)))
+    `(not (= ,value gl:+false+)))
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'float)))
+    `(coerce ,value 'single-float))
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'double)))
+    `(coerce ,value 'double-float))
+
   (let ((type-maps (quote @TYPE_MAPS@)))
     (labels ((c-name (func-spec)    (first (first func-spec)))
 	     (lisp-name (func-spec) (second (first func-spec)))
@@ -128,7 +146,7 @@
 			      (unwind-protect
 				   (prog1
 				       #| as input values are set above, we don't use this now (and above is a prog1, it was prog2 before)
-				       ;; custom coersion of input values, before call ;
+				       ;; custom coersion of input values, before call ; ;
 				       ,(when (eql (getf arg :direction) :in)
 					      `(cond 
 						 ((listp ,original-array-name)
@@ -148,14 +166,14 @@
 						     (ce ,original-array-name (cdr ce)))
 						    ((not ce))
   						    #|((or (not ce)
-						           (>= i ,(getf arg :size))))|#
+						  (>= i ,(getf arg :size))))|#
 						  (setf (car ce)
 							(mem-aref ,array-name ',(arg-element-type arg) i))))
 					       ((vectorp ,original-array-name)
 						(do ((i 0 (1+ i)))
 						    ((>= i (length ,original-array-name)))
 						  #|((or (>= i (length ,original-array-name))
-							 (>= i ,(getf arg :size))))|#
+						  (>= i ,(getf arg :size))))|#
 						  (setf (aref ,original-array-name i)
 							(mem-aref ,array-name ',(arg-element-type arg) i)))))))
 				(foreign-free ,array-name)))

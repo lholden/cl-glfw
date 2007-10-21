@@ -55,7 +55,7 @@
   (force-output))
 
 (defun main ()
-  (unless (eql gl:+true+ (glfw:open-window 250 100 0 0 0 0  0 0 glfw:+window+))
+  (unless (glfw:open-window 250 100 0 0 0 0  0 0 glfw:+window+)
     (return-from main))
 
   (glfw:set-key-callback (cffi:callback keyfun))

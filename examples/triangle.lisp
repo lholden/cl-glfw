@@ -3,7 +3,7 @@
 
 (glfw:init)
 
-(when (eql gl:+true+ (glfw:open-window 640 480 0 0 0 0  0 0 glfw:+window+))
+(when (glfw:open-window 640 480 0 0 0 0  0 0 glfw:+window+)
   (glfw:enable glfw:+sticky-keys+)
   (glfw:swap-interval 0)
 

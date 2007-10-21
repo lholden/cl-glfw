@@ -1,3 +1,11 @@
+;; proto-package for type-mappings only
+(defpackage #:opengl
+ (:use #:cl)
+ (:nicknames #:gl)
+ (:shadow boolean byte float char string)
+ (:export
+  enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
+  double clampd void uint64 int64 intptr sizeiptr handle char string half))
 
 (defparameter *opengl-version-systems* '("cl-glfw-opengl-version_1_1"
 					 "cl-glfw-opengl-version_1_2"
@@ -40,7 +48,7 @@ Must be in the correct order.")
 				 "WIN")))
     (cond ((equal s "*") :void)
 	  ((find #\* (format nil "~a" s)) :pointer)
-	  ((equal (subseq s 0 2) "GL") (intern (string-upcase (subseq s 2))))
+	  ((equal (subseq s 0 2) "GL") (intern (string-upcase (subseq s 2)) (find-package '#:gl)))
 	  ((equal s "_GLfuncptr") :pointer)
 	  (t s))))
 
