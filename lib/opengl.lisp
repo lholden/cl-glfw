@@ -4675,7 +4675,7 @@ blend-color-ext ))
 	       (let ((type (getf type-maps (getf arg :type))))
 		 (cond
 		   ((eql 'void type) :pointer)
-		   ((getf arg :array) :pointer)
+		   ((getf arg :array) (if (eql type 'char) :string :pointer))
 		   (t type))))
 	     (arg-element-type (arg)
 	       (getf type-maps (getf arg :type)))
@@ -4721,7 +4721,7 @@ blend-color-ext ))
 			    (array-name (final-arg-name arg)))
 		       ;; set it wrapped by non-consingly attaching a wrapped property on the end
 		       (nconc arg (list :wrapped t))
-		       `(if (typep ,array-name 'sequence)
+		       `(if (and (typep ,array-name 'sequence) (not (stringp ,array-name)))
 			    ;; the actual allocation
 			    (let* ((,original-array-name ,array-name)
 				   (,array-name (foreign-alloc ',(arg-element-type arg)
