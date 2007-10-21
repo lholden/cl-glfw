@@ -15,7 +15,7 @@
 		  (read-from-string (format nil "(~a)" (gl:get-string gl:+extensions+)))))))
 
 (defun available-extensions ()
-  (if (and *available* (not (eql *available* '(nil))))
+  (if (and *available* (not (equal *available* '(""))) (not (eql *available* '(nil))))
       *available*
       (scan-available-extensions)))
 
@@ -29,5 +29,7 @@
      otherwise, nil."
   (let ((extension (extension-available-p extension)))
     (when extension
-      (asdf:oos 'asdf:load-op (string-downcase (format nil "cl-glfw-opengl-~a" extension)))
+      (handler-case
+	(asdf:oos 'asdf:load-op (string-downcase (format nil "cl-glfw-opengl-~a" extension)))
+	(asdf:missing-component () (warn "Extension ~a has nothing to load~%" extension)))
       t)))
