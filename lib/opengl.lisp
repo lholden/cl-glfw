@@ -4741,10 +4741,10 @@ blend-color-ext ))
 		      ;; so doing it this way is consistent with the C-interface, though more dangerous
 		      #|
 		      (or (integerp (getf arg :size))
-		      (and (symbolp (getf arg :size))
-		      (find-if #'(lambda (other-arg)
-		      (eql (getf arg :size) (final-arg-name other-arg)))
-		      args)))|#
+			  (and (symbolp (getf arg :size))
+			       (find-if #'(lambda (other-arg)
+					    (eql (getf arg :size) (final-arg-name other-arg)))
+					args)))|#
 		      ;; our own hook
 		      (not (getf arg :wrapped)))))
 	     (gl-function-definition (func-spec &optional (c-prefix "gl") (lisp-prefix '#:||))
@@ -4785,15 +4785,15 @@ blend-color-ext ))
 				   (prog1
 				       #| as input values are set above, we don't use this now (and above is a prog1, it was prog2 before)
 				       ;; custom coersion of input values, before call ; ;
-		      ,(when (eql (getf arg :direction) :in)
-				       `(cond 
-				       ((listp ,original-array-name)
-				       (loop for i upfrom 0 for e in ,original-array-name
-				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
-				       ((vectorp ,original-array-name)
-				       (loop for i upfrom 0 for e across ,original-array-name
-				       do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
-		      |#
+				       ,(when (eql (getf arg :direction) :in)
+					      `(cond 
+						 ((listp ,original-array-name)
+						  (loop for i upfrom 0 for e in ,original-array-name
+						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))
+						 ((vectorp ,original-array-name)
+						  (loop for i upfrom 0 for e across ,original-array-name
+						     do (setf (mem-aref ,array-name ',(arg-element-type arg) i) e)))))
+				       |#
 				       ;; recurse in case there are more
 				       ,(expand-a-wrapping func-spec final-content)
 				     ;; custom coersion of output values, after call
