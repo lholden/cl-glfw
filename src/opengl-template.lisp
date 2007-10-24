@@ -64,6 +64,12 @@
   (defmethod cffi:expand-from-foreign (value (type (eql 'boolean)))
     `(not (= ,value gl:+false+)))
 
+  (defmethod cffi:expand-to-foreign (value (type (eql 'clampf)))
+    `(coerce ,value 'single-float))
+
+  (defmethod cffi:expand-to-foreign (value (type (eql 'clampd)))
+    `(coerce ,value 'double-float))
+
   (defmethod cffi:expand-to-foreign (value (type (eql 'float)))
     `(coerce ,value 'single-float))
 
