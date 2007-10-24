@@ -108,153 +108,215 @@
 	   (gl:bind-buffer-arb ,ntarget (cffi:mem-ref ,saved-buffer-v 'gl:int)))))))
 
 
-;; ARB_shader_objects, ARB_vertex_shader and ARB_fragment_shader conveniences
+;; common (between ARB and 2.0) shader stuff
 
-(defun shader-source-from-stream-arb (handle in)
-  (declare (type stream in))
-  (let* ((lines (loop for line = (read-line in nil) while line collecting line))
-	 (c-lines (cffi:foreign-alloc :string :initial-contents lines)))
-    (gl:shader-source-arb handle (length lines) c-lines (cffi:null-pointer))))
 
-(defun check-compiled-shader-arb (handle)
-  "Given a shader handle that has been compiled, checks and flags in a lisp-friendly manner
+
+(define-condition shader-object-error (error)
+  ((object-handle :initarg :object-handle :reader object-handle)
+   (info-log :initarg :info-log :reader info-log))
+  (:report (lambda (condition stream)
+	     (format stream "~a Error with ~a:~%~a~%"
+		     (type-of condition)
+		     (object-handle condition)
+		     (info-log condition)))))
+(define-condition shader-compile-error (shader-object-error) ())
+(define-condition program-link-error (shader-object-error) ())
+
+;; 2.0 and ARB_shader_objects/ARB_vertex_shader/ARB_fragment_shader conveniences
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defmacro define-arb-and-non-arb (&body form)
+    "Expands out code with (?extension with-arb without-arb) markers in it.
+Care should be taken that it doesn't interfere with code with ` , markers in it."
+    (let ((extension nil))
+      (declare (special extension))
+      (labels ((expand-extension (form)
+		 (if (listp form)
+		     (if (eql (first form) '?extension)
+			 (if extension (second form) (third form))
+			 (mapcar #'expand-extension form))
+		     form)))
+	`(progn
+	   ,@(let ((extension t))
+		  (declare (special extension))
+		  (expand-extension form)) ;  undefined function: EXPAND-EXTENSION
+	   ,@(expand-extension form))))))
+
+(define-arb-and-non-arb 
+  (defun (?extension shader-source-from-stream-arb shader-source-from-stream) (handle in)
+    (declare (type stream in))
+    (let* ((lines (loop for line = (read-line in nil) while line collecting line))
+	   (c-lines (cffi:foreign-alloc :string :initial-contents lines)))
+      ((?extension gl:shader-source-arb gl:shader-source) handle (length lines) c-lines (cffi:null-pointer))))
+
+  (defun (?extension check-compiled-shader-arb check-compiled-shader) (handle)
+    "Given a shader handle that has been compiled, checks and flags in a lisp-friendly manner
 their compile status. Errors are signalled using an error with the shader log, success will
 just warn with the contents of the program-log, if present."
-  (cffi:with-foreign-objects ((log-length 'gl:sizei)
-			      (compile-status 'gl:int))
-    (gl:get-object-parameter-iv-arb handle gl:+object-info-log-length-arb+ log-length)
-    (gl:get-object-parameter-iv-arb handle gl:+object-compile-status-arb+ compile-status)
-    (let ((shader-log (when (> (cffi:mem-ref log-length 'gl:sizei) 1)
-			(cffi:with-foreign-pointer-as-string (str 4096)
-			  (gl:get-info-log-arb handle (cffi:mem-ref log-length 'gl:sizei) (cffi:null-pointer) str)
-			  (cffi:foreign-string-to-lisp str (cffi:mem-ref log-length 'gl:sizei))))))
-      (if (= (cffi:mem-ref compile-status 'gl:int)
-	     gl:+true+)
-	  (when shader-log (warn shader-log))
-	  (error shader-log)))))
+    (cffi:with-foreign-objects ((log-length 'gl:sizei)
+				(compile-status 'gl:int))
+      (?extension
+       (gl:get-object-parameter-iv-arb handle gl:+object-info-log-length-arb+ log-length)
+       (gl:get-shader-iv handle gl:+info-log-length+ log-length))
+      (?extension
+       (gl:get-object-parameter-iv-arb handle gl:+object-compile-status-arb+ compile-status)
+       (gl:get-shader-iv handle gl:+compile-status+ compile-status))
+      (let ((shader-log (when (> (cffi:mem-ref log-length 'gl:sizei) 1)
+			  (cffi:with-foreign-pointer-as-string (str 4096)
+			    ((?extension gl:get-info-log-arb gl:get-shader-info-log) handle (cffi:mem-ref log-length 'gl:sizei) (cffi:null-pointer) str)
+			    (cffi:foreign-string-to-lisp str (cffi:mem-ref log-length 'gl:sizei))))))
+	(if (= (cffi:mem-ref compile-status 'gl:int)
+	       gl:+true+)
+	    (when shader-log (warn shader-log))
+	    (error 'shader-compile-error :info-log shader-log :object-handle handle)))))
 
-(defun make-shader-arb (type source)
-  "Convenience function to create a shader of type given from source, which may either be a 
+  (defun (?extension make-shader-arb make-shader) (type source)
+    "Convenience function to create a shader of type given from source, which may either be a 
 pathname of a file to load from, or a string of the shader source directly. Returns handle of the new shader."
-  (let ((handle (gl:create-shader-object-arb type)))
-    (if (typep source 'pathname)
-	(with-open-file (in source :direction :input)
-	  (shader-source-from-stream-arb handle in))
-	(with-input-from-string (in source)
-	  (shader-source-from-stream-arb handle in)))
-    (gl:compile-shader-arb handle)
-    (check-compiled-shader-arb handle)
-    handle))
+    (let ((handle ((?extension gl:create-shader-object-arb gl:create-shader) type)))
+      (if (typep source 'pathname)
+	  (with-open-file (in source :direction :input)
+	    ((?extension shader-source-from-stream-arb shader-source-from-stream) handle in))
+	  (with-input-from-string (in source)
+	    ((?extension shader-source-from-stream-arb shader-source-from-stream) handle in)))
+      ((?extension gl:compile-shader-arb gl:compile-shader) handle)
+      ((?extension check-compiled-shader-arb check-compiled-shader) handle)
+      handle))
 
-(defun check-linked-program-arb (handle)
-  "Given a program handle that has been linked, checks and flags in a lisp-friendly manner
+  (defun (?extension check-linked-program-arb check-linked-program) (handle)
+    "Given a program handle that has been linked, checks and flags in a lisp-friendly manner
 their link status. Errors are signalled using an error with the program log, success will
 just warn with the contents of the program-log, if present."
-  (cffi:with-foreign-objects ((log-length 'gl:sizei)
-			      (link-status 'gl:int))
-    (gl:get-object-parameter-iv-arb handle gl:+object-info-log-length-arb+ log-length)
-    (gl:get-object-parameter-iv-arb handle gl:+object-link-status-arb+ link-status)
-    (let ((program-log (when (> (cffi:mem-ref log-length 'gl:sizei) 1)
-			(cffi:with-foreign-pointer-as-string (str 4096)
-			  (gl:get-info-log-arb handle (cffi:mem-ref log-length 'gl:sizei) (cffi:null-pointer) str)
-			  (cffi:foreign-string-to-lisp str (cffi:mem-ref log-length 'gl:sizei))))))
-      (if (= (cffi:mem-ref link-status 'gl:int)
-	     gl:+true+)
-	  (when program-log (warn program-log))
-	  (error program-log)))))
+    (cffi:with-foreign-objects ((log-length 'gl:sizei)
+				(link-status 'gl:int))
+      (?extension
+       (gl:get-object-parameter-iv-arb handle gl:+object-info-log-length-arb+ log-length)
+       (gl:get-program-iv handle gl:+info-log-length+ log-length))
+      (?extension
+       (gl:get-object-parameter-iv-arb handle gl:+object-link-status-arb+ link-status)
+       (gl:get-program-iv handle gl:+link-status+ link-status))
+      (let ((program-log (when (> (cffi:mem-ref log-length 'gl:sizei) 1)
+			   (cffi:with-foreign-pointer-as-string (str 4096)
+			     ((?extension gl:get-info-log-arb gl:get-program-info-log) handle (cffi:mem-ref log-length 'gl:sizei) (cffi:null-pointer) str)
+			     (cffi:foreign-string-to-lisp str (cffi:mem-ref log-length 'gl:sizei))))))
+	(if (= (cffi:mem-ref link-status 'gl:int)
+	       gl:+true+)
+	    (when program-log (warn program-log))
+	    (error 'program-link-error :info-log program-log :object-handle handle)))))
 
-(defun make-program-arb (&rest shader-handles)
-  "Given shader handles, creates a program, attaches any shaders given and links the program."
-  (let ((handle (gl:create-program-object-arb)))
-    (dolist (shader-handle shader-handles)
-      (gl:attach-object-arb handle shader-handle))
-    (when shader-handles
-      (gl:link-program-arb handle)
-      (check-linked-program-arb handle))
-    handle))
+  (defun (?extension make-program-arb make-program) (&rest shader-handles)
+    "Given shader handles, creates a program, attaches any shaders given and links the program."
+    (let ((handle ((?extension gl:create-program-object-arb gl:create-program))))
+      (dolist (shader-handle shader-handles)
+	((?extension gl:attach-object-arb gl:attach-shader) handle shader-handle))
+      (when shader-handles
+	((?extension gl:link-program-arb gl:link-program) handle)
+	((?extension check-linked-program-arb check-linked-program) handle))
+      handle))
 
-(defmacro with-use-program-arb (name &body forms)
-  "Executes forms using the shader program named. And cleanly use no-program afterwards."
-  `(progn
-     (cffi:with-foreign-object (current-program-v 'gl:handle)
-       (gl:get-handle-arb gl:+program-object-arb+ current-program-v)
-       (gl:use-program-object-arb ,name)
-       (unwind-protect (progn ,@forms)
-	 (gl:use-program-object-arb (cffi:mem-ref current-program-v 'gl:int))))))
+  (defparameter (?extension *fallback-synchronizing-program-arb* *fallback-synchronizing-program*) nil)
 
-;; 2.0 conveniences
+  (defun (?extension fallback-synchronizing-program-arb fallback-synchronizing-program) ()
+    (or (?extension *fallback-synchronizing-program-arb* *fallback-synchronizing-program*)
+	(setf (?extension *fallback-synchronizing-program-arb* *fallback-synchronizing-program*)
+	      ((?extension make-program-arb make-program)
+	       ((?extension make-shader-arb make-shader) (?extension gl:+vertex-shader-arb+ gl:+vertex-shader+)
+		"varying float position;
+void main()
+{
+  gl_Position=ftransform();
+  position=gl_Position.x+gl_Position.y+gl_Position.z;
+}
+")
+	       ((?extension make-shader-arb make-shader) (?extension gl:+fragment-shader-arb+ gl:+fragment-shader+)
+		"varying float position;
+void main() {
+  float intensity=mod(position*4.0,1.0) > 0.5 ? 1.0 : 0.1;
+  gl_FragColor=vec4(intensity,intensity,0.0,1.0);
+}")))))
 
-(defun shader-source-from-stream (handle in)
-  (declare (type stream in))
-  (let* ((lines (loop for line = (read-line in nil) while line collecting line))
-	 (c-lines (cffi:foreign-alloc :string :initial-contents lines)))
-    (gl:shader-source handle (length lines) c-lines (cffi:null-pointer))))
+  (defun (?extension synchronizing-program-arb synchronizing-program) (program-name &rest shader-type-sources)
+    "Creates a managed shader program that will poll shader files on disk
+and load them automatically if their write-times change. This can be used for
+easily developing shader code while the program is running. If the shader code
+does not compile for any reason, errors will be displayed on the *error-output*
+and a program specified by gl:*fallback-synchronizing-program* will be returned
+instead (a black and yellow striped static pattern).
 
-(defun check-compiled-shader (handle)
-  "Given a shader handle that has been compiled, checks and flags in a lisp-friendly manner
-their compile status. Errors are signalled using an error with the shader log, success will
-just warn with the contents of the program-log, if present."
-  (cffi:with-foreign-objects ((log-length 'gl:sizei)
-			      (compile-status 'gl:int))
-    (gl:get-shader-iv handle gl:+info-log-length+ log-length)
-    (gl:get-shader-iv handle gl:+compile-status+ compile-status)
-    (let ((shader-log (when (> (cffi:mem-ref log-length 'gl:sizei) 1)
-			(cffi:with-foreign-pointer-as-string (str 4096)
-			  (gl:get-shader-info-log handle (cffi:mem-ref log-length 'gl:sizei) (cffi:null-pointer) str)
-			  (cffi:foreign-string-to-lisp str (cffi:mem-ref log-length 'gl:sizei))))))
-      (if (= (cffi:mem-ref compile-status 'gl:int)
-	     gl:+true+)
-	  (when shader-log (warn shader-log))
-	  (error shader-log)))))
+For an example, please see examples/synchronized-shader.lisp."
+    (defvar *synchronizing-shader-programs* (make-hash-table :test 'equal))
+    ;; structure of an entry:
+    ;; program-name: (program-object-handle shader-entry+ ... )
+    ;; shader-entry: (shader-object-handle source-file last-compile-time)
 
-(defun make-shader (type source)
-  "Convenience function to create a shader of type given from source, which may either be a 
-pathname of a file to load from, or a string of the shader source directly. Returns handle of the new shader."
-  (let ((handle (gl:create-shader type)))
-    (if (typep source 'pathname)
-	(with-open-file (in source :direction :input)
-	  (shader-source-from-stream handle in))
-	(with-input-from-string (in source)
-	  (shader-source-from-stream handle in)))
-    (gl:compile-shader handle)
-    (check-compiled-shader handle)
-    handle))
+    ;; make-structure
+    (when (not (nth-value 1 (gethash program-name *synchronizing-shader-programs*)))
+      (let* ((program ((?extension create-program-object-arb create-program)))
+	     (shaders (mapcar #'(lambda (type-source)
+				  (let ((shader 
+					 ((?extension create-shader-object-arb create-shader) (first type-source))))
+				    ((?extension attach-object-arb attach-shader) program shader)
+				    shader))
+			      shader-type-sources)))
+	(setf (gethash program-name *synchronizing-shader-programs*)
+	      (list program (mapcar #'(lambda (shader type-source)
+					(list shader (second type-source) 0))
+				    shaders
+				    shader-type-sources)))))
+    (let ((program-spec (gethash program-name *synchronizing-shader-programs*)))
+      ;; compile out-of-date shaders 
+      (when (some #'(lambda (shader-entry)
+		      (destructuring-bind (shader source last-time) shader-entry
+			(let ((now-time (file-write-date source)))
+			  (when (> now-time last-time)
+			    (with-open-file (in source :direction :input)
+			      ((?extension shader-source-from-stream-arb shader-source-from-stream) shader in))
+			    ((?extension gl:compile-shader-arb gl:compile-shader) shader)
+			    (handler-case 
+				((?extension check-compiled-shader-arb check-compiled-shader) shader)
+			      (shader-object-error (e)
+				(let ((*print-escape* nil))
+				  (print-object e *error-output*))))
+			    (setf (third shader-entry) now-time)
+			    t))))
+		  (second program-spec))
+	;; re-link if anything was out of date
+	((?extension gl:link-program-arb gl:link-program) (first program-spec))
+	(handler-case 
+	    ((?extension check-linked-program-arb check-linked-program) (first program-spec))
+	  (shader-object-error (e)
+	    (let ((*print-escape* nil))
+	      (print-object e *error-output*)))))
 
-(defun check-linked-program (handle)
-  "Given a program handle that has been linked, checks and flags in a lisp-friendly manner
-their link status. Errors are signalled using an error with the program log, success will
-just warn with the contents of the program-log, if present."
-  (cffi:with-foreign-objects ((log-length 'gl:sizei)
-			      (link-status 'gl:int))
-    (gl:get-program-iv handle gl:+info-log-length+ log-length)
-    (gl:get-program-iv handle gl:+link-status+ link-status)
-    (let ((program-log (when (> (cffi:mem-ref log-length 'gl:sizei) 1)
-			(cffi:with-foreign-pointer-as-string (str 4096)
-			  (gl:get-program-info-log handle (cffi:mem-ref log-length 'gl:sizei) (cffi:null-pointer) str)
-			  (cffi:foreign-string-to-lisp str (cffi:mem-ref log-length 'gl:sizei))))))
-      (if (= (cffi:mem-ref link-status 'gl:int)
-	     gl:+true+)
-	  (when program-log (warn program-log))
-	  (error program-log)))))
+      ;; check link status: return or fallback
+      (if (cffi:with-foreign-object (link-status 'gl:int)
+	    ((?extension gl:get-object-parameter-iv-arb gl:get-program-iv)
+	     (first program-spec)
+	     (?extension gl:+object-link-status-arb+ gl:+link-status+)
+	     link-status)
+	    (eql (cffi:mem-ref link-status 'gl:int) gl:+true+))
+	  (first program-spec)
+	  ((?extension fallback-synchronizing-program-arb fallback-synchronizing-program)))))
 
-(defun make-program (&rest shader-handles)
-  "Given shader handles, creates a program, attaches any shaders given and links the program."
-  (let ((handle (gl:create-program)))
-    (dolist (shader-handle shader-handles)
-      (gl:attach-shader handle shader-handle))
-    (when shader-handles
-      (gl:link-program handle)
-      (check-linked-program handle))
-    handle))
+  (defmacro (?extension with-use-program-arb with-use-program) (name &body forms)
+    "Executes forms using the shader program named. And cleanly use no-program afterwards."
+    (let ((current-program (gensym "CURRENT-PROGRAM-")))
+      `(let ((,current-program (?extension 
+				(gl:get-handle-arb gl:+program-object-arb+)
+				(cffi:with-foreign-object (current-program-v 'gl:int)
+				  (gl:get-integerv gl:+current-program+ current-program-v)       
+				  (cffi:mem-ref current-program-v 'gl:int)))))
+	 ((?extension gl:use-program-object-arb gl:use-program) ,name)
+	 (unwind-protect (progn ,@forms)
+	   ((?extension gl:use-program-object-arb gl:use-program) ,current-program))))))
 
-(defmacro with-use-program (name &body forms)
-  "Executes forms using the shader program named. And cleanly use no-program afterwards."
-  `(progn
-     (cffi:with-foreign-object (current-program-v 'gl:int)
-       (gl:get-integerv gl:+current-program+ current-program-v)
-       (gl:use-program ,name)
-       (unwind-protect (progn ,@forms)
-	 (gl:use-program (cffi:mem-ref current-program-v 'gl:int))))))
+
+(defun clear-synchronizing-shaders ()
+  (makunbound '#:*synchronizing-shader-programs*))
+
+
+
 
 (export '(with-new-list with-push-name with-begin with-push-attrib with-push-matrix with-setup-projection
 	  ;; 1.1
@@ -265,11 +327,16 @@ just warn with the contents of the program-log, if present."
 	  with-begin-query
 	  with-map-buffer with-bind-buffer
 	  ;; ARB_vertex_shader/ARB_fragment_shader/ARB_shader_objects
-	  shader-source-from-stream-arb check-compiled-shader-arb make-shader-arb
+	  shader-source-from-stream-arb check-compiled-shader-arb make-shader-arb synchronizing-shader-arb
 	  check-linked-program-arb make-program-arb
-	  with-use-program-arb
+	  with-use-program-arb synchronizing-program-arb
+	  fallback-synchronizing-program-arb
+	  *fallback-synchronizing-program-arb*
 	  ;; 2.0
-	  shader-source-from-stream check-compiled-shader make-shader
+	  shader-source-from-stream check-compiled-shader make-shader synchronizing-shader
 	  check-linked-program make-program
-	  with-use-program
-	  ))
+	  with-use-program synchronizing-program
+	  fallback-synchronizing-program
+	  *fallback-synchronizing-program*
+	  
+	  clear-synchronizing-shaders))
