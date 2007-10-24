@@ -253,7 +253,7 @@ Signals an error on failure to initialize. Wrapped in a block named glfw:with-in
        (unwind-protect
 	    (block with-init ,@forms)
 	 (glfw:terminate))
-       (error "Error initializing glfw")))
+       (error "Error initializing glfw.")))
 
 (defcfun ("glfwOpenWindow" %open-window) gl:boolean
   (width :int) (height :int)
@@ -346,11 +346,12 @@ set the window title after opening.
 Wrapped in a block named glfw:with-open-window."
   `(if (%open-window ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
        (unwind-protect 
-	 (block with-open-window
-	   (glfw:set-window-title ,title)
-	   ,@forms)
-	 (close-window))
-       (error "Error initializing glfw window")))
+	    (block with-open-window
+	      (glfw:set-window-title ,title)
+	      ,@forms)
+	 (when (eql (glfw:get-window-param glfw:+opened+) gl:+true+)
+	   (close-window)))
+       (error "Error initializing glfw window.")))
 
 (defmacro with-init-window ((&optional (title "cl-glfw window") (width 0) (height 0)
 				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
