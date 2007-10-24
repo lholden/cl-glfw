@@ -6,7 +6,7 @@
 
 (glfw:do-window ("An OpenGL 2.0 Shader Example")
     ((gl:with-setup-projection
-       (glu:perspective 45.0d0 (/ 4.0d0 3.0d0) 0.1d0 50.0d0))
+       (glu:perspective 45 4/3 0.1 50))
      (setf *shader-program*
 	   (gl:make-program
 	    (gl:make-shader gl:+vertex-shader+ "
@@ -33,11 +33,11 @@ void main()
      (setf *uniform-time* (gl:get-uniform-location *shader-program* "time")))
   (gl:clear gl:+color-buffer-bit+)
   (gl:load-identity)
-  (gl:translate-f 0.0 0.0 -5.0)
-  (gl:rotate-d (* 10.0d0 (glfw:get-time)) 1d0 1d0 0d0)
-  (gl:rotate-d (* 90.0d0 (glfw:get-time)) 0d0 0d0 1d0)
+  (gl:translate-f 0 0 -5)
+  (gl:rotate-d (* 10 (glfw:get-time)) 1 1 0)
+  (gl:rotate-d (* 90 (glfw:get-time)) 0 0 1)
   (gl:uniform-1f *uniform-time* (coerce (glfw:get-time) 'single-float))
   (gl:with-begin gl:+triangles+
-    (gl:color-3f 1.0 0.0 0.0) (gl:vertex-3f  1.0  0.0 0.0)
-    (gl:color-3f 0.0 1.0 0.0) (gl:vertex-3f -1.0  1.0 0.0)
-    (gl:color-3f 0.0 0.0 1.0) (gl:vertex-3f -1.0 -1.0 0.0)))
+    (gl:color-3f 1 0 0) (gl:vertex-3f  1  0 0)
+    (gl:color-3f 0 1 0) (gl:vertex-3f -1  1 0)
+    (gl:color-3f 0 0 1) (gl:vertex-3f -1 -1 0)))

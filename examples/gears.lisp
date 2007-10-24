@@ -1,183 +1,149 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
 
-(declaim (optimize (debug 3) (compilation-speed 0) (safety 3)))
-
-(defparameter *running* t)
-(defparameter *t0* 0.0d0)
-(defparameter *t* 0)
-(defparameter *dt* 0)
-(defparameter *frames* 0)
 (defparameter *autoexit* 0)
-(defparameter *view_rotx* 20.0)
-(defparameter *view_roty* 30.0)
-(defparameter *view_rotz* 0.0)
+(defparameter *view-rotx* 20)
+(defparameter *view-roty* 30)
+(defparameter *view-rotz* 0)
 (defparameter *gear1* nil)
 (defparameter *gear2* nil)
 (defparameter *gear3* nil)
-(defparameter *angle* 0.0)
 
-(defconstant +pi+ (coerce pi 'single-float))
-
-(declaim (inline sfcos sfsin))
-(defun sfcos (a)
-  (declare (real a))
-  (coerce (cos a) 'single-float))
-
-(defun sfsin (a)
-  (declare (real a))
-  (coerce (sin a) 'single-float))
-
-(defun gear (inner_radius outer_radius width teeth tooth_depth)
-  (let ((r0 inner_radius)
-	(r1 (- outer_radius (/ tooth_depth 2.0)))
-	(r2 (+ outer_radius (/ tooth_depth 2.0)))
-	(angle 0.0)
-	(da (/ (/ (* 2.0 pi) teeth) 4.0)))
+(defun gear (inner-radius outer-radius width teeth tooth-depth)
+  (let ((r0 inner-radius)
+	(r1 (- outer-radius (/ tooth-depth 2)))
+	(r2 (+ outer-radius (/ tooth-depth 2)))
+	(angle 0)
+	(da (/ (/ (* 2 pi) teeth) 4)))
     (gl:shade-model gl:+flat+)
-    (gl:normal-3f 0.0 0.0 1.0)
+    (gl:normal-3f 0 0 1)
 
     ;; draw front face
-    (gl:begin gl:+quad-strip+)
-    (dotimes (i (1+ teeth))
-      (setf angle (/ (* i 2.0 pi) teeth))
-      (gl:vertex-3f (* r0 (sfcos angle)) (* r0 (sfsin angle)) (* width 0.5))
-      (gl:vertex-3f (* r1 (sfcos angle)) (* r1 (sfsin angle)) (* width 0.5))
-      (when (< i teeth)
-        (gl:vertex-3f (* r0 (sfcos angle)) (* r0 (sfsin angle)) (* width 0.5))
-        (gl:vertex-3f (* r1 (sfcos (+ angle (* 3 da)))) (* r1 (sfsin (+ angle (* 3 da)))) (* width 0.5))))
-    (gl:end)
+    (gl:with-begin gl:+quad-strip+
+      (dotimes (i (1+ teeth))
+	(setf angle (/ (* i 2 pi) teeth))
+	(gl:vertex-3f (* r0 (cos angle)) (* r0 (sin angle)) (* width 0.5))
+	(gl:vertex-3f (* r1 (cos angle)) (* r1 (sin angle)) (* width 0.5))
+	(when (< i teeth)
+	  (gl:vertex-3f (* r0 (cos angle)) (* r0 (sin angle)) (* width 0.5))
+	  (gl:vertex-3f (* r1 (cos (+ angle (* 3 da))))
+			(* r1 (sin (+ angle (* 3 da))))
+			(* width 0.5)))))
 
     ;; draw front sides of teeth
-    (gl:begin gl:+quads+)
-    (dotimes (i teeth)
-      (setf angle (/ (* i 2.0 pi) teeth))
-      (gl:vertex-3f (* r1 (sfcos angle)) (* r1 (sfsin angle)) (* width 0.5))
-      (gl:vertex-3f (* r2 (sfcos (+ angle da))) (* r2 (sfsin (+ angle da))) (* width 0.5))
-      (gl:vertex-3f (* r2 (sfcos (+ angle (* 2 da)))) (* r2 (sfsin (+ angle (* 2 da)))) (* width 0.5))
-      (gl:vertex-3f (* r1 (sfcos (+ angle (* 3 da)))) (* r1 (sfsin (+ angle (* 3 da)))) (* width 0.5)))
-    (gl:end)
+    (gl:with-begin gl:+quads+
+      (dotimes (i teeth)
+	(setf angle (/ (* i 2 pi) teeth))
+	(gl:vertex-3f (* r1 (cos angle)) (* r1 (sin angle)) (* width 0.5))
+	(gl:vertex-3f (* r2 (cos (+ angle da))) (* r2 (sin (+ angle da))) (* width 0.5))
+	(gl:vertex-3f (* r2 (cos (+ angle (* 2 da)))) (* r2 (sin (+ angle (* 2 da)))) (* width 0.5))
+	(gl:vertex-3f (* r1 (cos (+ angle (* 3 da)))) (* r1 (sin (+ angle (* 3 da)))) (* width 0.5))))
 
-    (gl:normal-3f 0.0 0.0 -1.0)
+    (gl:normal-3f 0 0 -1)
 
     ;; draw back face
-    (gl:begin gl:+quad-strip+)
-    (dotimes (i (1+ teeth))
-      (setf angle (/ (* i 2.0 pi) teeth))
-      (gl:vertex-3f (* r1 (sfcos angle)) (* r1 (sfsin angle)) (* (- width) 0.5))
-      (gl:vertex-3f (* r0 (sfcos angle)) (* r0 (sfsin angle)) (* (- width) 0.5))
-      (when (< i teeth)
-        (gl:vertex-3f (* r1 (sfcos (+ angle (* 3 da)))) (* r1 (sfsin (+ angle (* 3 da)))) (* (- width) 0.5))
-        (gl:vertex-3f (* r0 (sfcos angle)) (* r0 (sfsin angle)) (* (- width) 0.5))))
-    (gl:end)
+    (gl:with-begin gl:+quad-strip+
+      (dotimes (i (1+ teeth))
+	(setf angle (/ (* i 2 pi) teeth))
+	(gl:vertex-3f (* r1 (cos angle)) (* r1 (sin angle)) (* (- width) 0.5))
+	(gl:vertex-3f (* r0 (cos angle)) (* r0 (sin angle)) (* (- width) 0.5))
+	(when (< i teeth)
+	  (gl:vertex-3f (* r1 (cos (+ angle (* 3 da)))) (* r1 (sin (+ angle (* 3 da)))) (* (- width) 0.5))
+	  (gl:vertex-3f (* r0 (cos angle)) (* r0 (sin angle)) (* (- width) 0.5)))))
 
     ;; draw back sides of teeth
-    (gl:begin gl:+quads+)
-    (dotimes (i teeth)
-      (setf angle (/ (* i 2.0 pi) teeth))
-      (gl:vertex-3f (* r1 (sfcos (+ angle (* 3 da)))) (* r1 (sfsin (+ angle (* 3 da)))) (* (- width) 0.5))
-      (gl:vertex-3f (* r2 (sfcos (+ angle (* 2 da)))) (* r2 (sfsin (+ angle (* 2 da)))) (* (- width) 0.5))
-      (gl:vertex-3f (* r2 (sfcos (+ angle da))) (* r2 (sfsin (+ angle da))) (* (- width) 0.5))
-      (gl:vertex-3f (* r1 (sfcos angle)) (* r1 (sfsin angle)) (* (- width) 0.5)))
-    (gl:end)
+    (gl:with-begin gl:+quads+
+      (dotimes (i teeth)
+	(setf angle (/ (* i 2 pi) teeth))
+	(gl:vertex-3f (* r1 (cos (+ angle (* 3 da)))) (* r1 (sin (+ angle (* 3 da)))) (* (- width) 0.5))
+	(gl:vertex-3f (* r2 (cos (+ angle (* 2 da)))) (* r2 (sin (+ angle (* 2 da)))) (* (- width) 0.5))
+	(gl:vertex-3f (* r2 (cos (+ angle da))) (* r2 (sin (+ angle da))) (* (- width) 0.5))
+	(gl:vertex-3f (* r1 (cos angle)) (* r1 (sin angle)) (* (- width) 0.5))))
 
     ;; draw outward faces of teeth
-    (gl:begin gl:+quad-strip+)
-    (dotimes (i teeth)
-      (setf angle (/ (* i 2.0 pi) teeth))
-      (gl:vertex-3f (* r1 (sfcos angle)) (* r1 (sfsin angle)) (* width 0.5))
-      (gl:vertex-3f (* r1 (sfcos angle)) (* r1 (sfsin angle)) (* (- width) 0.5))
-      (let* ((u (- (* r2 (sfcos (+ angle da))) (* r1 (sfcos angle))))
-	     (v (- (* r2 (sfsin (+ angle da))) (* r1 (sfsin angle))))
-	     (len (sqrt (+ (* u u) (* v v)))))
+    (gl:with-begin gl:+quad-strip+
+      (dotimes (i teeth)
+	(setf angle (/ (* i 2 pi) teeth))
+	(gl:vertex-3f (* r1 (cos angle)) (* r1 (sin angle)) (* width 0.5))
+	(gl:vertex-3f (* r1 (cos angle)) (* r1 (sin angle)) (* (- width) 0.5))
+	(let* ((u (- (* r2 (cos (+ angle da))) (* r1 (cos angle))))
+	       (v (- (* r2 (sin (+ angle da))) (* r1 (sin angle))))
+	       (len (sqrt (+ (* u u) (* v v)))))
 
-	(setf u (/ u len))
-	(setf v (/ v len))
-	(gl:normal-3f v (- u) 0.0)
-	(gl:vertex-3f (* r2 (sfcos (+ angle da))) (* r2 (sfsin (+ angle da))) (* width 0.5))
-	(gl:vertex-3f (* r2 (sfcos (+ angle da))) (* r2 (sfsin (+ angle da))) (* (- width) 0.5))
-	(gl:normal-3f (sfcos angle) (sfsin angle) 0.0)
-	(gl:vertex-3f (* r2 (sfcos (+ angle (* 2 da)))) (* r2 (sfsin (+ angle (* 2 da)))) (* width 0.5))
-	(gl:vertex-3f (* r2 (sfcos (+ angle (* 2 da)))) (* r2 (sfsin (+ angle (* 2 da)))) (* (- width) 0.5))
-	(setf u (- (* r1 (sfcos (+ angle (* 3 da)))) (* r2 (sfcos (+ angle (* 2 da))))))
-	(setf v (- (* r1 (sfsin (+ angle (* 3 da)))) (* r2 (sfsin (+ angle (* 2 da))))))
-	(gl:normal-3f v (- u) 0.0)
-	(gl:vertex-3f (* r1 (sfcos (+ angle (* 3 da)))) (* r1 (sfsin (+ angle (* 3 da)))) (* width 0.5))
-	(gl:vertex-3f (* r1 (sfcos (+ angle (* 3 da)))) (* r1 (sfsin (+ angle (* 3 da)))) (* (- width) 0.5))
-	(gl:normal-3f (sfcos angle) (sfsin angle) 0.0)))
+	  (setf u (/ u len))
+	  (setf v (/ v len))
+	  (gl:normal-3f v (- u) 0)
+	  (gl:vertex-3f (* r2 (cos (+ angle da))) (* r2 (sin (+ angle da))) (* width 0.5))
+	  (gl:vertex-3f (* r2 (cos (+ angle da))) (* r2 (sin (+ angle da))) (* (- width) 0.5))
+	  (gl:normal-3f (cos angle) (sin angle) 0)
+	  (gl:vertex-3f (* r2 (cos (+ angle (* 2 da)))) (* r2 (sin (+ angle (* 2 da)))) (* width 0.5))
+	  (gl:vertex-3f (* r2 (cos (+ angle (* 2 da)))) (* r2 (sin (+ angle (* 2 da)))) (* (- width) 0.5))
+	  (setf u (- (* r1 (cos (+ angle (* 3 da)))) (* r2 (cos (+ angle (* 2 da))))))
+	  (setf v (- (* r1 (sin (+ angle (* 3 da)))) (* r2 (sin (+ angle (* 2 da))))))
+	  (gl:normal-3f v (- u) 0)
+	  (gl:vertex-3f (* r1 (cos (+ angle (* 3 da)))) (* r1 (sin (+ angle (* 3 da)))) (* width 0.5))
+	  (gl:vertex-3f (* r1 (cos (+ angle (* 3 da)))) (* r1 (sin (+ angle (* 3 da)))) (* (- width) 0.5))
+	  (gl:normal-3f (cos angle) (sin angle) 0)))
 
-    (gl:vertex-3f (* r1 (sfcos 0)) (* r1 (sfsin 0)) (* width 0.5))
-    (gl:vertex-3f (* r1 (sfcos 0)) (* r1 (sfsin 0)) (* (- width) 0.5))
-    (gl:end)
+      (gl:vertex-3f (* r1 (cos 0)) (* r1 (sin 0)) (* width 0.5))
+      (gl:vertex-3f (* r1 (cos 0)) (* r1 (sin 0)) (* (- width) 0.5)))
 
     (gl:shade-model gl:+smooth+)
 
     ;; draw inside radius cylinder */
-    (gl:begin gl:+quad-strip+)
-    (dotimes (i (1+ teeth))
-      (setf angle (/ (* i 2.0 pi) teeth))
-      (gl:normal-3f (- (sfcos angle)) (- (sfsin angle)) 0.0)
-      (gl:vertex-3f (* r0 (sfcos angle)) (* r0 (sfsin angle)) (* (- width) 0.5))
-      (gl:vertex-3f (* r0 (sfcos angle)) (* r0 (sfsin angle)) (* width 0.5)))
-    (gl:end)))
+    (gl:with-begin gl:+quad-strip+
+      (dotimes (i (1+ teeth))
+	(setf angle (/ (* i 2 pi) teeth))
+	(gl:normal-3f (- (cos angle)) (- (sin angle)) 0)
+	(gl:vertex-3f (* r0 (cos angle)) (* r0 (sin angle)) (* (- width) 0.5))
+	(gl:vertex-3f (* r0 (cos angle)) (* r0 (sin angle)) (* width 0.5))))))
+
+(let ((frames 0)
+      (angle 0)
+      (t-last-report 0)
+      (t0 0)
+      (t1 0))
+
+  (defun report-fps ()
+    (incf frames)
+    (setf t0 t1
+	  t1 (glfw:get-time))
+    (when (>= (- t1 t-last-report) 5)
+      (let* ((seconds (- t1 t-last-report))
+	     (fps (/ frames seconds)))
+	(format t "~d frames in ~3$ seconds = ~3$ FPS~%" frames seconds fps))
+      (setf t-last-report t1
+	    frames 0))
+    (when (and (not (zerop *autoexit*))
+	       (>= t1 (* 0.999 *autoexit*)))
+      (glfw:close-window)))
+  
+  (defun draw ()
+    (gl:clear (logior gl:+color-buffer-bit+ gl:+depth-buffer-bit+))
+    (gl:with-push-matrix
+      (gl:rotate-f *view-rotx* 1 0 0)
+      (gl:rotate-f *view-roty* 0 1 0)
+      (gl:rotate-f *view-rotz* 0 0 1)
+
+      (gl:with-push-matrix
+	(gl:translate-f -3 -2 0)
+	(gl:rotate-f angle 0 0 1)
+	(gl:call-list *gear1*))
+
+      (gl:with-push-matrix
+	(gl:translate-f 3.1 -2 0)
+	(gl:rotate-f (- (* -2 angle) 9) 0 0 1)
+	(gl:call-list *gear2*))
+
+      (gl:with-push-matrix
+	(gl:translate-f -3.1 4.2 0)
+	(gl:rotate-f (- (* -2 angle) 25) 0 0 1)
+	(gl:call-list *gear3*)))
+    (report-fps))
 
 
-(defun draw ()
-  (gl:clear (logior gl:+color-buffer-bit+ gl:+depth-buffer-bit+))
-  (gl:push-matrix)
-  (gl:rotate-f *view_rotx* 1.0 0.0 0.0)
-  (gl:rotate-f *view_roty* 0.0 1.0 0.0)
-  (gl:rotate-f *view_rotz* 0.0 0.0 1.0)
-
-  (gl:push-matrix)
-  (gl:translate-f -3.0 -2.0 0.0)
-  (gl:rotate-f *angle* 0.0 0.0 1.0)
-  (gl:call-list *gear1*)
-  (gl:pop-matrix)
-
-  (gl:push-matrix)
-  (gl:translate-f 3.1 -2.0 0.0)
-  (gl:rotate-f (- (* -2.0 *angle*) 9.0) 0.0 0.0 1.0)
-  (gl:call-list *gear2*)
-  (gl:pop-matrix)
-
-  (gl:push-matrix)
-  (gl:translate-f -3.1 4.2 0.0)
-  (gl:rotate-f (- (* -2.0 *angle*) 25.0) 0.0 0.0 1.0)
-  (gl:call-list *gear3*)
-  (gl:pop-matrix)
-
-  (gl:pop-matrix)
-
-  (incf *frames*)
-
-  (let ((t_new (glfw:get-time)))
-    (setf *dt* (- t_new *t*))
-    (setf *t* t_new)
-    (when (>= (- *t* *t0*) 5.0)
-      (let* ((seconds (- *t* *t0*))
-	     (fps (/ *frames* seconds)))
-        (format t "~d frames in ~3$ seconds = ~3$ FPS~%" *frames* seconds fps)
-        (setf *t0* *t*)
-        (setf *frames* 0)
-        (when (and (>= *t* (* 0.999 *autoexit*)) (not (eql *autoexit* 0)))
-          (setf *running* nil))))))
-
-
-(defun animate()
-  (setf *angle* (coerce (+ *angle* (* 100.0 *dt*)) 'single-float)))
-
-(defmacro with-gl-float-array ((varname &rest contents) &body forms)
-  `(let ((,varname (cffi:foreign-alloc 'gl:float :initial-contents (list ,@contents))))
-     (unwind-protect (progn ,@forms)
-       (cffi:foreign-free ,varname))))
-
-(defmacro with-gl-float-arrays ((&rest name-contents) &body forms)
-  `(with-gl-float-array ,(first name-contents)
-     ,@(if (rest name-contents)
-	   `((with-gl-float-arrays ,(rest name-contents) ,@forms))
-	   forms)))
-
+  (defun animate()
+    (setf angle (coerce (+ angle (* 100 (- t1 t0))) 'single-float))))
 
 (defun init-gl ()
   (gl:enable gl:+cull-face+)
@@ -185,33 +151,22 @@
   (gl:enable gl:+light0+)
   (gl:enable gl:+depth-test+)
 
-  (with-gl-float-arrays ((pos   5.0 5.0 10.0 0.0)
-			 (red   0.8 0.1 0.0 1.0)
-			 (green 0.0 0.8 0.2 1.0)
-			 (blue  0.2 0.2 1.0 1.0))
-    (gl:light-fv gl:+light0+ gl:+position+ pos)
+  (gl:light-fv gl:+light0+ gl:+position+ #(5.0 5.0 10.0 0.0))
 
-    ;; make the gears
-    (setf *gear1* (gl:gen-lists 1))
-    (gl:new-list *gear1* gl:+compile+) ; glNewList(gear1, GL_COMPILE);
-    (gl:material-fv gl:+front+ gl:+ambient-and-diffuse+ red) ; glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, red);
-    (gear 1.0 4.0 1.0 20 0.7)	       ; gear(1.0, 4.0, 1.0, 20, 0.7);
-    (gl:end-list)			; glEndList();
+  ;; make the gears
+  (gl:with-new-list (setf *gear1* (gl:gen-lists 1)) gl:+compile+
+    (gl:material-fv gl:+front+ gl:+ambient-and-diffuse+ #(0.8 0.1 0.0 1.0))
+    (gear 1 4 1 20 0.7))
 
-    (setf *gear2* (gl:gen-lists 1))	; gear2 = glGenLists(1);
-    (gl:new-list *gear2* gl:+compile+) ; glNewList(gear2, GL_COMPILE);
-    (gl:material-fv gl:+front+ gl:+ambient-and-diffuse+ green) ; glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, green);
-    (gear 0.5 2.0 2.0 10 0.7)	       ; gear(0.5, 2.0, 2.0, 10, 0.7);
-    (gl:end-list)			; glEndList();
+  (gl:with-new-list (setf *gear2* (gl:gen-lists 1)) gl:+compile+
+    (gl:material-fv gl:+front+ gl:+ambient-and-diffuse+ #(0.0 0.8 0.2 1.0))
+    (gear 0.5 2 2 10 0.7))
 
-    (setf *gear3* (gl:gen-lists 1))	; gear3 = glGenLists(1);
-    (gl:new-list *gear3* gl:+compile+) ; glNewList(gear3, GL_COMPILE);
-    (gl:material-fv gl:+front+ gl:+ambient-and-diffuse+ blue) ; glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, blue);
-    (gear 1.3 2.0 0.5 10 0.7)	       ; gear(1.3, 2.0, 0.5, 10, 0.7);
-    (gl:end-list)			; glEndList();
-    )
-
-  (gl:enable gl:+normalize+)		; glEnable(GL_NORMALIZE);
+  (gl:with-new-list (setf *gear3* (gl:gen-lists 1)) gl:+compile+
+    (gl:material-fv gl:+front+ gl:+ambient-and-diffuse+ #(0.2 0.2 1.0 1.0))
+    (gear 1.3 2 0.5 10 0.7)) 
+    
+  (gl:enable gl:+normalize+)
 
   ;; did we get -info or -exit?
   (dolist (arg (or #+sbcl sb-ext:*posix-argv*
@@ -232,48 +187,34 @@
   (when (eql action glfw:+press+)
     (cond ((eql key (char-code #\Z))
 	   (if (eql (glfw:get-key glfw:+key-lshift+) glfw:+press+)
-	       (decf *view_rotz* 5.0)
-	       (incf *view_rotz* 5.0)))
-          ((eql key glfw:+key-esc+)   (setf *running* nil))
-          ((eql key glfw:+key-up+)    (incf *view_rotx* 5.0))
-          ((eql key glfw:+key-down+)  (decf *view_rotx* 5.0))
-          ((eql key glfw:+key-left+)  (incf *view_roty* 5.0))
-          ((eql key glfw:+key-right+) (decf *view_roty* 5.0)))))
+	       (decf *view-rotz* 5)
+	       (incf *view-rotz* 5)))
+          ((eql key glfw:+key-esc+)   (glfw:close-window))
+          ((eql key glfw:+key-up+)    (incf *view-rotx* 5))
+          ((eql key glfw:+key-down+)  (decf *view-rotx* 5))
+          ((eql key glfw:+key-left+)  (incf *view-roty* 5))
+          ((eql key glfw:+key-right+) (decf *view-roty* 5)))))
 
 (cffi:defcallback window-size-callback :void ((width :int) (height :int))
   (let* ((h (/ height width))
-	 (znear 5.0d0)
-	 (zfar 30.0d0)
-	 (xmax (* znear 0.5d0)))
+	 (znear 5)
+	 (zfar 30)
+	 (xmax (* znear 0.5)))
 
     (gl:viewport 0 0 width height)
-    (gl:matrix-mode gl:+projection+)
+    (gl:with-setup-projection 
+      (gl:frustum (- xmax) xmax (* (- xmax) h) (* xmax h) znear zfar))
+
     (gl:load-identity)
-    (gl:frustum (- xmax) xmax (* (- xmax) h) (* xmax h) znear zfar)
-    (gl:matrix-mode gl:+modelview+)
-    (gl:load-identity)
-    (gl:translate-f 0.0 0.0 -20.0)))
-
-(glfw:init)
-(when (eql (glfw:open-window 300 300 0 0 0 0 16 0 glfw:+window+) 0)
-  (glfw:terminate)
-  (error "Could not initialize a window."))
-(glfw:set-window-title "Gears")
-(glfw:enable glfw:+key-repeat+)
-(glfw:swap-interval 0)
-
-;; launch OpenGL with our settings
-(init-gl)
-
-(glfw:set-window-size-callback (cffi:callback window-size-callback))
-(glfw:set-key-callback (cffi:callback key-callback))
+    (gl:translate-f 0 0 -20)))
 
 ;; program loop
-(do ()
-    ((eql *running* nil))
+(glfw:do-window ("Gears" 300 300 0 0 0 0 16 0 glfw:+window+) 
+    ((glfw:enable glfw:+key-repeat+)
+     (glfw:swap-interval 0)
+     (init-gl)
+     (glfw:set-window-size-callback (cffi:callback window-size-callback))
+     (glfw:set-key-callback (cffi:callback key-callback)))
   (draw)
   (animate)
-  (glfw:swap-buffers)
-  (setf *running* (and *running* (> (glfw:get-window-param glfw:+opened+) 0))))
-
-(glfw:terminate)
+  (glfw:swap-buffers))

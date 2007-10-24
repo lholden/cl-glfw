@@ -1,7 +1,6 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
 
-(defparameter *running* t)
 (defparameter *key-repeat* nil)
 (defparameter *system-keys* t)
 
@@ -27,7 +26,7 @@
 
     ((eql key glfw:+key-esc+)
      (format t "ESC => quit program~%")
-     (setf *running* nil))
+     (glfw:close-window))
 
     ((eql key (char-code #\R))
      (setf *key-repeat* (not *key-repeat*))
@@ -54,27 +53,13 @@
      (fresh-line)))
   (force-output))
 
-(defun main ()
-  (unless (glfw:open-window 250 100 0 0 0 0  0 0 glfw:+window+)
-    (return-from main))
+(glfw:do-window ("Press some keys!" 250 100)
+    ((glfw:set-key-callback (cffi:callback keyfun)))
 
-  (glfw:set-key-callback (cffi:callback keyfun))
-  (glfw:set-window-title "Press some keys!")
-  
-  (do ((*running* t (and *running* (not (zerop (glfw:get-window-param glfw:+opened+)))))
-       (t1 (glfw:get-time) (glfw:get-time))) 
-      ((not *running*))
+  (destructuring-bind (width height) (glfw:get-window-size)
+    (gl:viewport 0 0 width height))
 
-    (destructuring-bind (width height) (glfw:get-window-size)
-      (gl:viewport 0 0 width height))
-
-    (gl:clear-color (coerce (+ 0.5 (* 0.5 (sin (* 3.0 t1))))
-			    'single-float)
-		    0.0 0.0 0.0)
-    (gl:clear gl:+color-buffer-bit+)
-
-    (glfw:swap-buffers)))
-
-(glfw:init)
-(main)
-(glfw:terminate)
+  (gl:clear-color (coerce (+ 0.5 (* 0.5 (sin (* 3.0 (glfw:get-time)))))
+			  'single-float)
+		  0.0 0.0 0.0)
+  (gl:clear gl:+color-buffer-bit+))

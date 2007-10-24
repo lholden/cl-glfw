@@ -75,7 +75,7 @@
 (defparameter *triangle-indices-length* (length *triangle-indices*))
 (defparameter *vertices-array-length* (length *vertices-array*))
 
-(defparameter *t0* 0.0d0)
+(defparameter *t0* 0.0)
 (defparameter *frames* 0)
 
 (cffi:defcallback key-press :void ((key :int) (action :int))
@@ -95,11 +95,17 @@
 (glfw:do-window ("A VBO Example" 0 0 0 0 0 0 16)
     ((gl:enable gl:+depth-test+)
      (gl:depth-func gl:+less+)
+     (gl:enable gl:+light0+)
+     (gl:enable gl:+lighting+)
+
+     (gl:light-fv gl:+light0+ gl:+position+ #(1.0 1.0 1.0 0.0))
+     (gl:color-material gl:+front+ gl:+ambient-and-diffuse+)
+     (gl:enable gl:+color-material+)
 
      (glfw:set-key-callback (cffi:callback key-press))
 
      (gl:with-setup-projection
-       (glu:perspective 45.0d0 (/ 4.0d0 3.0d0) 0.125d0 8.0d0))
+       (glu:perspective 45 4/3 0.125 8))
 
      (when (setf *use-vbo* (and t (gl-ext:load-extension "ARB_vertex_buffer_object")))
        (let ((buffers (make-array 4)))
@@ -138,15 +144,15 @@
      (setf *t0* (glfw:get-time)))
   
   (let ((t1 (glfw:get-time)))
-    (when (> (- t1 *t0*) 1.0)
+    (when (> (- t1 *t0*) 1)
       (glfw:set-window-title (format nil "~4f FPS, VBO: ~a~%" (/ *frames* (- t1 *t0*)) (if *use-vbo* "on" "off")))
       (setf *t0* t1
 	    *frames* 0)))
   (gl:clear (logior gl:+color-buffer-bit+ gl:+depth-buffer-bit+))
   (gl:load-identity)
-  (gl:translate-f 0.0 0.0 -5.0)
-  (gl:rotate-d (* 10.0d0 (glfw:get-time)) 1d0 1d0 0d0)
-  (gl:rotate-d (* 90.0d0 (glfw:get-time)) 0d0 0d0 1d0)
+  (gl:translate-f 0 0 -5)
+  (gl:rotate-d (* 10 (glfw:get-time)) 1 1 0)
+  (gl:rotate-d (* 90 (glfw:get-time)) 0 0 1)
   (gl:with-push-client-attrib (gl:+client-vertex-array-bit+)
     (gl:enable-client-state gl:+color-array+)
     (gl:enable-client-state gl:+vertex-array+)
