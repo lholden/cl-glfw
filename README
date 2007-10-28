@@ -38,6 +38,7 @@ be passed straight through. Eg. (gl:vertex-3fv #(1.0 0.0 1.0)) will work as expe
 Platforms tested on:
     SBCL Linux x86
     SBCL Linux amd64
+    SBCL Linux x86_64
     Others: Let me know.
 
 
