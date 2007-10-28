@@ -1,6 +1,6 @@
-(defpackage #:opengl
+(defpackage #:cl-glfw-opengl
  (:use #:cffi #:cl)
- (:nicknames #:gl)
+ (:nicknames #:gl #:opengl)
  (:shadow #:boolean #:byte #:float #:char #:string)
  (:export
   #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
