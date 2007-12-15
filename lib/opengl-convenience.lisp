@@ -43,6 +43,28 @@
      (unwind-protect (progn ,@forms)
        (gl:matrix-mode gl:+modelview+))))
 
+(defmacro with-projection-matrix ((&body projection-matrix-setup-forms)
+                                  &body forms)
+  "Temporarily change the projection matrix:
+Saves the current projection matrix,
+loads identity in the projection matrix,
+runs projection-matrix-setup-forms in projection matrix-mode,
+runs forms in modelview matrix-mode,
+restores the saved projection-matrix
+and leaves in modelview matrix-mode."
+  `(progn
+     (gl:matrix-mode gl:+projection+)
+     (gl:push-matrix)
+     (gl:load-identity)
+     (unwind-protect
+          (progn
+            ,@projection-matrix-setup-forms
+            (gl:matrix-mode gl:+modelview+)
+            ,@forms)
+       (gl:matrix-mode gl:+projection+)
+       (gl:pop-matrix)
+       (gl:matrix-mode gl:+modelview+))))
+
 ;; 1.1 Conveniences
 
 (defmacro with-push-client-attrib ((&rest attrib-bits) &body forms)
@@ -318,7 +340,7 @@ For an example, please see examples/synchronized-shader.lisp."
 
 
 
-(export '(with-new-list with-push-name with-begin with-push-attrib with-push-matrix with-setup-projection
+(export '(with-new-list with-push-name with-begin with-push-attrib with-push-matrix with-setup-projection with-projection-matrix
 	  ;; 1.1
 	  with-push-client-attrib
 	  ;; ARB_vertex_buffer_object
