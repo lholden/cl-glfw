@@ -4415,3 +4415,10 @@ EXT_texture_integer enum:
 ###############################################################################
 
 # Extension #344 - GLX_EXT_texture_from_pixmap
+
+###############################################################################
+
+# No new tokens
+# Extension #345
+GREMEDY_frame_terminator enum:
+

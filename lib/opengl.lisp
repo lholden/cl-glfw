@@ -2350,6 +2350,7 @@ uniform-matrix-3x-2fv
 uniform-matrix-2x-3fv 
 blend-func-separate-ingr 
 igloo-interface-sgix 
+frame-terminator-gremedy 
 +rgba32ui-ext+ 
 +rgb32ui-ext+ 
 +alpha32ui-ext+ 
