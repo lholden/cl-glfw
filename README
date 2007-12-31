@@ -1,28 +1,42 @@
-cl-glfw: The glfw wrapper for Common Lisp.
+Top-level ASDF packages:
 
-A public domain set of CFFI bindings and convenience macros for the GLFW, GLU and OpenGL
-libraries.
+ * cl-glfw - GLFW bindings for Common Lisp.
+ * cl-glfw-opengl - OpenGL bindings for Common Lisp.
+ * cl-glfw-glu - OpenGL Utilities bindings for Common Lisp.
 
-The OpenGL bindings are automatically generated from the (supposedly) canonical spec-files from 
-http://www.opengl.org/registry/
+ABOUT
 
-The GLU binding was hand-coerced from a tidied up header file, through swig, so it's pretty
-much a direct mapping onto the API.
+A public domain set of CFFI bindings and convenience macros for the GLFW, GLU
+and OpenGL libraries.
 
-GLFW threading WILL PROBABLY BREAK YOUR LISP. I would advise seeking other avenues if you
-require threading in your applications. The bindings remain in cl-glfw, but, I should emphasise
-once again, that they probably are going to mess up things like garbage collection in your lisp,
-and apparently some things to do with stacks and allocations aswell.
+The OpenGL bindings are automatically generated from the (supposedly) canonical
+spec-files from http://www.opengl.org/registry/
+
+The GLU binding was hand-coerced from a tidied up header file, through swig, so
+it's pretty much a direct mapping onto the API.
 
 Check out the examples/ directory for more of a guide through.
+
+You should be able to use cl-glfw, cl-glfw-opengl and cl-glfw-glu independently
+of each other. That is, using cl-glfw with cl-opengl, or cl-opengl's glut with
+cl-glfw-opengl, should work fine.
+
+
+THREADING
+
+GLFW threading WILL PROBABLY BREAK YOUR LISP. I would advise seeking other
+avenues if you require threading in your applications. The bindings remain in
+cl-glfw, but, I should emphasise once again, that they probably are going to
+mess up things like garbage collection in your lisp, and apparently some things
+to do with stacks and allocations aswell.
 
 
 NAME MANGLING STYLE
 
-All function/constant names are 'lispified', that is dash-separated, instead of camel-case. 
-Suffixes and acronyms are kept together as one word. Library prefixes are expressed as their
-package. Constants are surrounded by the '+' characters as lisp convention dictates.
-Some examples:
+All function/constant names are 'lispified', that is dash-separated, instead of
+camel-case.  Suffixes and acronyms are kept together as one word. Library
+prefixes are expressed as their package. Constants are surrounded by the '+'
+characters as lisp convention dictates.  Some examples:
 
 glfwOpenWindow -> glfw:open-window
 glVertex3fv -> gl:vertex-3fv
@@ -30,24 +44,39 @@ gluBuild2DMipmaps -> glu:build-2d-mipmaps
 GL_FOG_INDEX -> gl:+fog-index+
 GL_LIGHT0 -> gl:+light-0+
 
-Functions that take a predictable c-array input or return an output have automatic-translators
-for lisp-sequences. However, this will require an extra allocation. cffi:pointer types will
-be passed straight through. Eg. (gl:vertex-3fv #(1.0 0.0 1.0)) will work as expected.
+
+TYPE CONVERSION
+
+Functions that take a predictable c-array input or return an output have
+automatic-translators for lisp-sequences (array and vectors). However, this
+will require an extra allocation. cffi:pointer types will be passed straight
+through. Eg. (gl:vertex-3fv #(1.0 0.0 1.0)) will work as expected.
+
+All function parameters of types (warning: not in GLU yet) GLfloat or GLdouble
+are automatically wrapped in an appropriate coerce. All integer types are
+expected to be acceptable to CFFI. 
 
 
-Platforms tested on:
+PLATFORMS
     SBCL Linux x86
     SBCL Linux amd64
     SBCL Linux x86_64
     Others: Let me know.
 
 
-Links:
-    http://repo.or.cz/w/cl-glfw.git
-    http://glfw.sf.net/
-    http://common-lisp.net/project/cffi/
-    http://www.sbcl.org/
-    http://www.opengl.org/
+LINKS
+
+    http://repo.or.cz/w/cl-glfw.git - The working online git repository
+    http://glfw.sf.net/ - The homepage for GLFW
+    http://common-lisp.net/project/cffi/ - Dependency library CFFI's homepage
+    http://www.sbcl.org/ - Our favoured implementation of Common Lisp
+    http://www.opengl.org/ - OpenGL 3D graphics library API
+
+
+ALTERNATIVES
+
+    http://common-lisp.net/project/cl-opengl/ - Alternative set of OpenGL (with GLUT) bindings
+    http://cl-sdl.sf.net/ - Seemingly abandoned SDL and OpenGL bindings
 
 
 Enjoy.

@@ -23,4 +23,4 @@
                       :version nil
                       :defaults
                       (truename (asdf:system-definition-pathname '#:cl-glfw-opengl))))
-      *central-registry*)
+      asdf:*central-registry*)
