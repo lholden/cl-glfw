@@ -20,6 +20,20 @@
 
 (in-package #:glfw)
 
+;; copy the boolean from OpenGL
+(defctype boolean :uint8)
+
+(defconstant +false+ #x0) 
+(defconstant +true+ #x1)
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (defmethod cffi:expand-to-foreign (value (type (eql 'boolean)))
+    `(if ,value +true+ +false+))
+
+  (defmethod cffi:expand-from-foreign (value (type (eql 'boolean)))
+    `(not (= ,value +false+))))
+
+
 (defmacro defcfun+doc ((c-name lisp-name) return-type (&body args) docstring)
   `(progn
      (defcfun (,c-name ,lisp-name) ,return-type ,@args)
@@ -222,7 +236,7 @@
 ;; Time spans longer than this (seconds) are considered to be infinity
 (defconstant +infinity+ 100000d0)
 
-(defcfun+doc ("glfwInit" init) gl:boolean ()
+(defcfun+doc ("glfwInit" init) boolean ()
   "Return values
 If the function succeeds, t is returned.
 If the function fails, nil is returned.
@@ -255,7 +269,7 @@ Signals an error on failure to initialize. Wrapped in a block named glfw:with-in
 	 (glfw:terminate))
        (error "Error initializing glfw.")))
 
-(defcfun ("glfwOpenWindow" %open-window) gl:boolean
+(defcfun ("glfwOpenWindow" %open-window) boolean
   (width :int) (height :int)
   (redbits :int) (greenbits :int) (bluebits :int) (alphabits :int)
   (depthbits :int) (stencilbits :int) (mode :int))
@@ -349,7 +363,7 @@ Wrapped in a block named glfw:with-open-window."
 	    (block with-open-window
 	      (glfw:set-window-title ,title)
 	      ,@forms)
-	 (when (eql (glfw:get-window-param glfw:+opened+) gl:+true+)
+	 (when (eql (glfw:get-window-param glfw:+opened+) +true+)
 	   (close-window)))
        (error "Error initializing glfw window.")))
 
@@ -377,7 +391,7 @@ If the window is closed, the loop is also exited."
      (loop named do-window do
 	  ,@forms
 	  (glfw:swap-buffers)
-	  (unless (eql (glfw:get-window-param glfw:+opened+) gl:+true+)	 
+	  (unless (eql (glfw:get-window-param glfw:+opened+) +true+)	 
 	    (return-from do-window)))))
 
 (defcfun+doc ("glfwSetWindowCloseCallback" set-window-close-callback) :void ((cbfun :pointer))
@@ -394,7 +408,7 @@ cbfun
       be closed.
       If cbfun is NULL, any previously selected callback function will be deselected.
 
-      If you declare your callback as returning gl:boolean, you can use t and nil as return types.
+      If you declare your callback as returning glfw:boolean, you can use t and nil as return types.
 
 Description
 The function selects which function to be called upon a window close event.
@@ -972,7 +986,7 @@ latter should only happen when very short sleep times are specified, if at all. 
   (bytes-per-pixel :int)
   (data :pointer))
 
-(defcfun+doc ("glfwReadImage" read-image) gl:boolean
+(defcfun+doc ("glfwReadImage" read-image) boolean
   ((name :string) (img image) (flags :int))
   "Parameters
 name
@@ -1014,7 +1028,7 @@ Please note that OpenGL™ 1.0 does not support single component alpha maps, so 
 with Format = GL_ALPHA directly as textures under OpenGL™ 1.0.
 ")
 
-(defcfun+doc ("glfwReadMemoryImage" read-memory-image) gl:boolean
+(defcfun+doc ("glfwReadMemoryImage" read-memory-image) boolean
     ((data :pointer) (size :long) (img image) (flags :int))
   "Parameters
 data
@@ -1068,7 +1082,7 @@ The function frees any memory occupied by a loaded image, and clears all the fie
 struct. Any image that has been loaded by the glfwReadImage function should be deallocated using
 this function, once the image is not needed anymore. ")
 
-(defcfun+doc ("glfwLoadTexture2D" load-texture-2d) gl:boolean ((name :string) (flags :int))
+(defcfun+doc ("glfwLoadTexture2D" load-texture-2d) boolean ((name :string) (flags :int))
 	     "Parameters
 name
        An ISO 8859-1 string holding the name of the file that should be loaded.
@@ -1104,7 +1118,7 @@ to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and t
 texture is a single component texture. The red, green and blue components are set to 1.0.
 ")
 
-(defcfun+doc ("glfwLoadMemoryTexture2D" load-memory-texture-2d) gl:boolean
+(defcfun+doc ("glfwLoadMemoryTexture2D" load-memory-texture-2d) boolean
     ((data :pointer) (size :long) (flags :int))
   "Parameters
 data
@@ -1144,7 +1158,7 @@ texture is a single component texture. The red, green and blue components are se
 ")
 
 
-(defcfun+doc ("glfwLoadTextureImage2D" load-texture-image-2d) gl:boolean ((img image)
+(defcfun+doc ("glfwLoadTextureImage2D" load-texture-image-2d) boolean ((img image)
 								    (flags :int))
 	     "Parameters
 img
@@ -1181,7 +1195,7 @@ to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and t
 texture is a single component texture. The red, green and blue components are set to 1.0. ")
 
 
-(defcfun+doc ("glfwExtensionSupported" extension-supported) gl:boolean ((extension :string))
+(defcfun+doc ("glfwExtensionSupported" extension-supported) boolean ((extension :string))
 	     "Parameters
 extension
       A null terminated ISO 8859-1 string containing the name of an OpenGL™ extension.
@@ -1271,7 +1285,7 @@ This function is a very dangerous operation, which may interrupt a thread in the
 operation, and its use is discouraged. You should always try to end a thread in a graceful way using
 thread communication, and use glfwWaitThread in order to wait for the thread to die.
 ")
-(defcfun+doc ("glfwWaitThread" wait-thread) gl:boolean ((id thread) (waitmode :int) ) 
+(defcfun+doc ("glfwWaitThread" wait-thread) boolean ((id thread) (waitmode :int) ) 
 "Parameters
 ID
       A thread identification handle, which is returned by glfwCreateThread or glfwGetThreadID.
