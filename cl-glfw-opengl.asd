@@ -16,11 +16,11 @@
                          (:file "opengl-extensions" :depends-on ("opengl"))))))
 
 
-(push (merge-pathnames
-       #P"lib/"
-       (make-pathname :name nil 
-                      :type nil 
-                      :version nil
-                      :defaults
-                      (truename (asdf:system-definition-pathname '#:cl-glfw-opengl))))
-      asdf:*central-registry*)
+(pushnew (merge-pathnames
+          #P"lib/"
+          (make-pathname :name nil 
+                         :type nil 
+                         :version nil
+                         :defaults
+                         (truename (asdf:system-definition-pathname '#:cl-glfw-opengl))))
+         asdf:*central-registry*)
