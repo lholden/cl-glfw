@@ -10,3 +10,12 @@
   :licence "Public Domain"
   :depends-on (cffi cl-glfw-opengl)
   :components ((:module lib :components ((:file "glu")))))
+
+(pushnew (merge-pathnames
+          #P"lib/"
+          (make-pathname :name nil 
+                         :type nil 
+                         :version nil
+                         :defaults
+                         (truename (asdf:system-definition-pathname '#:cl-glfw-glu))))
+         asdf:*central-registry*)
