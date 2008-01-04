@@ -1,5 +1,7 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
+(asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
+(asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 
 (glfw:do-window ("A Simple Example")
     ((gl:with-setup-projection

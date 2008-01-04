@@ -1,5 +1,6 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
+(asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
 
 (defparameter *autoexit* 0)
 (defparameter *view-rotx* 20)

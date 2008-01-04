@@ -1,5 +1,7 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
+(asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
+(asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 
 (let ((frames 0)
       t0 

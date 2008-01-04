@@ -30,7 +30,7 @@
   (glfw:signal-cond (signal-cond s)))
 
 
-(when (zerop (glfw:init))
+(unless (glfw:init)
   (error "Could not glfw:init"))
 
 (format t "Multithreading benchmarking program

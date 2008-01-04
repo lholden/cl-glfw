@@ -2,6 +2,7 @@
 (asdf:oos 'asdf:load-op '#:cl-glfw)
 
 (cffi:defcallback hello-fun :void ((arg :pointer))
+  (declare (ignore arg))
   (format t "Hello "))
 
 (glfw:init)
