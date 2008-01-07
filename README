@@ -2,7 +2,7 @@ Top-level ASDF packages:
 
  * cl-glfw - GLFW bindings for Common Lisp.
  * cl-glfw-opengl - OpenGL bindings for Common Lisp.
- * cl-glfw-glu - OpenGL Utilities bindings for Common Lisp.
+ * cl-glfw-glu (requires cl-glfw-opengl) - OpenGL Utilities bindings for Common Lisp.
 
 ABOUT
 
@@ -15,11 +15,14 @@ spec-files from http://www.opengl.org/registry/
 The GLU binding was hand-coerced from a tidied up header file, through swig, so
 it's pretty much a direct mapping onto the API.
 
-Check out the examples/ directory for more of a guide through.
+cl-glfw is independent of cl-glfw-opengl (and cl-glfw-glu). cl-glfw-opengl and
+cl-glfw-glu may be used without cl-glfw. cl-glfw-glu, however, does depend on
+cl-glfw-opengl. So, you should be able to use cl-glfw and
+cl-glfw-opengl/cl-glfw-glu independently of each other; for example, using
+cl-glfw with cl-opengl, or cl-opengl's glut with cl-glfw-opengl, should work
+fine.
 
-You should be able to use cl-glfw, cl-glfw-opengl and cl-glfw-glu independently
-of each other. That is, using cl-glfw with cl-opengl, or cl-opengl's glut with
-cl-glfw-opengl, should work fine.
+Check out the examples/ directory for more of a guide through.
 
 
 THREADING
@@ -45,7 +48,7 @@ GL_FOG_INDEX -> gl:+fog-index+
 GL_LIGHT0 -> gl:+light-0+
 
 
-TYPE CONVERSION
+TYPE CONVERSION IN CL-GLFW-OPENGL
 
 Functions that take a predictable c-array input or return an output have
 automatic-translators for lisp-sequences (array and vectors). However, this
@@ -55,6 +58,9 @@ through. Eg. (gl:vertex-3fv #(1.0 0.0 1.0)) will work as expected.
 All function parameters of types (warning: not in GLU yet) GLfloat or GLdouble
 are automatically wrapped in an appropriate coerce. All integer types are
 expected to be acceptable to CFFI. 
+
+See individual function documentation for cl-glfw conversion details.
+cl-glfw-glu does not do automatic float translations.
 
 
 PLATFORMS
