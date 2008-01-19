@@ -7,4 +7,5 @@ src/gl.tm
 src/enum.spec
 src/enumext.spec
 *.fasl
+*.fas
 *~

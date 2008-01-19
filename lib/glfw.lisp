@@ -62,11 +62,15 @@
 			       `(mem-ref ,(first arg) ',(second arg)))
 			   out-args)))))))
 
+;; ECL's DFFI seems to have issues if you don't put the full path in
+#+(and unix ecl)
+(setf cffi:*foreign-library-directories* 
+      (list "/usr/local/lib/" "/usr/lib/"))
 
-(load-foreign-library '(:or
-			#+darwin (:framework "GLFW")
-			(:default "glfw") 
-			(:default "libglfw")))
+(cffi:load-foreign-library '(:or
+                             #+darwin (:framework "GLFW")
+                             (:default "glfw") 
+                             (:default "libglfw")))
 
 ;; Key and button state/action definitions
 (defconstant +release+ 0)
