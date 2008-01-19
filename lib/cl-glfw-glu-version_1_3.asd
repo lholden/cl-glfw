@@ -9,4 +9,4 @@
   :author "William Robinson <airbaggins@users.sf.net>"
   :licence "Public Domain"
   :depends-on (cl-glfw)
-  :components ((:module lib :components ((:file "glu-version_1_3")))))
+  :components ((:file "glu-version_1_3")))
