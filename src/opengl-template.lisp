@@ -41,7 +41,9 @@
 (defctype clampd :double)
 (defctype void :void)
 
+#-cffi-features:no-long-long
 (defctype uint64 :uint64)
+#-cffi-features:no-long-long
 (defctype int64 :int64)
 
 (defctype intptr #.(find-symbol (format nil "INT~d" (* 8 (cffi:foreign-type-size :pointer))) (find-package '#:keyword)))
