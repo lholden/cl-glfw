@@ -10,10 +10,13 @@
   :licence "Public Domain"
   :depends-on (cffi)
   :components ((:module lib 
+                        :serial t
                         :components 
-                        ((:file "opengl")
-                         (:file "opengl-convenience" :depends-on ("opengl"))
-                         (:file "opengl-extensions" :depends-on ("opengl"))))))
+                        ((:file "opengl-package")
+                         (:file "opengl-types")
+                         (:file "opengl")
+                         (:file "opengl-convenience")
+                         (:file "opengl-extensions")))))
 
 
 (pushnew (merge-pathnames

@@ -9,4 +9,7 @@
   :author "William Robinson <airbaggins@users.sf.net>"
   :licence "Public Domain"
   :depends-on (cffi)
-  :components ((:module lib :components ((:file "glfw")))))
+  :components ((:module lib :serial t 
+                        :components ((:file "glfw-package")
+                                     (:file "glfw-types")
+                                     (:file "glfw")))))
