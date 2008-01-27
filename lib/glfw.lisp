@@ -1,4 +1,4 @@
-(in-package #:glfw)
+(in-package #:cl-glfw)
 
 (defmacro defcfun+doc ((c-name lisp-name) return-type (&body args) docstring)
   `(progn
@@ -333,7 +333,7 @@ Wrapped in a block named glfw:with-open-window."
 	    (block with-open-window
 	      (glfw:set-window-title ,title)
 	      ,@forms)
-	 (when (eql (glfw:get-window-param glfw:+opened+) +true+)
+	 (when (glfw:get-window-param glfw:+opened+)
 	   (close-window)))
        (error "Error initializing glfw window.")))
 
@@ -361,7 +361,7 @@ If the window is closed, the loop is also exited."
      (loop named do-window do
 	  ,@forms
 	  (glfw:swap-buffers)
-	  (unless (eql (glfw:get-window-param glfw:+opened+) +true+)	 
+	  (unless (glfw:get-window-param glfw:+opened+)	 
 	    (return-from do-window)))))
 
 (defcfun+doc ("glfwSetWindowCloseCallback" set-window-close-callback) :void ((cbfun :pointer))

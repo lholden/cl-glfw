@@ -1,14 +1,6 @@
 
 (in-package #:cl-glfw-opengl)
 
-(defmacro defglfun (func-spec)
-  (wrapped-gl-function-definition func-spec))
-
-(defmacro defglextfun (func-spec)
-  #+win32 (wrapped-win32-gl-function-definition func-spec)
-  #-win32 (wrapped-gl-function-definition func-spec))
-
-
 
 ;;;; Enumerations: AttribMask
 

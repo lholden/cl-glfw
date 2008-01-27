@@ -8,8 +8,7 @@
   :version "0.3"
   :author "William Robinson <airbaggins@users.sf.net>"
   :licence "Public Domain"
-  :depends-on (cffi)
+  :depends-on (cffi cl-glfw-types)
   :components ((:module lib :serial t 
                         :components ((:file "glfw-package")
-                                     (:file "glfw-types")
                                      (:file "glfw")))))

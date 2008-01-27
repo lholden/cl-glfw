@@ -1,8 +1,7 @@
-
 (defpackage #:cl-glfw-opengl
- (:use #:cffi #:cl)
+ (:use #:cffi #:cl #:cl-glfw-types #:cl-glfw-scaffolding)
  (:nicknames #:gl #:opengl)
- (:shadow #:boolean #:byte #:float #:char #:string)
+ (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float #:char #:string)
  (:export
   #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
   #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 
@@ -4526,6 +4525,4 @@ convolution-parameter-f-ext
 convolution-filter-2d-ext 
 convolution-filter-1d-ext 
 blend-equation-ext 
-blend-color-ext ))
-
-(in-package #:cl-glfw-opengl)
+blend-color-ext))

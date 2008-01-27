@@ -1,4 +1,4 @@
-(defpackage #:opengl-extensions
+(defpackage #:cl-glfw-opengl-extensions
   (:nicknames #:gl-ext)
   (:use #:cl)
   (:export #:scan-available-extensions #:available-extensions #:extension-available-p #:load-extension))

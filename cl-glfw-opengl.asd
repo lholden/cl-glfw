@@ -8,13 +8,15 @@
   :version "0.3"
   :author "William Robinson <airbaggins@users.sf.net>"
   :licence "Public Domain"
-  :depends-on (cffi)
+  :depends-on (cffi cl-glfw-types)
   :components ((:module lib 
                         :serial t
                         :components 
-                        ((:file "opengl-package")
-                         (:file "opengl-types")
-                         (:file "opengl")
+                        ((:file "scaffolding")
+                         (:file "opengl-package") ; template-expanded
+                         (:file "opengl-type-map") ; template-expanded
+                         (:file "opengl-library")
+                         (:file "opengl") ; template-expanded
                          (:file "opengl-convenience")
                          (:file "opengl-extensions")))))
 

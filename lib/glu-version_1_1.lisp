@@ -1,3 +1,3 @@
-(in-package #:glu)
+(in-package #:cl-glfw-glu)
 
-(defcfun ("gluGetString" get-string) :pointer (name gl:enum))
+(defcfun ("gluGetString" get-string) :pointer (name enum))

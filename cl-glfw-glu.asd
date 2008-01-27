@@ -8,7 +8,7 @@
   :version "0.3"
   :author "William Robinson <airbaggins@users.sf.net>"
   :licence "Public Domain"
-  :depends-on (cffi cl-glfw-opengl)
+  :depends-on (cffi cl-glfw-types)
   :components ((:module lib :components ((:file "glu")))))
 
 (pushnew (merge-pathnames
