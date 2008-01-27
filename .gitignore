@@ -1,7 +1,4 @@
 src/gl.spec.lisp
-src/opengl-body.lisp
-src/opengl-exports.lisp
-src/opengl-type-maps.lisp
 src/gl.spec
 src/gl.tm
 src/enum.spec

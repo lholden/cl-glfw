@@ -1,11 +1,27 @@
 ;; proto-package for type-mappings only
-(defpackage #:opengl
+(defpackage #:cl-glfw-opengl
  (:use #:cl)
- (:nicknames #:gl)
+ (:nicknames #:gl #:opengl)
  (:shadow boolean byte float char string)
  (:export
   enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
   double clampd void uint64 int64 intptr sizeiptr handle char string half))
+
+;; this is the real template opengl defpackage
+(defun make-opengl-defpackage (exports)
+  `(defpackage #:cl-glfw-opengl
+     (:use #:cffi #:cl #:cl-glfw-types #:cl-glfw-scaffolding)
+     (:nicknames #:gl #:opengl)
+     (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float #:char #:string)
+     (:export
+      #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
+      #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 
+      #:intptr #:sizeiptr 
+      #:handle
+      #:char #:string
+      #:half
+      ,@exports)))
+
 
 (defparameter *opengl-version-systems* '("cl-glfw-opengl-version_1_1"
 					 "cl-glfw-opengl-version_1_2"
@@ -222,7 +238,7 @@ Must be in the correct order.")
 
 
   (let ((*print-case* :downcase) (*print-radix* t) (*print-base* 16))
-    (with-open-file (out (merge-pathnames #P"src/opengl-body.lisp" *base*) :direction :output :if-exists :supersede)
+    (with-open-file (out (merge-pathnames #P"lib/opengl.lisp" *base*) :direction :output :if-exists :supersede)
 
       (defun output-category (category-name)
 	(format out "~&~%;;;; ~a~%" category-name)
@@ -230,6 +246,7 @@ Must be in the correct order.")
 	  (print (gl-function-definition func-spec) out))
 	(remf function-categories category-name))
 
+      (print `(in-package #:cl-glfw-opengl) out)
 	
       (dolist (enumeration-group-name (plist-keys enum-specs))
 	(when (or (not (getf function-categories enumeration-group-name))
@@ -263,10 +280,10 @@ Must be in the correct order.")
 				   (plist-keys enum-specs))))
       (output-extension category-name))
 
-    (with-open-file (out (merge-pathnames #P"src/opengl-type-maps.lisp" *base*) :direction :output :if-exists :supersede)
-      (print type-maps out))
+    (with-open-file (out (merge-pathnames #P"lib/opengl-type-map.lisp" *base*) :direction :output :if-exists :supersede)
+      (print `(in-package #:cl-glfw-opengl) out)
+      (print `(setf *type-map* ',type-maps) out))
 
-    (with-open-file (out (merge-pathnames #P"src/opengl-exports.lisp" *base*) :direction :output :if-exists :supersede) 
-      (dolist (export (remove-duplicates (nreverse exports)))
-	(print export out))))
+    (with-open-file (out (merge-pathnames #P"lib/opengl-package.lisp" *base*) :direction :output :if-exists :supersede) 
+      (print (make-opengl-defpackage (mapcar #'make-symbol (mapcar #'symbol-name (remove-duplicates (nreverse exports))))) out)))
   (format t "Leftovers functions: ~%~s~%Leftover enums:~s" function-categories enum-specs))

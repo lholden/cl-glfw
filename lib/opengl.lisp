@@ -1,6 +1,5 @@
 
-(in-package #:cl-glfw-opengl)
-
+(in-package #:cl-glfw-opengl) 
 
 ;;;; Enumerations: AttribMask
 

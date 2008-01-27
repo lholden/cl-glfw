@@ -38,9 +38,3 @@ check_ok
 puts `sbcl --load #{BASE}/generators/make-bindings-from-spec.lisp --eval "(sb-ext:quit)"`
 check_ok
 
-open("#{BASE}/src/opengl-template.lisp") do |tf|
-  open("#{BASE}/lib/opengl.lisp","w") do |of|
-    puts "ok, writing #{BASE}/lib/opengl.lisp"
-    of.write(tf.read.sub('@EXPORTS@',open("#{BASE}/src/opengl-exports.lisp"){|i|i.read}).sub("@BODY@",open("#{BASE}/src/opengl-body.lisp"){|i|i.read}).sub("@TYPE_MAPS@",open("#{BASE}/src/opengl-type-maps.lisp"){|i|i.read}))
-  end
-end
