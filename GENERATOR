@@ -1,0 +1,27 @@
+
+How the generators work:
+
+generators/make-opengl-bindings.rb
+  The top-level user-interface script for generating the OpenGL bindings,
+downloads/updates the gl.tm, gl.spec, enum.spec and enumext.spec from www.opengl.org website.
+Could probably have written this in shell script, but whatever, need ruby anyway for the next
+script it invokes:
+
+generators/sexpize-gl-spec.rb
+  This parses the downloaded spec files and spits them out in s-expression form in one 
+big file src/gl.spec.lisp, nothing fancy.
+
+generators/make-bindings-from-spec.lisp
+  This is the last thing invoked from make-opengl-bindings.rb and does the bulk of the work.
+It takes the src/gl.spec.lisp, sorts out the functions according to categories and extensions
+and produces the final lisp and extension asd files:
+  lib/opengl-type-map.lisp: for the mappings of type-names in the spec to actual types we use,
+  lib/opengl-package.lisp: inserting the export list,
+  lib/opengl.lisp: the main 1.0 function definitions,
+  lib/opengl-version_1_1.lisp,
+  lib/opengl-version_1_2.lisp: for each of the versions found
+  lib/opengl-<extension-name>.lisp: for each extension found.
+
+lib/scaffolding.lisp
+  This contains the macros: defglfun and defglextfun for resolving type maps and providing
+automatic type conversions.
