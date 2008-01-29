@@ -1088,11 +1088,11 @@
 (defconstant +abgr-ext+ #x8000) 
 (defconstant +cmyk-ext+ #x800C) 
 (defconstant +cmyka-ext+ #x800D) 
-(defconstant +r5-g6-b5-icc-sgix+ nil) 
-(defconstant +r5-g6-b5-a8-icc-sgix+ nil) 
-(defconstant +alpha16-icc-sgix+ nil) 
-(defconstant +luminance16-icc-sgix+ nil) 
-(defconstant +luminance16-alpha8-icc-sgix+ nil) 
+(defconstant +r5-g6-b5-icc-sgix+ :unable-to-resolve) 
+(defconstant +r5-g6-b5-a8-icc-sgix+ :unable-to-resolve) 
+(defconstant +alpha16-icc-sgix+ :unable-to-resolve) 
+(defconstant +luminance16-icc-sgix+ :unable-to-resolve) 
+(defconstant +luminance16-alpha8-icc-sgix+ :unable-to-resolve) 
 (defconstant +ycrcb-422-sgix+ #x81BB) 
 (defconstant +ycrcb-444-sgix+ #x81BC) 
 
@@ -1488,17 +1488,17 @@
 (defconstant +depth-component16-sgix+ #x81A5) 
 (defconstant +depth-component24-sgix+ #x81A6) 
 (defconstant +depth-component32-sgix+ #x81A7) 
-(defconstant +rgb-icc-sgix+ nil) 
-(defconstant +rgba-icc-sgix+ nil) 
-(defconstant +alpha-icc-sgix+ nil) 
-(defconstant +luminance-icc-sgix+ nil) 
-(defconstant +intensity-icc-sgix+ nil) 
-(defconstant +luminance-alpha-icc-sgix+ nil) 
+(defconstant +rgb-icc-sgix+ :unable-to-resolve) 
+(defconstant +rgba-icc-sgix+ :unable-to-resolve) 
+(defconstant +alpha-icc-sgix+ :unable-to-resolve) 
+(defconstant +luminance-icc-sgix+ :unable-to-resolve) 
+(defconstant +intensity-icc-sgix+ :unable-to-resolve) 
+(defconstant +luminance-alpha-icc-sgix+ :unable-to-resolve) 
 ;; r5_g6_b5_icc_sgix already defined
 ;; r5_g6_b5_a8_icc_sgix already defined
 ;; alpha16_icc_sgix already defined
 ;; luminance16_icc_sgix already defined
-(defconstant +intensity16-icc-sgix+ nil) 
+(defconstant +intensity16-icc-sgix+ :unable-to-resolve) 
 ;; luminance16_alpha8_icc_sgix already defined
 
 ;;;; Enumerations: InterleavedArrayFormat
