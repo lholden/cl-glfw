@@ -21,41 +21,28 @@
 (defconstant +r1ui-t2f-v3f-sun+ #x85C9) 
 (defconstant +r1ui-t2f-n3f-v3f-sun+ #x85CA) 
 (defconstant +r1ui-t2f-c4f-n3f-v3f-sun+ #x85CB) 
-(defglextfun
- (("ReplacementCodePointerSUN" replacement-code-pointer-sun) :args
-  ((:name |type| :type |ReplacementCodeTypeSUN| :direction :in)
-   (:name |stride| :type |SizeI| :direction :in)
-   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
-    (|type| |stride|) :retained t))
-  :return ("void") :category ("SUN_triangle_list") :version ("1.1") :glxropcode
-  ("?") :glsflags ("ignore") :offset ("?"))) 
-(defglextfun
- (("ReplacementCodeubvSUN" replacement-code-ubv-sun) :args
-  ((:name |code| :type |UInt8| :direction :in :array t)) :return ("void")
-  :category ("SUN_triangle_list") :version ("1.1") :glxropcode ("?") :glsflags
-  ("ignore") :offset ("?"))) 
-(defglextfun
- (("ReplacementCodeusvSUN" replacement-code-usv-sun) :args
-  ((:name |code| :type |UInt16| :direction :in :array t)) :return ("void")
-  :category ("SUN_triangle_list") :version ("1.1") :glxropcode ("?") :glsflags
-  ("ignore") :offset ("?"))) 
-(defglextfun
- (("ReplacementCodeuivSUN" replacement-code-uiv-sun) :args
-  ((:name |code| :type |UInt32| :direction :in :array t)) :return ("void")
-  :category ("SUN_triangle_list") :version ("1.1") :glxropcode ("?") :glsflags
-  ("ignore") :offset ("?"))) 
-(defglextfun
- (("ReplacementCodeubSUN" replacement-code-ub-sun) :args
-  ((:name |code| :type |UInt8| :direction :in)) :return ("void") :category
-  ("SUN_triangle_list") :version ("1.1") :glxropcode ("?") :glsflags ("ignore")
-  :offset ("?"))) 
-(defglextfun
- (("ReplacementCodeusSUN" replacement-code-us-sun) :args
-  ((:name |code| :type |UInt16| :direction :in)) :return ("void") :category
-  ("SUN_triangle_list") :version ("1.1") :glxropcode ("?") :glsflags ("ignore")
-  :offset ("?"))) 
-(defglextfun
- (("ReplacementCodeuiSUN" replacement-code-ui-sun) :args
-  ((:name |code| :type |UInt32| :direction :in)) :return ("void") :category
-  ("SUN_triangle_list") :version ("1.1") :glxropcode ("?") :glsflags ("ignore")
-  :offset ("?"))) 
+(defglextfun "ReplacementCodePointerSUN" replacement-code-pointer-sun :return
+ "void" :args
+ ((:name |type| :type |ReplacementCodeTypeSUN| :direction :in)
+  (:name |stride| :type |SizeI| :direction :in)
+  (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+   (|type| |stride|) :retained t))
+ :category "SUN_triangle_list" :version "1.1") 
+(defglextfun "ReplacementCodeubvSUN" replacement-code-ubv-sun :return "void"
+ :args ((:name |code| :type |UInt8| :direction :in :array t)) :category
+ "SUN_triangle_list" :version "1.1") 
+(defglextfun "ReplacementCodeusvSUN" replacement-code-usv-sun :return "void"
+ :args ((:name |code| :type |UInt16| :direction :in :array t)) :category
+ "SUN_triangle_list" :version "1.1") 
+(defglextfun "ReplacementCodeuivSUN" replacement-code-uiv-sun :return "void"
+ :args ((:name |code| :type |UInt32| :direction :in :array t)) :category
+ "SUN_triangle_list" :version "1.1") 
+(defglextfun "ReplacementCodeubSUN" replacement-code-ub-sun :return "void"
+ :args ((:name |code| :type |UInt8| :direction :in)) :category
+ "SUN_triangle_list" :version "1.1") 
+(defglextfun "ReplacementCodeusSUN" replacement-code-us-sun :return "void"
+ :args ((:name |code| :type |UInt16| :direction :in)) :category
+ "SUN_triangle_list" :version "1.1") 
+(defglextfun "ReplacementCodeuiSUN" replacement-code-ui-sun :return "void"
+ :args ((:name |code| :type |UInt32| :direction :in)) :category
+ "SUN_triangle_list" :version "1.1") 

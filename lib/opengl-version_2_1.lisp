@@ -27,51 +27,39 @@
 (defconstant +compressed-srgb-alpha+ #x8C49) 
 (defconstant +compressed-sluminance+ #x8C4A) 
 (defconstant +compressed-sluminance-alpha+ #x8C4B) 
-(defglfun
- (("UniformMatrix4x3fv" uniform-matrix-4x-3fv) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |transpose| :type |Boolean| :direction :in)
-   (:name |value| :type |Float32| :direction :in :array t :size #xC))
-  :return ("void") :category ("VERSION_2_1") :version ("2.1") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
-(defglfun
- (("UniformMatrix3x4fv" uniform-matrix-3x-4fv) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |transpose| :type |Boolean| :direction :in)
-   (:name |value| :type |Float32| :direction :in :array t :size #xC))
-  :return ("void") :category ("VERSION_2_1") :version ("2.1") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
-(defglfun
- (("UniformMatrix4x2fv" uniform-matrix-4x-2fv) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |transpose| :type |Boolean| :direction :in)
-   (:name |value| :type |Float32| :direction :in :array t :size #x8))
-  :return ("void") :category ("VERSION_2_1") :version ("2.1") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
-(defglfun
- (("UniformMatrix2x4fv" uniform-matrix-2x-4fv) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |transpose| :type |Boolean| :direction :in)
-   (:name |value| :type |Float32| :direction :in :array t :size #x8))
-  :return ("void") :category ("VERSION_2_1") :version ("2.1") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
-(defglfun
- (("UniformMatrix3x2fv" uniform-matrix-3x-2fv) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |transpose| :type |Boolean| :direction :in)
-   (:name |value| :type |Float32| :direction :in :array t :size #x6))
-  :return ("void") :category ("VERSION_2_1") :version ("2.1") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
-(defglfun
- (("UniformMatrix2x3fv" uniform-matrix-2x-3fv) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |transpose| :type |Boolean| :direction :in)
-   (:name |value| :type |Float32| :direction :in :array t :size #x6))
-  :return ("void") :category ("VERSION_2_1") :version ("2.1") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
+(defglfun "UniformMatrix4x3fv" uniform-matrix-4x-3fv :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |transpose| :type |Boolean| :direction :in)
+  (:name |value| :type |Float32| :direction :in :array t :size #xC))
+ :category "VERSION_2_1" :version "2.1") 
+(defglfun "UniformMatrix3x4fv" uniform-matrix-3x-4fv :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |transpose| :type |Boolean| :direction :in)
+  (:name |value| :type |Float32| :direction :in :array t :size #xC))
+ :category "VERSION_2_1" :version "2.1") 
+(defglfun "UniformMatrix4x2fv" uniform-matrix-4x-2fv :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |transpose| :type |Boolean| :direction :in)
+  (:name |value| :type |Float32| :direction :in :array t :size #x8))
+ :category "VERSION_2_1" :version "2.1") 
+(defglfun "UniformMatrix2x4fv" uniform-matrix-2x-4fv :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |transpose| :type |Boolean| :direction :in)
+  (:name |value| :type |Float32| :direction :in :array t :size #x8))
+ :category "VERSION_2_1" :version "2.1") 
+(defglfun "UniformMatrix3x2fv" uniform-matrix-3x-2fv :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |transpose| :type |Boolean| :direction :in)
+  (:name |value| :type |Float32| :direction :in :array t :size #x6))
+ :category "VERSION_2_1" :version "2.1") 
+(defglfun "UniformMatrix2x3fv" uniform-matrix-2x-3fv :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |transpose| :type |Boolean| :direction :in)
+  (:name |value| :type |Float32| :direction :in :array t :size #x6))
+ :category "VERSION_2_1" :version "2.1") 

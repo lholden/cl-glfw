@@ -12,31 +12,23 @@
 (defconstant +du8dv8-ati+ #x877A) 
 (defconstant +bump-envmap-ati+ #x877B) 
 (defconstant +bump-target-ati+ #x877C) 
-(defglextfun
- (("GetTexBumpParameterfvATI" get-tex-bump-parameter-fv-ati) :args
-  ((:name |pname| :type |GetTexBumpParameterATI| :direction :in)
-   (:name |param| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("ATI_envmap_bumpmap") :dlflags ("notlistable")
-  :version ("1.2") :extension nil :glxsingle ("?") :glxflags ("ignore")
-  :glsflags ("ignore" "get") :offset ("?"))) 
-(defglextfun
- (("GetTexBumpParameterivATI" get-tex-bump-parameter-iv-ati) :args
-  ((:name |pname| :type |GetTexBumpParameterATI| :direction :in)
-   (:name |param| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("ATI_envmap_bumpmap") :dlflags ("notlistable")
-  :version ("1.2") :extension nil :glxsingle ("?") :glxflags ("ignore")
-  :glsflags ("ignore" "get") :offset ("?"))) 
-(defglextfun
- (("TexBumpParameterfvATI" tex-bump-parameter-fv-ati) :args
-  ((:name |pname| :type |TexBumpParameterATI| :direction :in)
-   (:name |param| :type |Float32| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("ATI_envmap_bumpmap") :version ("1.2") :extension
-  nil :glxropcode ("?") :glxflags ("ignore") :glsflags ("ignore") :offset
-  ("?"))) 
-(defglextfun
- (("TexBumpParameterivATI" tex-bump-parameter-iv-ati) :args
-  ((:name |pname| :type |TexBumpParameterATI| :direction :in)
-   (:name |param| :type |Int32| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("ATI_envmap_bumpmap") :version ("1.2") :extension
-  nil :glxropcode ("?") :glxflags ("ignore") :glsflags ("ignore") :offset
-  ("?"))) 
+(defglextfun "GetTexBumpParameterfvATI" get-tex-bump-parameter-fv-ati :return
+ "void" :args
+ ((:name |pname| :type |GetTexBumpParameterATI| :direction :in)
+  (:name |param| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "ATI_envmap_bumpmap" :version "1.2") 
+(defglextfun "GetTexBumpParameterivATI" get-tex-bump-parameter-iv-ati :return
+ "void" :args
+ ((:name |pname| :type |GetTexBumpParameterATI| :direction :in)
+  (:name |param| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "ATI_envmap_bumpmap" :version "1.2") 
+(defglextfun "TexBumpParameterfvATI" tex-bump-parameter-fv-ati :return "void"
+ :args
+ ((:name |pname| :type |TexBumpParameterATI| :direction :in)
+  (:name |param| :type |Float32| :direction :in :array t :size (|pname|)))
+ :category "ATI_envmap_bumpmap" :version "1.2") 
+(defglextfun "TexBumpParameterivATI" tex-bump-parameter-iv-ati :return "void"
+ :args
+ ((:name |pname| :type |TexBumpParameterATI| :direction :in)
+  (:name |param| :type |Int32| :direction :in :array t :size (|pname|)))
+ :category "ATI_envmap_bumpmap" :version "1.2") 

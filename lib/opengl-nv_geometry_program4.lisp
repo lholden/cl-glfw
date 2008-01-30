@@ -19,39 +19,31 @@
 (defconstant +framebuffer-incomplete-layer-targets-ext+ #x8DA8) 
 (defconstant +framebuffer-incomplete-layer-count-ext+ #x8DA9) 
 (defconstant +program-point-size-ext+ #x8642) 
-(defglextfun
- (("FramebufferTextureFaceEXT" framebuffer-texture-face-ext) :args
-  ((:name |target| :type |FramebufferTarget| :direction :in)
-   (:name |attachment| :type |FramebufferAttachment| :direction :in)
-   (:name |texture| :type |Texture| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |face| :type |TextureTarget| :direction :in))
-  :return ("void") :category ("NV_geometry_program4") :version ("2.0")
-  :extension ("soft" "WINSOFT") :dlflags ("notlistable") :glfflags ("ignore")
-  :glsflags ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("FramebufferTextureLayerEXT" framebuffer-texture-layer-ext) :args
-  ((:name |target| :type |FramebufferTarget| :direction :in)
-   (:name |attachment| :type |FramebufferAttachment| :direction :in)
-   (:name |texture| :type |Texture| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |layer| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("NV_geometry_program4") :version ("2.0")
-  :extension ("soft" "WINSOFT") :dlflags ("notlistable") :glfflags ("ignore")
-  :glsflags ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("FramebufferTextureEXT" framebuffer-texture-ext) :args
-  ((:name |target| :type |FramebufferTarget| :direction :in)
-   (:name |attachment| :type |FramebufferAttachment| :direction :in)
-   (:name |texture| :type |Texture| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("NV_geometry_program4") :version ("2.0")
-  :extension ("soft" "WINSOFT") :dlflags ("notlistable") :glfflags ("ignore")
-  :glsflags ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("ProgramVertexLimitNV" program-vertex-limit-nv) :args
-  ((:name |target| :type |ProgramTarget| :direction :in)
-   (:name |limit| :type |Int32| :direction :in))
-  :return ("void") :category ("NV_geometry_program4") :version ("2.0")
-  :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore")
-  :glxflags ("ignore"))) 
+(defglextfun "FramebufferTextureFaceEXT" framebuffer-texture-face-ext :return
+ "void" :args
+ ((:name |target| :type |FramebufferTarget| :direction :in)
+  (:name |attachment| :type |FramebufferAttachment| :direction :in)
+  (:name |texture| :type |Texture| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |face| :type |TextureTarget| :direction :in))
+ :category "NV_geometry_program4" :version "2.0") 
+(defglextfun "FramebufferTextureLayerEXT" framebuffer-texture-layer-ext :return
+ "void" :args
+ ((:name |target| :type |FramebufferTarget| :direction :in)
+  (:name |attachment| :type |FramebufferAttachment| :direction :in)
+  (:name |texture| :type |Texture| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |layer| :type |CheckedInt32| :direction :in))
+ :category "NV_geometry_program4" :version "2.0") 
+(defglextfun "FramebufferTextureEXT" framebuffer-texture-ext :return "void"
+ :args
+ ((:name |target| :type |FramebufferTarget| :direction :in)
+  (:name |attachment| :type |FramebufferAttachment| :direction :in)
+  (:name |texture| :type |Texture| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in))
+ :category "NV_geometry_program4" :version "2.0") 
+(defglextfun "ProgramVertexLimitNV" program-vertex-limit-nv :return "void"
+ :args
+ ((:name |target| :type |ProgramTarget| :direction :in)
+  (:name |limit| :type |Int32| :direction :in))
+ :category "NV_geometry_program4" :version "2.0") 

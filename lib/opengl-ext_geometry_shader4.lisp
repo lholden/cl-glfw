@@ -23,11 +23,9 @@
 (defconstant +framebuffer-incomplete-layer-count-ext+ #x8DA9) 
 (defconstant +framebuffer-attachment-layered-ext+ #x8DA7) 
 (defconstant +program-point-size-ext+ #x8642) 
-(defglextfun
- (("ProgramParameteriEXT" program-parameter-i-ext) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |pname| :type |ProgramParameterPName| :direction :in)
-   (:name |value| :type |Int32| :direction :in))
-  :return ("void") :category ("EXT_geometry_shader4") :version ("2.0")
-  :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore")
-  :glxflags ("ignore"))) 
+(defglextfun "ProgramParameteriEXT" program-parameter-i-ext :return "void"
+ :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |pname| :type |ProgramParameterPName| :direction :in)
+  (:name |value| :type |Int32| :direction :in))
+ :category "EXT_geometry_shader4" :version "2.0") 

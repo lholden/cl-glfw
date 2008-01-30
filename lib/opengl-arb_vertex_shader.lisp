@@ -10,30 +10,23 @@
 (defconstant +max-combined-texture-image-units-arb+ #x8B4D) 
 (defconstant +object-active-attributes-arb+ #x8B89) 
 (defconstant +object-active-attribute-max-length-arb+ #x8B8A) 
-(defglextfun
- (("GetAttribLocationARB" get-attrib-location-arb) :args
-  ((:name |programObj| :type |handleARB| :direction :in)
-   (:name |name| :type |charARB| :direction :in :array t))
-  :return ("Int32") :category ("ARB_vertex_shader") :dlflags ("notlistable")
-  :version ("1.2") :extension nil :glxsingle ("?") :glxflags ("ignore") :alias
-  ("GetAttribLocation") :glsalias ("GetAttribLocation"))) 
-(defglextfun
- (("GetActiveAttribARB" get-active-attrib-arb) :args
-  ((:name |programObj| :type |handleARB| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |maxLength| :type |SizeI| :direction :in)
-   (:name |length| :type |SizeI| :direction :out :array t :size #x1)
-   (:name |size| :type |Int32| :direction :out :array t :size #x1)
-   (:name |type| :type |GLenum| :direction :out :array t :size #x1)
-   (:name |name| :type |charARB| :direction :out :array t))
-  :return ("void") :category ("ARB_vertex_shader") :dlflags ("notlistable")
-  :version ("1.2") :extension nil :glxsingle ("?") :glxflags ("ignore") :alias
-  ("GetActiveAttrib") :glsalias ("GetActiveAttrib"))) 
-(defglextfun
- (("BindAttribLocationARB" bind-attrib-location-arb) :args
-  ((:name |programObj| :type |handleARB| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |name| :type |charARB| :direction :in :array t))
-  :return ("void") :category ("ARB_vertex_shader") :version ("1.2") :extension
-  nil :glxropcode ("?") :glxflags ("ignore") :alias ("BindAttribLocation")
-  :glsalias ("BindAttribLocation"))) 
+(defglextfun "GetAttribLocationARB" get-attrib-location-arb :return "Int32"
+ :args
+ ((:name |programObj| :type |handleARB| :direction :in)
+  (:name |name| :type |charARB| :direction :in :array t))
+ :category "ARB_vertex_shader" :version "1.2") 
+(defglextfun "GetActiveAttribARB" get-active-attrib-arb :return "void" :args
+ ((:name |programObj| :type |handleARB| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |maxLength| :type |SizeI| :direction :in)
+  (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+  (:name |size| :type |Int32| :direction :out :array t :size #x1)
+  (:name |type| :type |GLenum| :direction :out :array t :size #x1)
+  (:name |name| :type |charARB| :direction :out :array t))
+ :category "ARB_vertex_shader" :version "1.2") 
+(defglextfun "BindAttribLocationARB" bind-attrib-location-arb :return "void"
+ :args
+ ((:name |programObj| :type |handleARB| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |name| :type |charARB| :direction :in :array t))
+ :category "ARB_vertex_shader" :version "1.2") 

@@ -54,127 +54,86 @@
 (defconstant +src0-alpha+ #x8588) 
 (defconstant +src1-alpha+ #x8589) 
 (defconstant +src2-alpha+ #x858A) 
-(defglfun
- (("GetBufferPointerv" get-buffer-pointerv) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |pname| :type |BufferPointerNameARB| :direction :in)
-   (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
-  :return ("void") :category ("VERSION_1_5") :dlflags ("notlistable") :version
-  ("1.5") :extension nil :glxsingle ("?") :glxflags ("ignore") :glsflags
-  ("get") :glsopcode ("?") :offset ("694"))) 
-(defglfun
- (("GetBufferParameteriv" get-buffer-parameter-iv) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |pname| :type |BufferPNameARB| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("VERSION_1_5") :dlflags ("notlistable") :version
-  ("1.5") :extension nil :glxsingle ("?") :glxflags ("ignore") :glsflags
-  ("get") :glsopcode ("?") :offset ("693"))) 
-(defglfun
- (("UnmapBuffer" unmap-buffer) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)) :return ("Boolean")
-  :category ("VERSION_1_5") :version ("1.5") :extension nil :glxropcode ("?")
-  :glxflags ("ignore") :glsopcode ("?") :offset ("698"))) 
-(defglfun
- (("MapBuffer" map-buffer) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |access| :type |BufferAccessARB| :direction :in))
-  :return ("VoidPointer") :category ("VERSION_1_5") :version ("1.5") :extension
-  nil :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("697"))) 
-(defglfun
- (("GetBufferSubData" get-buffer-sub-data) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |offset| :type |BufferOffset| :direction :in)
-   (:name |size| :type |BufferSize| :direction :in)
-   (:name |data| :type |Void| :direction :out :array t :size size))
-  :return ("void") :category ("VERSION_1_5") :dlflags ("notlistable") :version
-  ("1.5") :extension nil :glxsingle ("?") :glxflags ("ignore") :glsflags
-  ("get") :glsopcode ("?") :offset ("695"))) 
-(defglfun
- (("BufferSubData" buffer-sub-data) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |offset| :type |BufferOffset| :direction :in)
-   (:name |size| :type |BufferSize| :direction :in)
-   (:name |data| :type |ConstVoid| :direction :in :array t :size size))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("690"))) 
-(defglfun
- (("BufferData" buffer-data) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |size| :type |BufferSize| :direction :in)
-   (:name |data| :type |ConstVoid| :direction :in :array t :size size)
-   (:name |usage| :type |BufferUsageARB| :direction :in))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("689"))) 
-(defglfun
- (("IsBuffer" is-buffer) :args ((:name |buffer| :type |UInt32| :direction :in))
-  :return ("Boolean") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("696"))) 
-(defglfun
- (("GenBuffers" gen-buffers) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |buffers| :type |UInt32| :direction :out :array t :size n))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("692"))) 
-(defglfun
- (("DeleteBuffers" delete-buffers) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("691"))) 
-(defglfun
- (("BindBuffer" bind-buffer) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |buffer| :type |UInt32| :direction :in))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("688"))) 
-(defglfun
- (("GetQueryObjectuiv" get-query-object-uiv) :args
-  ((:name |id| :type |UInt32| :direction :in)
-   (:name |pname| :type |GLenum| :direction :in)
-   (:name |params| :type |UInt32| :direction :out :array t :size pname))
-  :return ("void") :category ("VERSION_1_5") :dlflags ("notlistable") :version
-  ("1.5") :extension nil :glxsingle ("166") :glxflags ("ignore") :glsflags
-  ("get") :glsopcode ("?") :offset ("707"))) 
-(defglfun
- (("GetQueryObjectiv" get-query-object-iv) :args
-  ((:name |id| :type |UInt32| :direction :in)
-   (:name |pname| :type |GLenum| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size pname))
-  :return ("void") :category ("VERSION_1_5") :dlflags ("notlistable") :version
-  ("1.5") :extension nil :glxsingle ("165") :glxflags ("ignore") :glsflags
-  ("get") :glsopcode ("?") :offset ("706"))) 
-(defglfun
- (("GetQueryiv" get-query-iv) :args
-  ((:name |target| :type |GLenum| :direction :in)
-   (:name |pname| :type |GLenum| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size pname))
-  :return ("void") :category ("VERSION_1_5") :dlflags ("notlistable") :version
-  ("1.5") :extension nil :glxsingle ("164") :glxflags ("ignore") :glsflags
-  ("get") :glsopcode ("?") :offset ("705"))) 
-(defglfun
- (("EndQuery" end-query) :args ((:name |target| :type |GLenum| :direction :in))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("232") :glxflags ("ignore") :glsopcode ("?") :offset ("704"))) 
-(defglfun
- (("BeginQuery" begin-query) :args
-  ((:name |target| :type |GLenum| :direction :in)
-   (:name |id| :type |UInt32| :direction :in))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxropcode ("231") :glxflags ("ignore") :glsopcode ("?") :offset ("703"))) 
-(defglfun
- (("IsQuery" is-query) :args ((:name |id| :type |UInt32| :direction :in))
-  :return ("Boolean") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxsingle ("163") :glxflags ("ignore") :glsopcode ("?") :offset ("702"))) 
-(defglfun
- (("DeleteQueries" delete-queries) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |ids| :type |UInt32| :direction :in :array t :size n))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxsingle ("161") :glxflags ("ignore") :glsopcode ("?") :offset ("701"))) 
-(defglfun
- (("GenQueries" gen-queries) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |ids| :type |UInt32| :direction :out :array t :size n))
-  :return ("void") :category ("VERSION_1_5") :version ("1.5") :extension nil
-  :glxsingle ("162") :glxflags ("ignore") :glsopcode ("?") :offset ("700"))) 
+(defglfun "GetBufferPointerv" get-buffer-pointerv :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |pname| :type |BufferPointerNameARB| :direction :in)
+  (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "GetBufferParameteriv" get-buffer-parameter-iv :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |pname| :type |BufferPNameARB| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "UnmapBuffer" unmap-buffer :return "Boolean" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)) :category
+ "VERSION_1_5" :version "1.5") 
+(defglfun "MapBuffer" map-buffer :return "VoidPointer" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |access| :type |BufferAccessARB| :direction :in))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "GetBufferSubData" get-buffer-sub-data :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |offset| :type |BufferOffset| :direction :in)
+  (:name |size| :type |BufferSize| :direction :in)
+  (:name |data| :type |Void| :direction :out :array t :size size))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "BufferSubData" buffer-sub-data :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |offset| :type |BufferOffset| :direction :in)
+  (:name |size| :type |BufferSize| :direction :in)
+  (:name |data| :type |ConstVoid| :direction :in :array t :size size))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "BufferData" buffer-data :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |size| :type |BufferSize| :direction :in)
+  (:name |data| :type |ConstVoid| :direction :in :array t :size size)
+  (:name |usage| :type |BufferUsageARB| :direction :in))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "IsBuffer" is-buffer :return "Boolean" :args
+ ((:name |buffer| :type |UInt32| :direction :in)) :category "VERSION_1_5"
+ :version "1.5") 
+(defglfun "GenBuffers" gen-buffers :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |buffers| :type |UInt32| :direction :out :array t :size n))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "DeleteBuffers" delete-buffers :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "BindBuffer" bind-buffer :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |buffer| :type |UInt32| :direction :in))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "GetQueryObjectuiv" get-query-object-uiv :return "void" :args
+ ((:name |id| :type |UInt32| :direction :in)
+  (:name |pname| :type |GLenum| :direction :in)
+  (:name |params| :type |UInt32| :direction :out :array t :size pname))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "GetQueryObjectiv" get-query-object-iv :return "void" :args
+ ((:name |id| :type |UInt32| :direction :in)
+  (:name |pname| :type |GLenum| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size pname))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "GetQueryiv" get-query-iv :return "void" :args
+ ((:name |target| :type |GLenum| :direction :in)
+  (:name |pname| :type |GLenum| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size pname))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "EndQuery" end-query :return "void" :args
+ ((:name |target| :type |GLenum| :direction :in)) :category "VERSION_1_5"
+ :version "1.5") 
+(defglfun "BeginQuery" begin-query :return "void" :args
+ ((:name |target| :type |GLenum| :direction :in)
+  (:name |id| :type |UInt32| :direction :in))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "IsQuery" is-query :return "Boolean" :args
+ ((:name |id| :type |UInt32| :direction :in)) :category "VERSION_1_5" :version
+ "1.5") 
+(defglfun "DeleteQueries" delete-queries :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |ids| :type |UInt32| :direction :in :array t :size n))
+ :category "VERSION_1_5" :version "1.5") 
+(defglfun "GenQueries" gen-queries :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |ids| :type |UInt32| :direction :out :array t :size n))
+ :category "VERSION_1_5" :version "1.5") 

@@ -70,33 +70,11 @@ with +s."
 ;;}}}
 
 ;;; {{{ FUNC-SPEC 
-(defmacro func-spec-accessors (names)
-  "Makes a bunch of nice “name-of” accessors for a func-spec plist 
-to all symbols listed in names.  "
-  `(progn ,@(mapcar #'(lambda (k)
-			`(defun ,(intern (concatenate 'string (string k) "-OF")) (func-spec)
-			   (first
-			    (getf (rest func-spec)
-				  ,(intern (symbol-name k) '#:keyword)))))
-		    names)))
-
-(defun c-name-of (func-spec)
-  (first (first func-spec)))
-
-(defun lisp-name-of (func-spec)
-  (second (first func-spec)))
-
-(func-spec-accessors (offset wglflags glsopcode glxsingle version category dlflags param 
-                             glxropcode glxflags glsflags vectorequiv extension glxvendorpriv glsalias
-                             alias glfflags glxvectorequiv beginend))
-
-(defun freturn-of (func-spec)
-  "Returns the return type of the func-spec"
-  (first (getf (rest func-spec) :return)))
-
-(defun args-of (func-spec)
-  "Returns the list of argument plists of the func-spec"
-  (getf (rest func-spec) :args))
+(defun c-name-of (func-spec) (first func-spec))
+(defun lisp-name-of (func-spec) (second func-spec))
+(defun freturn-of (func-spec) (getf (cddr func-spec) :return))
+(defun args-of (func-spec) (getf (cddr func-spec) :args))
+(defun category-of (func-spec) (getf (cddr func-spec) :category))
 ;;; }}}
 
 ;;; {{{ FIX TYPE-MAPS 
@@ -189,11 +167,27 @@ suitable for cl-glfw-types or CFFI."
                        (resolve-enum enum-name enum-value (list enum-group-name)))))))))
 ;;; }}}
 
+;;; {{{ SET FUNC SPECS
+(defun set-func-specs ()
+  (setf *function-specs*
+        (loop for func-spec in (getf *spec* :functions) 
+             when func-spec
+           collect
+             (list (first (first func-spec))
+                   (second (first func-spec))
+                   :return (first (getf (rest func-spec) :return))
+                   :args (loop while (getf (rest func-spec) :param) collect
+                              (prog1 (getf (rest func-spec) :param)
+                                (remf (rest func-spec) :param)))
+                   :category (first (getf (rest func-spec) :category))
+                   :version (first (getf (rest func-spec) :version))))))
+;;; }}}
+
 ;;; {{{ LOAD
 (defun load-spec ()
-  (setf *spec* (with-open-file (in (merge-pathnames #P"src/gl.spec.lisp" *base*)) (read in))
-        *function-specs* (rest (getf *spec* :functions)))
+  (setf *spec* (with-open-file (in (merge-pathnames #P"src/gl.spec.lisp" *base*)) (read in)))
   (set-type-maps)
+  (set-func-specs)
   (when (getf *reports* :type-map)
     (loop for n-v in
          (sort (loop for name in *type-map* by #'cddr
@@ -220,18 +214,6 @@ suitable for cl-glfw-types or CFFI."
       (let ((*print-pretty* t))
         (format t "Property counts: ~a~%"  property-counts))))
 
-  ;; collect arguments of functions into ordered list with all meta-data attached
-  (dolist (func-spec *function-specs*)
-    (let ((arg-specs))
-      (do* ((arg-spec (getf (rest func-spec) :param) (getf (rest func-spec) :param)))
-           ((not arg-spec))
-        (setf (getf arg-specs (getf arg-spec :name))
-              arg-spec)
-        (remf (rest func-spec) :param))
-      (setf (getf (rest func-spec) :args)
-            (loop for arg-name in (args-of func-spec) collecting
-                 (getf arg-specs arg-name)))))
-
   ;; categorize functions
   (dolist (function-spec *function-specs*)
     (push function-spec
@@ -246,11 +228,11 @@ suitable for cl-glfw-types or CFFI."
 
 (defun gl-extension-function-definition (func-spec)
   (push (lisp-name-of func-spec) *exports*)
-  `(defglextfun ,func-spec))
+  `(defglextfun ,@func-spec))
 
 (defun gl-function-definition (func-spec)
   (push (lisp-name-of func-spec) *exports*)
-  `(defglfun ,func-spec))
+  `(defglfun ,@func-spec))
 
 
 ;;; {{{ EMIT OUTPUT 

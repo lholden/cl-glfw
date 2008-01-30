@@ -24,9 +24,7 @@
 (defconstant +clip-far-hint-pgi+ #x1A221) 
 (defconstant +wide-line-hint-pgi+ #x1A222) 
 (defconstant +back-normals-hint-pgi+ #x1A223) 
-(defglextfun
- (("HintPGI" hint-pgi) :args
-  ((:name |target| :type |HintTargetPGI| :direction :in)
-   (:name |mode| :type |Int32| :direction :in))
-  :return ("void") :category ("PGI_misc_hints") :version ("1.1") :offset
-  ("544") :glsopcode ("0x01D0"))) 
+(defglextfun "HintPGI" hint-pgi :return "void" :args
+ ((:name |target| :type |HintTargetPGI| :direction :in)
+  (:name |mode| :type |Int32| :direction :in))
+ :category "PGI_misc_hints" :version "1.1") 

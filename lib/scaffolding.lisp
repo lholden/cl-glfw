@@ -5,10 +5,11 @@
 
 (defparameter *type-map* nil)
 
-(defun c-name-of (func-spec)    (first (first func-spec)))
-(defun lisp-name-of (func-spec) (second (first func-spec)))
-(defun freturn-of (func-spec)   (first (getf (rest func-spec) :return)))
-(defun args-of (func-spec)      (getf (rest func-spec) :args))
+(defun c-name-of (func-spec) (first func-spec))
+(defun lisp-name-of (func-spec) (second func-spec))
+(defun freturn-of (func-spec) (getf (cddr func-spec) :return))
+(defun args-of (func-spec) (getf (cddr func-spec) :args))
+(defun category-of (func-spec) (getf (cddr func-spec) :category))
 
 (defun deconstant (symbol)
   (if (not (constantp symbol))
@@ -140,10 +141,10 @@
                                     ,@(mapcar #'final-arg-name (args-of func-spec))))))
         (gl-function-definition func-spec))))
 
-(defmacro defglfun (func-spec)
+(defmacro defglfun (&rest func-spec)
   (wrapped-gl-function-definition func-spec))
 
-(defmacro defglextfun (func-spec)
+(defmacro defglextfun (&rest func-spec)
   #+win32 (wrapped-win32-gl-function-definition func-spec)
   #-win32 (wrapped-gl-function-definition func-spec))
 

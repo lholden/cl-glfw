@@ -21,9 +21,7 @@
 (defconstant +draw-buffer13-ati+ #x8832) 
 (defconstant +draw-buffer14-ati+ #x8833) 
 (defconstant +draw-buffer15-ati+ #x8834) 
-(defglextfun
- (("DrawBuffersATI" draw-buffers-ati) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |bufs| :type |DrawBufferModeATI| :direction :in :array t :size n))
-  :return ("void") :category ("ATI_draw_buffers") :version ("1.2") :extension
-  nil :glxropcode ("233") :alias ("DrawBuffers") :glsalias ("DrawBuffers"))) 
+(defglextfun "DrawBuffersATI" draw-buffers-ati :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |bufs| :type |DrawBufferModeATI| :direction :in :array t :size n))
+ :category "ATI_draw_buffers" :version "1.2") 

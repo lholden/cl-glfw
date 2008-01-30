@@ -29,9 +29,7 @@
 (defconstant +sample-coverage-value-arb+ #x80AA) 
 (defconstant +sample-coverage-invert-arb+ #x80AB) 
 (defconstant +multisample-bit-arb+ #x20000000) 
-(defglextfun
- (("SampleCoverageARB" sample-coverage-arb) :args
-  ((:name |value| :type |ClampedFloat32| :direction :in)
-   (:name |invert| :type |Boolean| :direction :in))
-  :return ("void") :category ("ARB_multisample") :glxflags ("ARB") :version
-  ("1.2") :alias ("SampleCoverage") :glsalias ("SampleCoverage"))) 
+(defglextfun "SampleCoverageARB" sample-coverage-arb :return "void" :args
+ ((:name |value| :type |ClampedFloat32| :direction :in)
+  (:name |invert| :type |Boolean| :direction :in))
+ :category "ARB_multisample" :version "1.2") 

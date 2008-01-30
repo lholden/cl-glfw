@@ -4,13 +4,9 @@
 
 ;;;; ati_map_object_buffer
 
-(defglextfun
- (("UnmapObjectBufferATI" unmap-object-buffer-ati) :args
-  ((:name |buffer| :type |UInt32| :direction :in)) :return ("void") :category
-  ("ATI_map_object_buffer") :version ("1.2") :extension nil :glxropcode ("?")
-  :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
-(defglextfun
- (("MapObjectBufferATI" map-object-buffer-ati) :args
-  ((:name |buffer| :type |UInt32| :direction :in)) :return ("VoidPointer")
-  :category ("ATI_map_object_buffer") :version ("1.2") :extension nil
-  :glxropcode ("?") :glxflags ("ignore") :glsopcode ("?") :offset ("?"))) 
+(defglextfun "UnmapObjectBufferATI" unmap-object-buffer-ati :return "void"
+ :args ((:name |buffer| :type |UInt32| :direction :in)) :category
+ "ATI_map_object_buffer" :version "1.2") 
+(defglextfun "MapObjectBufferATI" map-object-buffer-ati :return "VoidPointer"
+ :args ((:name |buffer| :type |UInt32| :direction :in)) :category
+ "ATI_map_object_buffer" :version "1.2") 

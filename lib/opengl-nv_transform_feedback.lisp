@@ -29,93 +29,64 @@
 (defconstant +separate-attribs-nv+ #x8C8D) 
 (defconstant +transform-feedback-buffer-nv+ #x8C8E) 
 (defconstant +transform-feedback-buffer-binding-nv+ #x8C8F) 
-(defglextfun
- (("GetTransformFeedbackVaryingNV" get-transform-feedback-varying-nv) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |location| :type |Int32| :direction :out :array t :size #x1))
-  :return ("void") :category ("NV_transform_feedback") :dlflags ("notlistable")
-  :version ("1.5") :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("GetActiveVaryingNV" get-active-varying-nv) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |bufSize| :type |SizeI| :direction :in)
-   (:name |length| :type |SizeI| :direction :out :array t :size #x1)
-   (:name |size| :type |SizeI| :direction :out :array t :size #x1)
-   (:name |type| :type |GLenum| :direction :out :array t :size #x1)
-   (:name |name| :type |Char| :direction :out :array t :size
-    (|program| |index| |bufSize|)))
-  :return ("void") :category ("NV_transform_feedback") :dlflags ("notlistable")
-  :version ("1.5") :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("GetVaryingLocationNV" get-varying-location-nv) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |name| :type |Char| :direction :in :array t :size (|name|)))
-  :return ("Int32") :category ("NV_transform_feedback") :dlflags
-  ("notlistable") :version ("1.5") :glfflags ("ignore") :glsflags ("ignore")
-  :glxflags ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("ActiveVaryingNV" active-varying-nv) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |name| :type |Char| :direction :in :array t :size (|name|)))
-  :return ("void") :category ("NV_transform_feedback") :version ("1.5")
-  :dlflags ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("TransformFeedbackVaryingsNV" transform-feedback-varyings-nv) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |locations| :type |Int32| :direction :in :array t :size (|count|))
-   (:name |bufferMode| :type |GLenum| :direction :in))
-  :return ("void") :category ("NV_transform_feedback") :version ("1.5")
-  :dlflags ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("BindBufferBaseNV" bind-buffer-base-nv) :args
-  ((:name |target| :type |GLenum| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |buffer| :type |UInt32| :direction :in))
-  :return ("void") :category ("NV_transform_feedback") :version ("1.5")
-  :dlflags ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("BindBufferOffsetNV" bind-buffer-offset-nv) :args
-  ((:name |target| :type |GLenum| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |buffer| :type |UInt32| :direction :in)
-   (:name |offset| :type |BufferOffset| :direction :in))
-  :return ("void") :category ("NV_transform_feedback") :version ("1.5")
-  :dlflags ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("BindBufferRangeNV" bind-buffer-range-nv) :args
-  ((:name |target| :type |GLenum| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |buffer| :type |UInt32| :direction :in)
-   (:name |offset| :type |BufferOffset| :direction :in)
-   (:name |size| :type |BufferSize| :direction :in))
-  :return ("void") :category ("NV_transform_feedback") :version ("1.5")
-  :dlflags ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("TransformFeedbackAttribsNV" transform-feedback-attribs-nv) :args
-  ((:name |count| :type |UInt32| :direction :in)
-   (:name |attribs| :type |Int32| :direction :in :array t :size (|count|))
-   (:name |bufferMode| :type |GLenum| :direction :in))
-  :return ("void") :category ("NV_transform_feedback") :version ("1.5")
-  :dlflags ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("EndTransformFeedbackNV" end-transform-feedback-nv) :args nil :return
-  ("void") :category ("NV_transform_feedback") :version ("1.5") :dlflags
-  ("notlistable") :glxflags ("ignore") :glfflags ("ignore") :glsflags
-  ("ignore") :extension ("soft" "WINSOFT"))) 
-(defglextfun
- (("BeginTransformFeedbackNV" begin-transform-feedback-nv) :args
-  ((:name |primitiveMode| :type |GLenum| :direction :in)) :return ("void")
-  :category ("NV_transform_feedback") :version ("1.5") :dlflags ("notlistable")
-  :glxflags ("ignore") :glfflags ("ignore") :glsflags ("ignore") :extension
-  ("soft" "WINSOFT"))) 
+(defglextfun "GetTransformFeedbackVaryingNV" get-transform-feedback-varying-nv
+ :return "void" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |location| :type |Int32| :direction :out :array t :size #x1))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "GetActiveVaryingNV" get-active-varying-nv :return "void" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |bufSize| :type |SizeI| :direction :in)
+  (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+  (:name |size| :type |SizeI| :direction :out :array t :size #x1)
+  (:name |type| :type |GLenum| :direction :out :array t :size #x1)
+  (:name |name| :type |Char| :direction :out :array t :size
+   (|program| |index| |bufSize|)))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "GetVaryingLocationNV" get-varying-location-nv :return "Int32"
+ :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "ActiveVaryingNV" active-varying-nv :return "void" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "TransformFeedbackVaryingsNV" transform-feedback-varyings-nv
+ :return "void" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |locations| :type |Int32| :direction :in :array t :size (|count|))
+  (:name |bufferMode| :type |GLenum| :direction :in))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "BindBufferBaseNV" bind-buffer-base-nv :return "void" :args
+ ((:name |target| :type |GLenum| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |buffer| :type |UInt32| :direction :in))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "BindBufferOffsetNV" bind-buffer-offset-nv :return "void" :args
+ ((:name |target| :type |GLenum| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |buffer| :type |UInt32| :direction :in)
+  (:name |offset| :type |BufferOffset| :direction :in))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "BindBufferRangeNV" bind-buffer-range-nv :return "void" :args
+ ((:name |target| :type |GLenum| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |buffer| :type |UInt32| :direction :in)
+  (:name |offset| :type |BufferOffset| :direction :in)
+  (:name |size| :type |BufferSize| :direction :in))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "TransformFeedbackAttribsNV" transform-feedback-attribs-nv :return
+ "void" :args
+ ((:name |count| :type |UInt32| :direction :in)
+  (:name |attribs| :type |Int32| :direction :in :array t :size (|count|))
+  (:name |bufferMode| :type |GLenum| :direction :in))
+ :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "EndTransformFeedbackNV" end-transform-feedback-nv :return "void"
+ :args nil :category "NV_transform_feedback" :version "1.5") 
+(defglextfun "BeginTransformFeedbackNV" begin-transform-feedback-nv :return
+ "void" :args ((:name |primitiveMode| :type |GLenum| :direction :in)) :category
+ "NV_transform_feedback" :version "1.5") 

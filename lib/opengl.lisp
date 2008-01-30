@@ -2383,2061 +2383,1376 @@
 
 ;;;; {{{ display-list
 
-(defglfun
- (("ListBase" list-base) :args ((:name |base| :type |List| :direction :in))
-  :return ("void") :category ("display-list") :version ("1.0") :glxropcode
-  ("3") :glsopcode ("0x0036") :offset ("6"))) 
-(defglfun
- (("GenLists" gen-lists) :args ((:name |range| :type |SizeI| :direction :in))
-  :return ("List") :dlflags ("notlistable") :category ("display-list") :version
-  ("1.0") :glxsingle ("104") :glsopcode ("0x0035") :offset ("5"))) 
-(defglfun
- (("DeleteLists" delete-lists) :args
-  ((:name |list| :type |List| :direction :in)
-   (:name |range| :type |SizeI| :direction :in))
-  :return ("void") :dlflags ("notlistable") :category ("display-list") :version
-  ("1.0") :glxsingle ("103") :glsopcode ("0x0034") :wglflags ("batchable")
-  :offset ("4"))) 
-(defglfun
- (("CallLists" call-lists) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |type| :type |ListNameType| :direction :in)
-   (:name |lists| :type |Void| :direction :in :array t :size (|n| |type|)))
-  :return ("void") :category ("display-list") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("2")
-  :glsopcode ("0x0033") :offset ("3"))) 
-(defglfun
- (("CallList" call-list) :args ((:name |list| :type |List| :direction :in))
-  :return ("void") :category ("display-list") :version ("1.0") :glxropcode
-  ("1") :glsopcode ("0x0032") :offset ("2"))) 
-(defglfun
- (("EndList" end-list) :args nil :return ("void") :dlflags ("notlistable")
-  :category ("display-list") :version ("1.0") :glxsingle ("102") :glsopcode
-  ("0x0031") :wglflags ("batchable") :offset ("1"))) 
-(defglfun
- (("NewList" new-list) :args
-  ((:name |list| :type |List| :direction :in)
-   (:name |mode| :type |ListMode| :direction :in))
-  :return ("void") :dlflags ("notlistable") :category ("display-list") :version
-  ("1.0") :glxsingle ("101") :glsopcode ("0x0030") :wglflags ("batchable")
-  :offset ("0"))) 
+(defglfun "ListBase" list-base :return "void" :args
+ ((:name |base| :type |List| :direction :in)) :category "display-list" :version
+ "1.0") 
+(defglfun "GenLists" gen-lists :return "List" :args
+ ((:name |range| :type |SizeI| :direction :in)) :category "display-list"
+ :version "1.0") 
+(defglfun "DeleteLists" delete-lists :return "void" :args
+ ((:name |list| :type |List| :direction :in)
+  (:name |range| :type |SizeI| :direction :in))
+ :category "display-list" :version "1.0") 
+(defglfun "CallLists" call-lists :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |type| :type |ListNameType| :direction :in)
+  (:name |lists| :type |Void| :direction :in :array t :size (|n| |type|)))
+ :category "display-list" :version "1.0") 
+(defglfun "CallList" call-list :return "void" :args
+ ((:name |list| :type |List| :direction :in)) :category "display-list" :version
+ "1.0") 
+(defglfun "EndList" end-list :return "void" :args nil :category "display-list"
+ :version "1.0") 
+(defglfun "NewList" new-list :return "void" :args
+ ((:name |list| :type |List| :direction :in)
+  (:name |mode| :type |ListMode| :direction :in))
+ :category "display-list" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ drawing
 
-(defglfun
- (("Vertex4sv" vertex-4sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("76") :glsopcode
-  ("0x007F") :offset ("149"))) 
-(defglfun
- (("Vertex4s" vertex-4s) :args
-  ((:name |x| :type |CoordS| :direction :in)
-   (:name |y| :type |CoordS| :direction :in)
-   (:name |z| :type |CoordS| :direction :in)
-   (:name |w| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex4sv") :version
-  ("1.0") :offset ("148"))) 
-(defglfun
- (("Vertex4iv" vertex-4iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("75") :glsopcode
-  ("0x007E") :offset ("147"))) 
-(defglfun
- (("Vertex4i" vertex-4i) :args
-  ((:name |x| :type |CoordI| :direction :in)
-   (:name |y| :type |CoordI| :direction :in)
-   (:name |z| :type |CoordI| :direction :in)
-   (:name |w| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex4iv") :version
-  ("1.0") :offset ("146"))) 
-(defglfun
- (("Vertex4fv" vertex-4fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("74") :glsopcode
-  ("0x007D") :offset ("145"))) 
-(defglfun
- (("Vertex4f" vertex-4f) :args
-  ((:name |x| :type |CoordF| :direction :in)
-   (:name |y| :type |CoordF| :direction :in)
-   (:name |z| :type |CoordF| :direction :in)
-   (:name |w| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex4fv") :version
-  ("1.0") :offset ("144"))) 
-(defglfun
- (("Vertex4dv" vertex-4dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("73") :glsopcode
-  ("0x007C") :offset ("143"))) 
-(defglfun
- (("Vertex4d" vertex-4d) :args
-  ((:name |x| :type |CoordD| :direction :in)
-   (:name |y| :type |CoordD| :direction :in)
-   (:name |z| :type |CoordD| :direction :in)
-   (:name |w| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex4dv") :version
-  ("1.0") :offset ("142"))) 
-(defglfun
- (("Vertex3sv" vertex-3sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("72") :glsopcode
-  ("0x007B") :offset ("141"))) 
-(defglfun
- (("Vertex3s" vertex-3s) :args
-  ((:name |x| :type |CoordS| :direction :in)
-   (:name |y| :type |CoordS| :direction :in)
-   (:name |z| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex3sv") :version
-  ("1.0") :offset ("140"))) 
-(defglfun
- (("Vertex3iv" vertex-3iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("71") :glsopcode
-  ("0x007A") :offset ("139"))) 
-(defglfun
- (("Vertex3i" vertex-3i) :args
-  ((:name |x| :type |CoordI| :direction :in)
-   (:name |y| :type |CoordI| :direction :in)
-   (:name |z| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex3iv") :version
-  ("1.0") :offset ("138"))) 
-(defglfun
- (("Vertex3fv" vertex-3fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("70") :glsopcode
-  ("0x0079") :offset ("137"))) 
-(defglfun
- (("Vertex3f" vertex-3f) :args
-  ((:name |x| :type |CoordF| :direction :in)
-   (:name |y| :type |CoordF| :direction :in)
-   (:name |z| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex3fv") :version
-  ("1.0") :offset ("136"))) 
-(defglfun
- (("Vertex3dv" vertex-3dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("69") :glsopcode
-  ("0x0078") :offset ("135"))) 
-(defglfun
- (("Vertex3d" vertex-3d) :args
-  ((:name |x| :type |CoordD| :direction :in)
-   (:name |y| :type |CoordD| :direction :in)
-   (:name |z| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex3dv") :version
-  ("1.0") :offset ("134"))) 
-(defglfun
- (("Vertex2sv" vertex-2sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("68") :glsopcode
-  ("0x0077") :offset ("133"))) 
-(defglfun
- (("Vertex2s" vertex-2s) :args
-  ((:name |x| :type |CoordS| :direction :in)
-   (:name |y| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex2sv") :version
-  ("1.0") :offset ("132"))) 
-(defglfun
- (("Vertex2iv" vertex-2iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("67") :glsopcode
-  ("0x0076") :offset ("131"))) 
-(defglfun
- (("Vertex2i" vertex-2i) :args
-  ((:name |x| :type |CoordI| :direction :in)
-   (:name |y| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex2iv") :version
-  ("1.0") :offset ("130"))) 
-(defglfun
- (("Vertex2fv" vertex-2fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("66") :glsopcode
-  ("0x0075") :offset ("129"))) 
-(defglfun
- (("Vertex2f" vertex-2f) :args
-  ((:name |x| :type |CoordF| :direction :in)
-   (:name |y| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex2fv") :version
-  ("1.0") :offset ("128"))) 
-(defglfun
- (("Vertex2dv" vertex-2dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("65") :glsopcode
-  ("0x0074") :offset ("127"))) 
-(defglfun
- (("Vertex2d" vertex-2d) :args
-  ((:name |x| :type |CoordD| :direction :in)
-   (:name |y| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Vertex2dv") :version
-  ("1.0") :offset ("126"))) 
-(defglfun
- (("TexCoord4sv" tex-coord-4sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("64") :glsopcode
-  ("0x0073") :offset ("125"))) 
-(defglfun
- (("TexCoord4s" tex-coord-4s) :args
-  ((:name |s| :type |CoordS| :direction :in)
-   (:name |t| :type |CoordS| :direction :in)
-   (:name |r| :type |CoordS| :direction :in)
-   (:name |q| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord4sv") :version
-  ("1.0") :offset ("124"))) 
-(defglfun
- (("TexCoord4iv" tex-coord-4iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("63") :glsopcode
-  ("0x0072") :offset ("123"))) 
-(defglfun
- (("TexCoord4i" tex-coord-4i) :args
-  ((:name |s| :type |CoordI| :direction :in)
-   (:name |t| :type |CoordI| :direction :in)
-   (:name |r| :type |CoordI| :direction :in)
-   (:name |q| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord4iv") :version
-  ("1.0") :offset ("122"))) 
-(defglfun
- (("TexCoord4fv" tex-coord-4fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("62") :glsopcode
-  ("0x0071") :offset ("121"))) 
-(defglfun
- (("TexCoord4f" tex-coord-4f) :args
-  ((:name |s| :type |CoordF| :direction :in)
-   (:name |t| :type |CoordF| :direction :in)
-   (:name |r| :type |CoordF| :direction :in)
-   (:name |q| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord4fv") :version
-  ("1.0") :offset ("120"))) 
-(defglfun
- (("TexCoord4dv" tex-coord-4dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("61") :glsopcode
-  ("0x0070") :offset ("119"))) 
-(defglfun
- (("TexCoord4d" tex-coord-4d) :args
-  ((:name |s| :type |CoordD| :direction :in)
-   (:name |t| :type |CoordD| :direction :in)
-   (:name |r| :type |CoordD| :direction :in)
-   (:name |q| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord4dv") :version
-  ("1.0") :offset ("118"))) 
-(defglfun
- (("TexCoord3sv" tex-coord-3sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("60") :glsopcode
-  ("0x006F") :offset ("117"))) 
-(defglfun
- (("TexCoord3s" tex-coord-3s) :args
-  ((:name |s| :type |CoordS| :direction :in)
-   (:name |t| :type |CoordS| :direction :in)
-   (:name |r| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord3sv") :version
-  ("1.0") :offset ("116"))) 
-(defglfun
- (("TexCoord3iv" tex-coord-3iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("59") :glsopcode
-  ("0x006E") :offset ("115"))) 
-(defglfun
- (("TexCoord3i" tex-coord-3i) :args
-  ((:name |s| :type |CoordI| :direction :in)
-   (:name |t| :type |CoordI| :direction :in)
-   (:name |r| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord3iv") :version
-  ("1.0") :offset ("114"))) 
-(defglfun
- (("TexCoord3fv" tex-coord-3fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("58") :glsopcode
-  ("0x006D") :offset ("113"))) 
-(defglfun
- (("TexCoord3f" tex-coord-3f) :args
-  ((:name |s| :type |CoordF| :direction :in)
-   (:name |t| :type |CoordF| :direction :in)
-   (:name |r| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord3fv") :version
-  ("1.0") :offset ("112"))) 
-(defglfun
- (("TexCoord3dv" tex-coord-3dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("57") :glsopcode
-  ("0x006C") :offset ("111"))) 
-(defglfun
- (("TexCoord3d" tex-coord-3d) :args
-  ((:name |s| :type |CoordD| :direction :in)
-   (:name |t| :type |CoordD| :direction :in)
-   (:name |r| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord3dv") :version
-  ("1.0") :offset ("110"))) 
-(defglfun
- (("TexCoord2sv" tex-coord-2sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("56") :glsopcode
-  ("0x006B") :offset ("109"))) 
-(defglfun
- (("TexCoord2s" tex-coord-2s) :args
-  ((:name |s| :type |CoordS| :direction :in)
-   (:name |t| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord2sv") :version
-  ("1.0") :offset ("108"))) 
-(defglfun
- (("TexCoord2iv" tex-coord-2iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("55") :glsopcode
-  ("0x006A") :offset ("107"))) 
-(defglfun
- (("TexCoord2i" tex-coord-2i) :args
-  ((:name |s| :type |CoordI| :direction :in)
-   (:name |t| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord2iv") :version
-  ("1.0") :offset ("106"))) 
-(defglfun
- (("TexCoord2fv" tex-coord-2fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("54") :glsopcode
-  ("0x0069") :offset ("105"))) 
-(defglfun
- (("TexCoord2f" tex-coord-2f) :args
-  ((:name |s| :type |CoordF| :direction :in)
-   (:name |t| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord2fv") :version
-  ("1.0") :offset ("104"))) 
-(defglfun
- (("TexCoord2dv" tex-coord-2dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("53") :glsopcode
-  ("0x0068") :offset ("103"))) 
-(defglfun
- (("TexCoord2d" tex-coord-2d) :args
-  ((:name |s| :type |CoordD| :direction :in)
-   (:name |t| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord2dv") :version
-  ("1.0") :offset ("102"))) 
-(defglfun
- (("TexCoord1sv" tex-coord-1sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x1)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("52") :glsopcode
-  ("0x0067") :offset ("101"))) 
-(defglfun
- (("TexCoord1s" tex-coord-1s) :args ((:name |s| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord1sv") :version
-  ("1.0") :offset ("100"))) 
-(defglfun
- (("TexCoord1iv" tex-coord-1iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x1)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("51") :glsopcode
-  ("0x0066") :offset ("99"))) 
-(defglfun
- (("TexCoord1i" tex-coord-1i) :args ((:name |s| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord1iv") :version
-  ("1.0") :offset ("98"))) 
-(defglfun
- (("TexCoord1fv" tex-coord-1fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x1)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("50") :glsopcode
-  ("0x0065") :offset ("97"))) 
-(defglfun
- (("TexCoord1f" tex-coord-1f) :args ((:name |s| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord1fv") :version
-  ("1.0") :offset ("96"))) 
-(defglfun
- (("TexCoord1dv" tex-coord-1dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x1)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("49") :glsopcode
-  ("0x0064") :offset ("95"))) 
-(defglfun
- (("TexCoord1d" tex-coord-1d) :args ((:name |s| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("TexCoord1dv") :version
-  ("1.0") :offset ("94"))) 
-(defglfun
- (("Rectsv" rect-sv) :args
-  ((:name |v1| :type |CoordS| :direction :in :array t :size #x2)
-   (:name |v2| :type |CoordS| :direction :in :array t :size #x2))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("48")
-  :glsopcode ("0x0063") :offset ("93"))) 
-(defglfun
- (("Rects" rect-s) :args
-  ((:name |x1| :type |CoordS| :direction :in)
-   (:name |y1| :type |CoordS| :direction :in)
-   (:name |x2| :type |CoordS| :direction :in)
-   (:name |y2| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Rectsv") :version
-  ("1.0") :offset ("92"))) 
-(defglfun
- (("Rectiv" rect-iv) :args
-  ((:name |v1| :type |CoordI| :direction :in :array t :size #x2)
-   (:name |v2| :type |CoordI| :direction :in :array t :size #x2))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("47")
-  :glsopcode ("0x0062") :offset ("91"))) 
-(defglfun
- (("Recti" rect-i) :args
-  ((:name |x1| :type |CoordI| :direction :in)
-   (:name |y1| :type |CoordI| :direction :in)
-   (:name |x2| :type |CoordI| :direction :in)
-   (:name |y2| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Rectiv") :version
-  ("1.0") :offset ("90"))) 
-(defglfun
- (("Rectfv" rect-fv) :args
-  ((:name |v1| :type |CoordF| :direction :in :array t :size #x2)
-   (:name |v2| :type |CoordF| :direction :in :array t :size #x2))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("46")
-  :glsopcode ("0x0061") :offset ("89"))) 
-(defglfun
- (("Rectf" rect-f) :args
-  ((:name |x1| :type |CoordF| :direction :in)
-   (:name |y1| :type |CoordF| :direction :in)
-   (:name |x2| :type |CoordF| :direction :in)
-   (:name |y2| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Rectfv") :version
-  ("1.0") :offset ("88"))) 
-(defglfun
- (("Rectdv" rect-dv) :args
-  ((:name |v1| :type |CoordD| :direction :in :array t :size #x2)
-   (:name |v2| :type |CoordD| :direction :in :array t :size #x2))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("45")
-  :glsopcode ("0x0060") :offset ("87"))) 
-(defglfun
- (("Rectd" rect-d) :args
-  ((:name |x1| :type |CoordD| :direction :in)
-   (:name |y1| :type |CoordD| :direction :in)
-   (:name |x2| :type |CoordD| :direction :in)
-   (:name |y2| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Rectdv") :version
-  ("1.0") :offset ("86"))) 
-(defglfun
- (("RasterPos4sv" raster-pos-4sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("44") :glsopcode
-  ("0x005F") :offset ("85"))) 
-(defglfun
- (("RasterPos4s" raster-pos-4s) :args
-  ((:name |x| :type |CoordS| :direction :in)
-   (:name |y| :type |CoordS| :direction :in)
-   (:name |z| :type |CoordS| :direction :in)
-   (:name |w| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos4sv") :version
-  ("1.0") :offset ("84"))) 
-(defglfun
- (("RasterPos4iv" raster-pos-4iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("43") :glsopcode
-  ("0x005E") :offset ("83"))) 
-(defglfun
- (("RasterPos4i" raster-pos-4i) :args
-  ((:name |x| :type |CoordI| :direction :in)
-   (:name |y| :type |CoordI| :direction :in)
-   (:name |z| :type |CoordI| :direction :in)
-   (:name |w| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos4iv") :version
-  ("1.0") :offset ("82"))) 
-(defglfun
- (("RasterPos4fv" raster-pos-4fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("42") :glsopcode
-  ("0x005D") :offset ("81"))) 
-(defglfun
- (("RasterPos4f" raster-pos-4f) :args
-  ((:name |x| :type |CoordF| :direction :in)
-   (:name |y| :type |CoordF| :direction :in)
-   (:name |z| :type |CoordF| :direction :in)
-   (:name |w| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos4fv") :version
-  ("1.0") :offset ("80"))) 
-(defglfun
- (("RasterPos4dv" raster-pos-4dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("41") :glsopcode
-  ("0x005C") :offset ("79"))) 
-(defglfun
- (("RasterPos4d" raster-pos-4d) :args
-  ((:name |x| :type |CoordD| :direction :in)
-   (:name |y| :type |CoordD| :direction :in)
-   (:name |z| :type |CoordD| :direction :in)
-   (:name |w| :type |CoordD| :direction :in))
-  :return ("void") :vectorequiv ("RasterPos4dv") :category ("drawing") :version
-  ("1.0") :offset ("78"))) 
-(defglfun
- (("RasterPos3sv" raster-pos-3sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("40") :glsopcode
-  ("0x005B") :offset ("77"))) 
-(defglfun
- (("RasterPos3s" raster-pos-3s) :args
-  ((:name |x| :type |CoordS| :direction :in)
-   (:name |y| :type |CoordS| :direction :in)
-   (:name |z| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos3sv") :version
-  ("1.0") :offset ("76"))) 
-(defglfun
- (("RasterPos3iv" raster-pos-3iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("39") :glsopcode
-  ("0x005A") :offset ("75"))) 
-(defglfun
- (("RasterPos3i" raster-pos-3i) :args
-  ((:name |x| :type |CoordI| :direction :in)
-   (:name |y| :type |CoordI| :direction :in)
-   (:name |z| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos3iv") :version
-  ("1.0") :offset ("74"))) 
-(defglfun
- (("RasterPos3fv" raster-pos-3fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("38") :glsopcode
-  ("0x0059") :offset ("73"))) 
-(defglfun
- (("RasterPos3f" raster-pos-3f) :args
-  ((:name |x| :type |CoordF| :direction :in)
-   (:name |y| :type |CoordF| :direction :in)
-   (:name |z| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos3fv") :version
-  ("1.0") :offset ("72"))) 
-(defglfun
- (("RasterPos3dv" raster-pos-3dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("37") :glsopcode
-  ("0x0058") :offset ("71"))) 
-(defglfun
- (("RasterPos3d" raster-pos-3d) :args
-  ((:name |x| :type |CoordD| :direction :in)
-   (:name |y| :type |CoordD| :direction :in)
-   (:name |z| :type |CoordD| :direction :in))
-  :return ("void") :vectorequiv ("RasterPos3dv") :category ("drawing") :version
-  ("1.0") :offset ("70"))) 
-(defglfun
- (("RasterPos2sv" raster-pos-2sv) :args
-  ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("36") :glsopcode
-  ("0x0057") :offset ("69"))) 
-(defglfun
- (("RasterPos2s" raster-pos-2s) :args
-  ((:name |x| :type |CoordS| :direction :in)
-   (:name |y| :type |CoordS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos2sv") :version
-  ("1.0") :offset ("68"))) 
-(defglfun
- (("RasterPos2iv" raster-pos-2iv) :args
-  ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("35") :glsopcode
-  ("0x0056") :offset ("67"))) 
-(defglfun
- (("RasterPos2i" raster-pos-2i) :args
-  ((:name |x| :type |CoordI| :direction :in)
-   (:name |y| :type |CoordI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos2iv") :version
-  ("1.0") :offset ("66"))) 
-(defglfun
- (("RasterPos2fv" raster-pos-2fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("34") :glsopcode
-  ("0x0055") :offset ("65"))) 
-(defglfun
- (("RasterPos2f" raster-pos-2f) :args
-  ((:name |x| :type |CoordF| :direction :in)
-   (:name |y| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos2fv") :version
-  ("1.0") :offset ("64"))) 
-(defglfun
- (("RasterPos2dv" raster-pos-2dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("33") :glsopcode
-  ("0x0054") :offset ("63"))) 
-(defglfun
- (("RasterPos2d" raster-pos-2d) :args
-  ((:name |x| :type |CoordD| :direction :in)
-   (:name |y| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("RasterPos2dv") :version
-  ("1.0") :offset ("62"))) 
-(defglfun
- (("Normal3sv" normal-3sv) :args
-  ((:name |v| :type |Int16| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("32") :glsopcode
-  ("0x0053") :offset ("61"))) 
-(defglfun
- (("Normal3s" normal-3s) :args
-  ((:name |nx| :type |Int16| :direction :in)
-   (:name |ny| :type |Int16| :direction :in)
-   (:name |nz| :type |Int16| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Normal3sv") :version
-  ("1.0") :offset ("60"))) 
-(defglfun
- (("Normal3iv" normal-3iv) :args
-  ((:name |v| :type |Int32| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("31") :glsopcode
-  ("0x0052") :offset ("59"))) 
-(defglfun
- (("Normal3i" normal-3i) :args
-  ((:name |nx| :type |Int32| :direction :in)
-   (:name |ny| :type |Int32| :direction :in)
-   (:name |nz| :type |Int32| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Normal3iv") :version
-  ("1.0") :offset ("58"))) 
-(defglfun
- (("Normal3fv" normal-3fv) :args
-  ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("30") :glsopcode
-  ("0x0051") :offset ("57"))) 
-(defglfun
- (("Normal3f" normal-3f) :args
-  ((:name |nx| :type |CoordF| :direction :in)
-   (:name |ny| :type |CoordF| :direction :in)
-   (:name |nz| :type |CoordF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Normal3fv") :version
-  ("1.0") :offset ("56"))) 
-(defglfun
- (("Normal3dv" normal-3dv) :args
-  ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("29") :glsopcode
-  ("0x0050") :offset ("55"))) 
-(defglfun
- (("Normal3d" normal-3d) :args
-  ((:name |nx| :type |CoordD| :direction :in)
-   (:name |ny| :type |CoordD| :direction :in)
-   (:name |nz| :type |CoordD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Normal3dv") :version
-  ("1.0") :offset ("54"))) 
-(defglfun
- (("Normal3bv" normal-3bv) :args
-  ((:name |v| :type |Int8| :direction :in :array t :size #x3)) :return ("void")
-  :category ("drawing") :version ("1.0") :glxropcode ("28") :glsopcode
-  ("0x004F") :offset ("53"))) 
-(defglfun
- (("Normal3b" normal-3b) :args
-  ((:name |nx| :type |Int8| :direction :in)
-   (:name |ny| :type |Int8| :direction :in)
-   (:name |nz| :type |Int8| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Normal3bv") :version
-  ("1.0") :offset ("52"))) 
-(defglfun
- (("Indexsv" index-sv) :args
-  ((:name |c| :type |ColorIndexValueS| :direction :in :array t :size #x1))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("27")
-  :glsopcode ("0x004E") :offset ("51"))) 
-(defglfun
- (("Indexs" index-s) :args
-  ((:name |c| :type |ColorIndexValueS| :direction :in)) :return ("void")
-  :category ("drawing") :vectorequiv ("Indexsv") :version ("1.0") :offset
-  ("50"))) 
-(defglfun
- (("Indexiv" index-iv) :args
-  ((:name |c| :type |ColorIndexValueI| :direction :in :array t :size #x1))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("26")
-  :glsopcode ("0x004D") :offset ("49"))) 
-(defglfun
- (("Indexi" index-i) :args
-  ((:name |c| :type |ColorIndexValueI| :direction :in)) :return ("void")
-  :category ("drawing") :vectorequiv ("Indexiv") :version ("1.0") :offset
-  ("48"))) 
-(defglfun
- (("Indexfv" index-fv) :args
-  ((:name |c| :type |ColorIndexValueF| :direction :in :array t :size #x1))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("25")
-  :glsopcode ("0x004C") :offset ("47"))) 
-(defglfun
- (("Indexf" index-f) :args
-  ((:name |c| :type |ColorIndexValueF| :direction :in)) :return ("void")
-  :category ("drawing") :vectorequiv ("Indexfv") :version ("1.0") :offset
-  ("46"))) 
-(defglfun
- (("Indexdv" index-dv) :args
-  ((:name |c| :type |ColorIndexValueD| :direction :in :array t :size #x1))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("24")
-  :glsopcode ("0x004B") :offset ("45"))) 
-(defglfun
- (("Indexd" index-d) :args
-  ((:name |c| :type |ColorIndexValueD| :direction :in)) :return ("void")
-  :category ("drawing") :vectorequiv ("Indexdv") :version ("1.0") :offset
-  ("44"))) 
-(defglfun
- (("End" end) :args nil :return ("void") :category ("drawing") :version ("1.0")
-  :glxropcode ("23") :glsopcode ("0x004A") :offset ("43"))) 
-(defglfun
- (("EdgeFlagv" edge-flagv) :args
-  ((:name |flag| :type |Boolean| :direction :in :array t :size #x1)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("22") :glsopcode
-  ("0x0049") :offset ("42"))) 
-(defglfun
- (("EdgeFlag" edge-flag) :args ((:name |flag| :type |Boolean| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("EdgeFlagv") :version
-  ("1.0") :offset ("41"))) 
-(defglfun
- (("Color4usv" color-4usv) :args
-  ((:name |v| :type |ColorUS| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("21") :glsopcode
-  ("0x0048") :offset ("40"))) 
-(defglfun
- (("Color4us" color-4us) :args
-  ((:name |red| :type |ColorUS| :direction :in)
-   (:name |green| :type |ColorUS| :direction :in)
-   (:name |blue| :type |ColorUS| :direction :in)
-   (:name |alpha| :type |ColorUS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4usv") :version
-  ("1.0") :offset ("39"))) 
-(defglfun
- (("Color4uiv" color-4uiv) :args
-  ((:name |v| :type |ColorUI| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("20") :glsopcode
-  ("0x0047") :offset ("38"))) 
-(defglfun
- (("Color4ui" color-4ui) :args
-  ((:name |red| :type |ColorUI| :direction :in)
-   (:name |green| :type |ColorUI| :direction :in)
-   (:name |blue| :type |ColorUI| :direction :in)
-   (:name |alpha| :type |ColorUI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4uiv") :version
-  ("1.0") :offset ("37"))) 
-(defglfun
- (("Color4ubv" color-4ubv) :args
-  ((:name |v| :type |ColorUB| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("19") :glsopcode
-  ("0x0046") :offset ("36"))) 
-(defglfun
- (("Color4ub" color-4ub) :args
-  ((:name |red| :type |ColorUB| :direction :in)
-   (:name |green| :type |ColorUB| :direction :in)
-   (:name |blue| :type |ColorUB| :direction :in)
-   (:name |alpha| :type |ColorUB| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4ubv") :version
-  ("1.0") :offset ("35"))) 
-(defglfun
- (("Color4sv" color-4sv) :args
-  ((:name |v| :type |ColorS| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("18") :glsopcode
-  ("0x0045") :offset ("34"))) 
-(defglfun
- (("Color4s" color-4s) :args
-  ((:name |red| :type |ColorS| :direction :in)
-   (:name |green| :type |ColorS| :direction :in)
-   (:name |blue| :type |ColorS| :direction :in)
-   (:name |alpha| :type |ColorS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4sv") :version
-  ("1.0") :offset ("33"))) 
-(defglfun
- (("Color4iv" color-4iv) :args
-  ((:name |v| :type |ColorI| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("17") :glsopcode
-  ("0x0044") :offset ("32"))) 
-(defglfun
- (("Color4i" color-4i) :args
-  ((:name |red| :type |ColorI| :direction :in)
-   (:name |green| :type |ColorI| :direction :in)
-   (:name |blue| :type |ColorI| :direction :in)
-   (:name |alpha| :type |ColorI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4iv") :version
-  ("1.0") :offset ("31"))) 
-(defglfun
- (("Color4fv" color-4fv) :args
-  ((:name |v| :type |ColorF| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("16") :glsopcode
-  ("0x0043") :offset ("30"))) 
-(defglfun
- (("Color4f" color-4f) :args
-  ((:name |red| :type |ColorF| :direction :in)
-   (:name |green| :type |ColorF| :direction :in)
-   (:name |blue| :type |ColorF| :direction :in)
-   (:name |alpha| :type |ColorF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4fv") :version
-  ("1.0") :offset ("29"))) 
-(defglfun
- (("Color4dv" color-4dv) :args
-  ((:name |v| :type |ColorD| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("15") :glsopcode
-  ("0x0042") :offset ("28"))) 
-(defglfun
- (("Color4d" color-4d) :args
-  ((:name |red| :type |ColorD| :direction :in)
-   (:name |green| :type |ColorD| :direction :in)
-   (:name |blue| :type |ColorD| :direction :in)
-   (:name |alpha| :type |ColorD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4dv") :version
-  ("1.0") :offset ("27"))) 
-(defglfun
- (("Color4bv" color-4bv) :args
-  ((:name |v| :type |ColorB| :direction :in :array t :size #x4)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("14") :glsopcode
-  ("0x0041") :offset ("26"))) 
-(defglfun
- (("Color4b" color-4b) :args
-  ((:name |red| :type |ColorB| :direction :in)
-   (:name |green| :type |ColorB| :direction :in)
-   (:name |blue| :type |ColorB| :direction :in)
-   (:name |alpha| :type |ColorB| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color4bv") :version
-  ("1.0") :offset ("25"))) 
-(defglfun
- (("Color3usv" color-3usv) :args
-  ((:name |v| :type |ColorUS| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("13") :glsopcode
-  ("0x0040") :offset ("24"))) 
-(defglfun
- (("Color3us" color-3us) :args
-  ((:name |red| :type |ColorUS| :direction :in)
-   (:name |green| :type |ColorUS| :direction :in)
-   (:name |blue| :type |ColorUS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3usv") :version
-  ("1.0") :offset ("23"))) 
-(defglfun
- (("Color3uiv" color-3uiv) :args
-  ((:name |v| :type |ColorUI| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("12") :glsopcode
-  ("0x003F") :offset ("22"))) 
-(defglfun
- (("Color3ui" color-3ui) :args
-  ((:name |red| :type |ColorUI| :direction :in)
-   (:name |green| :type |ColorUI| :direction :in)
-   (:name |blue| :type |ColorUI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3uiv") :version
-  ("1.0") :offset ("21"))) 
-(defglfun
- (("Color3ubv" color-3ubv) :args
-  ((:name |v| :type |ColorUB| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("11") :glsopcode
-  ("0x003E") :offset ("20"))) 
-(defglfun
- (("Color3ub" color-3ub) :args
-  ((:name |red| :type |ColorUB| :direction :in)
-   (:name |green| :type |ColorUB| :direction :in)
-   (:name |blue| :type |ColorUB| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3ubv") :version
-  ("1.0") :offset ("19"))) 
-(defglfun
- (("Color3sv" color-3sv) :args
-  ((:name |v| :type |ColorS| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("10") :glsopcode
-  ("0x003D") :offset ("18"))) 
-(defglfun
- (("Color3s" color-3s) :args
-  ((:name |red| :type |ColorS| :direction :in)
-   (:name |green| :type |ColorS| :direction :in)
-   (:name |blue| :type |ColorS| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3sv") :version
-  ("1.0") :offset ("17"))) 
-(defglfun
- (("Color3iv" color-3iv) :args
-  ((:name |v| :type |ColorI| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("9") :glsopcode
-  ("0x003C") :offset ("16"))) 
-(defglfun
- (("Color3i" color-3i) :args
-  ((:name |red| :type |ColorI| :direction :in)
-   (:name |green| :type |ColorI| :direction :in)
-   (:name |blue| :type |ColorI| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3iv") :version
-  ("1.0") :offset ("15"))) 
-(defglfun
- (("Color3fv" color-3fv) :args
-  ((:name |v| :type |ColorF| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("8") :glsopcode
-  ("0x003B") :offset ("14"))) 
-(defglfun
- (("Color3f" color-3f) :args
-  ((:name |red| :type |ColorF| :direction :in)
-   (:name |green| :type |ColorF| :direction :in)
-   (:name |blue| :type |ColorF| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3fv") :version
-  ("1.0") :offset ("13"))) 
-(defglfun
- (("Color3dv" color-3dv) :args
-  ((:name |v| :type |ColorD| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("7") :glsopcode
-  ("0x003A") :offset ("12"))) 
-(defglfun
- (("Color3d" color-3d) :args
-  ((:name |red| :type |ColorD| :direction :in)
-   (:name |green| :type |ColorD| :direction :in)
-   (:name |blue| :type |ColorD| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3dv") :version
-  ("1.0") :offset ("11"))) 
-(defglfun
- (("Color3bv" color-3bv) :args
-  ((:name |v| :type |ColorB| :direction :in :array t :size #x3)) :return
-  ("void") :category ("drawing") :version ("1.0") :glxropcode ("6") :glsopcode
-  ("0x0039") :offset ("10"))) 
-(defglfun
- (("Color3b" color-3b) :args
-  ((:name |red| :type |ColorB| :direction :in)
-   (:name |green| :type |ColorB| :direction :in)
-   (:name |blue| :type |ColorB| :direction :in))
-  :return ("void") :category ("drawing") :vectorequiv ("Color3bv") :version
-  ("1.0") :offset ("9"))) 
-(defglfun
- (("Bitmap" bitmap) :args
-  ((:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |xorig| :type |CoordF| :direction :in)
-   (:name |yorig| :type |CoordF| :direction :in)
-   (:name |xmove| :type |CoordF| :direction :in)
-   (:name |ymove| :type |CoordF| :direction :in)
-   (:name |bitmap| :type |UInt8| :direction :in :array t :size
-    (|width| |height|)))
-  :return ("void") :category ("drawing") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("5")
-  :glsflags ("pixel-unpack") :glsopcode ("0x0038") :wglflags
-  ("client-handcode" "server-handcode") :offset ("8"))) 
-(defglfun
- (("Begin" begin) :args ((:name |mode| :type |BeginMode| :direction :in))
-  :return ("void") :category ("drawing") :version ("1.0") :glxropcode ("4")
-  :glsopcode ("0x0037") :offset ("7"))) 
+(defglfun "Vertex4sv" vertex-4sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex4s" vertex-4s :return "void" :args
+ ((:name |x| :type |CoordS| :direction :in)
+  (:name |y| :type |CoordS| :direction :in)
+  (:name |z| :type |CoordS| :direction :in)
+  (:name |w| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex4iv" vertex-4iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex4i" vertex-4i :return "void" :args
+ ((:name |x| :type |CoordI| :direction :in)
+  (:name |y| :type |CoordI| :direction :in)
+  (:name |z| :type |CoordI| :direction :in)
+  (:name |w| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex4fv" vertex-4fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex4f" vertex-4f :return "void" :args
+ ((:name |x| :type |CoordF| :direction :in)
+  (:name |y| :type |CoordF| :direction :in)
+  (:name |z| :type |CoordF| :direction :in)
+  (:name |w| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex4dv" vertex-4dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex4d" vertex-4d :return "void" :args
+ ((:name |x| :type |CoordD| :direction :in)
+  (:name |y| :type |CoordD| :direction :in)
+  (:name |z| :type |CoordD| :direction :in)
+  (:name |w| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex3sv" vertex-3sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex3s" vertex-3s :return "void" :args
+ ((:name |x| :type |CoordS| :direction :in)
+  (:name |y| :type |CoordS| :direction :in)
+  (:name |z| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex3iv" vertex-3iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex3i" vertex-3i :return "void" :args
+ ((:name |x| :type |CoordI| :direction :in)
+  (:name |y| :type |CoordI| :direction :in)
+  (:name |z| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex3fv" vertex-3fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex3f" vertex-3f :return "void" :args
+ ((:name |x| :type |CoordF| :direction :in)
+  (:name |y| :type |CoordF| :direction :in)
+  (:name |z| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex3dv" vertex-3dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex3d" vertex-3d :return "void" :args
+ ((:name |x| :type |CoordD| :direction :in)
+  (:name |y| :type |CoordD| :direction :in)
+  (:name |z| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex2sv" vertex-2sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex2s" vertex-2s :return "void" :args
+ ((:name |x| :type |CoordS| :direction :in)
+  (:name |y| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex2iv" vertex-2iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex2i" vertex-2i :return "void" :args
+ ((:name |x| :type |CoordI| :direction :in)
+  (:name |y| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex2fv" vertex-2fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex2f" vertex-2f :return "void" :args
+ ((:name |x| :type |CoordF| :direction :in)
+  (:name |y| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Vertex2dv" vertex-2dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "Vertex2d" vertex-2d :return "void" :args
+ ((:name |x| :type |CoordD| :direction :in)
+  (:name |y| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord4sv" tex-coord-4sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord4s" tex-coord-4s :return "void" :args
+ ((:name |s| :type |CoordS| :direction :in)
+  (:name |t| :type |CoordS| :direction :in)
+  (:name |r| :type |CoordS| :direction :in)
+  (:name |q| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord4iv" tex-coord-4iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord4i" tex-coord-4i :return "void" :args
+ ((:name |s| :type |CoordI| :direction :in)
+  (:name |t| :type |CoordI| :direction :in)
+  (:name |r| :type |CoordI| :direction :in)
+  (:name |q| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord4fv" tex-coord-4fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord4f" tex-coord-4f :return "void" :args
+ ((:name |s| :type |CoordF| :direction :in)
+  (:name |t| :type |CoordF| :direction :in)
+  (:name |r| :type |CoordF| :direction :in)
+  (:name |q| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord4dv" tex-coord-4dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord4d" tex-coord-4d :return "void" :args
+ ((:name |s| :type |CoordD| :direction :in)
+  (:name |t| :type |CoordD| :direction :in)
+  (:name |r| :type |CoordD| :direction :in)
+  (:name |q| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord3sv" tex-coord-3sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord3s" tex-coord-3s :return "void" :args
+ ((:name |s| :type |CoordS| :direction :in)
+  (:name |t| :type |CoordS| :direction :in)
+  (:name |r| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord3iv" tex-coord-3iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord3i" tex-coord-3i :return "void" :args
+ ((:name |s| :type |CoordI| :direction :in)
+  (:name |t| :type |CoordI| :direction :in)
+  (:name |r| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord3fv" tex-coord-3fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord3f" tex-coord-3f :return "void" :args
+ ((:name |s| :type |CoordF| :direction :in)
+  (:name |t| :type |CoordF| :direction :in)
+  (:name |r| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord3dv" tex-coord-3dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord3d" tex-coord-3d :return "void" :args
+ ((:name |s| :type |CoordD| :direction :in)
+  (:name |t| :type |CoordD| :direction :in)
+  (:name |r| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord2sv" tex-coord-2sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord2s" tex-coord-2s :return "void" :args
+ ((:name |s| :type |CoordS| :direction :in)
+  (:name |t| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord2iv" tex-coord-2iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord2i" tex-coord-2i :return "void" :args
+ ((:name |s| :type |CoordI| :direction :in)
+  (:name |t| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord2fv" tex-coord-2fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord2f" tex-coord-2f :return "void" :args
+ ((:name |s| :type |CoordF| :direction :in)
+  (:name |t| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord2dv" tex-coord-2dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord2d" tex-coord-2d :return "void" :args
+ ((:name |s| :type |CoordD| :direction :in)
+  (:name |t| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "TexCoord1sv" tex-coord-1sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x1)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord1s" tex-coord-1s :return "void" :args
+ ((:name |s| :type |CoordS| :direction :in)) :category "drawing" :version "1.0") 
+(defglfun "TexCoord1iv" tex-coord-1iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x1)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord1i" tex-coord-1i :return "void" :args
+ ((:name |s| :type |CoordI| :direction :in)) :category "drawing" :version "1.0") 
+(defglfun "TexCoord1fv" tex-coord-1fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x1)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord1f" tex-coord-1f :return "void" :args
+ ((:name |s| :type |CoordF| :direction :in)) :category "drawing" :version "1.0") 
+(defglfun "TexCoord1dv" tex-coord-1dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x1)) :category
+ "drawing" :version "1.0") 
+(defglfun "TexCoord1d" tex-coord-1d :return "void" :args
+ ((:name |s| :type |CoordD| :direction :in)) :category "drawing" :version "1.0") 
+(defglfun "Rectsv" rect-sv :return "void" :args
+ ((:name |v1| :type |CoordS| :direction :in :array t :size #x2)
+  (:name |v2| :type |CoordS| :direction :in :array t :size #x2))
+ :category "drawing" :version "1.0") 
+(defglfun "Rects" rect-s :return "void" :args
+ ((:name |x1| :type |CoordS| :direction :in)
+  (:name |y1| :type |CoordS| :direction :in)
+  (:name |x2| :type |CoordS| :direction :in)
+  (:name |y2| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Rectiv" rect-iv :return "void" :args
+ ((:name |v1| :type |CoordI| :direction :in :array t :size #x2)
+  (:name |v2| :type |CoordI| :direction :in :array t :size #x2))
+ :category "drawing" :version "1.0") 
+(defglfun "Recti" rect-i :return "void" :args
+ ((:name |x1| :type |CoordI| :direction :in)
+  (:name |y1| :type |CoordI| :direction :in)
+  (:name |x2| :type |CoordI| :direction :in)
+  (:name |y2| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Rectfv" rect-fv :return "void" :args
+ ((:name |v1| :type |CoordF| :direction :in :array t :size #x2)
+  (:name |v2| :type |CoordF| :direction :in :array t :size #x2))
+ :category "drawing" :version "1.0") 
+(defglfun "Rectf" rect-f :return "void" :args
+ ((:name |x1| :type |CoordF| :direction :in)
+  (:name |y1| :type |CoordF| :direction :in)
+  (:name |x2| :type |CoordF| :direction :in)
+  (:name |y2| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Rectdv" rect-dv :return "void" :args
+ ((:name |v1| :type |CoordD| :direction :in :array t :size #x2)
+  (:name |v2| :type |CoordD| :direction :in :array t :size #x2))
+ :category "drawing" :version "1.0") 
+(defglfun "Rectd" rect-d :return "void" :args
+ ((:name |x1| :type |CoordD| :direction :in)
+  (:name |y1| :type |CoordD| :direction :in)
+  (:name |x2| :type |CoordD| :direction :in)
+  (:name |y2| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos4sv" raster-pos-4sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos4s" raster-pos-4s :return "void" :args
+ ((:name |x| :type |CoordS| :direction :in)
+  (:name |y| :type |CoordS| :direction :in)
+  (:name |z| :type |CoordS| :direction :in)
+  (:name |w| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos4iv" raster-pos-4iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos4i" raster-pos-4i :return "void" :args
+ ((:name |x| :type |CoordI| :direction :in)
+  (:name |y| :type |CoordI| :direction :in)
+  (:name |z| :type |CoordI| :direction :in)
+  (:name |w| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos4fv" raster-pos-4fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos4f" raster-pos-4f :return "void" :args
+ ((:name |x| :type |CoordF| :direction :in)
+  (:name |y| :type |CoordF| :direction :in)
+  (:name |z| :type |CoordF| :direction :in)
+  (:name |w| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos4dv" raster-pos-4dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos4d" raster-pos-4d :return "void" :args
+ ((:name |x| :type |CoordD| :direction :in)
+  (:name |y| :type |CoordD| :direction :in)
+  (:name |z| :type |CoordD| :direction :in)
+  (:name |w| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos3sv" raster-pos-3sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos3s" raster-pos-3s :return "void" :args
+ ((:name |x| :type |CoordS| :direction :in)
+  (:name |y| :type |CoordS| :direction :in)
+  (:name |z| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos3iv" raster-pos-3iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos3i" raster-pos-3i :return "void" :args
+ ((:name |x| :type |CoordI| :direction :in)
+  (:name |y| :type |CoordI| :direction :in)
+  (:name |z| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos3fv" raster-pos-3fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos3f" raster-pos-3f :return "void" :args
+ ((:name |x| :type |CoordF| :direction :in)
+  (:name |y| :type |CoordF| :direction :in)
+  (:name |z| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos3dv" raster-pos-3dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos3d" raster-pos-3d :return "void" :args
+ ((:name |x| :type |CoordD| :direction :in)
+  (:name |y| :type |CoordD| :direction :in)
+  (:name |z| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos2sv" raster-pos-2sv :return "void" :args
+ ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos2s" raster-pos-2s :return "void" :args
+ ((:name |x| :type |CoordS| :direction :in)
+  (:name |y| :type |CoordS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos2iv" raster-pos-2iv :return "void" :args
+ ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos2i" raster-pos-2i :return "void" :args
+ ((:name |x| :type |CoordI| :direction :in)
+  (:name |y| :type |CoordI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos2fv" raster-pos-2fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos2f" raster-pos-2f :return "void" :args
+ ((:name |x| :type |CoordF| :direction :in)
+  (:name |y| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "RasterPos2dv" raster-pos-2dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :category
+ "drawing" :version "1.0") 
+(defglfun "RasterPos2d" raster-pos-2d :return "void" :args
+ ((:name |x| :type |CoordD| :direction :in)
+  (:name |y| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Normal3sv" normal-3sv :return "void" :args
+ ((:name |v| :type |Int16| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Normal3s" normal-3s :return "void" :args
+ ((:name |nx| :type |Int16| :direction :in)
+  (:name |ny| :type |Int16| :direction :in)
+  (:name |nz| :type |Int16| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Normal3iv" normal-3iv :return "void" :args
+ ((:name |v| :type |Int32| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Normal3i" normal-3i :return "void" :args
+ ((:name |nx| :type |Int32| :direction :in)
+  (:name |ny| :type |Int32| :direction :in)
+  (:name |nz| :type |Int32| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Normal3fv" normal-3fv :return "void" :args
+ ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Normal3f" normal-3f :return "void" :args
+ ((:name |nx| :type |CoordF| :direction :in)
+  (:name |ny| :type |CoordF| :direction :in)
+  (:name |nz| :type |CoordF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Normal3dv" normal-3dv :return "void" :args
+ ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Normal3d" normal-3d :return "void" :args
+ ((:name |nx| :type |CoordD| :direction :in)
+  (:name |ny| :type |CoordD| :direction :in)
+  (:name |nz| :type |CoordD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Normal3bv" normal-3bv :return "void" :args
+ ((:name |v| :type |Int8| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Normal3b" normal-3b :return "void" :args
+ ((:name |nx| :type |Int8| :direction :in)
+  (:name |ny| :type |Int8| :direction :in)
+  (:name |nz| :type |Int8| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Indexsv" index-sv :return "void" :args
+ ((:name |c| :type |ColorIndexValueS| :direction :in :array t :size #x1))
+ :category "drawing" :version "1.0") 
+(defglfun "Indexs" index-s :return "void" :args
+ ((:name |c| :type |ColorIndexValueS| :direction :in)) :category "drawing"
+ :version "1.0") 
+(defglfun "Indexiv" index-iv :return "void" :args
+ ((:name |c| :type |ColorIndexValueI| :direction :in :array t :size #x1))
+ :category "drawing" :version "1.0") 
+(defglfun "Indexi" index-i :return "void" :args
+ ((:name |c| :type |ColorIndexValueI| :direction :in)) :category "drawing"
+ :version "1.0") 
+(defglfun "Indexfv" index-fv :return "void" :args
+ ((:name |c| :type |ColorIndexValueF| :direction :in :array t :size #x1))
+ :category "drawing" :version "1.0") 
+(defglfun "Indexf" index-f :return "void" :args
+ ((:name |c| :type |ColorIndexValueF| :direction :in)) :category "drawing"
+ :version "1.0") 
+(defglfun "Indexdv" index-dv :return "void" :args
+ ((:name |c| :type |ColorIndexValueD| :direction :in :array t :size #x1))
+ :category "drawing" :version "1.0") 
+(defglfun "Indexd" index-d :return "void" :args
+ ((:name |c| :type |ColorIndexValueD| :direction :in)) :category "drawing"
+ :version "1.0") 
+(defglfun "End" end :return "void" :args nil :category "drawing" :version "1.0") 
+(defglfun "EdgeFlagv" edge-flagv :return "void" :args
+ ((:name |flag| :type |Boolean| :direction :in :array t :size #x1)) :category
+ "drawing" :version "1.0") 
+(defglfun "EdgeFlag" edge-flag :return "void" :args
+ ((:name |flag| :type |Boolean| :direction :in)) :category "drawing" :version
+ "1.0") 
+(defglfun "Color4usv" color-4usv :return "void" :args
+ ((:name |v| :type |ColorUS| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4us" color-4us :return "void" :args
+ ((:name |red| :type |ColorUS| :direction :in)
+  (:name |green| :type |ColorUS| :direction :in)
+  (:name |blue| :type |ColorUS| :direction :in)
+  (:name |alpha| :type |ColorUS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4uiv" color-4uiv :return "void" :args
+ ((:name |v| :type |ColorUI| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4ui" color-4ui :return "void" :args
+ ((:name |red| :type |ColorUI| :direction :in)
+  (:name |green| :type |ColorUI| :direction :in)
+  (:name |blue| :type |ColorUI| :direction :in)
+  (:name |alpha| :type |ColorUI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4ubv" color-4ubv :return "void" :args
+ ((:name |v| :type |ColorUB| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4ub" color-4ub :return "void" :args
+ ((:name |red| :type |ColorUB| :direction :in)
+  (:name |green| :type |ColorUB| :direction :in)
+  (:name |blue| :type |ColorUB| :direction :in)
+  (:name |alpha| :type |ColorUB| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4sv" color-4sv :return "void" :args
+ ((:name |v| :type |ColorS| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4s" color-4s :return "void" :args
+ ((:name |red| :type |ColorS| :direction :in)
+  (:name |green| :type |ColorS| :direction :in)
+  (:name |blue| :type |ColorS| :direction :in)
+  (:name |alpha| :type |ColorS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4iv" color-4iv :return "void" :args
+ ((:name |v| :type |ColorI| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4i" color-4i :return "void" :args
+ ((:name |red| :type |ColorI| :direction :in)
+  (:name |green| :type |ColorI| :direction :in)
+  (:name |blue| :type |ColorI| :direction :in)
+  (:name |alpha| :type |ColorI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4fv" color-4fv :return "void" :args
+ ((:name |v| :type |ColorF| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4f" color-4f :return "void" :args
+ ((:name |red| :type |ColorF| :direction :in)
+  (:name |green| :type |ColorF| :direction :in)
+  (:name |blue| :type |ColorF| :direction :in)
+  (:name |alpha| :type |ColorF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4dv" color-4dv :return "void" :args
+ ((:name |v| :type |ColorD| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4d" color-4d :return "void" :args
+ ((:name |red| :type |ColorD| :direction :in)
+  (:name |green| :type |ColorD| :direction :in)
+  (:name |blue| :type |ColorD| :direction :in)
+  (:name |alpha| :type |ColorD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color4bv" color-4bv :return "void" :args
+ ((:name |v| :type |ColorB| :direction :in :array t :size #x4)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color4b" color-4b :return "void" :args
+ ((:name |red| :type |ColorB| :direction :in)
+  (:name |green| :type |ColorB| :direction :in)
+  (:name |blue| :type |ColorB| :direction :in)
+  (:name |alpha| :type |ColorB| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3usv" color-3usv :return "void" :args
+ ((:name |v| :type |ColorUS| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3us" color-3us :return "void" :args
+ ((:name |red| :type |ColorUS| :direction :in)
+  (:name |green| :type |ColorUS| :direction :in)
+  (:name |blue| :type |ColorUS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3uiv" color-3uiv :return "void" :args
+ ((:name |v| :type |ColorUI| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3ui" color-3ui :return "void" :args
+ ((:name |red| :type |ColorUI| :direction :in)
+  (:name |green| :type |ColorUI| :direction :in)
+  (:name |blue| :type |ColorUI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3ubv" color-3ubv :return "void" :args
+ ((:name |v| :type |ColorUB| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3ub" color-3ub :return "void" :args
+ ((:name |red| :type |ColorUB| :direction :in)
+  (:name |green| :type |ColorUB| :direction :in)
+  (:name |blue| :type |ColorUB| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3sv" color-3sv :return "void" :args
+ ((:name |v| :type |ColorS| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3s" color-3s :return "void" :args
+ ((:name |red| :type |ColorS| :direction :in)
+  (:name |green| :type |ColorS| :direction :in)
+  (:name |blue| :type |ColorS| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3iv" color-3iv :return "void" :args
+ ((:name |v| :type |ColorI| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3i" color-3i :return "void" :args
+ ((:name |red| :type |ColorI| :direction :in)
+  (:name |green| :type |ColorI| :direction :in)
+  (:name |blue| :type |ColorI| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3fv" color-3fv :return "void" :args
+ ((:name |v| :type |ColorF| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3f" color-3f :return "void" :args
+ ((:name |red| :type |ColorF| :direction :in)
+  (:name |green| :type |ColorF| :direction :in)
+  (:name |blue| :type |ColorF| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3dv" color-3dv :return "void" :args
+ ((:name |v| :type |ColorD| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3d" color-3d :return "void" :args
+ ((:name |red| :type |ColorD| :direction :in)
+  (:name |green| :type |ColorD| :direction :in)
+  (:name |blue| :type |ColorD| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Color3bv" color-3bv :return "void" :args
+ ((:name |v| :type |ColorB| :direction :in :array t :size #x3)) :category
+ "drawing" :version "1.0") 
+(defglfun "Color3b" color-3b :return "void" :args
+ ((:name |red| :type |ColorB| :direction :in)
+  (:name |green| :type |ColorB| :direction :in)
+  (:name |blue| :type |ColorB| :direction :in))
+ :category "drawing" :version "1.0") 
+(defglfun "Bitmap" bitmap :return "void" :args
+ ((:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |xorig| :type |CoordF| :direction :in)
+  (:name |yorig| :type |CoordF| :direction :in)
+  (:name |xmove| :type |CoordF| :direction :in)
+  (:name |ymove| :type |CoordF| :direction :in)
+  (:name |bitmap| :type |UInt8| :direction :in :array t :size
+   (|width| |height|)))
+ :category "drawing" :version "1.0") 
+(defglfun "Begin" begin :return "void" :args
+ ((:name |mode| :type |BeginMode| :direction :in)) :category "drawing" :version
+ "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ drawing-control
 
-(defglfun
- (("TexGeniv" tex-gen-iv) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("120") :glsflags ("gl-enum") :glsopcode ("0x00AB") :wglflags ("small-data")
-  :offset ("193"))) 
-(defglfun
- (("TexGeni" tex-gen-i) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("119") :glsflags ("gl-enum") :glsopcode ("0x00AA") :wglflags ("small-data")
-  :offset ("192"))) 
-(defglfun
- (("TexGenfv" tex-gen-fv) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("118") :glsflags ("gl-enum") :glsopcode ("0x00A9") :wglflags ("small-data")
-  :offset ("191"))) 
-(defglfun
- (("TexGenf" tex-gen-f) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("117") :glsflags ("gl-enum") :glsopcode ("0x00A8") :wglflags ("small-data")
-  :offset ("190"))) 
-(defglfun
- (("TexGendv" tex-gen-dv) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |params| :type |Float64| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("116") :glsflags ("gl-enum") :glsopcode ("0x00A7") :wglflags ("small-data")
-  :offset ("189"))) 
-(defglfun
- (("TexGend" tex-gen-d) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |param| :type |Float64| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("115") :glsflags ("gl-enum") :glsopcode ("0x00A6") :wglflags ("small-data")
-  :offset ("188"))) 
-(defglfun
- (("TexEnviv" tex-env-iv) :args
-  ((:name |target| :type |TextureEnvTarget| :direction :in)
-   (:name |pname| :type |TextureEnvParameter| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("114") :glsflags ("gl-enum") :glsopcode ("0x00A5") :wglflags ("small-data")
-  :offset ("187"))) 
-(defglfun
- (("TexEnvi" tex-env-i) :args
-  ((:name |target| :type |TextureEnvTarget| :direction :in)
-   (:name |pname| :type |TextureEnvParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("113") :glsflags ("gl-enum") :glsopcode ("0x00A4") :wglflags ("small-data")
-  :offset ("186"))) 
-(defglfun
- (("TexEnvfv" tex-env-fv) :args
-  ((:name |target| :type |TextureEnvTarget| :direction :in)
-   (:name |pname| :type |TextureEnvParameter| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("112") :glsflags ("gl-enum") :glsopcode ("0x00A3") :wglflags ("small-data")
-  :offset ("185"))) 
-(defglfun
- (("TexEnvf" tex-env-f) :args
-  ((:name |target| :type |TextureEnvTarget| :direction :in)
-   (:name |pname| :type |TextureEnvParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("111") :glsflags ("gl-enum") :glsopcode ("0x00A2") :wglflags ("small-data")
-  :offset ("184"))) 
-(defglfun
- (("TexImage2D" tex-image-2d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |internalformat| :type |TextureComponentCount| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |border| :type |CheckedInt32| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |type| :type |PixelType| :direction :in)
-   (:name |pixels| :type |Void| :direction :in :array t :size
-    (|format| |type| |width| |height|)))
-  :return ("void") :category ("drawing-control") :dlflags ("handcode")
-  :glxflags ("client-handcode" "server-handcode") :version ("1.0") :glxropcode
-  ("110") :glsflags ("pixel-null" "pixel-unpack") :glsopcode ("0x00A1")
-  :wglflags ("client-handcode" "server-handcode") :offset ("183"))) 
-(defglfun
- (("TexImage1D" tex-image-1d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |internalformat| :type |TextureComponentCount| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |border| :type |CheckedInt32| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |type| :type |PixelType| :direction :in)
-   (:name |pixels| :type |Void| :direction :in :array t :size
-    (|format| |type| |width|)))
-  :return ("void") :category ("drawing-control") :dlflags ("handcode")
-  :glxflags ("client-handcode" "server-handcode") :version ("1.0") :glxropcode
-  ("109") :glsflags ("pixel-null" "pixel-unpack") :glsopcode ("0x00A0")
-  :wglflags ("client-handcode" "server-handcode") :offset ("182"))) 
-(defglfun
- (("TexParameteriv" tex-parameter-iv) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |TextureParameterName| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("108") :glsflags ("gl-enum") :glsopcode ("0x009F") :wglflags ("small-data")
-  :offset ("181"))) 
-(defglfun
- (("TexParameteri" tex-parameter-i) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |TextureParameterName| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("107") :glsflags ("gl-enum") :glsopcode ("0x009E") :wglflags ("small-data")
-  :offset ("180"))) 
-(defglfun
- (("TexParameterfv" tex-parameter-fv) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |TextureParameterName| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("106") :glsflags ("gl-enum") :glsopcode ("0x009D") :wglflags ("small-data")
-  :offset ("179"))) 
-(defglfun
- (("TexParameterf" tex-parameter-f) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |TextureParameterName| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("105") :glsflags ("gl-enum") :glsopcode ("0x009C") :wglflags ("small-data")
-  :offset ("178"))) 
-(defglfun
- (("ShadeModel" shade-model) :args
-  ((:name |mode| :type |ShadingModel| :direction :in)) :return ("void")
-  :category ("drawing-control") :version ("1.0") :glxropcode ("104") :glsopcode
-  ("0x009B") :offset ("177"))) 
-(defglfun
- (("Scissor" scissor) :args
-  ((:name |x| :type |WinCoord| :direction :in)
-   (:name |y| :type |WinCoord| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("103") :glsopcode ("0x009A") :offset ("176"))) 
-(defglfun
- (("PolygonStipple" polygon-stipple) :args
-  ((:name |mask| :type |UInt8| :direction :in :array t)) :return ("void")
-  :category ("drawing-control") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("102")
-  :glsflags ("pixel-unpack") :glsopcode ("0x0099") :wglflags
-  ("client-handcode" "server-handcode") :offset ("175"))) 
-(defglfun
- (("PolygonMode" polygon-mode) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |mode| :type |PolygonMode| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("101") :glsopcode ("0x0098") :offset ("174"))) 
-(defglfun
- (("PointSize" point-size) :args
-  ((:name |size| :type |CheckedFloat32| :direction :in)) :return ("void")
-  :category ("drawing-control") :version ("1.0") :glxropcode ("100") :glsopcode
-  ("0x0097") :offset ("173"))) 
-(defglfun
- (("Materialiv" material-iv) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |pname| :type |MaterialParameter| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("99") :glsopcode ("0x0096") :wglflags ("small-data") :offset ("172"))) 
-(defglfun
- (("Materiali" material-i) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |pname| :type |MaterialParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("98") :glsopcode ("0x0095") :wglflags ("small-data") :offset ("171"))) 
-(defglfun
- (("Materialfv" material-fv) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |pname| :type |MaterialParameter| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("97") :glsopcode ("0x0094") :wglflags ("small-data") :offset ("170"))) 
-(defglfun
- (("Materialf" material-f) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |pname| :type |MaterialParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("96") :glsopcode ("0x0093") :wglflags ("small-data") :offset ("169"))) 
-(defglfun
- (("LineWidth" line-width) :args
-  ((:name |width| :type |CheckedFloat32| :direction :in)) :return ("void")
-  :category ("drawing-control") :version ("1.0") :glxropcode ("95") :glsopcode
-  ("0x0092") :offset ("168"))) 
-(defglfun
- (("LineStipple" line-stipple) :args
-  ((:name |factor| :type |CheckedInt32| :direction :in)
-   (:name |pattern| :type |LineStipple| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("94") :glsopcode ("0x0091") :offset ("167"))) 
-(defglfun
- (("LightModeliv" light-model-iv) :args
-  ((:name |pname| :type |LightModelParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("93") :glsflags ("gl-enum") :glsopcode ("0x0090") :wglflags ("small-data")
-  :offset ("166"))) 
-(defglfun
- (("LightModeli" light-model-i) :args
-  ((:name |pname| :type |LightModelParameter| :direction :in)
-   (:name |param| :type |Int32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("92") :glsflags ("gl-enum") :glsopcode ("0x008F") :wglflags ("small-data")
-  :offset ("165"))) 
-(defglfun
- (("LightModelfv" light-model-fv) :args
-  ((:name |pname| :type |LightModelParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("91") :glsflags ("gl-enum") :glsopcode ("0x008E") :wglflags ("small-data")
-  :offset ("164"))) 
-(defglfun
- (("LightModelf" light-model-f) :args
-  ((:name |pname| :type |LightModelParameter| :direction :in)
-   (:name |param| :type |Float32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("90") :glsflags ("gl-enum") :glsopcode ("0x008D") :wglflags ("small-data")
-  :offset ("163"))) 
-(defglfun
- (("Lightiv" light-iv) :args
-  ((:name |light| :type |LightName| :direction :in)
-   (:name |pname| :type |LightParameter| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("89") :glsopcode ("0x008C") :wglflags ("small-data") :offset ("162"))) 
-(defglfun
- (("Lighti" light-i) :args
-  ((:name |light| :type |LightName| :direction :in)
-   (:name |pname| :type |LightParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("88") :glsopcode ("0x008B") :wglflags ("small-data") :offset ("161"))) 
-(defglfun
- (("Lightfv" light-fv) :args
-  ((:name |light| :type |LightName| :direction :in)
-   (:name |pname| :type |LightParameter| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("87") :glsopcode ("0x008A") :wglflags ("small-data") :offset ("160"))) 
-(defglfun
- (("Lightf" light-f) :args
-  ((:name |light| :type |LightName| :direction :in)
-   (:name |pname| :type |LightParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("86") :glsopcode ("0x0089") :wglflags ("small-data") :offset ("159"))) 
-(defglfun
- (("Hint" hint) :args
-  ((:name |target| :type |HintTarget| :direction :in)
-   (:name |mode| :type |HintMode| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("85") :glsopcode ("0x0088") :offset ("158"))) 
-(defglfun
- (("FrontFace" front-face) :args
-  ((:name |mode| :type |FrontFaceDirection| :direction :in)) :return ("void")
-  :category ("drawing-control") :version ("1.0") :glxropcode ("84") :glsopcode
-  ("0x0087") :offset ("157"))) 
-(defglfun
- (("Fogiv" fog-iv) :args
-  ((:name |pname| :type |FogParameter| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("83") :glsflags ("gl-enum") :glsopcode ("0x0086") :wglflags ("small-data")
-  :offset ("156"))) 
-(defglfun
- (("Fogi" fog-i) :args
-  ((:name |pname| :type |FogParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("82") :glsflags ("gl-enum") :glsopcode ("0x0085") :wglflags ("small-data")
-  :offset ("155"))) 
-(defglfun
- (("Fogfv" fog-fv) :args
-  ((:name |pname| :type |FogParameter| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("81") :glsflags ("gl-enum") :glsopcode ("0x0084") :wglflags ("small-data")
-  :offset ("154"))) 
-(defglfun
- (("Fogf" fog-f) :args
-  ((:name |pname| :type |FogParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("80") :glsflags ("gl-enum") :glsopcode ("0x0083") :wglflags ("small-data")
-  :offset ("153"))) 
-(defglfun
- (("CullFace" cull-face) :args
-  ((:name |mode| :type |CullFaceMode| :direction :in)) :return ("void")
-  :category ("drawing-control") :version ("1.0") :glxropcode ("79") :glsopcode
-  ("0x0082") :offset ("152"))) 
-(defglfun
- (("ColorMaterial" color-material) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |mode| :type |ColorMaterialParameter| :direction :in))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("78") :glsopcode ("0x0081") :offset ("151"))) 
-(defglfun
- (("ClipPlane" clip-plane) :args
-  ((:name |plane| :type |ClipPlaneName| :direction :in)
-   (:name |equation| :type |Float64| :direction :in :array t :size #x4))
-  :return ("void") :category ("drawing-control") :version ("1.0") :glxropcode
-  ("77") :glsopcode ("0x0080") :offset ("150"))) 
+(defglfun "TexGeniv" tex-gen-iv :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexGeni" tex-gen-i :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexGenfv" tex-gen-fv :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexGenf" tex-gen-f :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexGendv" tex-gen-dv :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |params| :type |Float64| :direction :in :array t :size (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexGend" tex-gen-d :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |param| :type |Float64| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexEnviv" tex-env-iv :return "void" :args
+ ((:name |target| :type |TextureEnvTarget| :direction :in)
+  (:name |pname| :type |TextureEnvParameter| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexEnvi" tex-env-i :return "void" :args
+ ((:name |target| :type |TextureEnvTarget| :direction :in)
+  (:name |pname| :type |TextureEnvParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexEnvfv" tex-env-fv :return "void" :args
+ ((:name |target| :type |TextureEnvTarget| :direction :in)
+  (:name |pname| :type |TextureEnvParameter| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexEnvf" tex-env-f :return "void" :args
+ ((:name |target| :type |TextureEnvTarget| :direction :in)
+  (:name |pname| :type |TextureEnvParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexImage2D" tex-image-2d :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |internalformat| :type |TextureComponentCount| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |border| :type |CheckedInt32| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |type| :type |PixelType| :direction :in)
+  (:name |pixels| :type |Void| :direction :in :array t :size
+   (|format| |type| |width| |height|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexImage1D" tex-image-1d :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |internalformat| :type |TextureComponentCount| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |border| :type |CheckedInt32| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |type| :type |PixelType| :direction :in)
+  (:name |pixels| :type |Void| :direction :in :array t :size
+   (|format| |type| |width|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexParameteriv" tex-parameter-iv :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |TextureParameterName| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexParameteri" tex-parameter-i :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |TextureParameterName| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexParameterfv" tex-parameter-fv :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |TextureParameterName| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "TexParameterf" tex-parameter-f :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |TextureParameterName| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "ShadeModel" shade-model :return "void" :args
+ ((:name |mode| :type |ShadingModel| :direction :in)) :category
+ "drawing-control" :version "1.0") 
+(defglfun "Scissor" scissor :return "void" :args
+ ((:name |x| :type |WinCoord| :direction :in)
+  (:name |y| :type |WinCoord| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "PolygonStipple" polygon-stipple :return "void" :args
+ ((:name |mask| :type |UInt8| :direction :in :array t)) :category
+ "drawing-control" :version "1.0") 
+(defglfun "PolygonMode" polygon-mode :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |mode| :type |PolygonMode| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "PointSize" point-size :return "void" :args
+ ((:name |size| :type |CheckedFloat32| :direction :in)) :category
+ "drawing-control" :version "1.0") 
+(defglfun "Materialiv" material-iv :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |pname| :type |MaterialParameter| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Materiali" material-i :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |pname| :type |MaterialParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Materialfv" material-fv :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |pname| :type |MaterialParameter| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Materialf" material-f :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |pname| :type |MaterialParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "LineWidth" line-width :return "void" :args
+ ((:name |width| :type |CheckedFloat32| :direction :in)) :category
+ "drawing-control" :version "1.0") 
+(defglfun "LineStipple" line-stipple :return "void" :args
+ ((:name |factor| :type |CheckedInt32| :direction :in)
+  (:name |pattern| :type |LineStipple| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "LightModeliv" light-model-iv :return "void" :args
+ ((:name |pname| :type |LightModelParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "LightModeli" light-model-i :return "void" :args
+ ((:name |pname| :type |LightModelParameter| :direction :in)
+  (:name |param| :type |Int32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "LightModelfv" light-model-fv :return "void" :args
+ ((:name |pname| :type |LightModelParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :in :array t :size (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "LightModelf" light-model-f :return "void" :args
+ ((:name |pname| :type |LightModelParameter| :direction :in)
+  (:name |param| :type |Float32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Lightiv" light-iv :return "void" :args
+ ((:name |light| :type |LightName| :direction :in)
+  (:name |pname| :type |LightParameter| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Lighti" light-i :return "void" :args
+ ((:name |light| :type |LightName| :direction :in)
+  (:name |pname| :type |LightParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Lightfv" light-fv :return "void" :args
+ ((:name |light| :type |LightName| :direction :in)
+  (:name |pname| :type |LightParameter| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Lightf" light-f :return "void" :args
+ ((:name |light| :type |LightName| :direction :in)
+  (:name |pname| :type |LightParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Hint" hint :return "void" :args
+ ((:name |target| :type |HintTarget| :direction :in)
+  (:name |mode| :type |HintMode| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "FrontFace" front-face :return "void" :args
+ ((:name |mode| :type |FrontFaceDirection| :direction :in)) :category
+ "drawing-control" :version "1.0") 
+(defglfun "Fogiv" fog-iv :return "void" :args
+ ((:name |pname| :type |FogParameter| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Fogi" fog-i :return "void" :args
+ ((:name |pname| :type |FogParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Fogfv" fog-fv :return "void" :args
+ ((:name |pname| :type |FogParameter| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "drawing-control" :version "1.0") 
+(defglfun "Fogf" fog-f :return "void" :args
+ ((:name |pname| :type |FogParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "CullFace" cull-face :return "void" :args
+ ((:name |mode| :type |CullFaceMode| :direction :in)) :category
+ "drawing-control" :version "1.0") 
+(defglfun "ColorMaterial" color-material :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |mode| :type |ColorMaterialParameter| :direction :in))
+ :category "drawing-control" :version "1.0") 
+(defglfun "ClipPlane" clip-plane :return "void" :args
+ ((:name |plane| :type |ClipPlaneName| :direction :in)
+  (:name |equation| :type |Float64| :direction :in :array t :size #x4))
+ :category "drawing-control" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ feedback
 
-(defglfun
- (("PushName" push-name) :args
-  ((:name |name| :type |SelectName| :direction :in)) :return ("void") :category
-  ("feedback") :version ("1.0") :glxropcode ("125") :glsopcode ("0x00B3")
-  :offset ("201"))) 
-(defglfun
- (("PopName" pop-name) :args nil :return ("void") :category ("feedback")
-  :version ("1.0") :glxropcode ("124") :glsopcode ("0x00B2") :offset ("200"))) 
-(defglfun
- (("PassThrough" pass-through) :args
-  ((:name |token| :type |FeedbackElement| :direction :in)) :return ("void")
-  :category ("feedback") :version ("1.0") :glxropcode ("123") :glsopcode
-  ("0x00B1") :offset ("199"))) 
-(defglfun
- (("LoadName" load-name) :args
-  ((:name |name| :type |SelectName| :direction :in)) :return ("void") :category
-  ("feedback") :version ("1.0") :glxropcode ("122") :glsopcode ("0x00B0")
-  :offset ("198"))) 
-(defglfun
- (("InitNames" init-names) :args nil :return ("void") :category ("feedback")
-  :version ("1.0") :glxropcode ("121") :glsopcode ("0x00AF") :offset ("197"))) 
-(defglfun
- (("RenderMode" render-mode) :args
-  ((:name |mode| :type |RenderingMode| :direction :in)) :return ("Int32")
-  :category ("feedback") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxsingle ("107")
-  :glsopcode ("0x00AE") :wglflags ("client-handcode" "server-handcode") :offset
-  ("196"))) 
-(defglfun
- (("SelectBuffer" select-buffer) :args
-  ((:name |size| :type |SizeI| :direction :in)
-   (:name |buffer| :type |SelectName| :direction :out :array t :size size
-    :retained t))
-  :return ("void") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :category ("feedback") :version ("1.0")
-  :glxsingle ("106") :glsflags ("client") :glsopcode ("0x00AD") :wglflags
-  ("client-handcode" "server-handcode" "batchable") :offset ("195"))) 
-(defglfun
- (("FeedbackBuffer" feedback-buffer) :args
-  ((:name |size| :type |SizeI| :direction :in)
-   (:name |type| :type |FeedbackType| :direction :in)
-   (:name |buffer| :type |FeedbackElement| :direction :out :array t :size size
-    :retained t))
-  :return ("void") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :category ("feedback") :version ("1.0")
-  :glxsingle ("105") :glsflags ("client") :glsopcode ("0x00AC") :wglflags
-  ("client-handcode" "server-handcode" "batchable") :offset ("194"))) 
+(defglfun "PushName" push-name :return "void" :args
+ ((:name |name| :type |SelectName| :direction :in)) :category "feedback"
+ :version "1.0") 
+(defglfun "PopName" pop-name :return "void" :args nil :category "feedback"
+ :version "1.0") 
+(defglfun "PassThrough" pass-through :return "void" :args
+ ((:name |token| :type |FeedbackElement| :direction :in)) :category "feedback"
+ :version "1.0") 
+(defglfun "LoadName" load-name :return "void" :args
+ ((:name |name| :type |SelectName| :direction :in)) :category "feedback"
+ :version "1.0") 
+(defglfun "InitNames" init-names :return "void" :args nil :category "feedback"
+ :version "1.0") 
+(defglfun "RenderMode" render-mode :return "Int32" :args
+ ((:name |mode| :type |RenderingMode| :direction :in)) :category "feedback"
+ :version "1.0") 
+(defglfun "SelectBuffer" select-buffer :return "void" :args
+ ((:name |size| :type |SizeI| :direction :in)
+  (:name |buffer| :type |SelectName| :direction :out :array t :size size
+   :retained t))
+ :category "feedback" :version "1.0") 
+(defglfun "FeedbackBuffer" feedback-buffer :return "void" :args
+ ((:name |size| :type |SizeI| :direction :in)
+  (:name |type| :type |FeedbackType| :direction :in)
+  (:name |buffer| :type |FeedbackElement| :direction :out :array t :size size
+   :retained t))
+ :category "feedback" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ framebuf
 
-(defglfun
- (("IndexMask" index-mask) :args
-  ((:name |mask| :type |MaskedColorIndexValueI| :direction :in)) :return
-  ("void") :category ("framebuf") :version ("1.0") :glxropcode ("136")
-  :glsopcode ("0x00BE") :offset ("212"))) 
-(defglfun
- (("DepthMask" depth-mask) :args
-  ((:name |flag| :type |Boolean| :direction :in)) :return ("void") :category
-  ("framebuf") :version ("1.0") :glxropcode ("135") :glsopcode ("0x00BD")
-  :offset ("211"))) 
-(defglfun
- (("ColorMask" color-mask) :args
-  ((:name |red| :type |Boolean| :direction :in)
-   (:name |green| :type |Boolean| :direction :in)
-   (:name |blue| :type |Boolean| :direction :in)
-   (:name |alpha| :type |Boolean| :direction :in))
-  :return ("void") :category ("framebuf") :version ("1.0") :glxropcode ("134")
-  :glsopcode ("0x00BC") :offset ("210"))) 
-(defglfun
- (("StencilMask" stencil-mask) :args
-  ((:name |mask| :type |MaskedStencilValue| :direction :in)) :return ("void")
-  :category ("framebuf") :version ("1.0") :glxropcode ("133") :glsopcode
-  ("0x00BB") :offset ("209"))) 
-(defglfun
- (("ClearDepth" clear-depth) :args
-  ((:name |depth| :type |ClampedFloat64| :direction :in)) :return ("void")
-  :category ("framebuf") :version ("1.0") :glxropcode ("132") :glsopcode
-  ("0x00BA") :offset ("208"))) 
-(defglfun
- (("ClearStencil" clear-stencil) :args
-  ((:name |s| :type |StencilValue| :direction :in)) :return ("void") :category
-  ("framebuf") :version ("1.0") :glxropcode ("131") :glsopcode ("0x00B9")
-  :offset ("207"))) 
-(defglfun
- (("ClearColor" clear-color) :args
-  ((:name |red| :type |ClampedColorF| :direction :in)
-   (:name |green| :type |ClampedColorF| :direction :in)
-   (:name |blue| :type |ClampedColorF| :direction :in)
-   (:name |alpha| :type |ClampedColorF| :direction :in))
-  :return ("void") :category ("framebuf") :version ("1.0") :glxropcode ("130")
-  :glsopcode ("0x00B8") :offset ("206"))) 
-(defglfun
- (("ClearIndex" clear-index) :args
-  ((:name |c| :type |MaskedColorIndexValueF| :direction :in)) :return ("void")
-  :category ("framebuf") :version ("1.0") :glxropcode ("129") :glsopcode
-  ("0x00B7") :offset ("205"))) 
-(defglfun
- (("ClearAccum" clear-accum) :args
-  ((:name |red| :type |Float32| :direction :in)
-   (:name |green| :type |Float32| :direction :in)
-   (:name |blue| :type |Float32| :direction :in)
-   (:name |alpha| :type |Float32| :direction :in))
-  :return ("void") :category ("framebuf") :version ("1.0") :glxropcode ("128")
-  :glsopcode ("0x00B6") :offset ("204"))) 
-(defglfun
- (("Clear" clear) :args ((:name |mask| :type |ClearBufferMask| :direction :in))
-  :return ("void") :category ("framebuf") :version ("1.0") :glxropcode ("127")
-  :glsopcode ("0x00B5") :offset ("203"))) 
-(defglfun
- (("DrawBuffer" draw-buffer) :args
-  ((:name |mode| :type |DrawBufferMode| :direction :in)) :return ("void")
-  :category ("framebuf") :version ("1.0") :glxropcode ("126") :glsopcode
-  ("0x00B4") :offset ("202"))) 
+(defglfun "IndexMask" index-mask :return "void" :args
+ ((:name |mask| :type |MaskedColorIndexValueI| :direction :in)) :category
+ "framebuf" :version "1.0") 
+(defglfun "DepthMask" depth-mask :return "void" :args
+ ((:name |flag| :type |Boolean| :direction :in)) :category "framebuf" :version
+ "1.0") 
+(defglfun "ColorMask" color-mask :return "void" :args
+ ((:name |red| :type |Boolean| :direction :in)
+  (:name |green| :type |Boolean| :direction :in)
+  (:name |blue| :type |Boolean| :direction :in)
+  (:name |alpha| :type |Boolean| :direction :in))
+ :category "framebuf" :version "1.0") 
+(defglfun "StencilMask" stencil-mask :return "void" :args
+ ((:name |mask| :type |MaskedStencilValue| :direction :in)) :category
+ "framebuf" :version "1.0") 
+(defglfun "ClearDepth" clear-depth :return "void" :args
+ ((:name |depth| :type |ClampedFloat64| :direction :in)) :category "framebuf"
+ :version "1.0") 
+(defglfun "ClearStencil" clear-stencil :return "void" :args
+ ((:name |s| :type |StencilValue| :direction :in)) :category "framebuf"
+ :version "1.0") 
+(defglfun "ClearColor" clear-color :return "void" :args
+ ((:name |red| :type |ClampedColorF| :direction :in)
+  (:name |green| :type |ClampedColorF| :direction :in)
+  (:name |blue| :type |ClampedColorF| :direction :in)
+  (:name |alpha| :type |ClampedColorF| :direction :in))
+ :category "framebuf" :version "1.0") 
+(defglfun "ClearIndex" clear-index :return "void" :args
+ ((:name |c| :type |MaskedColorIndexValueF| :direction :in)) :category
+ "framebuf" :version "1.0") 
+(defglfun "ClearAccum" clear-accum :return "void" :args
+ ((:name |red| :type |Float32| :direction :in)
+  (:name |green| :type |Float32| :direction :in)
+  (:name |blue| :type |Float32| :direction :in)
+  (:name |alpha| :type |Float32| :direction :in))
+ :category "framebuf" :version "1.0") 
+(defglfun "Clear" clear :return "void" :args
+ ((:name |mask| :type |ClearBufferMask| :direction :in)) :category "framebuf"
+ :version "1.0") 
+(defglfun "DrawBuffer" draw-buffer :return "void" :args
+ ((:name |mode| :type |DrawBufferMode| :direction :in)) :category "framebuf"
+ :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ misc
 
-(defglfun
- (("PushAttrib" push-attrib) :args
-  ((:name |mask| :type |AttribMask| :direction :in)) :return ("void") :category
-  ("misc") :version ("1.0") :glxropcode ("142") :glsopcode ("0x00C5") :offset
-  ("219"))) 
-(defglfun
- (("PopAttrib" pop-attrib) :args nil :return ("void") :category ("misc")
-  :version ("1.0") :glxropcode ("141") :glsopcode ("0x00C4") :offset ("218"))) 
-(defglfun
- (("Flush" flush) :args nil :return ("void") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "client-intercept" "server-handcode") :category ("misc")
-  :version ("1.0") :glxsingle ("142") :glsopcode ("0x00C3") :offset ("217"))) 
-(defglfun
- (("Finish" finish) :args nil :return ("void") :dlflags ("notlistable")
-  :glxflags ("client-handcode" "server-handcode") :category ("misc") :version
-  ("1.0") :glxsingle ("108") :glsopcode ("0x00C2") :offset ("216"))) 
-(defglfun
- (("Enable" enable) :args ((:name |cap| :type |EnableCap| :direction :in))
-  :return ("void") :category ("misc") :version ("1.0") :dlflags ("handcode")
-  :glxflags ("client-handcode" "client-intercept") :glxropcode ("139")
-  :glsflags ("client") :glsopcode ("0x00C1") :offset ("215"))) 
-(defglfun
- (("Disable" disable) :args ((:name |cap| :type |EnableCap| :direction :in))
-  :return ("void") :category ("misc") :version ("1.0") :dlflags ("handcode")
-  :glxflags ("client-handcode" "client-intercept") :glxropcode ("138")
-  :glsflags ("client") :glsopcode ("0x00C0") :offset ("214"))) 
-(defglfun
- (("Accum" accum) :args
-  ((:name |op| :type |AccumOp| :direction :in)
-   (:name |value| :type |CoordF| :direction :in))
-  :return ("void") :category ("misc") :version ("1.0") :glxropcode ("137")
-  :glsopcode ("0x00BF") :offset ("213"))) 
+(defglfun "PushAttrib" push-attrib :return "void" :args
+ ((:name |mask| :type |AttribMask| :direction :in)) :category "misc" :version
+ "1.0") 
+(defglfun "PopAttrib" pop-attrib :return "void" :args nil :category "misc"
+ :version "1.0") 
+(defglfun "Flush" flush :return "void" :args nil :category "misc" :version
+ "1.0") 
+(defglfun "Finish" finish :return "void" :args nil :category "misc" :version
+ "1.0") 
+(defglfun "Enable" enable :return "void" :args
+ ((:name |cap| :type |EnableCap| :direction :in)) :category "misc" :version
+ "1.0") 
+(defglfun "Disable" disable :return "void" :args
+ ((:name |cap| :type |EnableCap| :direction :in)) :category "misc" :version
+ "1.0") 
+(defglfun "Accum" accum :return "void" :args
+ ((:name |op| :type |AccumOp| :direction :in)
+  (:name |value| :type |CoordF| :direction :in))
+ :category "misc" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ modeling
 
-(defglfun
- (("EvalPoint2" eval-point-2) :args
-  ((:name |i| :type |CheckedInt32| :direction :in)
-   (:name |j| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("158")
-  :glsopcode ("0x00D5") :offset ("239"))) 
-(defglfun
- (("EvalMesh2" eval-mesh-2) :args
-  ((:name |mode| :type |MeshMode2| :direction :in)
-   (:name |i1| :type |CheckedInt32| :direction :in)
-   (:name |i2| :type |CheckedInt32| :direction :in)
-   (:name |j1| :type |CheckedInt32| :direction :in)
-   (:name |j2| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("157")
-  :glsopcode ("0x00D4") :offset ("238"))) 
-(defglfun
- (("EvalPoint1" eval-point-1) :args ((:name |i| :type |Int32| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("156")
-  :glsopcode ("0x00D3") :offset ("237"))) 
-(defglfun
- (("EvalMesh1" eval-mesh-1) :args
-  ((:name |mode| :type |MeshMode1| :direction :in)
-   (:name |i1| :type |CheckedInt32| :direction :in)
-   (:name |i2| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("155")
-  :glsopcode ("0x00D2") :offset ("236"))) 
-(defglfun
- (("EvalCoord2fv" eval-coord-2fv) :args
-  ((:name |u| :type |CoordF| :direction :in :array t :size #x2)) :return
-  ("void") :category ("modeling") :version ("1.0") :glxropcode ("154")
-  :glsopcode ("0x00D1") :offset ("235"))) 
-(defglfun
- (("EvalCoord2f" eval-coord-2f) :args
-  ((:name |u| :type |CoordF| :direction :in)
-   (:name |v| :type |CoordF| :direction :in))
-  :return ("void") :category ("modeling") :vectorequiv ("EvalCoord2fv")
-  :version ("1.0") :offset ("234"))) 
-(defglfun
- (("EvalCoord2dv" eval-coord-2dv) :args
-  ((:name |u| :type |CoordD| :direction :in :array t :size #x2)) :return
-  ("void") :category ("modeling") :version ("1.0") :glxropcode ("153")
-  :glsopcode ("0x00D0") :offset ("233"))) 
-(defglfun
- (("EvalCoord2d" eval-coord-2d) :args
-  ((:name |u| :type |CoordD| :direction :in)
-   (:name |v| :type |CoordD| :direction :in))
-  :return ("void") :category ("modeling") :vectorequiv ("EvalCoord2dv")
-  :version ("1.0") :offset ("232"))) 
-(defglfun
- (("EvalCoord1fv" eval-coord-1fv) :args
-  ((:name |u| :type |CoordF| :direction :in :array t :size #x1)) :return
-  ("void") :category ("modeling") :version ("1.0") :glxropcode ("152")
-  :glsopcode ("0x00CF") :offset ("231"))) 
-(defglfun
- (("EvalCoord1f" eval-coord-1f) :args
-  ((:name |u| :type |CoordF| :direction :in)) :return ("void") :category
-  ("modeling") :vectorequiv ("EvalCoord1fv") :version ("1.0") :offset ("230"))) 
-(defglfun
- (("EvalCoord1dv" eval-coord-1dv) :args
-  ((:name |u| :type |CoordD| :direction :in :array t :size #x1)) :return
-  ("void") :category ("modeling") :version ("1.0") :glxropcode ("151")
-  :glsopcode ("0x00CE") :offset ("229"))) 
-(defglfun
- (("EvalCoord1d" eval-coord-1d) :args
-  ((:name |u| :type |CoordD| :direction :in)) :return ("void") :category
-  ("modeling") :vectorequiv ("EvalCoord1dv") :version ("1.0") :offset ("228"))) 
-(defglfun
- (("MapGrid2f" map-grid-2f) :args
-  ((:name |un| :type |Int32| :direction :in)
-   (:name |u1| :type |CoordF| :direction :in)
-   (:name |u2| :type |CoordF| :direction :in)
-   (:name |vn| :type |Int32| :direction :in)
-   (:name |v1| :type |CoordF| :direction :in)
-   (:name |v2| :type |CoordF| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("150")
-  :glsopcode ("0x00CD") :offset ("227"))) 
-(defglfun
- (("MapGrid2d" map-grid-2d) :args
-  ((:name |un| :type |Int32| :direction :in)
-   (:name |u1| :type |CoordD| :direction :in)
-   (:name |u2| :type |CoordD| :direction :in)
-   (:name |vn| :type |Int32| :direction :in)
-   (:name |v1| :type |CoordD| :direction :in)
-   (:name |v2| :type |CoordD| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("149")
-  :glsopcode ("0x00CC") :offset ("226"))) 
-(defglfun
- (("MapGrid1f" map-grid-1f) :args
-  ((:name |un| :type |Int32| :direction :in)
-   (:name |u1| :type |CoordF| :direction :in)
-   (:name |u2| :type |CoordF| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("148")
-  :glsopcode ("0x00CB") :offset ("225"))) 
-(defglfun
- (("MapGrid1d" map-grid-1d) :args
-  ((:name |un| :type |Int32| :direction :in)
-   (:name |u1| :type |CoordD| :direction :in)
-   (:name |u2| :type |CoordD| :direction :in))
-  :return ("void") :category ("modeling") :version ("1.0") :glxropcode ("147")
-  :glsopcode ("0x00CA") :offset ("224"))) 
-(defglfun
- (("Map2f" map-2f) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |u1| :type |CoordF| :direction :in)
-   (:name |u2| :type |CoordF| :direction :in)
-   (:name |ustride| :type |Int32| :direction :in)
-   (:name |uorder| :type |CheckedInt32| :direction :in)
-   (:name |v1| :type |CoordF| :direction :in)
-   (:name |v2| :type |CoordF| :direction :in)
-   (:name |vstride| :type |Int32| :direction :in)
-   (:name |vorder| :type |CheckedInt32| :direction :in)
-   (:name |points| :type |CoordF| :direction :in :array t :size
-    (|target| |ustride| |uorder| |vstride| |vorder|)))
-  :return ("void") :category ("modeling") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("146")
-  :glsflags ("capture-handcode") :glsopcode ("0x00C9") :wglflags
-  ("client-handcode" "server-handcode") :offset ("223"))) 
-(defglfun
- (("Map2d" map-2d) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |u1| :type |CoordD| :direction :in)
-   (:name |u2| :type |CoordD| :direction :in)
-   (:name |ustride| :type |Int32| :direction :in)
-   (:name |uorder| :type |CheckedInt32| :direction :in)
-   (:name |v1| :type |CoordD| :direction :in)
-   (:name |v2| :type |CoordD| :direction :in)
-   (:name |vstride| :type |Int32| :direction :in)
-   (:name |vorder| :type |CheckedInt32| :direction :in)
-   (:name |points| :type |CoordD| :direction :in :array t :size
-    (|target| |ustride| |uorder| |vstride| |vorder|)))
-  :return ("void") :category ("modeling") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("145")
-  :glsflags ("capture-handcode") :glsopcode ("0x00C8") :wglflags
-  ("client-handcode" "server-handcode") :offset ("222"))) 
-(defglfun
- (("Map1f" map-1f) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |u1| :type |CoordF| :direction :in)
-   (:name |u2| :type |CoordF| :direction :in)
-   (:name |stride| :type |Int32| :direction :in)
-   (:name |order| :type |CheckedInt32| :direction :in)
-   (:name |points| :type |CoordF| :direction :in :array t :size
-    (|target| |stride| |order|)))
-  :return ("void") :category ("modeling") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("144")
-  :glsflags ("capture-handcode") :glsopcode ("0x00C7") :wglflags
-  ("client-handcode" "server-handcode") :offset ("221"))) 
-(defglfun
- (("Map1d" map-1d) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |u1| :type |CoordD| :direction :in)
-   (:name |u2| :type |CoordD| :direction :in)
-   (:name |stride| :type |Int32| :direction :in)
-   (:name |order| :type |CheckedInt32| :direction :in)
-   (:name |points| :type |CoordD| :direction :in :array t :size
-    (|target| |stride| |order|)))
-  :return ("void") :category ("modeling") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("143")
-  :glsflags ("capture-handcode") :glsopcode ("0x00C6") :wglflags
-  ("client-handcode" "server-handcode") :offset ("220"))) 
+(defglfun "EvalPoint2" eval-point-2 :return "void" :args
+ ((:name |i| :type |CheckedInt32| :direction :in)
+  (:name |j| :type |CheckedInt32| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "EvalMesh2" eval-mesh-2 :return "void" :args
+ ((:name |mode| :type |MeshMode2| :direction :in)
+  (:name |i1| :type |CheckedInt32| :direction :in)
+  (:name |i2| :type |CheckedInt32| :direction :in)
+  (:name |j1| :type |CheckedInt32| :direction :in)
+  (:name |j2| :type |CheckedInt32| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "EvalPoint1" eval-point-1 :return "void" :args
+ ((:name |i| :type |Int32| :direction :in)) :category "modeling" :version "1.0") 
+(defglfun "EvalMesh1" eval-mesh-1 :return "void" :args
+ ((:name |mode| :type |MeshMode1| :direction :in)
+  (:name |i1| :type |CheckedInt32| :direction :in)
+  (:name |i2| :type |CheckedInt32| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "EvalCoord2fv" eval-coord-2fv :return "void" :args
+ ((:name |u| :type |CoordF| :direction :in :array t :size #x2)) :category
+ "modeling" :version "1.0") 
+(defglfun "EvalCoord2f" eval-coord-2f :return "void" :args
+ ((:name |u| :type |CoordF| :direction :in)
+  (:name |v| :type |CoordF| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "EvalCoord2dv" eval-coord-2dv :return "void" :args
+ ((:name |u| :type |CoordD| :direction :in :array t :size #x2)) :category
+ "modeling" :version "1.0") 
+(defglfun "EvalCoord2d" eval-coord-2d :return "void" :args
+ ((:name |u| :type |CoordD| :direction :in)
+  (:name |v| :type |CoordD| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "EvalCoord1fv" eval-coord-1fv :return "void" :args
+ ((:name |u| :type |CoordF| :direction :in :array t :size #x1)) :category
+ "modeling" :version "1.0") 
+(defglfun "EvalCoord1f" eval-coord-1f :return "void" :args
+ ((:name |u| :type |CoordF| :direction :in)) :category "modeling" :version
+ "1.0") 
+(defglfun "EvalCoord1dv" eval-coord-1dv :return "void" :args
+ ((:name |u| :type |CoordD| :direction :in :array t :size #x1)) :category
+ "modeling" :version "1.0") 
+(defglfun "EvalCoord1d" eval-coord-1d :return "void" :args
+ ((:name |u| :type |CoordD| :direction :in)) :category "modeling" :version
+ "1.0") 
+(defglfun "MapGrid2f" map-grid-2f :return "void" :args
+ ((:name |un| :type |Int32| :direction :in)
+  (:name |u1| :type |CoordF| :direction :in)
+  (:name |u2| :type |CoordF| :direction :in)
+  (:name |vn| :type |Int32| :direction :in)
+  (:name |v1| :type |CoordF| :direction :in)
+  (:name |v2| :type |CoordF| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "MapGrid2d" map-grid-2d :return "void" :args
+ ((:name |un| :type |Int32| :direction :in)
+  (:name |u1| :type |CoordD| :direction :in)
+  (:name |u2| :type |CoordD| :direction :in)
+  (:name |vn| :type |Int32| :direction :in)
+  (:name |v1| :type |CoordD| :direction :in)
+  (:name |v2| :type |CoordD| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "MapGrid1f" map-grid-1f :return "void" :args
+ ((:name |un| :type |Int32| :direction :in)
+  (:name |u1| :type |CoordF| :direction :in)
+  (:name |u2| :type |CoordF| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "MapGrid1d" map-grid-1d :return "void" :args
+ ((:name |un| :type |Int32| :direction :in)
+  (:name |u1| :type |CoordD| :direction :in)
+  (:name |u2| :type |CoordD| :direction :in))
+ :category "modeling" :version "1.0") 
+(defglfun "Map2f" map-2f :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |u1| :type |CoordF| :direction :in)
+  (:name |u2| :type |CoordF| :direction :in)
+  (:name |ustride| :type |Int32| :direction :in)
+  (:name |uorder| :type |CheckedInt32| :direction :in)
+  (:name |v1| :type |CoordF| :direction :in)
+  (:name |v2| :type |CoordF| :direction :in)
+  (:name |vstride| :type |Int32| :direction :in)
+  (:name |vorder| :type |CheckedInt32| :direction :in)
+  (:name |points| :type |CoordF| :direction :in :array t :size
+   (|target| |ustride| |uorder| |vstride| |vorder|)))
+ :category "modeling" :version "1.0") 
+(defglfun "Map2d" map-2d :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |u1| :type |CoordD| :direction :in)
+  (:name |u2| :type |CoordD| :direction :in)
+  (:name |ustride| :type |Int32| :direction :in)
+  (:name |uorder| :type |CheckedInt32| :direction :in)
+  (:name |v1| :type |CoordD| :direction :in)
+  (:name |v2| :type |CoordD| :direction :in)
+  (:name |vstride| :type |Int32| :direction :in)
+  (:name |vorder| :type |CheckedInt32| :direction :in)
+  (:name |points| :type |CoordD| :direction :in :array t :size
+   (|target| |ustride| |uorder| |vstride| |vorder|)))
+ :category "modeling" :version "1.0") 
+(defglfun "Map1f" map-1f :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |u1| :type |CoordF| :direction :in)
+  (:name |u2| :type |CoordF| :direction :in)
+  (:name |stride| :type |Int32| :direction :in)
+  (:name |order| :type |CheckedInt32| :direction :in)
+  (:name |points| :type |CoordF| :direction :in :array t :size
+   (|target| |stride| |order|)))
+ :category "modeling" :version "1.0") 
+(defglfun "Map1d" map-1d :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |u1| :type |CoordD| :direction :in)
+  (:name |u2| :type |CoordD| :direction :in)
+  (:name |stride| :type |Int32| :direction :in)
+  (:name |order| :type |CheckedInt32| :direction :in)
+  (:name |points| :type |CoordD| :direction :in :array t :size
+   (|target| |stride| |order|)))
+ :category "modeling" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ pixel-op
 
-(defglfun
- (("DepthFunc" depth-func) :args
-  ((:name |func| :type |DepthFunction| :direction :in)) :return ("void")
-  :category ("pixel-op") :version ("1.0") :glxropcode ("164") :glsopcode
-  ("0x00DB") :offset ("245"))) 
-(defglfun
- (("StencilOp" stencil-op) :args
-  ((:name |fail| :type |StencilOp| :direction :in)
-   (:name |zfail| :type |StencilOp| :direction :in)
-   (:name |zpass| :type |StencilOp| :direction :in))
-  :return ("void") :category ("pixel-op") :version ("1.0") :glxropcode ("163")
-  :glsopcode ("0x00DA") :offset ("244"))) 
-(defglfun
- (("StencilFunc" stencil-func) :args
-  ((:name |func| :type |StencilFunction| :direction :in)
-   (:name |ref| :type |ClampedStencilValue| :direction :in)
-   (:name |mask| :type |MaskedStencilValue| :direction :in))
-  :return ("void") :category ("pixel-op") :version ("1.0") :glxropcode ("162")
-  :glsopcode ("0x00D9") :offset ("243"))) 
-(defglfun
- (("LogicOp" logic-op) :args ((:name |opcode| :type |LogicOp| :direction :in))
-  :return ("void") :category ("pixel-op") :version ("1.0") :glxropcode ("161")
-  :glsopcode ("0x00D8") :offset ("242"))) 
-(defglfun
- (("BlendFunc" blend-func) :args
-  ((:name |sfactor| :type |BlendingFactorSrc| :direction :in)
-   (:name |dfactor| :type |BlendingFactorDest| :direction :in))
-  :return ("void") :category ("pixel-op") :version ("1.0") :glxropcode ("160")
-  :glsopcode ("0x00D7") :offset ("241"))) 
-(defglfun
- (("AlphaFunc" alpha-func) :args
-  ((:name |func| :type |AlphaFunction| :direction :in)
-   (:name |ref| :type |ClampedFloat32| :direction :in))
-  :return ("void") :category ("pixel-op") :version ("1.0") :glxropcode ("159")
-  :glsopcode ("0x00D6") :offset ("240"))) 
+(defglfun "DepthFunc" depth-func :return "void" :args
+ ((:name |func| :type |DepthFunction| :direction :in)) :category "pixel-op"
+ :version "1.0") 
+(defglfun "StencilOp" stencil-op :return "void" :args
+ ((:name |fail| :type |StencilOp| :direction :in)
+  (:name |zfail| :type |StencilOp| :direction :in)
+  (:name |zpass| :type |StencilOp| :direction :in))
+ :category "pixel-op" :version "1.0") 
+(defglfun "StencilFunc" stencil-func :return "void" :args
+ ((:name |func| :type |StencilFunction| :direction :in)
+  (:name |ref| :type |ClampedStencilValue| :direction :in)
+  (:name |mask| :type |MaskedStencilValue| :direction :in))
+ :category "pixel-op" :version "1.0") 
+(defglfun "LogicOp" logic-op :return "void" :args
+ ((:name |opcode| :type |LogicOp| :direction :in)) :category "pixel-op"
+ :version "1.0") 
+(defglfun "BlendFunc" blend-func :return "void" :args
+ ((:name |sfactor| :type |BlendingFactorSrc| :direction :in)
+  (:name |dfactor| :type |BlendingFactorDest| :direction :in))
+ :category "pixel-op" :version "1.0") 
+(defglfun "AlphaFunc" alpha-func :return "void" :args
+ ((:name |func| :type |AlphaFunction| :direction :in)
+  (:name |ref| :type |ClampedFloat32| :direction :in))
+ :category "pixel-op" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ pixel-rw
 
-(defglfun
- (("DrawPixels" draw-pixels) :args
-  ((:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |type| :type |PixelType| :direction :in)
-   (:name |pixels| :type |Void| :direction :in :array t :size
-    (|format| |type| |width| |height|)))
-  :return ("void") :category ("pixel-rw") :dlflags ("handcode") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxropcode ("173")
-  :glsflags ("pixel-unpack") :glsopcode ("0x00E7") :wglflags
-  ("client-handcode" "server-handcode") :offset ("257"))) 
-(defglfun
- (("ReadPixels" read-pixels) :args
-  ((:name |x| :type |WinCoord| :direction :in)
-   (:name |y| :type |WinCoord| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |type| :type |PixelType| :direction :in)
-   (:name |pixels| :type |Void| :direction :out :array t :size
-    (|format| |type| |width| |height|)))
-  :return ("void") :category ("pixel-rw") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxsingle ("111")
-  :glsflags ("get" "pixel-pack") :glsopcode ("0x00E6") :wglflags
-  ("client-handcode" "server-handcode") :offset ("256"))) 
-(defglfun
- (("CopyPixels" copy-pixels) :args
-  ((:name |x| :type |WinCoord| :direction :in)
-   (:name |y| :type |WinCoord| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |type| :type |PixelCopyType| :direction :in))
-  :return ("void") :category ("pixel-rw") :version ("1.0") :glxropcode ("172")
-  :glsopcode ("0x00E5") :offset ("255"))) 
-(defglfun
- (("ReadBuffer" read-buffer) :args
-  ((:name |mode| :type |ReadBufferMode| :direction :in)) :return ("void")
-  :category ("pixel-rw") :version ("1.0") :glxropcode ("171") :glsopcode
-  ("0x00E4") :offset ("254"))) 
-(defglfun
- (("PixelMapusv" pixel-map-usv) :args
-  ((:name |map| :type |PixelMap| :direction :in)
-   (:name |mapsize| :type |CheckedInt32| :direction :in)
-   (:name |values| :type |UInt16| :direction :in :array t :size mapsize))
-  :return ("void") :category ("pixel-rw") :glxflags ("client-handcode")
-  :version ("1.0") :glxropcode ("170") :glsopcode ("0x00E3") :offset ("253"))) 
-(defglfun
- (("PixelMapuiv" pixel-map-uiv) :args
-  ((:name |map| :type |PixelMap| :direction :in)
-   (:name |mapsize| :type |CheckedInt32| :direction :in)
-   (:name |values| :type |UInt32| :direction :in :array t :size mapsize))
-  :return ("void") :category ("pixel-rw") :glxflags ("client-handcode")
-  :version ("1.0") :glxropcode ("169") :glsopcode ("0x00E2") :offset ("252"))) 
-(defglfun
- (("PixelMapfv" pixel-map-fv) :args
-  ((:name |map| :type |PixelMap| :direction :in)
-   (:name |mapsize| :type |CheckedInt32| :direction :in)
-   (:name |values| :type |Float32| :direction :in :array t :size mapsize))
-  :return ("void") :category ("pixel-rw") :glxflags ("client-handcode")
-  :version ("1.0") :glxropcode ("168") :glsopcode ("0x00E1") :offset ("251"))) 
-(defglfun
- (("PixelStorei" pixel-store-i) :args
-  ((:name |pname| :type |PixelStoreParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :dlflags ("notlistable") :glxflags ("client-handcode")
-  :category ("pixel-rw") :version ("1.0") :glxsingle ("110") :glsflags
-  ("client" "gl-enum") :glsopcode ("0x00E0") :wglflags ("batchable") :offset
-  ("250"))) 
-(defglfun
- (("PixelStoref" pixel-store-f) :args
-  ((:name |pname| :type |PixelStoreParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :dlflags ("notlistable") :glxflags ("client-handcode")
-  :category ("pixel-rw") :version ("1.0") :glxsingle ("109") :glsflags
-  ("client" "gl-enum") :glsopcode ("0x00DF") :wglflags ("batchable") :offset
-  ("249"))) 
-(defglfun
- (("PixelTransferi" pixel-transfer-i) :args
-  ((:name |pname| :type |PixelTransferParameter| :direction :in)
-   (:name |param| :type |CheckedInt32| :direction :in))
-  :return ("void") :category ("pixel-rw") :version ("1.0") :glxropcode ("167")
-  :glsflags ("gl-enum") :glsopcode ("0x00DE") :offset ("248"))) 
-(defglfun
- (("PixelTransferf" pixel-transfer-f) :args
-  ((:name |pname| :type |PixelTransferParameter| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("pixel-rw") :version ("1.0") :glxropcode ("166")
-  :glsflags ("gl-enum") :glsopcode ("0x00DD") :offset ("247"))) 
-(defglfun
- (("PixelZoom" pixel-zoom) :args
-  ((:name |xfactor| :type |Float32| :direction :in)
-   (:name |yfactor| :type |Float32| :direction :in))
-  :return ("void") :category ("pixel-rw") :version ("1.0") :glxropcode ("165")
-  :glsopcode ("0x00DC") :offset ("246"))) 
+(defglfun "DrawPixels" draw-pixels :return "void" :args
+ ((:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |type| :type |PixelType| :direction :in)
+  (:name |pixels| :type |Void| :direction :in :array t :size
+   (|format| |type| |width| |height|)))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "ReadPixels" read-pixels :return "void" :args
+ ((:name |x| :type |WinCoord| :direction :in)
+  (:name |y| :type |WinCoord| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |type| :type |PixelType| :direction :in)
+  (:name |pixels| :type |Void| :direction :out :array t :size
+   (|format| |type| |width| |height|)))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "CopyPixels" copy-pixels :return "void" :args
+ ((:name |x| :type |WinCoord| :direction :in)
+  (:name |y| :type |WinCoord| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |type| :type |PixelCopyType| :direction :in))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "ReadBuffer" read-buffer :return "void" :args
+ ((:name |mode| :type |ReadBufferMode| :direction :in)) :category "pixel-rw"
+ :version "1.0") 
+(defglfun "PixelMapusv" pixel-map-usv :return "void" :args
+ ((:name |map| :type |PixelMap| :direction :in)
+  (:name |mapsize| :type |CheckedInt32| :direction :in)
+  (:name |values| :type |UInt16| :direction :in :array t :size mapsize))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelMapuiv" pixel-map-uiv :return "void" :args
+ ((:name |map| :type |PixelMap| :direction :in)
+  (:name |mapsize| :type |CheckedInt32| :direction :in)
+  (:name |values| :type |UInt32| :direction :in :array t :size mapsize))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelMapfv" pixel-map-fv :return "void" :args
+ ((:name |map| :type |PixelMap| :direction :in)
+  (:name |mapsize| :type |CheckedInt32| :direction :in)
+  (:name |values| :type |Float32| :direction :in :array t :size mapsize))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelStorei" pixel-store-i :return "void" :args
+ ((:name |pname| :type |PixelStoreParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelStoref" pixel-store-f :return "void" :args
+ ((:name |pname| :type |PixelStoreParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelTransferi" pixel-transfer-i :return "void" :args
+ ((:name |pname| :type |PixelTransferParameter| :direction :in)
+  (:name |param| :type |CheckedInt32| :direction :in))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelTransferf" pixel-transfer-f :return "void" :args
+ ((:name |pname| :type |PixelTransferParameter| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "pixel-rw" :version "1.0") 
+(defglfun "PixelZoom" pixel-zoom :return "void" :args
+ ((:name |xfactor| :type |Float32| :direction :in)
+  (:name |yfactor| :type |Float32| :direction :in))
+ :category "pixel-rw" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ state-req
 
-(defglfun
- (("IsList" is-list) :args ((:name |list| :type |List| :direction :in)) :return
-  ("Boolean") :category ("state-req") :dlflags ("notlistable") :version ("1.0")
-  :glxsingle ("141") :glsflags ("get") :glsopcode ("0x0105") :offset ("287"))) 
-(defglfun
- (("IsEnabled" is-enabled) :args
-  ((:name |cap| :type |EnableCap| :direction :in)) :return ("Boolean")
-  :category ("state-req") :dlflags ("notlistable") :version ("1.0") :glxflags
-  ("client-handcode" "client-intercept") :glxsingle ("140") :glsflags
-  ("client" "get") :glsopcode ("0x0104") :offset ("286"))) 
-(defglfun
- (("GetTexLevelParameteriv" get-tex-level-parameter-iv) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |pname| :type |GetTextureParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("139") :glsflags ("get") :glsopcode ("0x0103") :wglflags
-  ("small-data") :offset ("285"))) 
-(defglfun
- (("GetTexLevelParameterfv" get-tex-level-parameter-fv) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |pname| :type |GetTextureParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("138") :glsflags ("get") :glsopcode ("0x0102") :wglflags
-  ("small-data") :offset ("284"))) 
-(defglfun
- (("GetTexParameteriv" get-tex-parameter-iv) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |GetTextureParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("137") :glsflags ("get") :glsopcode ("0x0101") :wglflags
-  ("small-data") :offset ("283"))) 
-(defglfun
- (("GetTexParameterfv" get-tex-parameter-fv) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |GetTextureParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("136") :glsflags ("get") :glsopcode ("0x0100") :wglflags
-  ("small-data") :offset ("282"))) 
-(defglfun
- (("GetTexImage" get-tex-image) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |type| :type |PixelType| :direction :in)
-   (:name |pixels| :type |Void| :direction :out :array t :size
-    (|target| |level| |format| |type|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxsingle ("135")
-  :glsflags ("get" "pixel-pack") :glsopcode ("0x00FF") :wglflags
-  ("client-handcode" "server-handcode") :offset ("281"))) 
-(defglfun
- (("GetTexGeniv" get-tex-gen-iv) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("134") :glsflags ("get") :glsopcode ("0x00FE") :wglflags
-  ("small-data") :offset ("280"))) 
-(defglfun
- (("GetTexGenfv" get-tex-gen-fv) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("133") :glsflags ("get") :glsopcode ("0x00FD") :wglflags
-  ("small-data") :offset ("279"))) 
-(defglfun
- (("GetTexGendv" get-tex-gen-dv) :args
-  ((:name |coord| :type |TextureCoordName| :direction :in)
-   (:name |pname| :type |TextureGenParameter| :direction :in)
-   (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("132") :glsflags ("get") :glsopcode ("0x00FC") :wglflags
-  ("small-data") :offset ("278"))) 
-(defglfun
- (("GetTexEnviv" get-tex-env-iv) :args
-  ((:name |target| :type |TextureEnvTarget| :direction :in)
-   (:name |pname| :type |TextureEnvParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("131") :glsflags ("get") :glsopcode ("0x00FB") :wglflags
-  ("small-data") :offset ("277"))) 
-(defglfun
- (("GetTexEnvfv" get-tex-env-fv) :args
-  ((:name |target| :type |TextureEnvTarget| :direction :in)
-   (:name |pname| :type |TextureEnvParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("130") :glsflags ("get") :glsopcode ("0x00FA") :wglflags
-  ("small-data") :offset ("276"))) 
-(defglfun
- (("GetString" get-string) :args
-  ((:name |name| :type |StringName| :direction :in)) :return ("String")
-  :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxsingle ("129")
-  :glsflags ("get") :glsopcode ("0x00F9") :wglflags
-  ("client-handcode" "server-handcode") :offset ("275"))) 
-(defglfun
- (("GetPolygonStipple" get-polygon-stipple) :args
-  ((:name |mask| :type |UInt8| :direction :out :array t)) :return ("void")
-  :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode" "server-handcode") :version ("1.0") :glxsingle ("128")
-  :glsflags ("get" "pixel-pack") :glsopcode ("0x00F8") :wglflags
-  ("client-handcode" "server-handcode") :offset ("274"))) 
-(defglfun
- (("GetPixelMapusv" get-pixel-map-usv) :args
-  ((:name |map| :type |PixelMap| :direction :in)
-   (:name |values| :type |UInt16| :direction :out :array t :size (|map|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("127") :glsflags ("get") :glsopcode ("0x00F7") :offset
-  ("273"))) 
-(defglfun
- (("GetPixelMapuiv" get-pixel-map-uiv) :args
-  ((:name |map| :type |PixelMap| :direction :in)
-   (:name |values| :type |UInt32| :direction :out :array t :size (|map|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("126") :glsflags ("get") :glsopcode ("0x00F6") :offset
-  ("272"))) 
-(defglfun
- (("GetPixelMapfv" get-pixel-map-fv) :args
-  ((:name |map| :type |PixelMap| :direction :in)
-   (:name |values| :type |Float32| :direction :out :array t :size (|map|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("125") :glsflags ("get") :glsopcode ("0x00F5") :offset
-  ("271"))) 
-(defglfun
- (("GetMaterialiv" get-material-iv) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |pname| :type |MaterialParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("124") :glsflags ("get") :glsopcode ("0x00F4") :wglflags
-  ("small-data") :offset ("270"))) 
-(defglfun
- (("GetMaterialfv" get-material-fv) :args
-  ((:name |face| :type |MaterialFace| :direction :in)
-   (:name |pname| :type |MaterialParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("123") :glsflags ("get") :glsopcode ("0x00F3") :wglflags
-  ("small-data") :offset ("269"))) 
-(defglfun
- (("GetMapiv" get-map-iv) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |query| :type |GetMapQuery| :direction :in)
-   (:name |v| :type |Int32| :direction :out :array t :size (|target| |query|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("122") :glsflags ("get") :glsopcode ("0x00F2") :offset
-  ("268"))) 
-(defglfun
- (("GetMapfv" get-map-fv) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |query| :type |GetMapQuery| :direction :in)
-   (:name |v| :type |Float32| :direction :out :array t :size
-    (|target| |query|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("121") :glsflags ("get") :glsopcode ("0x00F1") :offset
-  ("267"))) 
-(defglfun
- (("GetMapdv" get-map-dv) :args
-  ((:name |target| :type |MapTarget| :direction :in)
-   (:name |query| :type |GetMapQuery| :direction :in)
-   (:name |v| :type |Float64| :direction :out :array t :size
-    (|target| |query|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("120") :glsflags ("get") :glsopcode ("0x00F0") :offset
-  ("266"))) 
-(defglfun
- (("GetLightiv" get-light-iv) :args
-  ((:name |light| :type |LightName| :direction :in)
-   (:name |pname| :type |LightParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("119") :glsflags ("get") :glsopcode ("0x00EF") :wglflags
-  ("small-data") :offset ("265"))) 
-(defglfun
- (("GetLightfv" get-light-fv) :args
-  ((:name |light| :type |LightName| :direction :in)
-   (:name |pname| :type |LightParameter| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("118") :glsflags ("get") :glsopcode ("0x00EE") :wglflags
-  ("small-data") :offset ("264"))) 
-(defglfun
- (("GetIntegerv" get-integerv) :args
-  ((:name |pname| :type |GetPName| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode") :version ("1.0") :glxsingle ("117") :glsflags
-  ("client" "get") :glsopcode ("0x00ED") :wglflags ("small-data") :offset
-  ("263"))) 
-(defglfun
- (("GetFloatv" get-floatv) :args
-  ((:name |pname| :type |GetPName| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode") :version ("1.0") :glxsingle ("116") :glsflags
-  ("client" "get") :glsopcode ("0x00EC") :wglflags ("small-data") :offset
-  ("262"))) 
-(defglfun
- (("GetError" get-error) :args nil :return ("ErrorCode") :category
-  ("state-req") :dlflags ("notlistable") :glxflags ("client-handcode") :version
-  ("1.0") :glxsingle ("115") :glsflags ("get") :glsopcode ("0x00EB") :offset
-  ("261"))) 
-(defglfun
- (("GetDoublev" get-doublev) :args
-  ((:name |pname| :type |GetPName| :direction :in)
-   (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode") :version ("1.0") :glxsingle ("114") :glsflags
-  ("client" "get") :glsopcode ("0x00EA") :wglflags ("small-data") :offset
-  ("260"))) 
-(defglfun
- (("GetClipPlane" get-clip-plane) :args
-  ((:name |plane| :type |ClipPlaneName| :direction :in)
-   (:name |equation| :type |Float64| :direction :out :array t :size #x4))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :version
-  ("1.0") :glxsingle ("113") :glxflags ("client-handcode" "server-handcode")
-  :glsflags ("get") :glsopcode ("0x00E9") :offset ("259"))) 
-(defglfun
- (("GetBooleanv" get-booleanv) :args
-  ((:name |pname| :type |GetPName| :direction :in)
-   (:name |params| :type |Boolean| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("state-req") :dlflags ("notlistable") :glxflags
-  ("client-handcode") :version ("1.0") :glxsingle ("112") :glsflags
-  ("client" "get") :glsopcode ("0x00E8") :wglflags ("small-data") :offset
-  ("258"))) 
+(defglfun "IsList" is-list :return "Boolean" :args
+ ((:name |list| :type |List| :direction :in)) :category "state-req" :version
+ "1.0") 
+(defglfun "IsEnabled" is-enabled :return "Boolean" :args
+ ((:name |cap| :type |EnableCap| :direction :in)) :category "state-req"
+ :version "1.0") 
+(defglfun "GetTexLevelParameteriv" get-tex-level-parameter-iv :return "void"
+ :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |pname| :type |GetTextureParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexLevelParameterfv" get-tex-level-parameter-fv :return "void"
+ :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |pname| :type |GetTextureParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexParameteriv" get-tex-parameter-iv :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |GetTextureParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexParameterfv" get-tex-parameter-fv :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |GetTextureParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexImage" get-tex-image :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |type| :type |PixelType| :direction :in)
+  (:name |pixels| :type |Void| :direction :out :array t :size
+   (|target| |level| |format| |type|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexGeniv" get-tex-gen-iv :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexGenfv" get-tex-gen-fv :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexGendv" get-tex-gen-dv :return "void" :args
+ ((:name |coord| :type |TextureCoordName| :direction :in)
+  (:name |pname| :type |TextureGenParameter| :direction :in)
+  (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexEnviv" get-tex-env-iv :return "void" :args
+ ((:name |target| :type |TextureEnvTarget| :direction :in)
+  (:name |pname| :type |TextureEnvParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetTexEnvfv" get-tex-env-fv :return "void" :args
+ ((:name |target| :type |TextureEnvTarget| :direction :in)
+  (:name |pname| :type |TextureEnvParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetString" get-string :return "String" :args
+ ((:name |name| :type |StringName| :direction :in)) :category "state-req"
+ :version "1.0") 
+(defglfun "GetPolygonStipple" get-polygon-stipple :return "void" :args
+ ((:name |mask| :type |UInt8| :direction :out :array t)) :category "state-req"
+ :version "1.0") 
+(defglfun "GetPixelMapusv" get-pixel-map-usv :return "void" :args
+ ((:name |map| :type |PixelMap| :direction :in)
+  (:name |values| :type |UInt16| :direction :out :array t :size (|map|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetPixelMapuiv" get-pixel-map-uiv :return "void" :args
+ ((:name |map| :type |PixelMap| :direction :in)
+  (:name |values| :type |UInt32| :direction :out :array t :size (|map|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetPixelMapfv" get-pixel-map-fv :return "void" :args
+ ((:name |map| :type |PixelMap| :direction :in)
+  (:name |values| :type |Float32| :direction :out :array t :size (|map|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetMaterialiv" get-material-iv :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |pname| :type |MaterialParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetMaterialfv" get-material-fv :return "void" :args
+ ((:name |face| :type |MaterialFace| :direction :in)
+  (:name |pname| :type |MaterialParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetMapiv" get-map-iv :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |query| :type |GetMapQuery| :direction :in)
+  (:name |v| :type |Int32| :direction :out :array t :size (|target| |query|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetMapfv" get-map-fv :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |query| :type |GetMapQuery| :direction :in)
+  (:name |v| :type |Float32| :direction :out :array t :size
+   (|target| |query|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetMapdv" get-map-dv :return "void" :args
+ ((:name |target| :type |MapTarget| :direction :in)
+  (:name |query| :type |GetMapQuery| :direction :in)
+  (:name |v| :type |Float64| :direction :out :array t :size
+   (|target| |query|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetLightiv" get-light-iv :return "void" :args
+ ((:name |light| :type |LightName| :direction :in)
+  (:name |pname| :type |LightParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetLightfv" get-light-fv :return "void" :args
+ ((:name |light| :type |LightName| :direction :in)
+  (:name |pname| :type |LightParameter| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetIntegerv" get-integerv :return "void" :args
+ ((:name |pname| :type |GetPName| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetFloatv" get-floatv :return "void" :args
+ ((:name |pname| :type |GetPName| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetError" get-error :return "ErrorCode" :args nil :category
+ "state-req" :version "1.0") 
+(defglfun "GetDoublev" get-doublev :return "void" :args
+ ((:name |pname| :type |GetPName| :direction :in)
+  (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
+(defglfun "GetClipPlane" get-clip-plane :return "void" :args
+ ((:name |plane| :type |ClipPlaneName| :direction :in)
+  (:name |equation| :type |Float64| :direction :out :array t :size #x4))
+ :category "state-req" :version "1.0") 
+(defglfun "GetBooleanv" get-booleanv :return "void" :args
+ ((:name |pname| :type |GetPName| :direction :in)
+  (:name |params| :type |Boolean| :direction :out :array t :size (|pname|)))
+ :category "state-req" :version "1.0") 
 
 ;;;; }}}
 
 ;;;; {{{ xform
 
-(defglfun
- (("Viewport" viewport) :args
-  ((:name |x| :type |WinCoord| :direction :in)
-   (:name |y| :type |WinCoord| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("191")
-  :glsopcode ("0x0117") :offset ("305"))) 
-(defglfun
- (("Translatef" translate-f) :args
-  ((:name |x| :type |Float32| :direction :in)
-   (:name |y| :type |Float32| :direction :in)
-   (:name |z| :type |Float32| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("190")
-  :glsopcode ("0x0116") :offset ("304"))) 
-(defglfun
- (("Translated" translate-d) :args
-  ((:name |x| :type |Float64| :direction :in)
-   (:name |y| :type |Float64| :direction :in)
-   (:name |z| :type |Float64| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("189")
-  :glsopcode ("0x0115") :offset ("303"))) 
-(defglfun
- (("Scalef" scale-f) :args
-  ((:name |x| :type |Float32| :direction :in)
-   (:name |y| :type |Float32| :direction :in)
-   (:name |z| :type |Float32| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("188")
-  :glsopcode ("0x0114") :offset ("302"))) 
-(defglfun
- (("Scaled" scale-d) :args
-  ((:name |x| :type |Float64| :direction :in)
-   (:name |y| :type |Float64| :direction :in)
-   (:name |z| :type |Float64| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("187")
-  :glsopcode ("0x0113") :offset ("301"))) 
-(defglfun
- (("Rotatef" rotate-f) :args
-  ((:name |angle| :type |Float32| :direction :in)
-   (:name |x| :type |Float32| :direction :in)
-   (:name |y| :type |Float32| :direction :in)
-   (:name |z| :type |Float32| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("186")
-  :glsopcode ("0x0112") :offset ("300"))) 
-(defglfun
- (("Rotated" rotate-d) :args
-  ((:name |angle| :type |Float64| :direction :in)
-   (:name |x| :type |Float64| :direction :in)
-   (:name |y| :type |Float64| :direction :in)
-   (:name |z| :type |Float64| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("185")
-  :glsopcode ("0x0111") :offset ("299"))) 
-(defglfun
- (("PushMatrix" push-matrix) :args nil :return ("void") :category ("xform")
-  :version ("1.0") :glxropcode ("184") :glsopcode ("0x0110") :offset ("298"))) 
-(defglfun
- (("PopMatrix" pop-matrix) :args nil :return ("void") :category ("xform")
-  :version ("1.0") :glxropcode ("183") :glsopcode ("0x010F") :offset ("297"))) 
-(defglfun
- (("Ortho" ortho) :args
-  ((:name |left| :type |Float64| :direction :in)
-   (:name |right| :type |Float64| :direction :in)
-   (:name |bottom| :type |Float64| :direction :in)
-   (:name |top| :type |Float64| :direction :in)
-   (:name |zNear| :type |Float64| :direction :in)
-   (:name |zFar| :type |Float64| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("182")
-  :glsopcode ("0x010E") :offset ("296"))) 
-(defglfun
- (("MultMatrixd" mult-matrix-d) :args
-  ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :return
-  ("void") :category ("xform") :version ("1.0") :glxropcode ("181") :glsflags
-  ("matrix") :glsopcode ("0x010D") :offset ("295"))) 
-(defglfun
- (("MultMatrixf" mult-matrix-f) :args
-  ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :return
-  ("void") :category ("xform") :version ("1.0") :glxropcode ("180") :glsflags
-  ("matrix") :glsopcode ("0x010C") :offset ("294"))) 
-(defglfun
- (("MatrixMode" matrix-mode) :args
-  ((:name |mode| :type |MatrixMode| :direction :in)) :return ("void") :category
-  ("xform") :version ("1.0") :glxropcode ("179") :glsopcode ("0x010B") :offset
-  ("293"))) 
-(defglfun
- (("LoadMatrixd" load-matrix-d) :args
-  ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :return
-  ("void") :category ("xform") :version ("1.0") :glxropcode ("178") :glsflags
-  ("matrix") :glsopcode ("0x010A") :offset ("292"))) 
-(defglfun
- (("LoadMatrixf" load-matrix-f) :args
-  ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :return
-  ("void") :category ("xform") :version ("1.0") :glxropcode ("177") :glsflags
-  ("matrix") :glsopcode ("0x0109") :offset ("291"))) 
-(defglfun
- (("LoadIdentity" load-identity) :args nil :return ("void") :category ("xform")
-  :version ("1.0") :glxropcode ("176") :glsopcode ("0x0108") :offset ("290"))) 
-(defglfun
- (("Frustum" frustum) :args
-  ((:name |left| :type |Float64| :direction :in)
-   (:name |right| :type |Float64| :direction :in)
-   (:name |bottom| :type |Float64| :direction :in)
-   (:name |top| :type |Float64| :direction :in)
-   (:name |zNear| :type |Float64| :direction :in)
-   (:name |zFar| :type |Float64| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("175")
-  :glsopcode ("0x0107") :offset ("289"))) 
-(defglfun
- (("DepthRange" depth-range) :args
-  ((:name |near| :type |ClampedFloat64| :direction :in)
-   (:name |far| :type |ClampedFloat64| :direction :in))
-  :return ("void") :category ("xform") :version ("1.0") :glxropcode ("174")
-  :glsopcode ("0x0106") :offset ("288"))) 
+(defglfun "Viewport" viewport :return "void" :args
+ ((:name |x| :type |WinCoord| :direction :in)
+  (:name |y| :type |WinCoord| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "Translatef" translate-f :return "void" :args
+ ((:name |x| :type |Float32| :direction :in)
+  (:name |y| :type |Float32| :direction :in)
+  (:name |z| :type |Float32| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "Translated" translate-d :return "void" :args
+ ((:name |x| :type |Float64| :direction :in)
+  (:name |y| :type |Float64| :direction :in)
+  (:name |z| :type |Float64| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "Scalef" scale-f :return "void" :args
+ ((:name |x| :type |Float32| :direction :in)
+  (:name |y| :type |Float32| :direction :in)
+  (:name |z| :type |Float32| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "Scaled" scale-d :return "void" :args
+ ((:name |x| :type |Float64| :direction :in)
+  (:name |y| :type |Float64| :direction :in)
+  (:name |z| :type |Float64| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "Rotatef" rotate-f :return "void" :args
+ ((:name |angle| :type |Float32| :direction :in)
+  (:name |x| :type |Float32| :direction :in)
+  (:name |y| :type |Float32| :direction :in)
+  (:name |z| :type |Float32| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "Rotated" rotate-d :return "void" :args
+ ((:name |angle| :type |Float64| :direction :in)
+  (:name |x| :type |Float64| :direction :in)
+  (:name |y| :type |Float64| :direction :in)
+  (:name |z| :type |Float64| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "PushMatrix" push-matrix :return "void" :args nil :category "xform"
+ :version "1.0") 
+(defglfun "PopMatrix" pop-matrix :return "void" :args nil :category "xform"
+ :version "1.0") 
+(defglfun "Ortho" ortho :return "void" :args
+ ((:name |left| :type |Float64| :direction :in)
+  (:name |right| :type |Float64| :direction :in)
+  (:name |bottom| :type |Float64| :direction :in)
+  (:name |top| :type |Float64| :direction :in)
+  (:name |zNear| :type |Float64| :direction :in)
+  (:name |zFar| :type |Float64| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "MultMatrixd" mult-matrix-d :return "void" :args
+ ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
+ "xform" :version "1.0") 
+(defglfun "MultMatrixf" mult-matrix-f :return "void" :args
+ ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
+ "xform" :version "1.0") 
+(defglfun "MatrixMode" matrix-mode :return "void" :args
+ ((:name |mode| :type |MatrixMode| :direction :in)) :category "xform" :version
+ "1.0") 
+(defglfun "LoadMatrixd" load-matrix-d :return "void" :args
+ ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
+ "xform" :version "1.0") 
+(defglfun "LoadMatrixf" load-matrix-f :return "void" :args
+ ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
+ "xform" :version "1.0") 
+(defglfun "LoadIdentity" load-identity :return "void" :args nil :category
+ "xform" :version "1.0") 
+(defglfun "Frustum" frustum :return "void" :args
+ ((:name |left| :type |Float64| :direction :in)
+  (:name |right| :type |Float64| :direction :in)
+  (:name |bottom| :type |Float64| :direction :in)
+  (:name |top| :type |Float64| :direction :in)
+  (:name |zNear| :type |Float64| :direction :in)
+  (:name |zFar| :type |Float64| :direction :in))
+ :category "xform" :version "1.0") 
+(defglfun "DepthRange" depth-range :return "void" :args
+ ((:name |near| :type |ClampedFloat64| :direction :in)
+  (:name |far| :type |ClampedFloat64| :direction :in))
+ :category "xform" :version "1.0") 
 
 ;;;; }}}

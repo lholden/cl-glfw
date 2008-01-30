@@ -4,7 +4,5 @@
 
 ;;;; gremedy_frame_terminator
 
-(defglextfun
- (("FrameTerminatorGREMEDY" frame-terminator-gremedy) :args nil :return
-  ("void") :category ("GREMEDY_frame_terminator") :version ("1.0") :extension
-  nil :glsflags ("ignore") :glxflags ("ignore") :offset ("?"))) 
+(defglextfun "FrameTerminatorGREMEDY" frame-terminator-gremedy :return "void"
+ :args nil :category "GREMEDY_frame_terminator" :version "1.0") 

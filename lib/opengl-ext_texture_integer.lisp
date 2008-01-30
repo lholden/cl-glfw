@@ -51,53 +51,37 @@
 (defconstant +luminance-integer-ext+ #x8D9C) 
 (defconstant +luminance-alpha-integer-ext+ #x8D9D) 
 (defconstant +rgba-integer-mode-ext+ #x8D9E) 
-(defglextfun
- (("ClearColorIuiEXT" clear-color-i-ui-ext) :args
-  ((:name |red| :type |UInt32| :direction :in)
-   (:name |green| :type |UInt32| :direction :in)
-   (:name |blue| :type |UInt32| :direction :in)
-   (:name |alpha| :type |UInt32| :direction :in))
-  :return ("void") :category ("EXT_texture_integer") :version ("2.0")
-  :extension ("soft" "WINSOFT" "NV50") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("ClearColorIiEXT" clear-color-i-i-ext) :args
-  ((:name |red| :type |Int32| :direction :in)
-   (:name |green| :type |Int32| :direction :in)
-   (:name |blue| :type |Int32| :direction :in)
-   (:name |alpha| :type |Int32| :direction :in))
-  :return ("void") :category ("EXT_texture_integer") :version ("2.0")
-  :extension ("soft" "WINSOFT" "NV50") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("GetTexParameterIuivEXT" get-tex-parameter-i-uiv-ext) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |GetTextureParameter| :direction :in)
-   (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("EXT_texture_integer") :dlflags ("notlistable")
-  :version ("1.0") :version ("2.0") :extension ("soft" "WINSOFT" "NV50")
-  :glfflags ("ignore") :glsflags ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("GetTexParameterIivEXT" get-tex-parameter-i-iv-ext) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |GetTextureParameter| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("EXT_texture_integer") :dlflags ("notlistable")
-  :version ("1.0") :version ("2.0") :extension ("soft" "WINSOFT" "NV50")
-  :glfflags ("ignore") :glsflags ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("TexParameterIuivEXT" tex-parameter-i-uiv-ext) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |TextureParameterName| :direction :in)
-   (:name |params| :type |UInt32| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("EXT_texture_integer") :version ("2.0")
-  :extension ("soft" "WINSOFT" "NV50") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("TexParameterIivEXT" tex-parameter-i-iv-ext) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |pname| :type |TextureParameterName| :direction :in)
-   (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
-  :return ("void") :category ("EXT_texture_integer") :version ("2.0")
-  :extension ("soft" "WINSOFT" "NV50") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
+(defglextfun "ClearColorIuiEXT" clear-color-i-ui-ext :return "void" :args
+ ((:name |red| :type |UInt32| :direction :in)
+  (:name |green| :type |UInt32| :direction :in)
+  (:name |blue| :type |UInt32| :direction :in)
+  (:name |alpha| :type |UInt32| :direction :in))
+ :category "EXT_texture_integer" :version "2.0") 
+(defglextfun "ClearColorIiEXT" clear-color-i-i-ext :return "void" :args
+ ((:name |red| :type |Int32| :direction :in)
+  (:name |green| :type |Int32| :direction :in)
+  (:name |blue| :type |Int32| :direction :in)
+  (:name |alpha| :type |Int32| :direction :in))
+ :category "EXT_texture_integer" :version "2.0") 
+(defglextfun "GetTexParameterIuivEXT" get-tex-parameter-i-uiv-ext :return
+ "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |GetTextureParameter| :direction :in)
+  (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
+ :category "EXT_texture_integer" :version "1.0") 
+(defglextfun "GetTexParameterIivEXT" get-tex-parameter-i-iv-ext :return "void"
+ :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |GetTextureParameter| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "EXT_texture_integer" :version "1.0") 
+(defglextfun "TexParameterIuivEXT" tex-parameter-i-uiv-ext :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |TextureParameterName| :direction :in)
+  (:name |params| :type |UInt32| :direction :in :array t :size (|pname|)))
+ :category "EXT_texture_integer" :version "2.0") 
+(defglextfun "TexParameterIivEXT" tex-parameter-i-iv-ext :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |pname| :type |TextureParameterName| :direction :in)
+  (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
+ :category "EXT_texture_integer" :version "2.0") 

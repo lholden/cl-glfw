@@ -99,363 +99,255 @@
 (defconstant +previous+ #x8578) 
 (defconstant +dot3-rgb+ #x86AE) 
 (defconstant +dot3-rgba+ #x86AF) 
-(defglfun
- (("GetCompressedTexImage" get-compressed-tex-image) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |img| :type |CompressedTextureARB| :direction :out :array t :size
-    (|target| |level|)))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("notlistable") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxsingle
-  ("160") :glsflags ("get") :glsopcode ("0x01CF") :wglflags
-  ("client-handcode" "server-handcode") :offset ("560"))) 
-(defglfun
- (("CompressedTexSubImage1D" compressed-tex-sub-image-1d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |xoffset| :type |CheckedInt32| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |imageSize| :type |SizeI| :direction :in)
-   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
-    imagesize))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("handcode") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxropcode
-  ("217") :glsopcode ("0x01CE") :wglflags ("client-handcode" "server-handcode")
-  :offset ("559"))) 
-(defglfun
- (("CompressedTexSubImage2D" compressed-tex-sub-image-2d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |xoffset| :type |CheckedInt32| :direction :in)
-   (:name |yoffset| :type |CheckedInt32| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |imageSize| :type |SizeI| :direction :in)
-   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
-    imagesize))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("handcode") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxropcode
-  ("218") :glsopcode ("0x01CD") :wglflags ("client-handcode" "server-handcode")
-  :offset ("558"))) 
-(defglfun
- (("CompressedTexSubImage3D" compressed-tex-sub-image-3d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |xoffset| :type |CheckedInt32| :direction :in)
-   (:name |yoffset| :type |CheckedInt32| :direction :in)
-   (:name |zoffset| :type |CheckedInt32| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |depth| :type |SizeI| :direction :in)
-   (:name |format| :type |PixelFormat| :direction :in)
-   (:name |imageSize| :type |SizeI| :direction :in)
-   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
-    imagesize))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("handcode") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxropcode
-  ("219") :glsopcode ("0x01CC") :wglflags ("client-handcode" "server-handcode")
-  :offset ("557"))) 
-(defglfun
- (("CompressedTexImage1D" compressed-tex-image-1d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |border| :type |CheckedInt32| :direction :in)
-   (:name |imageSize| :type |SizeI| :direction :in)
-   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
-    imagesize))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("handcode") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxropcode
-  ("214") :glsopcode ("0x01CB") :wglflags ("client-handcode" "server-handcode")
-  :offset ("556"))) 
-(defglfun
- (("CompressedTexImage2D" compressed-tex-image-2d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |border| :type |CheckedInt32| :direction :in)
-   (:name |imageSize| :type |SizeI| :direction :in)
-   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
-    imagesize))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("handcode") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxropcode
-  ("215") :glsopcode ("0x01CA") :wglflags ("client-handcode" "server-handcode")
-  :offset ("555"))) 
-(defglfun
- (("CompressedTexImage3D" compressed-tex-image-3d) :args
-  ((:name |target| :type |TextureTarget| :direction :in)
-   (:name |level| :type |CheckedInt32| :direction :in)
-   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
-   (:name |width| :type |SizeI| :direction :in)
-   (:name |height| :type |SizeI| :direction :in)
-   (:name |depth| :type |SizeI| :direction :in)
-   (:name |border| :type |CheckedInt32| :direction :in)
-   (:name |imageSize| :type |SizeI| :direction :in)
-   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
-    imagesize))
-  :return ("void") :category ("VERSION_1_3") :dlflags ("handcode") :glxflags
-  ("ARB" "client-handcode" "server-handcode") :version ("1.3") :glxropcode
-  ("216") :glsopcode ("0x01C9") :wglflags ("client-handcode" "server-handcode")
-  :offset ("554"))) 
-(defglfun
- (("SampleCoverage" sample-coverage) :args
-  ((:name |value| :type |ClampedFloat32| :direction :in)
-   (:name |invert| :type |Boolean| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("229") :glsopcode ("0x01C7") :offset ("412"))) 
-(defglfun
- (("MultTransposeMatrixd" mult-transpose-matrix-d) :args
-  ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :return
-  ("void") :category ("VERSION_1_3") :glxflags
-  ("ARB" "client-handcode" "client-intercept" "server-handcode") :version
-  ("1.3") :glsflags ("matrix") :glsopcode ("0x01C6") :offset ("411"))) 
-(defglfun
- (("MultTransposeMatrixf" mult-transpose-matrix-f) :args
-  ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :return
-  ("void") :category ("VERSION_1_3") :glxflags
-  ("ARB" "client-handcode" "client-intercept" "server-handcode") :version
-  ("1.3") :glsflags ("matrix") :glsopcode ("0x01C5") :offset ("410"))) 
-(defglfun
- (("LoadTransposeMatrixd" load-transpose-matrix-d) :args
-  ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :return
-  ("void") :category ("VERSION_1_3") :glxflags
-  ("ARB" "client-handcode" "client-intercept" "server-handcode") :version
-  ("1.3") :glsflags ("matrix") :glsopcode ("0x01C4") :offset ("409"))) 
-(defglfun
- (("LoadTransposeMatrixf" load-transpose-matrix-f) :args
-  ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :return
-  ("void") :category ("VERSION_1_3") :glxflags
-  ("ARB" "client-handcode" "client-intercept" "server-handcode") :version
-  ("1.3") :glsflags ("matrix") :glsopcode ("0x01C3") :offset ("408"))) 
-(defglfun
- (("MultiTexCoord4sv" multi-tex-coord-4sv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordS| :direction :in :array t :size #x4))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("213") :glsopcode ("0x01C2") :offset ("407"))) 
-(defglfun
- (("MultiTexCoord4s" multi-tex-coord-4s) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordS| :direction :in)
-   (:name |t| :type |CoordS| :direction :in)
-   (:name |r| :type |CoordS| :direction :in)
-   (:name |q| :type |CoordS| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord4sv") :offset ("406"))) 
-(defglfun
- (("MultiTexCoord4iv" multi-tex-coord-4iv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordI| :direction :in :array t :size #x4))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("212") :glsopcode ("0x01C1") :offset ("405"))) 
-(defglfun
- (("MultiTexCoord4i" multi-tex-coord-4i) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordI| :direction :in)
-   (:name |t| :type |CoordI| :direction :in)
-   (:name |r| :type |CoordI| :direction :in)
-   (:name |q| :type |CoordI| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord4iv") :offset ("404"))) 
-(defglfun
- (("MultiTexCoord4fv" multi-tex-coord-4fv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordF| :direction :in :array t :size #x4))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("211") :glsopcode ("0x01C0") :offset ("403"))) 
-(defglfun
- (("MultiTexCoord4f" multi-tex-coord-4f) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordF| :direction :in)
-   (:name |t| :type |CoordF| :direction :in)
-   (:name |r| :type |CoordF| :direction :in)
-   (:name |q| :type |CoordF| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord4fv") :offset ("402"))) 
-(defglfun
- (("MultiTexCoord4dv" multi-tex-coord-4dv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordD| :direction :in :array t :size #x4))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("210") :glsopcode ("0x01BF") :offset ("401"))) 
-(defglfun
- (("MultiTexCoord4d" multi-tex-coord-4d) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordD| :direction :in)
-   (:name |t| :type |CoordD| :direction :in)
-   (:name |r| :type |CoordD| :direction :in)
-   (:name |q| :type |CoordD| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord4dv") :offset ("400"))) 
-(defglfun
- (("MultiTexCoord3sv" multi-tex-coord-3sv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordS| :direction :in :array t :size #x3))
-  :return ("void") :category ("VERSION_1_3") :version ("1.3") :glxflags ("ARB")
-  :glxropcode ("209") :glsopcode ("0x01BE") :offset ("399"))) 
-(defglfun
- (("MultiTexCoord3s" multi-tex-coord-3s) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordS| :direction :in)
-   (:name |t| :type |CoordS| :direction :in)
-   (:name |r| :type |CoordS| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord3sv") :offset ("398"))) 
-(defglfun
- (("MultiTexCoord3iv" multi-tex-coord-3iv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordI| :direction :in :array t :size #x3))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("208") :glsopcode ("0x01BD") :offset ("397"))) 
-(defglfun
- (("MultiTexCoord3i" multi-tex-coord-3i) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordI| :direction :in)
-   (:name |t| :type |CoordI| :direction :in)
-   (:name |r| :type |CoordI| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord3iv") :offset ("396"))) 
-(defglfun
- (("MultiTexCoord3fv" multi-tex-coord-3fv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordF| :direction :in :array t :size #x3))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("207") :glsopcode ("0x01BC") :offset ("395"))) 
-(defglfun
- (("MultiTexCoord3f" multi-tex-coord-3f) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordF| :direction :in)
-   (:name |t| :type |CoordF| :direction :in)
-   (:name |r| :type |CoordF| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord3fv") :offset ("394"))) 
-(defglfun
- (("MultiTexCoord3dv" multi-tex-coord-3dv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordD| :direction :in :array t :size #x3))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("206") :glsopcode ("0x01BB") :offset ("393"))) 
-(defglfun
- (("MultiTexCoord3d" multi-tex-coord-3d) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordD| :direction :in)
-   (:name |t| :type |CoordD| :direction :in)
-   (:name |r| :type |CoordD| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord3dv") :offset ("392"))) 
-(defglfun
- (("MultiTexCoord2sv" multi-tex-coord-2sv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordS| :direction :in :array t :size #x2))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("205") :glsopcode ("0x01BA") :offset ("391"))) 
-(defglfun
- (("MultiTexCoord2s" multi-tex-coord-2s) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordS| :direction :in)
-   (:name |t| :type |CoordS| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord2sv") :offset ("390"))) 
-(defglfun
- (("MultiTexCoord2iv" multi-tex-coord-2iv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordI| :direction :in :array t :size #x2))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("204") :glsopcode ("0x01B9") :offset ("389"))) 
-(defglfun
- (("MultiTexCoord2i" multi-tex-coord-2i) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordI| :direction :in)
-   (:name |t| :type |CoordI| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord2iv") :offset ("388"))) 
-(defglfun
- (("MultiTexCoord2fv" multi-tex-coord-2fv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordF| :direction :in :array t :size #x2))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("203") :glsopcode ("0x01B8") :offset ("387"))) 
-(defglfun
- (("MultiTexCoord2f" multi-tex-coord-2f) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordF| :direction :in)
-   (:name |t| :type |CoordF| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord2fv") :offset ("386"))) 
-(defglfun
- (("MultiTexCoord2dv" multi-tex-coord-2dv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordD| :direction :in :array t :size #x2))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("202") :glsopcode ("0x01B7") :offset ("385"))) 
-(defglfun
- (("MultiTexCoord2d" multi-tex-coord-2d) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordD| :direction :in)
-   (:name |t| :type |CoordD| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord2dv") :offset ("384"))) 
-(defglfun
- (("MultiTexCoord1sv" multi-tex-coord-1sv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordS| :direction :in :array t :size #x1))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("201") :glsopcode ("0x01B6") :offset ("383"))) 
-(defglfun
- (("MultiTexCoord1s" multi-tex-coord-1s) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordS| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord1sv") :offset ("382"))) 
-(defglfun
- (("MultiTexCoord1iv" multi-tex-coord-1iv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordI| :direction :in :array t :size #x1))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("200") :glsopcode ("0x01B5") :offset ("381"))) 
-(defglfun
- (("MultiTexCoord1i" multi-tex-coord-1i) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordI| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord1iv") :offset ("380"))) 
-(defglfun
- (("MultiTexCoord1fv" multi-tex-coord-1fv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordF| :direction :in :array t :size #x1))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("199") :glsopcode ("0x01B4") :offset ("379"))) 
-(defglfun
- (("MultiTexCoord1f" multi-tex-coord-1f) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordF| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord1fv") :offset ("378"))) 
-(defglfun
- (("MultiTexCoord1dv" multi-tex-coord-1dv) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |v| :type |CoordD| :direction :in :array t :size #x1))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :glxropcode ("198") :glsopcode ("0x01B3") :offset ("377"))) 
-(defglfun
- (("MultiTexCoord1d" multi-tex-coord-1d) :args
-  ((:name |target| :type |TextureUnit| :direction :in)
-   (:name |s| :type |CoordD| :direction :in))
-  :return ("void") :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3")
-  :vectorequiv ("MultiTexCoord1dv") :offset ("376"))) 
-(defglfun
- (("ClientActiveTexture" client-active-texture) :args
-  ((:name |texture| :type |TextureUnit| :direction :in)) :return ("void")
-  :category ("VERSION_1_3") :dlflags ("notlistable") :glxflags
-  ("ARB" "client-handcode" "client-intercept" "server-handcode") :version
-  ("1.3") :glsflags ("client") :glsopcode ("0x01B2") :offset ("375"))) 
-(defglfun
- (("ActiveTexture" active-texture) :args
-  ((:name |texture| :type |TextureUnit| :direction :in)) :return ("void")
-  :category ("VERSION_1_3") :glxflags ("ARB") :version ("1.3") :glxropcode
-  ("197") :glsopcode ("0x01B1") :offset ("374"))) 
+(defglfun "GetCompressedTexImage" get-compressed-tex-image :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |img| :type |CompressedTextureARB| :direction :out :array t :size
+   (|target| |level|)))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "CompressedTexSubImage1D" compressed-tex-sub-image-1d :return "void"
+ :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |xoffset| :type |CheckedInt32| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |imageSize| :type |SizeI| :direction :in)
+  (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+   imagesize))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "CompressedTexSubImage2D" compressed-tex-sub-image-2d :return "void"
+ :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |xoffset| :type |CheckedInt32| :direction :in)
+  (:name |yoffset| :type |CheckedInt32| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |imageSize| :type |SizeI| :direction :in)
+  (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+   imagesize))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "CompressedTexSubImage3D" compressed-tex-sub-image-3d :return "void"
+ :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |xoffset| :type |CheckedInt32| :direction :in)
+  (:name |yoffset| :type |CheckedInt32| :direction :in)
+  (:name |zoffset| :type |CheckedInt32| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |depth| :type |SizeI| :direction :in)
+  (:name |format| :type |PixelFormat| :direction :in)
+  (:name |imageSize| :type |SizeI| :direction :in)
+  (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+   imagesize))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "CompressedTexImage1D" compressed-tex-image-1d :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |border| :type |CheckedInt32| :direction :in)
+  (:name |imageSize| :type |SizeI| :direction :in)
+  (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+   imagesize))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "CompressedTexImage2D" compressed-tex-image-2d :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |border| :type |CheckedInt32| :direction :in)
+  (:name |imageSize| :type |SizeI| :direction :in)
+  (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+   imagesize))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "CompressedTexImage3D" compressed-tex-image-3d :return "void" :args
+ ((:name |target| :type |TextureTarget| :direction :in)
+  (:name |level| :type |CheckedInt32| :direction :in)
+  (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+  (:name |width| :type |SizeI| :direction :in)
+  (:name |height| :type |SizeI| :direction :in)
+  (:name |depth| :type |SizeI| :direction :in)
+  (:name |border| :type |CheckedInt32| :direction :in)
+  (:name |imageSize| :type |SizeI| :direction :in)
+  (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+   imagesize))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "SampleCoverage" sample-coverage :return "void" :args
+ ((:name |value| :type |ClampedFloat32| :direction :in)
+  (:name |invert| :type |Boolean| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultTransposeMatrixd" mult-transpose-matrix-d :return "void" :args
+ ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
+ "VERSION_1_3" :version "1.3") 
+(defglfun "MultTransposeMatrixf" mult-transpose-matrix-f :return "void" :args
+ ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
+ "VERSION_1_3" :version "1.3") 
+(defglfun "LoadTransposeMatrixd" load-transpose-matrix-d :return "void" :args
+ ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
+ "VERSION_1_3" :version "1.3") 
+(defglfun "LoadTransposeMatrixf" load-transpose-matrix-f :return "void" :args
+ ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
+ "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4sv" multi-tex-coord-4sv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordS| :direction :in :array t :size #x4))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4s" multi-tex-coord-4s :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordS| :direction :in)
+  (:name |t| :type |CoordS| :direction :in)
+  (:name |r| :type |CoordS| :direction :in)
+  (:name |q| :type |CoordS| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4iv" multi-tex-coord-4iv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordI| :direction :in :array t :size #x4))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4i" multi-tex-coord-4i :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordI| :direction :in)
+  (:name |t| :type |CoordI| :direction :in)
+  (:name |r| :type |CoordI| :direction :in)
+  (:name |q| :type |CoordI| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4fv" multi-tex-coord-4fv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordF| :direction :in :array t :size #x4))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4f" multi-tex-coord-4f :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordF| :direction :in)
+  (:name |t| :type |CoordF| :direction :in)
+  (:name |r| :type |CoordF| :direction :in)
+  (:name |q| :type |CoordF| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4dv" multi-tex-coord-4dv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordD| :direction :in :array t :size #x4))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord4d" multi-tex-coord-4d :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordD| :direction :in)
+  (:name |t| :type |CoordD| :direction :in)
+  (:name |r| :type |CoordD| :direction :in)
+  (:name |q| :type |CoordD| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3sv" multi-tex-coord-3sv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordS| :direction :in :array t :size #x3))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3s" multi-tex-coord-3s :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordS| :direction :in)
+  (:name |t| :type |CoordS| :direction :in)
+  (:name |r| :type |CoordS| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3iv" multi-tex-coord-3iv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordI| :direction :in :array t :size #x3))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3i" multi-tex-coord-3i :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordI| :direction :in)
+  (:name |t| :type |CoordI| :direction :in)
+  (:name |r| :type |CoordI| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3fv" multi-tex-coord-3fv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordF| :direction :in :array t :size #x3))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3f" multi-tex-coord-3f :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordF| :direction :in)
+  (:name |t| :type |CoordF| :direction :in)
+  (:name |r| :type |CoordF| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3dv" multi-tex-coord-3dv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordD| :direction :in :array t :size #x3))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord3d" multi-tex-coord-3d :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordD| :direction :in)
+  (:name |t| :type |CoordD| :direction :in)
+  (:name |r| :type |CoordD| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2sv" multi-tex-coord-2sv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordS| :direction :in :array t :size #x2))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2s" multi-tex-coord-2s :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordS| :direction :in)
+  (:name |t| :type |CoordS| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2iv" multi-tex-coord-2iv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordI| :direction :in :array t :size #x2))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2i" multi-tex-coord-2i :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordI| :direction :in)
+  (:name |t| :type |CoordI| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2fv" multi-tex-coord-2fv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordF| :direction :in :array t :size #x2))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2f" multi-tex-coord-2f :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordF| :direction :in)
+  (:name |t| :type |CoordF| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2dv" multi-tex-coord-2dv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordD| :direction :in :array t :size #x2))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord2d" multi-tex-coord-2d :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordD| :direction :in)
+  (:name |t| :type |CoordD| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1sv" multi-tex-coord-1sv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordS| :direction :in :array t :size #x1))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1s" multi-tex-coord-1s :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordS| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1iv" multi-tex-coord-1iv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordI| :direction :in :array t :size #x1))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1i" multi-tex-coord-1i :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordI| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1fv" multi-tex-coord-1fv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordF| :direction :in :array t :size #x1))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1f" multi-tex-coord-1f :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordF| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1dv" multi-tex-coord-1dv :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |v| :type |CoordD| :direction :in :array t :size #x1))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "MultiTexCoord1d" multi-tex-coord-1d :return "void" :args
+ ((:name |target| :type |TextureUnit| :direction :in)
+  (:name |s| :type |CoordD| :direction :in))
+ :category "VERSION_1_3" :version "1.3") 
+(defglfun "ClientActiveTexture" client-active-texture :return "void" :args
+ ((:name |texture| :type |TextureUnit| :direction :in)) :category "VERSION_1_3"
+ :version "1.3") 
+(defglfun "ActiveTexture" active-texture :return "void" :args
+ ((:name |texture| :type |TextureUnit| :direction :in)) :category "VERSION_1_3"
+ :version "1.3") 

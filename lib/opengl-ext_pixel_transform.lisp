@@ -22,31 +22,27 @@
 (defconstant +pixel-transform-2d-stack-depth-ext+ #x8336) 
 (defconstant +max-pixel-transform-2d-stack-depth-ext+ #x8337) 
 (defconstant +pixel-transform-2d-matrix-ext+ #x8338) 
-(defglextfun
- (("PixelTransformParameterfvEXT" pixel-transform-parameter-fv-ext) :args
-  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
-   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
-   (:name |params| :type |Float32| :direction :in :array t :size #x1))
-  :return ("void") :category ("EXT_pixel_transform") :version ("1.1")
-  :glxropcode ("?") :glsflags ("ignore") :offset ("?"))) 
-(defglextfun
- (("PixelTransformParameterivEXT" pixel-transform-parameter-iv-ext) :args
-  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
-   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
-   (:name |params| :type |Int32| :direction :in :array t :size #x1))
-  :return ("void") :category ("EXT_pixel_transform") :version ("1.1")
-  :glxropcode ("?") :glsflags ("ignore") :offset ("?"))) 
-(defglextfun
- (("PixelTransformParameterfEXT" pixel-transform-parameter-f-ext) :args
-  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
-   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
-   (:name |param| :type |Float32| :direction :in))
-  :return ("void") :category ("EXT_pixel_transform") :version ("1.1")
-  :glxropcode ("?") :glsflags ("ignore") :offset ("?"))) 
-(defglextfun
- (("PixelTransformParameteriEXT" pixel-transform-parameter-i-ext) :args
-  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
-   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
-   (:name |param| :type |Int32| :direction :in))
-  :return ("void") :category ("EXT_pixel_transform") :version ("1.1")
-  :glxropcode ("?") :glsflags ("ignore") :offset ("?"))) 
+(defglextfun "PixelTransformParameterfvEXT" pixel-transform-parameter-fv-ext
+ :return "void" :args
+ ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+  (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+  (:name |params| :type |Float32| :direction :in :array t :size #x1))
+ :category "EXT_pixel_transform" :version "1.1") 
+(defglextfun "PixelTransformParameterivEXT" pixel-transform-parameter-iv-ext
+ :return "void" :args
+ ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+  (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+  (:name |params| :type |Int32| :direction :in :array t :size #x1))
+ :category "EXT_pixel_transform" :version "1.1") 
+(defglextfun "PixelTransformParameterfEXT" pixel-transform-parameter-f-ext
+ :return "void" :args
+ ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+  (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+  (:name |param| :type |Float32| :direction :in))
+ :category "EXT_pixel_transform" :version "1.1") 
+(defglextfun "PixelTransformParameteriEXT" pixel-transform-parameter-i-ext
+ :return "void" :args
+ ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+  (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+  (:name |param| :type |Int32| :direction :in))
+ :category "EXT_pixel_transform" :version "1.1") 

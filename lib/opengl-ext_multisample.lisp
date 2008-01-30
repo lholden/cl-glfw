@@ -21,14 +21,10 @@
 (defconstant +sample-mask-invert-ext+ #x80AB) 
 (defconstant +sample-pattern-ext+ #x80AC) 
 (defconstant +multisample-bit-ext+ #x20000000) 
-(defglextfun
- (("SamplePatternEXT" sample-pattern-ext) :args
-  ((:name |pattern| :type |SamplePatternEXT| :direction :in)) :return ("void")
-  :category ("EXT_multisample") :version ("1.0") :glxropcode ("?") :glxflags
-  nil :extension nil :glsopcode ("0x0161") :offset ("447"))) 
-(defglextfun
- (("SampleMaskEXT" sample-mask-ext) :args
-  ((:name |value| :type |ClampedFloat32| :direction :in)
-   (:name |invert| :type |Boolean| :direction :in))
-  :return ("void") :category ("EXT_multisample") :version ("1.0") :glxropcode
-  ("?") :extension nil :glsopcode ("0x0160") :offset ("446"))) 
+(defglextfun "SamplePatternEXT" sample-pattern-ext :return "void" :args
+ ((:name |pattern| :type |SamplePatternEXT| :direction :in)) :category
+ "EXT_multisample" :version "1.0") 
+(defglextfun "SampleMaskEXT" sample-mask-ext :return "void" :args
+ ((:name |value| :type |ClampedFloat32| :direction :in)
+  (:name |invert| :type |Boolean| :direction :in))
+ :category "EXT_multisample" :version "1.0") 

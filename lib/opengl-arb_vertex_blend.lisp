@@ -46,74 +46,45 @@
 (defconstant +modelview29-arb+ #x873D) 
 (defconstant +modelview30-arb+ #x873E) 
 (defconstant +modelview31-arb+ #x873F) 
-(defglextfun
- (("VertexBlendARB" vertex-blend-arb) :args
-  ((:name |count| :type |Int32| :direction :in)) :return ("void") :category
-  ("ARB_vertex_blend") :version ("1.1") :extension nil :glxropcode ("226")
-  :glxflags ("ignore") :glsopcode ("0x020F") :offset ("?"))) 
-(defglextfun
- (("WeightPointerARB" weight-pointer-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |type| :type |WeightPointerTypeARB| :direction :in)
-   (:name |stride| :type |SizeI| :direction :in)
-   (:name |pointer| :type |Void| :direction :in :array t :size
-    (|type| |stride|) :retained t))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :dlflags ("notlistable") :glxflags ("ignore") :glsflags ("client")
-  :glsopcode ("0x020E") :offset ("?"))) 
-(defglextfun
- (("WeightuivARB" weight-uiv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |UInt32| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("225") :glxflags ("ignore") :glsopcode ("0x020D") :offset
-  ("?"))) 
-(defglextfun
- (("WeightusvARB" weight-usv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |UInt16| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("223") :glxflags ("ignore") :glsopcode ("0x020C") :offset
-  ("?"))) 
-(defglextfun
- (("WeightubvARB" weight-ubv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |UInt8| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("221") :glxflags ("ignore") :glsopcode ("0x020B") :offset
-  ("?"))) 
-(defglextfun
- (("WeightdvARB" weight-dv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |Float64| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("228") :glxflags ("ignore") :glsopcode ("0x020A") :offset
-  ("?"))) 
-(defglextfun
- (("WeightfvARB" weight-fv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |Float32| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("227") :glxflags ("ignore") :glsopcode ("0x0209") :offset
-  ("?"))) 
-(defglextfun
- (("WeightivARB" weight-iv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |Int32| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("224") :glxflags ("ignore") :glsopcode ("0x0208") :offset
-  ("?"))) 
-(defglextfun
- (("WeightsvARB" weight-sv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |Int16| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("222") :glxflags ("ignore") :glsopcode ("0x0207") :offset
-  ("?"))) 
-(defglextfun
- (("WeightbvARB" weight-bv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |weights| :type |Int8| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_blend") :version ("1.1") :extension
-  nil :glxropcode ("220") :glxflags ("ignore") :glsopcode ("0x0206") :offset
-  ("?"))) 
+(defglextfun "VertexBlendARB" vertex-blend-arb :return "void" :args
+ ((:name |count| :type |Int32| :direction :in)) :category "ARB_vertex_blend"
+ :version "1.1") 
+(defglextfun "WeightPointerARB" weight-pointer-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |type| :type |WeightPointerTypeARB| :direction :in)
+  (:name |stride| :type |SizeI| :direction :in)
+  (:name |pointer| :type |Void| :direction :in :array t :size (|type| |stride|)
+   :retained t))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightuivARB" weight-uiv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |UInt32| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightusvARB" weight-usv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |UInt16| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightubvARB" weight-ubv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |UInt8| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightdvARB" weight-dv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |Float64| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightfvARB" weight-fv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |Float32| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightivARB" weight-iv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |Int32| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightsvARB" weight-sv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |Int16| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 
+(defglextfun "WeightbvARB" weight-bv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |weights| :type |Int8| :direction :in :array t :size size))
+ :category "ARB_vertex_blend" :version "1.1") 

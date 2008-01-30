@@ -14,39 +14,26 @@
 (defconstant +matrix-index-array-type-arb+ #x8847) 
 (defconstant +matrix-index-array-stride-arb+ #x8848) 
 (defconstant +matrix-index-array-pointer-arb+ #x8849) 
-(defglextfun
- (("MatrixIndexPointerARB" matrix-index-pointer-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |type| :type |MatrixIndexPointerTypeARB| :direction :in)
-   (:name |stride| :type |SizeI| :direction :in)
-   (:name |pointer| :type |Void| :direction :in :array t :size
-    (|type| |stride|) :retained t))
-  :return ("void") :category ("ARB_matrix_palette") :version ("1.1") :extension
-  nil :dlflags ("notlistable") :glxflags ("ignore") :glsflags ("client")
-  :glsopcode ("0x0214") :offset ("?"))) 
-(defglextfun
- (("MatrixIndexuivARB" matrix-index-uiv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |indices| :type |UInt32| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_matrix_palette") :version ("1.1") :extension
-  nil :glxropcode ("4328") :glxflags ("ignore") :glsopcode ("0x0213") :offset
-  ("?"))) 
-(defglextfun
- (("MatrixIndexusvARB" matrix-index-usv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |indices| :type |UInt16| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_matrix_palette") :version ("1.1") :extension
-  nil :glxropcode ("4327") :glxflags ("ignore") :glsopcode ("0x0212") :offset
-  ("?"))) 
-(defglextfun
- (("MatrixIndexubvARB" matrix-index-ubv-arb) :args
-  ((:name |size| :type |Int32| :direction :in)
-   (:name |indices| :type |UInt8| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_matrix_palette") :version ("1.1") :extension
-  nil :glxropcode ("4326") :glxflags ("ignore") :glsopcode ("0x0211") :offset
-  ("?"))) 
-(defglextfun
- (("CurrentPaletteMatrixARB" current-palette-matrix-arb) :args
-  ((:name |index| :type |Int32| :direction :in)) :return ("void") :category
-  ("ARB_matrix_palette") :version ("1.1") :extension nil :glxropcode ("4329")
-  :glxflags ("ignore") :glsopcode ("0x0210") :offset ("?"))) 
+(defglextfun "MatrixIndexPointerARB" matrix-index-pointer-arb :return "void"
+ :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |type| :type |MatrixIndexPointerTypeARB| :direction :in)
+  (:name |stride| :type |SizeI| :direction :in)
+  (:name |pointer| :type |Void| :direction :in :array t :size (|type| |stride|)
+   :retained t))
+ :category "ARB_matrix_palette" :version "1.1") 
+(defglextfun "MatrixIndexuivARB" matrix-index-uiv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |indices| :type |UInt32| :direction :in :array t :size size))
+ :category "ARB_matrix_palette" :version "1.1") 
+(defglextfun "MatrixIndexusvARB" matrix-index-usv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |indices| :type |UInt16| :direction :in :array t :size size))
+ :category "ARB_matrix_palette" :version "1.1") 
+(defglextfun "MatrixIndexubvARB" matrix-index-ubv-arb :return "void" :args
+ ((:name |size| :type |Int32| :direction :in)
+  (:name |indices| :type |UInt8| :direction :in :array t :size size))
+ :category "ARB_matrix_palette" :version "1.1") 
+(defglextfun "CurrentPaletteMatrixARB" current-palette-matrix-arb :return
+ "void" :args ((:name |index| :type |Int32| :direction :in)) :category
+ "ARB_matrix_palette" :version "1.1") 

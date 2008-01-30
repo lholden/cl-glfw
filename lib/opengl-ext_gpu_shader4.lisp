@@ -29,93 +29,62 @@
 (defconstant +unsigned-int-sampler-1d-array-ext+ #x8DD6) 
 (defconstant +unsigned-int-sampler-2d-array-ext+ #x8DD7) 
 (defconstant +unsigned-int-sampler-buffer-ext+ #x8DD8) 
-(defglextfun
- (("Uniform4uivEXT" uniform-4uiv-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |value| :type |UInt32| :direction :in :array t :size count*4))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform3uivEXT" uniform-3uiv-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |value| :type |UInt32| :direction :in :array t :size count*3))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform2uivEXT" uniform-2uiv-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |value| :type |UInt32| :direction :in :array t :size count*2))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform1uivEXT" uniform-1uiv-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |count| :type |SizeI| :direction :in)
-   (:name |value| :type |UInt32| :direction :in :array t :size count))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform4uiEXT" uniform-4ui-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |v0| :type |UInt32| :direction :in)
-   (:name |v1| :type |UInt32| :direction :in)
-   (:name |v2| :type |UInt32| :direction :in)
-   (:name |v3| :type |UInt32| :direction :in))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform3uiEXT" uniform-3ui-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |v0| :type |UInt32| :direction :in)
-   (:name |v1| :type |UInt32| :direction :in)
-   (:name |v2| :type |UInt32| :direction :in))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform2uiEXT" uniform-2ui-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |v0| :type |UInt32| :direction :in)
-   (:name |v1| :type |UInt32| :direction :in))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("Uniform1uiEXT" uniform-1ui-ext) :args
-  ((:name |location| :type |Int32| :direction :in)
-   (:name |v0| :type |UInt32| :direction :in))
-  :return ("void") :category ("EXT_gpu_shader4") :version ("2.0") :extension
-  ("soft" "WINSOFT") :glfflags ("ignore") :glsflags ("ignore") :glxflags
-  ("ignore"))) 
-(defglextfun
- (("GetFragDataLocationEXT" get-frag-data-location-ext) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |name| :type |Char| :direction :in :array t :size (|name|)))
-  :return ("Int32") :category ("EXT_gpu_shader4") :dlflags ("notlistable")
-  :version ("2.0") :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("BindFragDataLocationEXT" bind-frag-data-location-ext) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |color| :type |UInt32| :direction :in)
-   (:name |name| :type |Char| :direction :in :array t :size (|name|)))
-  :return ("void") :category ("EXT_gpu_shader4") :dlflags ("notlistable")
-  :version ("2.0") :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
-(defglextfun
- (("GetUniformuivEXT" get-uniform-uiv-ext) :args
-  ((:name |program| :type |UInt32| :direction :in)
-   (:name |location| :type |Int32| :direction :in)
-   (:name |params| :type |UInt32| :direction :out :array t :size
-    (|program| |location|)))
-  :return ("void") :category ("EXT_gpu_shader4") :dlflags ("notlistable")
-  :version ("2.0") :extension ("soft" "WINSOFT") :glfflags ("ignore") :glsflags
-  ("ignore") :glxflags ("ignore"))) 
+(defglextfun "Uniform4uivEXT" uniform-4uiv-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |value| :type |UInt32| :direction :in :array t :size count*4))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform3uivEXT" uniform-3uiv-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |value| :type |UInt32| :direction :in :array t :size count*3))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform2uivEXT" uniform-2uiv-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |value| :type |UInt32| :direction :in :array t :size count*2))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform1uivEXT" uniform-1uiv-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |count| :type |SizeI| :direction :in)
+  (:name |value| :type |UInt32| :direction :in :array t :size count))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform4uiEXT" uniform-4ui-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |v0| :type |UInt32| :direction :in)
+  (:name |v1| :type |UInt32| :direction :in)
+  (:name |v2| :type |UInt32| :direction :in)
+  (:name |v3| :type |UInt32| :direction :in))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform3uiEXT" uniform-3ui-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |v0| :type |UInt32| :direction :in)
+  (:name |v1| :type |UInt32| :direction :in)
+  (:name |v2| :type |UInt32| :direction :in))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform2uiEXT" uniform-2ui-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |v0| :type |UInt32| :direction :in)
+  (:name |v1| :type |UInt32| :direction :in))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "Uniform1uiEXT" uniform-1ui-ext :return "void" :args
+ ((:name |location| :type |Int32| :direction :in)
+  (:name |v0| :type |UInt32| :direction :in))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "GetFragDataLocationEXT" get-frag-data-location-ext :return
+ "Int32" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "BindFragDataLocationEXT" bind-frag-data-location-ext :return
+ "void" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |color| :type |UInt32| :direction :in)
+  (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+ :category "EXT_gpu_shader4" :version "2.0") 
+(defglextfun "GetUniformuivEXT" get-uniform-uiv-ext :return "void" :args
+ ((:name |program| :type |UInt32| :direction :in)
+  (:name |location| :type |Int32| :direction :in)
+  (:name |params| :type |UInt32| :direction :out :array t :size
+   (|program| |location|)))
+ :category "EXT_gpu_shader4" :version "2.0") 

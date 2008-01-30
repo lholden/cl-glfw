@@ -9,10 +9,7 @@
 (defconstant +clamp-fragment-color-arb+ #x891B) 
 (defconstant +clamp-read-color-arb+ #x891C) 
 (defconstant +fixed-only-arb+ #x891D) 
-(defglextfun
- (("ClampColorARB" clamp-color-arb) :args
-  ((:name |target| :type |ClampColorTargetARB| :direction :in)
-   (:name |clamp| :type |ClampColorModeARB| :direction :in))
-  :return ("void") :category ("ARB_color_buffer_float") :version ("1.5")
-  :extension nil :glxropcode ("234") :glxflags ("ignore") :glsopcode ("?")
-  :offset ("?"))) 
+(defglextfun "ClampColorARB" clamp-color-arb :return "void" :args
+ ((:name |target| :type |ClampColorTargetARB| :direction :in)
+  (:name |clamp| :type |ClampColorModeARB| :direction :in))
+ :category "ARB_color_buffer_float" :version "1.5") 

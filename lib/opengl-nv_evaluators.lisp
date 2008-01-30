@@ -28,91 +28,67 @@
 (defconstant +eval-vertex-attrib15-nv+ #x86D5) 
 (defconstant +max-map-tessellation-nv+ #x86D6) 
 (defconstant +max-rational-eval-order-nv+ #x86D7) 
-(defglextfun
- (("EvalMapsNV" eval-maps-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |mode| :type |EvalMapsModeNV| :direction :in))
-  :return ("void") :category ("NV_evaluators") :version ("1.1") :extension
-  ("soft" "WINSOFT" "NV10") :glxflags ("ignore") :glsopcode ("0x0224") :offset
-  ("?"))) 
-(defglextfun
- (("GetMapAttribParameterfvNV" get-map-attrib-parameter-fv-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |pname| :type |MapAttribParameterNV| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("NV_evaluators") :dlflags ("notlistable")
-  :version ("1.1") :extension ("soft" "WINSOFT" "NV10") :glxflags ("ignore")
-  :glsflags ("get") :glsopcode ("0x0223") :offset ("?"))) 
-(defglextfun
- (("GetMapAttribParameterivNV" get-map-attrib-parameter-iv-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |pname| :type |MapAttribParameterNV| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("NV_evaluators") :dlflags ("notlistable")
-  :version ("1.1") :extension ("soft" "WINSOFT" "NV10") :glxflags ("ignore")
-  :glsflags ("get") :glsopcode ("0x0222") :offset ("?"))) 
-(defglextfun
- (("GetMapParameterfvNV" get-map-parameter-fv-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |pname| :type |MapParameterNV| :direction :in)
-   (:name |params| :type |Float32| :direction :out :array t :size
-    (|target| |pname|)))
-  :return ("void") :category ("NV_evaluators") :dlflags ("notlistable")
-  :version ("1.1") :extension ("soft" "WINSOFT" "NV10") :glxflags ("ignore")
-  :glsflags ("get") :glsopcode ("0x0221") :offset ("?"))) 
-(defglextfun
- (("GetMapParameterivNV" get-map-parameter-iv-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |pname| :type |MapParameterNV| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size
-    (|target| |pname|)))
-  :return ("void") :category ("NV_evaluators") :dlflags ("notlistable")
-  :version ("1.1") :extension ("soft" "WINSOFT" "NV10") :glxflags ("ignore")
-  :glsflags ("get") :glsopcode ("0x0220") :offset ("?"))) 
-(defglextfun
- (("GetMapControlPointsNV" get-map-control-points-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |type| :type |MapTypeNV| :direction :in)
-   (:name |ustride| :type |SizeI| :direction :in)
-   (:name |vstride| :type |SizeI| :direction :in)
-   (:name |packed| :type |Boolean| :direction :in)
-   (:name |points| :type |Void| :direction :out :array t :size (|target|)))
-  :return ("void") :category ("NV_evaluators") :dlflags ("notlistable")
-  :version ("1.1") :extension ("soft" "WINSOFT" "NV10") :glxflags ("ignore")
-  :glsflags ("get") :glsopcode ("0x021F") :offset ("?"))) 
-(defglextfun
- (("MapParameterfvNV" map-parameter-fv-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |pname| :type |MapParameterNV| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|target| |pname|)))
-  :return ("void") :category ("NV_evaluators") :version ("1.1") :extension
-  ("soft" "WINSOFT" "NV10") :glxflags ("ignore") :glsflags ("ignore")
-  :glsopcode ("0x021E") :offset ("?"))) 
-(defglextfun
- (("MapParameterivNV" map-parameter-iv-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |pname| :type |MapParameterNV| :direction :in)
-   (:name |params| :type |CheckedInt32| :direction :in :array t :size
-    (|target| |pname|)))
-  :return ("void") :category ("NV_evaluators") :version ("1.1") :extension
-  ("soft" "WINSOFT" "NV10") :glxflags ("ignore") :glsflags ("ignore")
-  :glsopcode ("0x021D") :offset ("?"))) 
-(defglextfun
- (("MapControlPointsNV" map-control-points-nv) :args
-  ((:name |target| :type |EvalTargetNV| :direction :in)
-   (:name |index| :type |UInt32| :direction :in)
-   (:name |type| :type |MapTypeNV| :direction :in)
-   (:name |ustride| :type |SizeI| :direction :in)
-   (:name |vstride| :type |SizeI| :direction :in)
-   (:name |uorder| :type |CheckedInt32| :direction :in)
-   (:name |vorder| :type |CheckedInt32| :direction :in)
-   (:name |packed| :type |Boolean| :direction :in)
-   (:name |points| :type |Void| :direction :in :array t :size
-    (|target| |uorder| |vorder|)))
-  :return ("void") :category ("NV_evaluators") :dlflags ("handcode") :version
-  ("1.1") :extension ("soft" "WINSOFT" "NV10") :glxflags ("ignore") :glsflags
-  ("ignore") :glsopcode ("0x021C") :offset ("?"))) 
+(defglextfun "EvalMapsNV" eval-maps-nv :return "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |mode| :type |EvalMapsModeNV| :direction :in))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "GetMapAttribParameterfvNV" get-map-attrib-parameter-fv-nv :return
+ "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |pname| :type |MapAttribParameterNV| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "GetMapAttribParameterivNV" get-map-attrib-parameter-iv-nv :return
+ "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |pname| :type |MapAttribParameterNV| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "GetMapParameterfvNV" get-map-parameter-fv-nv :return "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |pname| :type |MapParameterNV| :direction :in)
+  (:name |params| :type |Float32| :direction :out :array t :size
+   (|target| |pname|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "GetMapParameterivNV" get-map-parameter-iv-nv :return "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |pname| :type |MapParameterNV| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size
+   (|target| |pname|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "GetMapControlPointsNV" get-map-control-points-nv :return "void"
+ :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |type| :type |MapTypeNV| :direction :in)
+  (:name |ustride| :type |SizeI| :direction :in)
+  (:name |vstride| :type |SizeI| :direction :in)
+  (:name |packed| :type |Boolean| :direction :in)
+  (:name |points| :type |Void| :direction :out :array t :size (|target|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "MapParameterfvNV" map-parameter-fv-nv :return "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |pname| :type |MapParameterNV| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|target| |pname|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "MapParameterivNV" map-parameter-iv-nv :return "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |pname| :type |MapParameterNV| :direction :in)
+  (:name |params| :type |CheckedInt32| :direction :in :array t :size
+   (|target| |pname|)))
+ :category "NV_evaluators" :version "1.1") 
+(defglextfun "MapControlPointsNV" map-control-points-nv :return "void" :args
+ ((:name |target| :type |EvalTargetNV| :direction :in)
+  (:name |index| :type |UInt32| :direction :in)
+  (:name |type| :type |MapTypeNV| :direction :in)
+  (:name |ustride| :type |SizeI| :direction :in)
+  (:name |vstride| :type |SizeI| :direction :in)
+  (:name |uorder| :type |CheckedInt32| :direction :in)
+  (:name |vorder| :type |CheckedInt32| :direction :in)
+  (:name |packed| :type |Boolean| :direction :in)
+  (:name |points| :type |Void| :direction :in :array t :size
+   (|target| |uorder| |vorder|)))
+ :category "NV_evaluators" :version "1.1") 

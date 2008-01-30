@@ -16,18 +16,13 @@
 (defconstant +point-distance-attenuation+ #x8129) 
 (defconstant +point-distance-attenuation-arb+ #x8129) 
 (defconstant +distance-attenuation-ext+ #x8129) 
-(defglextfun
- (("PointParameterfvSGIS" point-parameter-fv-sgis) :args
-  ((:name |pname| :type |PointParameterNameARB| :direction :in)
-   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
-    (|pname|)))
-  :return ("void") :category ("SGIS_point_parameters") :version ("1.0")
-  :glxflags ("SGI") :extension nil :alias ("PointParameterfvARB") :glsalias
-  ("PointParameterfvARB"))) 
-(defglextfun
- (("PointParameterfSGIS" point-parameter-f-sgis) :args
-  ((:name |pname| :type |PointParameterNameARB| :direction :in)
-   (:name |param| :type |CheckedFloat32| :direction :in))
-  :return ("void") :category ("SGIS_point_parameters") :version ("1.0")
-  :glxflags ("SGI") :extension nil :alias ("PointParameterfARB") :glsalias
-  ("PointParameterfARB"))) 
+(defglextfun "PointParameterfvSGIS" point-parameter-fv-sgis :return "void"
+ :args
+ ((:name |pname| :type |PointParameterNameARB| :direction :in)
+  (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+   (|pname|)))
+ :category "SGIS_point_parameters" :version "1.0") 
+(defglextfun "PointParameterfSGIS" point-parameter-f-sgis :return "void" :args
+ ((:name |pname| :type |PointParameterNameARB| :direction :in)
+  (:name |param| :type |CheckedFloat32| :direction :in))
+ :category "SGIS_point_parameters" :version "1.0") 

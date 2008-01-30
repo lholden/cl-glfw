@@ -35,78 +35,55 @@
 (defconstant +dynamic-draw-arb+ #x88E8) 
 (defconstant +dynamic-read-arb+ #x88E9) 
 (defconstant +dynamic-copy-arb+ #x88EA) 
-(defglextfun
- (("GetBufferPointervARB" get-buffer-pointerv-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |pname| :type |BufferPointerNameARB| :direction :in)
-   (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
-  :return ("void") :category ("ARB_vertex_buffer_object") :dlflags
-  ("notlistable") :version ("1.2") :extension nil :alias ("GetBufferPointerv")
-  :glsalias ("GetBufferPointerv"))) 
-(defglextfun
- (("GetBufferParameterivARB" get-buffer-parameter-iv-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |pname| :type |BufferPNameARB| :direction :in)
-   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
-  :return ("void") :category ("ARB_vertex_buffer_object") :dlflags
-  ("notlistable") :version ("1.2") :extension nil :alias
-  ("GetBufferParameteriv") :glsalias ("GetBufferParameteriv"))) 
-(defglextfun
- (("UnmapBufferARB" unmap-buffer-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)) :return ("Boolean")
-  :category ("ARB_vertex_buffer_object") :version ("1.2") :extension nil :alias
-  ("UnmapBuffer") :glsalias ("UnmapBuffer"))) 
-(defglextfun
- (("MapBufferARB" map-buffer-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |access| :type |BufferAccessARB| :direction :in))
-  :return ("VoidPointer") :category ("ARB_vertex_buffer_object") :version
-  ("1.2") :extension nil :alias ("MapBuffer") :glsalias ("MapBuffer"))) 
-(defglextfun
- (("GetBufferSubDataARB" get-buffer-sub-data-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |offset| :type |BufferOffsetARB| :direction :in)
-   (:name |size| :type |BufferSizeARB| :direction :in)
-   (:name |data| :type |Void| :direction :out :array t :size size))
-  :return ("void") :category ("ARB_vertex_buffer_object") :dlflags
-  ("notlistable") :version ("1.2") :extension nil :alias ("GetBufferSubData")
-  :glsalias ("GetBufferSubData"))) 
-(defglextfun
- (("BufferSubDataARB" buffer-sub-data-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |offset| :type |BufferOffsetARB| :direction :in)
-   (:name |size| :type |BufferSizeARB| :direction :in)
-   (:name |data| :type |ConstVoid| :direction :in :array t :size size))
-  :return ("void") :category ("ARB_vertex_buffer_object") :version ("1.2")
-  :extension nil :alias ("BufferSubData") :glsalias ("BufferSubData"))) 
-(defglextfun
- (("BufferDataARB" buffer-data-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |size| :type |BufferSizeARB| :direction :in)
-   (:name |data| :type |ConstVoid| :direction :in :array t :size size)
-   (:name |usage| :type |BufferUsageARB| :direction :in))
-  :return ("void") :category ("ARB_vertex_buffer_object") :version ("1.2")
-  :extension nil :alias ("BufferData") :glsalias ("BufferData"))) 
-(defglextfun
- (("IsBufferARB" is-buffer-arb) :args
-  ((:name |buffer| :type |UInt32| :direction :in)) :return ("Boolean")
-  :category ("ARB_vertex_buffer_object") :version ("1.2") :extension nil :alias
-  ("IsBuffer") :glsalias ("IsBuffer"))) 
-(defglextfun
- (("GenBuffersARB" gen-buffers-arb) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |buffers| :type |UInt32| :direction :out :array t :size n))
-  :return ("void") :category ("ARB_vertex_buffer_object") :version ("1.2")
-  :extension nil :alias ("GenBuffers") :glsalias ("GenBuffers"))) 
-(defglextfun
- (("DeleteBuffersARB" delete-buffers-arb) :args
-  ((:name |n| :type |SizeI| :direction :in)
-   (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
-  :return ("void") :category ("ARB_vertex_buffer_object") :version ("1.2")
-  :extension nil :alias ("DeleteBuffers") :glsalias ("DeleteBuffers"))) 
-(defglextfun
- (("BindBufferARB" bind-buffer-arb) :args
-  ((:name |target| :type |BufferTargetARB| :direction :in)
-   (:name |buffer| :type |UInt32| :direction :in))
-  :return ("void") :category ("ARB_vertex_buffer_object") :version ("1.2")
-  :extension nil :alias ("BindBuffer") :glsalias ("BindBuffer"))) 
+(defglextfun "GetBufferPointervARB" get-buffer-pointerv-arb :return "void"
+ :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |pname| :type |BufferPointerNameARB| :direction :in)
+  (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "GetBufferParameterivARB" get-buffer-parameter-iv-arb :return
+ "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |pname| :type |BufferPNameARB| :direction :in)
+  (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "UnmapBufferARB" unmap-buffer-arb :return "Boolean" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)) :category
+ "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "MapBufferARB" map-buffer-arb :return "VoidPointer" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |access| :type |BufferAccessARB| :direction :in))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "GetBufferSubDataARB" get-buffer-sub-data-arb :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |offset| :type |BufferOffsetARB| :direction :in)
+  (:name |size| :type |BufferSizeARB| :direction :in)
+  (:name |data| :type |Void| :direction :out :array t :size size))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "BufferSubDataARB" buffer-sub-data-arb :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |offset| :type |BufferOffsetARB| :direction :in)
+  (:name |size| :type |BufferSizeARB| :direction :in)
+  (:name |data| :type |ConstVoid| :direction :in :array t :size size))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "BufferDataARB" buffer-data-arb :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |size| :type |BufferSizeARB| :direction :in)
+  (:name |data| :type |ConstVoid| :direction :in :array t :size size)
+  (:name |usage| :type |BufferUsageARB| :direction :in))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "IsBufferARB" is-buffer-arb :return "Boolean" :args
+ ((:name |buffer| :type |UInt32| :direction :in)) :category
+ "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "GenBuffersARB" gen-buffers-arb :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |buffers| :type |UInt32| :direction :out :array t :size n))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "DeleteBuffersARB" delete-buffers-arb :return "void" :args
+ ((:name |n| :type |SizeI| :direction :in)
+  (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
+ :category "ARB_vertex_buffer_object" :version "1.2") 
+(defglextfun "BindBufferARB" bind-buffer-arb :return "void" :args
+ ((:name |target| :type |BufferTargetARB| :direction :in)
+  (:name |buffer| :type |UInt32| :direction :in))
+ :category "ARB_vertex_buffer_object" :version "1.2") 

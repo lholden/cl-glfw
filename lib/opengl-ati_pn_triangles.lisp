@@ -13,17 +13,11 @@
 (defconstant +pn-triangles-point-mode-cubic-ati+ #x87F6) 
 (defconstant +pn-triangles-normal-mode-linear-ati+ #x87F7) 
 (defconstant +pn-triangles-normal-mode-quadratic-ati+ #x87F8) 
-(defglextfun
- (("PNTrianglesfATI" pntriangles-f-ati) :args
-  ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
-   (:name |param| :type |Float32| :direction :in))
-  :return ("void") :category ("ATI_pn_triangles") :version ("1.2") :extension
-  nil :glxropcode ("?") :glxflags ("ignore") :glsflags ("ignore") :offset
-  ("?"))) 
-(defglextfun
- (("PNTrianglesiATI" pntriangles-i-ati) :args
-  ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
-   (:name |param| :type |Int32| :direction :in))
-  :return ("void") :category ("ATI_pn_triangles") :version ("1.2") :extension
-  nil :glxropcode ("?") :glxflags ("ignore") :glsflags ("ignore") :offset
-  ("?"))) 
+(defglextfun "PNTrianglesfATI" pntriangles-f-ati :return "void" :args
+ ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
+  (:name |param| :type |Float32| :direction :in))
+ :category "ATI_pn_triangles" :version "1.2") 
+(defglextfun "PNTrianglesiATI" pntriangles-i-ati :return "void" :args
+ ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
+  (:name |param| :type |Int32| :direction :in))
+ :category "ATI_pn_triangles" :version "1.2") 
