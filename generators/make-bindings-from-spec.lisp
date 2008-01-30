@@ -236,23 +236,6 @@ suitable for cl-glfw-types or CFFI."
   (push (lisp-name-of func-spec) *exports*)
   `(defglfun ,func-spec))
 
-(defun gl-enumeration-definition (enumeration-group-name enumeration-name)
-  (let ((constant-name 
-         (intern (string-upcase
-                  (format nil "+~a+"
-                          (map 'string #'(lambda (c) (if (alphanumericp c) c #\-))
-                               (symbol-name enumeration-name)))))))
-    (push constant-name *exports*)
-    `(defconstant ,constant-name
-       ,(getf (getf *enum-specs* enumeration-group-name)
-              enumeration-name))))
-
-(defun gl-enumeration-definitions (enumeration-group-name)
-  (mapcar #'(lambda (enumeration-name)
-              (gl-enumeration-definition enumeration-group-name enumeration-name))
-          (plist-keys (getf *enum-specs* enumeration-group-name))))
-
-
 
 ;;; {{{ EMIT OUTPUT 
 
