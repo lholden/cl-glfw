@@ -35,6 +35,6 @@ fetch_specs unless File::exists?("#{BASE}/src/gl.tm") and
 
 puts `ruby #{BASE}/generators/sexpize-gl-spec.rb`
 check_ok
-puts `sbcl --load #{BASE}/generators/make-bindings-from-spec.lisp --eval "(sb-ext:quit)"`
+puts `sbcl --load #{BASE}/generators/make-bindings-from-spec.lisp --eval "(progn (main) (sb-ext:quit))"`
 check_ok
 
