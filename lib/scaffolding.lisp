@@ -5,10 +5,10 @@
 
 (defparameter *type-map* nil)
 
-(defun c-name (func-spec)    (first (first func-spec)))
-(defun lisp-name (func-spec) (second (first func-spec)))
-(defun freturn (func-spec)   (first (getf (rest func-spec) :return)))
-(defun args (func-spec)      (getf (rest func-spec) :args))
+(defun c-name-of (func-spec)    (first (first func-spec)))
+(defun lisp-name-of (func-spec) (second (first func-spec)))
+(defun freturn-of (func-spec)   (first (getf (rest func-spec) :return)))
+(defun args-of (func-spec)      (getf (rest func-spec) :args))
 
 (defun deconstant (symbol)
   (if (not (constantp symbol))
@@ -51,25 +51,25 @@
          (not (getf arg :wrapped)))))
 
 (defun gl-function-definition (func-spec &optional (c-prefix "gl") (lisp-prefix '#:||))
-  `(defcfun (,(concatenate 'cl:string c-prefix (c-name func-spec))
-              ,(conc-symbols lisp-prefix (lisp-name func-spec)))
-       ,(getf *type-map* (intern (freturn func-spec)))
+  `(defcfun (,(concatenate 'cl:string c-prefix (c-name-of func-spec))
+              ,(conc-symbols lisp-prefix (lisp-name-of func-spec)))
+       ,(getf *type-map* (intern (freturn-of func-spec)))
      ,@(mapcar #'(lambda (arg) (list (final-arg-name arg) (final-arg-type arg)))
-               (args func-spec))))
+               (args-of func-spec))))
 
 (defun gl-funcall-definition (func-spec fpointer)
   `(foreign-funcall ,fpointer
                     ,@(mapcan #'(lambda (arg)
                                   `(,(final-arg-type arg) ,(final-arg-name arg)))
-                              (args func-spec))
-                    ,(getf *type-map* (intern (freturn func-spec)))))
+                              (args-of func-spec))
+                    ,(getf *type-map* (intern (freturn-of func-spec)))))
 
 (defun expand-a-wrapping (func-spec final-content)
   (let* ((func-spec (copy-tree func-spec)) ; duplicate because we're not supposed to modify macro params
-         (args (args func-spec))
+         (args (args-of func-spec))
          (first-wrappable (position-if #'array-wrappable-p args)))
     (if first-wrappable
-        (let* ((arg (elt (args func-spec) first-wrappable))
+        (let* ((arg (elt (args-of func-spec) first-wrappable))
                (original-array-name (gensym (symbol-name (final-arg-name arg))))
                (array-name (final-arg-name arg)))
           ;; set it wrapped by non-consingly attaching a wrapped property on the end
@@ -94,20 +94,12 @@
                         ,(when (eql (getf arg :direction) :out)
                            `(cond
                               ((listp ,original-array-name)
-                               (do ((i 0 (1+ i))
-                                    (ce ,original-array-name (cdr ce)))
-                                   ((not ce))
-                                 #|((or (not ce)
-                                 (>= i ,(getf arg :size))))|#
-                                 (setf (car ce)
-                                       (mem-aref ,array-name ',(arg-element-type arg) i))))
+                               (loop for i from 0 for cel = ,original-array-name then (cdr cel) do
+                                  (setf (car cel) (mem-aref ,array-name ',(arg-element-type arg) i))))
                               ((vectorp ,original-array-name)
-                               (do ((i 0 (1+ i)))
-                                   ((>= i (length ,original-array-name)))
-                                 #|((or (>= i (length ,original-array-name))
-                                 (>= i ,(getf arg :size))))|#
-                                 (setf (aref ,original-array-name i)
-                                       (mem-aref ,array-name ',(arg-element-type arg) i)))))))
+                               (loop for i below (length ,original-array-name) do
+                                    (setf (aref ,original-array-name i)
+                                          (mem-aref ,array-name ',(arg-element-type arg) i)))))))
                    (foreign-free ,array-name)))
                ;; in the case the arg wasn't a sequence, pass it straight through
                ,(expand-a-wrapping func-spec final-content)))
@@ -116,36 +108,36 @@
 
 (defun wrapped-win32-gl-function-definition (func-spec)
   `(let ((fpointer (foreign-funcall "wglGetProcAddress"
-                                    :string ,(concatenate 'cl:string "gl" (c-name func-spec))
+                                    :string ,(concatenate 'cl:string "gl" (c-name-of func-spec))
                                     :pointer)))
      ;; I know the CFFI guide recommends against holding pointers, but for extensions on win,
      ;; function pointers are the only way to do it. I don't think the locations are compiled
      ;; in-to the fasl files, as it's a top-level form.
      (when (null-pointer-p fpointer)
        (error 'simple-error "Error! Can't find function ~a" (first func-spec)))
-     (defun ,(lisp-name func-spec)
+     (defun ,(lisp-name-of func-spec)
          ,(mapcar #'(lambda (arg) (final-arg-name arg))
-           (args func-spec))
+           (args-of func-spec))
        ;; if there is more than 0 wrappable arrays
-       ,(let ((args (args func-spec)))
+       ,(let ((args (args-of func-spec)))
           (if (some #'array-wrappable-p args)
               (expand-a-wrapping func-spec
                                  (gl-funcall-definition func-spec 'fpointer))
               (gl-funcall-definition func-spec 'fpointer))))))
 
 (defun wrapped-gl-function-definition (func-spec)
-  (let ((args (args func-spec)))
+  (let ((args (args-of func-spec)))
     ;; if there is more than 0 wrappable arrays
     (if (some #'array-wrappable-p args)
         `(progn
            ;; make an inlined function prefixed with %
-           (declaim (inline ,(conc-symbols '#:% (lisp-name func-spec))))
+           (declaim (inline ,(conc-symbols '#:% (lisp-name-of func-spec))))
            ,(gl-function-definition func-spec "gl" '#:%)
            ;; the exposed function with wrappings
-           (defun ,(lisp-name func-spec) ,(mapcar #'final-arg-name (args func-spec))
+           (defun ,(lisp-name-of func-spec) ,(mapcar #'final-arg-name (args-of func-spec))
              ,(expand-a-wrapping func-spec
-                                 `(,(conc-symbols '#:% (lisp-name func-spec))
-                                    ,@(mapcar #'final-arg-name (args func-spec))))))
+                                 `(,(conc-symbols '#:% (lisp-name-of func-spec))
+                                    ,@(mapcar #'final-arg-name (args-of func-spec))))))
         (gl-function-definition func-spec))))
 
 (defmacro defglfun (func-spec)
