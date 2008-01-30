@@ -1,17 +1,6 @@
 ;; You should nominially invoke this file via ./generators/make-opengl-bindings.rb
 ;; as that performs the necessary setup.
 
-;; proto-package for type-mappings only
-;;; {{{ defpackage gl 
-(defpackage #:cl-glfw-opengl
- (:use #:cl)
- (:nicknames #:gl #:opengl)
- (:shadow boolean byte float char string)
- (:export
-  enum boolean bitfield byte short int sizei ubyte ushort uint float clampf
-  double clampd void uint64 int64 intptr sizeiptr handle char string half))
-;;; }}}
-
 (declaim (optimize (debug 3)))
 ;;; {{{ PARAMETERS
 
@@ -139,7 +128,7 @@ suitable for cl-glfw-types or CFFI."
   (let ((s (string-strip-endings (symbol-name type-map-type) *strippable-type-endings*)))
     (cond ((equal s "*") :void)
 	  ((find #\* (format nil "~a" s)) :pointer)
-	  ((equal (subseq s 0 2) "GL") (intern (string-upcase (subseq s 2)) (find-package '#:gl)))
+	  ((equal (subseq s 0 2) "GL") (intern (string-upcase (subseq s 2))))
 	  ((equal s "_GLfuncptr") :pointer)
 	  (t s))))
 
