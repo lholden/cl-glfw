@@ -115,7 +115,7 @@
      ;; function pointers are the only way to do it. I don't think the locations are compiled
      ;; in-to the fasl files, as it's a top-level form.
      (when (null-pointer-p fpointer)
-       (error 'simple-error "Error! Can't find function ~a" (first func-spec)))
+       (warn "Can't find function ~a" (first func-spec)))
      (defun ,(lisp-name-of func-spec)
          ,(mapcar #'(lambda (arg) (final-arg-name arg))
            (args-of func-spec))
