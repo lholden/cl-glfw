@@ -95,8 +95,10 @@
                         ,(when (eql (getf arg :direction) :out)
                            `(cond
                               ((listp ,original-array-name)
-                               (loop for i from 0 for cel = ,original-array-name then (cdr cel) do
-                                  (setf (car cel) (mem-aref ,array-name ',(arg-element-type arg) i))))
+                               (loop for i from 0
+                                  for cel = ,original-array-name then (cdr cel)
+                                  while cel
+                                  do (setf (car cel) (mem-aref ,array-name ',(arg-element-type arg) i))))
                               ((vectorp ,original-array-name)
                                (loop for i below (length ,original-array-name) do
                                     (setf (aref ,original-array-name i)
