@@ -1,0 +1,42 @@
+Changes from 0.3 → 0.4:
+
+* Changed error on extension functions not found to merely a warning.
+* Stripped out a lot of useless info from the spec, by selecting only what is
+  needed.
+* Changed the func-spec format, now defglfun prints out the function being
+  compiled in SBCL nicely..
+* Added generator structure explanation.
+* Major package refactoring.
+* Extracted all common types and expansions into lib/types.lisp with dedicated
+  system cl-glfw-types for all to depend on and share expansions.
+* Fix for building under ECL, working under the assumption that there is a
+  libglfw.so installed in /usr/lib/ or /usr/local/lib/.
+* Fix for platforms where there's no int64/uint64...
+* Fixed dependency of opengl extensions and versions. Spelling fix.
+* Fix files not found for glu versions 1_1, 1_2 and 1_3.
+* Many other small fixes.
+
+Changes from 0.2 → 0.3:
+
+* Able to use just cl-glfw (eg. with cl-opengl) or just cl-glfw-opengl/glu
+  (eg. with cl-glut) as cl-glfw and cl-glfw-opengl/glu are now independent of
+  each other.
+* Added examples/test-cl-opengl.lisp example as a proof-of-concept.
+* Moved all extensions and version asd files into lib, tidier. The lib path
+  will be automatically added to asdf:*central-registry* when loading
+  cl-glfw-glu or cl-glfw-opengl.
+* Small usability improvement for opengl generator front-end: --help message,
+  auto-fetch.
+* Small examples fixes.
+* README file update. 
+
+Changes from 0.1 → 0.2:
+
+* Updated specification files: GREMEDY_frame_terminator extension brought in.
+* Added with-projection-matrix macro.
+* Small changes to string/symbol style of .asd files, seemed to make windows
+  happier.
+* Split out the GLU into seperate files to keep windows happy.
+* Added extra test platform.
+* Package name change, "opengl" → "cl-glfw-opengl" (still has nickname of
+  "gl") 
