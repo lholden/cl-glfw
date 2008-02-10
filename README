@@ -25,13 +25,30 @@ fine.
 Check out the examples/ directory for more of a guide through.
 
 
+WINDOWS NOTES
+
+For SBCL on Windows, you will need to download the GLFW DLLs pack
+(glfw-2.6.bin.WIN32.zip), which you can find on http://glfw.sf.net/
+
+I would recommend either placing the MINGW version of the GLFW.dll in either
+your \WINDOWS\SYSTEM32 directory, or in the current directory for distributed
+binaries.
+
+
+MAC OS X NOTES
+
+For SBCL on Mac OS X, you will want to have the libglfw.dylib somewhere where
+cl-glfw can find it. It's probably easiest to just include it in the current
+directory of your application.
+
+
 THREADING
 
-GLFW threading WILL PROBABLY BREAK YOUR LISP. I would advise seeking other
-avenues if you require threading in your applications. The bindings remain in
-cl-glfw, but, I should emphasise once again, that they probably are going to
-mess up things like garbage collection in your lisp, and apparently some things
-to do with stacks and allocations aswell.
+GLFW threading WILL PROBABLY BREAK YOUR LISP IMAGE. I would advise seeking
+other avenues if you require threading in your applications. The bindings
+remain in cl-glfw, but, I should emphasise once again, that they probably are
+going to mess up things like garbage collection in your lisp, and apparently
+some things to do with stacks and allocations aswell.
 
 
 NAME MANGLING STYLE
@@ -65,8 +82,9 @@ cl-glfw-glu does not do automatic float translations.
 
 PLATFORMS
     SBCL Linux x86
-    SBCL Linux amd64
-    SBCL Linux x86_64
+    SBCL Linux amd64/x86_64
+    SBCL Windows 32-bit
+    SBCL Mac OS X 32-bit Intel
     Others: Let me know.
 
 
