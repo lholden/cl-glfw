@@ -11,7 +11,10 @@
 (in-package #:cl-glfw-types)
 
 (defctype enum :uint32)
-(defctype boolean :uint8)
+(define-foreign-type boolean-type ()
+  ()
+  (:actual-type :uint8)
+  (:simple-parser boolean))
 (defctype bitfield :uint32)
 (defctype byte :int8)
 (defctype short :int16)
@@ -20,10 +23,16 @@
 (defctype ubyte :uint8)
 (defctype ushort :uint16)
 (defctype uint :uint32)
-(defctype float :float)
-(defctype clampf :float)
-(defctype double :double)
-(defctype clampd :double)
+(define-foreign-type float-type ()
+  ()
+  (:actual-type :float)
+  (:simple-parser float))
+(defctype clampf float)
+(define-foreign-type double-type ()
+  ()
+  (:actual-type :double)
+  (:simple-parser double))
+(defctype clampd double)
 (defctype void :void)
 
 #-cffi-features:no-long-long
@@ -43,22 +52,16 @@
 
 (defctype half :unsigned-short) ; this is how glext.h defines it anyway
 
-(defmethod cffi:expand-to-foreign (value (type (eql 'boolean)))
+(defmethod cffi:expand-to-foreign (value (type boolean-type))
   `(if ,value 1 0))
 
-(defmethod cffi:expand-from-foreign (value (type (eql 'boolean)))
+(defmethod cffi:expand-from-foreign (value (type boolean-type))
   `(not (= ,value 0)))
 
-(defmethod cffi:expand-to-foreign (value (type (eql 'clampf)))
+(defmethod cffi:expand-to-foreign (value (type float-type))
   `(coerce ,value 'single-float))
 
-(defmethod cffi:expand-to-foreign (value (type (eql 'clampd)))
-  `(coerce ,value 'double-float))
-
-(defmethod cffi:expand-to-foreign (value (type (eql 'float)))
-  `(coerce ,value 'single-float))
-
-(defmethod cffi:expand-to-foreign (value (type (eql 'double)))
+(defmethod cffi:expand-to-foreign (value (type double-type))
   `(coerce ,value 'double-float))
 
 ;; TODO: Maybe we can find/write a converter to a half? Does anyone want it?
