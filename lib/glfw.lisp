@@ -36,10 +36,14 @@
 (setf cffi:*foreign-library-directories* 
       (list "/usr/local/lib/" "/usr/lib/"))
 
-(cffi:load-foreign-library '(:or
-                             #+darwin (:framework "GLFW")
-                             (:default "glfw") 
-                             (:default "libglfw")))
+(cffi:define-foreign-library libglfw
+  '(:or
+    (:darwin  (:framework "GLFW"))
+    (:unix (:or "glfw" "libglfw"  #P"/usr/local/lib/libglfw.so"))
+    (:windows (:or "glfw.dll" "libglfw.dll")) 
+    (t (:default "libglfw"))))
+
+(cffi:use-foreign-library libglfw)
 
 ;; Key and button state/action definitions
 (defconstant +release+ 0)
