@@ -59,8 +59,8 @@
       (gl:viewport 0 0 width height)
 
       (gl:clear-color 0 0 0 0)
-      (gl:clear (+ gl:+color-buffer-bit+
-                   gl:+depth-buffer-bit+))
+      (gl:clear (logior gl:+color-buffer-bit+
+                        gl:+depth-buffer-bit+))
 
       (gl:matrix-mode gl:+projection+)
       (gl:load-identity)

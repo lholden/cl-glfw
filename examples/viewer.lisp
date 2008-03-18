@@ -205,6 +205,37 @@
                                     (,-phi 0 1)
                                     (,-phi 0 -1))))))
 
+(defun make-grid (rows cols)
+  "makes a triangle-strip with 1+r+2rc vertices;
+fills (0 to rows, 0 to cols, 0)"
+  (let ((v (make-array (list (+ 1 rows (* 2 rows cols))
+                             3)
+                       :initial-element 0))
+        (i 1) ; first vertex is (0, 0)
+        )
+    (flet ((put (r c)
+             (setf (aref v i 0) r
+                   (aref v i 1) c)
+             (incf i)))
+      (dotimes (row rows)
+        (if (= (mod row 2) 0)
+            (loop for col from 0 below cols
+               do (progn
+                    (put (1+ row) col)
+                    (put row (1+ col)))
+               finally (put (1+ row) cols))
+            (loop for col from cols above 0
+               do (progn
+                    (put (1+ row) col)
+                    (put row (1- col)))
+               finally (put (1+ row) 0)))))
+    (make-gl-object
+     :type :triangle-strip
+     :position v)))
+
+(defparameter *grid* (make-grid 4 5))
+(tricolor *grid*)
+
 ;;;; The viewer
 (defparameter *view-rotx* 0)
 (defparameter *view-roty* 0)
