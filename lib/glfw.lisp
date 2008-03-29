@@ -268,9 +268,9 @@ depthbits
 stencilbits
       The number of bits to use for the stencil buffer (0 means no stencil buffer).
 mode
-      Selects which type of OpenGL™ window to use. mode can be either GLFW_WINDOW, which
-      will generate a normal desktop window, or GLFW_FULLSCREEN, which will generate a
-      window which covers the entire screen. When GLFW_FULLSCREEN is selected, the video
+      Selects which type of OpenGL™ window to use. mode can be either +WINDOW+, which
+      will generate a normal desktop window, or +FULLSCREEN+ which will generate a
+      window which covers the entire screen. When +FULLSCREEN+ is selected, the video
       mode will be changed to the resolution that closest matches the width and height parameters.
 
 Return values
@@ -285,13 +285,13 @@ match than does a normal desktop window, since GLFW can freely select from all t
 modes. A desktop window is normally restricted to the video mode of the desktop.
 
 Notes
-For additional control of window properties, see glfwOpenWindowHint.
+For additional control of window properties, see glfw::OpenWindowHint.
 In fullscreen mode the mouse cursor is hidden by default, and any system screensavers are prohibited
 from starting. In windowed mode the mouse cursor is visible, and screensavers are allowed to start. To
 change the visibility of the mouse cursor, use glfwEnable or glfwDisable with the argument
-GLFW_MOUSE-CURSOR.
-In order to determine the actual properties of an opened window, use glfwGetWindowParam and
-glfwGetWindowSize (or glfwSetWindowSizeCallback).
++MOUSE_CURSOR+
+In order to determine the actual properties of an opened window, use glfw::GetWindowParam and
+glfw::GetWindowSize (or glfw::SetWindowSizeCallback).
 "
   (%open-window width height redbits greenbits bluebits alphabits depthbits stencilbits mode))
   
@@ -304,16 +304,16 @@ hint
 
 Description
 The function sets additional properties for a window that is to be opened. For a hint to be registered, the
-function must be called before calling glfwOpenWindow. When the glfwOpenWindow function is
-called, any hints that were registered with the glfwOpenWindowHint function are used for setting the
+function must be called before calling glfw::OpenWindow. When the glfw::OpenWindow function is
+called, any hints that were registered with the glfw::OpenWindowHint function are used for setting the
 corresponding window properties, and then all hints are reset to their default values.
 
 Notes
-In order to determine the actual properties of an opened window, use glfwGetWindowParam (after the
+In order to determine the actual properties of an opened window, use glfw::GetWindowParam (after the
 window has been opened).
-GLFW_STEREO is a hard constraint. If stereo rendering is requested, but no stereo rendering capable
-pixel formats / visuals are available, glfwOpenWindow will fail.
-The GLFW_REFRESH-RATE property should be used with caution. Most systems have default values
++STEREO+ is a hard constraint. If stereo rendering is requested, but no stereo rendering capable
+pixel formats / visuals are available, glfw::OpenWindow will fail.
+The +REFRESH_RATE+ property should be used with caution. Most systems have default values
 for monitor refresh rates that are optimal for the specific system. Specifying the refresh rate can
 override these settings, which can result in suboptimal operation. The monitor may be unable to display
 the resulting video signal, or in the worst case it may even be damaged!
@@ -489,14 +489,14 @@ Description
 The function is used for acquiring various properties of an opened window.
 
 Notes
-GLFW_ACCELERATED is only supported under Windows. Other systems will always return
-GL_TRUE. Under Windows, GLFW_ACCELERATED means that the OpenGL™ renderer is a 3rd
++ACCELERATED+ is only supported under Windows. Other systems will always return
+GL::+TRUE+. Under Windows, +ACCELERATED+ means that the OpenGL™ renderer is a 3rd
 party renderer, rather than the fallback Microsoft software OpenGL™ renderer. In other words, it is
 not a real guarantee that the OpenGL™ renderer is actually hardware accelerated.
 ")
 
 (defcfun+doc ("glfwSwapBuffers" swap-buffers) :void ()
-	     "The function swaps the back and front color buffers of the window. If GLFW_AUTO-POLL-EVENTS
+	     "The function swaps the back and front color buffers of the window. If +AUTO_POLL_EVENTS+
 is enabled (which is the default), glfwPollEvents is called before swapping the front and back buffers.")
 
 
@@ -522,10 +522,10 @@ interval. ")
 	     "Parameters
 cbfun
        Pointer to a callback function that will be called when the window client area needs to be
-       refreshed. The function should have the following C language prototype:
-       void GLFWCALL functionname( void );
-       Where functionname is the name of the callback function.
-       If cbfun is NULL, any previously selected callback function will be deselected.
+       refreshed. The function should have the following CFFI  prototype:
+       (cffi:defcallback callback-name :void ((width :int) (height :int)) .. body ..)
+       Where callback is the name of the callback function.
+       If cbfun is the null-pointer, any previously selected callback function will be deselected.
 
 Description
 The function selects which function to be called upon a window refresh event, which occurs when any
@@ -609,7 +609,7 @@ this function, all window states, keyboard states and mouse states are updated. 
 functions are registered, these are called during the call to glfwPollEvents.
 
 Notes
-glfwPollEvents is called implicitly from glfwSwapBuffers if GLFW_AUTO_POLL_EVENTS is
+glfwPollEvents is called implicitly from glfwSwapBuffers if +AUTO_POLL_EVENTS+ is
 enabled (default). Thus, if glfwSwapBuffers is called frequently, which is normally the case, there is
 no need to call glfwPollEvents.
 ")
@@ -624,9 +624,9 @@ glfwPollEvents (i.e. process all messages and then return, without blocking the 
 
 Notes
 It is guaranteed that glfwWaitEvents will wake up on any event that can be processed by
-glfwPollEvents. However, glfwWaitEvents may wake up on events that are not processed or reported
-by glfwPollEvents too, and the function may behave differently on different systems. Do no make any
-assumptions about when or why glfwWaitEvents will return.
+glfw::PollEvents. However, glfwWaitEvents may wake up on events that are not processed or reported
+by glfw::PollEvents too, and the function may behave differently on different systems. Do no make any
+assumptions about when or why glfw::WaitEvents will return.
 ")
 
 (defcfun+doc ("glfwGetKey" get-key) :int ((key :int))
@@ -636,7 +636,7 @@ key
       character (e.g. 'A', '3' or '.'), or a special key identifier. Table 3.3 lists valid special key
       identifiers.
 Return values
-The function returns GLFW_PRESS if the key is held down, or GLFW_RELEASE if the key is not
+The function returns +PRESS+ if the key is held down, or +RELEASE+ if the key is not
 held down.
 
 Description
@@ -644,14 +644,14 @@ The function queries the current state of a specific keyboard key. The physical 
 depends on the system keyboard layout setting.
 
 Notes
-The constant GLFW_KEY_SPACE is equal to 32, which is the ISO 8859-1 code for space.
+The constant +KEY_SPACE+ is equal to 32, which is the ISO 8859-1 code for space.
 Not all key codes are supported on all systems. Also, while some keys are available on some keyboard
 layouts, they may not be available on other keyboard layouts.
 For systems that do not distinguish between left and right versions of modifier keys (shift, alt and
-control), the left version is used (e.g. GLFW_KEY_LSHIFT).
-A window must be opened for the function to have any effect, and glfwPollEvents, glfwWaitEvents or
-glfwSwapBuffers must be called before any keyboard events are recorded and reported by
-glfwGetKey.
+control), the left version is used (e.g. +KEY_LSHIFT+)
+A window must be opened for the function to have any effect, and glfw::PollEvents, glfw::WaitEvents or
+glfw::SwapBuffers must be called before any keyboard events are recorded and reported by
+glfw::GetKey.
 ")
 
 (defcfun+doc ("glfwGetMouseButton" get-mouse-button) :int ((button :int))
@@ -659,17 +659,17 @@ glfwGetKey.
 button
       A mouse button identifier, which can be one of the mouse button identifiers listed in table 3.4.
 Return values
-The function returns GLFW_PRESS if the mouse button is held down, or GLFW_RELEASE if the
+The function returns +PRESS+ if the mouse button is held down, or +RELEASE+ if the
 mouse button is not held down.
 Description
 The function queries the current state of a specific mouse button.
 Notes
-A window must be opened for the function to have any effect, and glfwPollEvents, glfwWaitEvents or
-glfwSwapBuffers must be called before any mouse button events are recorded and reported by
-glfwGetMouseButton.
-GLFW_MOUSE_BUTTON_LEFT is equal to GLFW_MOUSE_BUTTON_1.
-GLFW_MOUSE_BUTTON_RIGHT is equal to GLFW_MOUSE_BUTTON_2.
-GLFW_MOUSE_BUTTON_MIDDLE is equal to GLFW_MOUSE_BUTTON_3.
+A window must be opened for the function to have any effect, and glfw::PollEvents, glfw::WaitEvents or
+glfw::SwapBuffers must be called before any mouse button events are recorded and reported by
+glfw::GetMouseButton.
++MOUSE_BUTTON_LEFT+ is equal to +MOUSE_BUTTON_1+
++MOUSE_BUTTON_RIGHT+ is equal to +MOUSE_BUTTON_2+
++MOUSE_BUTTON_MIDDLE+ is equal to +MOUSE_BUTTON_3+
 ")
 
 
@@ -685,9 +685,9 @@ boundaries except to those implied by the maximum number that can be represented
 (normally -2147483648 to +2147483647).
 
 Notes
-A window must be opened for the function to have any effect, and glfwPollEvents, glfwWaitEvents or
-glfwSwapBuffers must be called before any mouse movements are recorded and reported by
-glfwGetMousePos.
+A window must be opened for the function to have any effect, and glfw::PollEvents, glfw::WaitEvents or
+glfw::SwapBuffers must be called before any mouse movements are recorded and reported by
+glfw::GetMousePos.
 ")
 
 
@@ -711,9 +711,9 @@ Description
 The function returns the current mouse wheel position. The mouse wheel can be thought of as a third
 mouse axis, which is available as a separate wheel or up/down stick on some mice.
 Notes
-A window must be opened for the function to have any effect, and glfwPollEvents, glfwWaitEvents or
-glfwSwapBuffers must be called before any mouse wheel movements are recorded and reported by
-glfwGetMouseWheel.
+A window must be opened for the function to have any effect, and glfw::PollEvents, glfw::WaitEvents or
+glfw::SwapBuffers must be called before any mouse wheel movements are recorded and reported by
+glfw::GetMouseWheel.
 ")
 
 (defcfun+doc ("glfwSetMouseWheel" set-mouse-wheel) :void ((pos :int))
@@ -733,7 +733,7 @@ cbfun
       void GLFWCALL functionname( int key, int action );
       Where functionname is the name of the callback function, key is a key identifier, which is an
       uppercase printable ISO 8859-1 character or a special key identifier (see table 3.3), and action is
-      either GLFW_PRESS or GLFW_RELEASE.
+      either +PRESS+ or +RELEASE+
       If cbfun is NULL, any previously selected callback function will be deselected.
 Return values
 none
@@ -743,8 +743,8 @@ called every time the state of a single key is changed (from released to pressed
 reported keys are unaffected by any modifiers (such as shift or alt).
 A window has to be opened for this function to have any effect.
 Notes
-Keyboard events are recorded continuously, but only reported when glfwPollEvents, glfwWaitEvents
-or glfwSwapBuffers is called.
+Keyboard events are recorded continuously, but only reported when glfw::PollEvents, glfw::WaitEvents
+or glfw::SwapBuffers is called.
 ")
 (defcfun+doc ("glfwSetCharCallback" set-char-callback) :void ((cbfun :pointer))
 	     "Parameters
@@ -753,7 +753,7 @@ cbfun
        the keyboard. The function should have the following C language prototype:
        void GLFWCALL functionname( int character, int action );
        Where functionname is the name of the callback function, character is a Unicode (ISO 10646)
-       character, and action is either GLFW_PRESS or GLFW_RELEASE.
+       character, and action is either +PRESS+ or +RELEASE+
        If cbfun is NULL, any previously selected callback function will be deselected.
 Return values
 none
@@ -763,11 +763,11 @@ is called every time a key that results in a printable Unicode character is pres
 are affected by modifiers (such as shift or alt).
 A window has to be opened for this function to have any effect.
 Notes
-Character events are recorded continuously, but only reported when glfwPollEvents, glfwWaitEvents
-or glfwSwapBuffers is called.
+Character events are recorded continuously, but only reported when glfw::PollEvents, glfw::WaitEvents
+or glfw::SwapBuffers is called.
 Control characters, such as tab and carriage return, are not reported to the character callback function,
 since they are not part of the Unicode character set. Use the key callback function for such events (see
-glfwSetKeyCallback).
+glfw::SetKeyCallback).
 The Unicode character set supports character codes above 255, so never cast a Unicode character to an
 eight bit data type (e.g. the C language ’char’ type) without first checking that the character code is less
 than 256. Also note that Unicode character codes 0 to 255 are equal to ISO 8859-1 (Latin 1).
@@ -779,7 +779,7 @@ cbfun
       The function should have the following C language prototype:
       void GLFWCALL functionname( int button, int action );
       Where functionname is the name of the callback function, button is a mouse button identifier (see
-      table 3.4 on page 56), and action is either GLFW_PRESS or GLFW_RELEASE.
+      table 3.4 on page 56), and action is either +PRESS+ or +RELEASE+
       If cbfun is NULL, any previously selected callback function will be deselected.
 Return values
 none
@@ -787,11 +787,11 @@ Description
 The function selects which function to be called upon a mouse button event.
 A window has to be opened for this function to have any effect.
 Notes
-Mouse button events are recorded continuously, but only reported when glfwPollEvents,
-glfwWaitEvents or glfwSwapBuffers is called.
-GLFW_MOUSE_BUTTON_LEFT is equal to GLFW_MOUSE_BUTTON_1.
-GLFW_MOUSE_BUTTON_RIGHT is equal to GLFW_MOUSE_BUTTON_2.
-GLFW_MOUSE_BUTTON_MIDDLE is equal to GLFW_MOUSE_BUTTON_3.
+Mouse button events are recorded continuously, but only reported when glfw::PollEvents,
+glfw::WaitEvents or glfw::SwapBuffers is called.
++MOUSE_BUTTON_LEFT+ is equal to +MOUSE_BUTTON_1+
++MOUSE_BUTTON_RIGHT+ is equal to +MOUSE_BUTTON_2+
++MOUSE_BUTTON_MIDDLE+ is equal to +MOUSE_BUTTON_3+
 ")
 (defcfun+doc ("glfwSetMousePosCallback" set-mouse-pos-callback) :void ((cbfun :pointer))
 	     "Parameters
@@ -800,7 +800,7 @@ cbfun
       should have the following C language prototype:
       void GLFWCALL functionname( int x, int y );
       Where functionname is the name of the callback function, and x and y are the mouse coordinates
-      (see glfwGetMousePos for more information on mouse coordinates).
+      (see glfw::GetMousePos for more information on mouse coordinates).
       If cbfun is NULL, any previously selected callback function will be deselected.
 Return values
 none
@@ -808,8 +808,8 @@ Description
 The function selects which function to be called upon a mouse motion event.
 A window has to be opened for this function to have any effect.
 Notes
-Mouse motion events are recorded continuously, but only reported when glfwPollEvents,
-glfwWaitEvents or glfwSwapBuffers is called.
+Mouse motion events are recorded continuously, but only reported when glfw::PollEvents,
+glfw::WaitEvents or glfw::SwapBuffers is called.
 ")
 (defcfun+doc ("glfwSetMouseWheelCallback" set-mouse-wheel-callback) :void ((cbfun :pointer))
 	     "Parameters
@@ -825,14 +825,14 @@ Description
 The function selects which function to be called upon a mouse wheel event.
 A window has to be opened for this function to have any effect.
 Notes
-Mouse wheel events are recorded continuously, but only reported when glfwPollEvents,
-glfwWaitEvents or glfwSwapBuffers is called.
+Mouse wheel events are recorded continuously, but only reported when glfw::PollEvents,
+glfw::WaitEvents or glfw::SwapBuffers is called.
 ")
 
 (defcfun+doc ("glfwGetJoystickParam" get-joystick-param) :int ((joy :int) (param :int))
 	     "Parameters
 joy
-      A joystick identifier, which should be GLFW_JOYSTICK_n, where n is in the range 1 to 16.
+      A joystick identifier, which should be +JOYSTICK_n+ where n is in the range 1 to 16.
 param
       A token selecting which parameter the function should return (see table 3.5).
 Return values
@@ -850,7 +850,7 @@ No window has to be opened for joystick information to be valid.
 (defun get-joystick-pos (joy numaxes)
   "Parameters
 joy
-       A joystick identifier, which should be GLFW_JOYSTICK_n, where n is in the range 1 to 16.
+       A joystick identifier, which should be +JOYSTICK_n+ where n is in the range 1 to 16.
 numaxes
        Specifies how many axes should be returned.
 Return values
@@ -867,9 +867,9 @@ If numaxes exceeds the number of axes supported by the joystick, or if the joyst
 unused elements in the pos array will be set to 0.0 (zero).
 
 Notes
-The joystick state is updated every time the function is called, so there is no need to call glfwPollEvents
-or glfwWaitEvents for joystick state to be updated.
-Use glfwGetJoystickParam to retrieve joystick capabilities, such as joystick availability and number of
+The joystick state is updated every time the function is called, so there is no need to call glfw::PollEvents
+or glfw::WaitEvents for joystick state to be updated.
+Use glfw::GetJoystickParam to retrieve joystick capabilities, such as joystick availability and number of
 supported axes.
 No window has to be opened for joystick input to be valid.
 "
@@ -882,7 +882,7 @@ No window has to be opened for joystick input to be valid.
 (defun get-joystick-buttons (joy numbuttons)
   "Parameters
 joy
-       A joystick identifier, which should be GLFW_JOYSTICK_n, where n is in the range 1 to 16.
+       A joystick identifier, which should be +JOYSTICK_n+ where n is in the range 1 to 16.
 numbuttons
        Specifies how many buttons should be returned.
 Return values
@@ -894,14 +894,14 @@ function will return 0 (zero).
 Description
 The function queries the current state of one or more buttons of a joystick. The button states are
 returned in an array, where the first element represents the first button of the joystick. Each state can be
-either GLFW_PRESS or GLFW_RELEASE.
+either +PRESS+ or +RELEASE+
 If numbuttons exceeds the number of buttons supported by the joystick, or if the joystick is not
-available, the unused elements in the buttons array will be set to GLFW_RELEASE.
+available, the unused elements in the buttons array will be set to +RELEASE+
 
 Notes
-The joystick state is updated every time the function is called, so there is no need to call glfwPollEvents
-or glfwWaitEvents for joystick state to be updated.
-Use glfwGetJoystickParam to retrieve joystick capabilities, such as joystick availability and number of
+The joystick state is updated every time the function is called, so there is no need to call glfw::PollEvents
+or glfw::WaitEvents for joystick state to be updated.
+Use glfw::GetJoystickParam to retrieve joystick capabilities, such as joystick availability and number of
 supported buttons.
 No window has to be opened for joystick input to be valid.
 "
@@ -917,7 +917,7 @@ returned as a double precision floating point value.
 
 Description
 The function returns the state of a high precision timer. Unless the timer has been set by the
-glfwSetTime function, the time is measured as the number of seconds that have passed since glfwInit
+glfw::SetTime function, the time is measured as the number of seconds that have passed since glfw::Init
 was called.
 
 Notes
@@ -933,7 +933,7 @@ time
 
 Description
 The function sets the current time of the high precision timer to the specified time. Subsequent calls to
-glfwGetTime will be relative to this time. The time is given in seconds.
+glfw::GetTime will be relative to this time. The time is given in seconds.
 ")
 
 (defcfun+doc ("glfwSleep" sleep) :void ((time :double))
@@ -948,8 +948,8 @@ put to sleep. Other threads within the same process can still execute.
 Notes
 There is usually a system dependent minimum time for which it is possible to sleep. This time is
 generally in the range 1 ms to 20 ms, depending on thread sheduling time slot intervals etc. Using a
-shorter time as a parameter to glfwSleep can give one of two results: either the thread will sleep for the
-minimum possible sleep time, or the thread will not sleep at all (glfwSleep returns immediately). The
+shorter time as a parameter to glfw::Sleep can give one of two results: either the thread will sleep for the
+minimum possible sleep time, or the thread will not sleep at all (glfw::Sleep returns immediately). The
 latter should only happen when very short sleep times are specified, if at all. ")
 
 (defcstruct image
@@ -988,13 +988,13 @@ which can be GL_LUMINANCE or GL_ALPHA (for gray scale images), GL_RGB or GL_RGBA
 BytesPerPixel specifies the number of bytes per pixel. Data is a pointer to the actual pixel data.
 By default the read image is rescaled to the nearest larger 2m × 2n resolution using bilinear
 interpolation, if necessary, which is useful if the image is to be used as an OpenGL™ texture. This
-behavior can be disabled by setting the GLFW_NO_RESCALE_BIT flag.
-Unless the flag GLFW_ORIGIN_UL_BIT is set, the first pixel in img->Data is the lower left corner of
-the image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left corner.
+behavior can be disabled by setting the +NO_RESCALE_BIT+ flag.
+Unless the flag +ORIGIN_UL_BIT+ is set, the first pixel in img->Data is the lower left corner of
+the image. If the flag +ORIGIN_UL_BIT+ is set, however, the first pixel is the upper left corner.
 For single component images (i.e. gray scale), Format is set to GL_ALPHA if the flag
-GLFW_ALPHA_MAP_BIT flag is set, otherwise Format is set to GL_LUMINANCE.
++ALPHA_MAP_BIT+ flag is set, otherwise Format is set to GL_LUMINANCE.
 Notes
-glfwReadImage supports the Truevision Targa version 1 file format (.TGA). Supported pixel formats
+glfw::ReadImage supports the Truevision Targa version 1 file format (.TGA). Supported pixel formats
 are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color + alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
 Please note that OpenGL™ 1.0 does not support single component alpha maps, so do not use images
@@ -1032,13 +1032,13 @@ which can be GL_LUMINANCE or GL_ALPHA (for gray scale images), GL_RGB or GL_RGBA
 BytesPerPixel specifies the number of bytes per pixel. Data is a pointer to the actual pixel data.
 By default the read image is rescaled to the nearest larger 2m × 2n resolution using bilinear
 interpolation, if necessary, which is useful if the image is to be used as an OpenGL™ texture. This
-behavior can be disabled by setting the GLFW_NO_RESCALE_BIT flag.
-Unless the flag GLFW_ORIGIN_UL_BIT is set, the first pixel in img->Data is the lower left corner of
-the image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left corner.
+behavior can be disabled by setting the +NO_RESCALE_BIT+ flag.
+Unless the flag +ORIGIN_UL_BIT+ is set, the first pixel in img->Data is the lower left corner of
+the image. If the flag +ORIGIN_UL_BIT+ is set, however, the first pixel is the upper left corner.
 For single component images (i.e. gray scale), Format is set to GL_ALPHA if the flag
-GLFW_ALPHA_MAP_BIT flag is set, otherwise Format is set to GL_LUMINANCE.
++ALPHA_MAP_BIT+ flag is set, otherwise Format is set to GL_LUMINANCE.
 Notes
-glfwReadMemoryImage supports the Truevision Targa version 1 file format (.TGA). Supported pixel
+glfw::ReadMemoryImage supports the Truevision Targa version 1 file format (.TGA). Supported pixel
 formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color +
 alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
@@ -1052,7 +1052,7 @@ img
      Pointer to a GLFWimage struct.
 Description
 The function frees any memory occupied by a loaded image, and clears all the fields of the GLFWimage
-struct. Any image that has been loaded by the glfwReadImage function should be deallocated using
+struct. Any image that has been loaded by the glfw::ReadImage function should be deallocated using
 this function, once the image is not needed anymore. ")
 
 (defcfun+doc ("glfwLoadTexture2D" load-texture-2d) boolean ((name :string) (flags :int))
@@ -1068,16 +1068,16 @@ returned.
 Description
 The function reads an image from the file specified by the parameter name and uploads the image to
 OpenGL™ texture memory (using the glTexImage2D function).
-If the GLFW_BUILD_MIPMAPS_BIT flag is set, all mipmap levels for the loaded texture are
+If the +BUILD_MIPMAPS_BIT+ flag is set, all mipmap levels for the loaded texture are
 generated and uploaded to texture memory.
-Unless the flag GLFW_ORIGIN_UL_BIT is set, the origin of the texture is the lower left corner of the
-loaded image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left
+Unless the flag +ORIGIN_UL_BIT+ is set, the origin of the texture is the lower left corner of the
+loaded image. If the flag +ORIGIN_UL_BIT+ is set, however, the first pixel is the upper left
 corner.
 For single component images (i.e. gray scale), the texture is uploaded as an alpha mask if the flag
-GLFW_ALPHA_MAP_BIT flag is set, otherwise it is uploaded as a luminance texture.
++ALPHA_MAP_BIT+ flag is set, otherwise it is uploaded as a luminance texture.
 
 Notes
-glfwLoadTexture2D supports the Truevision Targa version 1 file format (.TGA). Supported pixel
+glfw::LoadTexture2D supports the Truevision Targa version 1 file format (.TGA). Supported pixel
 formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color +
 alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
@@ -1087,7 +1087,7 @@ If the GL_SGIS_generate_mipmap extension, which is usually hardware accelerated,
 the OpenGL™ implementation it will be used for mipmap generation. Otherwise the mipmaps will be
 generated by GLFW in software.
 Since OpenGL™ 1.0 does not support single component alpha maps, alpha map textures are converted
-to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
+to RGBA format under OpenGL™ 1.0 when the +ALPHA_MAP_BIT+ flag is set and the loaded
 texture is a single component texture. The red, green and blue components are set to 1.0.
 ")
 
@@ -1107,16 +1107,16 @@ returned.
 Description
 The function reads an image from the memory buffer specified by the parameter data and uploads the
 image to OpenGL™ texture memory (using the glTexImage2D function).
-If the GLFW_BUILD_MIPMAPS_BIT flag is set, all mipmap levels for the loaded texture are
+If the +BUILD_MIPMAPS_BIT+ flag is set, all mipmap levels for the loaded texture are
 generated and uploaded to texture memory.
-Unless the flag GLFW_ORIGIN_UL_BIT is set, the origin of the texture is the lower left corner of the
-loaded image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left
+Unless the flag +ORIGIN_UL_BIT+ is set, the origin of the texture is the lower left corner of the
+loaded image. If the flag +ORIGIN_UL_BIT+ is set, however, the first pixel is the upper left
 corner.
 For single component images (i.e. gray scale), the texture is uploaded as an alpha mask if the flag
-GLFW_ALPHA_MAP_BIT flag is set, otherwise it is uploaded as a luminance texture.
++ALPHA_MAP_BIT+ flag is set, otherwise it is uploaded as a luminance texture.
 
 Notes
-glfwLoadMemoryTexture2D supports the Truevision Targa version 1 file format (.TGA). Supported
+glfw::LoadMemoryTexture2D supports the Truevision Targa version 1 file format (.TGA). Supported
 pixel formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color
 + alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
@@ -1126,7 +1126,7 @@ If the GL_SGIS_generate_mipmap extension, which is usually hardware accelerated,
 the OpenGL™ implementation it will be used for mipmap generation. Otherwise the mipmaps will be
 generated by GLFW in software.
 Since OpenGL™ 1.0 does not support single component alpha maps, alpha map textures are converted
-to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
+to RGBA format under OpenGL™ 1.0 when the +ALPHA_MAP_BIT+ flag is set and the loaded
 texture is a single component texture. The red, green and blue components are set to 1.0.
 ")
 
@@ -1145,16 +1145,16 @@ returned.
 Description
 The function uploads the image specified by the parameter img to OpenGL™ texture memory (using
 the glTexImage2D function).
-If the GLFW_BUILD_MIPMAPS_BIT flag is set, all mipmap levels for the loaded texture are
+If the +BUILD_MIPMAPS_BIT+ flag is set, all mipmap levels for the loaded texture are
 generated and uploaded to texture memory.
-Unless the flag GLFW_ORIGIN_UL_BIT is set, the origin of the texture is the lower left corner of the
-loaded image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left
+Unless the flag +ORIGIN_UL_BIT+ is set, the origin of the texture is the lower left corner of the
+loaded image. If the flag +ORIGIN_UL_BIT+ is set, however, the first pixel is the upper left
 corner.
 For single component images (i.e. gray scale), the texture is uploaded as an alpha mask if the flag
-GLFW_ALPHA_MAP_BIT flag is set, otherwise it is uploaded as a luminance texture.
++ALPHA_MAP_BIT+ flag is set, otherwise it is uploaded as a luminance texture.
 
 Notes
-glfwLoadTextureImage2D supports the Truevision Targa version 1 file format (.TGA). Supported
+glfw::LoadTextureImage2D supports the Truevision Targa version 1 file format (.TGA). Supported
 pixel formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color
 + alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
@@ -1164,7 +1164,7 @@ If the GL_SGIS_generate_mipmap extension, which is usually hardware accelerated,
 the OpenGL™ implementation it will be used for mipmap generation. Otherwise the mipmaps will be
 generated by GLFW in software.
 Since OpenGL™ 1.0 does not support single component alpha maps, alpha map textures are converted
-to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
+to RGBA format under OpenGL™ 1.0 when the +ALPHA_MAP_BIT+ flag is set and the loaded
 texture is a single component texture. The red, green and blue components are set to 1.0. ")
 
 
@@ -1179,7 +1179,7 @@ The function does a string search in the list of supported OpenGL™ extensions 
 extension is listed.
 Notes
 An OpenGL™ context must be created before this function can be called (i.e. an OpenGL™ window
-must have been opened with glfwOpenWindow).
+must have been opened with glfw::OpenWindow).
 In addition to checking for OpenGL™ extensions, GLFW also checks for extensions in the operating
 system “glue API”, such as WGL extensions under Windows and glX extensions under the X Window
 System.
@@ -1198,8 +1198,8 @@ extensions define new API functions, which are usually not available through nor
 therefore necessary to get access to those API functions at runtime.
 Notes
 An OpenGL™ context must be created before this function can be called (i.e. an OpenGL™ window
-must have been opened with glfwOpenWindow).
-Some systems do not support dynamic function pointer retrieval, in which case glfwGetProcAddress
+must have been opened with glfw::OpenWindow).
+Some systems do not support dynamic function pointer retrieval, in which case glfw::GetProcAddress
 will always return NULL.
 ")
 
@@ -1250,24 +1250,24 @@ thread may be unable to execute, for instance if the thread start address is not
 (defcfun+doc ("glfwDestroyThread" destroy-thread) :void ((id thread)) 
 "Parameters
 ID
-      A thread identification handle, which is returned by glfwCreateThread or glfwGetThreadID.
+      A thread identification handle, which is returned by glfw::CreateThread or glfw::GetThreadID.
 Description
 The function kills a running thread and removes it from the thread list.
 Notes
 This function is a very dangerous operation, which may interrupt a thread in the middle of an important
 operation, and its use is discouraged. You should always try to end a thread in a graceful way using
-thread communication, and use glfwWaitThread in order to wait for the thread to die.
+thread communication, and use glfw::WaitThread in order to wait for the thread to die.
 ")
 (defcfun+doc ("glfwWaitThread" wait-thread) boolean ((id thread) (waitmode :int) ) 
 "Parameters
 ID
-      A thread identification handle, which is returned by glfwCreateThread or glfwGetThreadID.
+      A thread identification handle, which is returned by glfw::CreateThread or glfw::GetThreadID.
 waitmode
-      Can be either GLFW_WAIT or GLFW_NOWAIT.
+      Can be either +WAIT+ or +NOWAIT+
 Return values
 The function returns t if the specified thread died after the function was called, or the thread
-did not exist, in which case glfwWaitThread will return immediately regardless of waitmode. The
-function returns nil if waitmode is GLFW_NOWAIT, and the specified thread exists and is still
+did not exist, in which case glfw::WaitThread will return immediately regardless of waitmode. The
+function returns nil if waitmode is +NOWAIT+ and the specified thread exists and is still
 running.
 ")
 (defcfun+doc ("glfwGetThreadID" get-thread-id) thread () 
@@ -1275,7 +1275,7 @@ running.
 The function returns a thread identification handle for the calling thread.
 Description
 The function determines the thread ID for the calling thread. The ID is the same value as was returned
-by glfwCreateThread when the thread was created.
+by glfw::CreateThread when the thread was created.
 ")
 
 (defcfun+doc ("glfwCreateMutex" create-mutex) mutex () 
@@ -1301,7 +1301,7 @@ Description
 The function will acquire a lock on the selected mutex object. If the mutex is already locked by another
 thread, the function will block the calling thread until it is released by the locking thread. Once the
 function returns, the calling thread has an exclusive lock on the mutex. To release the mutex, call
-glfwUnlockMutex.
+glfw::UnlockMutex.
 ")
 (defcfun+doc ("glfwUnlockMutex" unlock-mutex) :void ((mutex mutex)) 
 "Parameters
@@ -1318,8 +1318,8 @@ mutex
 forms
       Body of code to execute
 Description
-This macro will acquire a lock on the selected mutex object using glfwLockMutex and release it afterwards
-using glfwUnlockMutex.
+This macro will acquire a lock on the selected mutex object using glfw::LockMutex and release it afterwards
+using glfw::UnlockMutex.
 So, forms will not execute until an exclusive lock is held.
 The lock is then released when the stack is unwound."
   (let ((smutex (gensym "MUTEX-")))
@@ -1351,15 +1351,15 @@ mutex
        A mutex object handle.
 timeout
        Maximum time to wait for the condition variable. The parameter can either be a positive time (in
-       seconds), or GLFW_INFINITY.
+       seconds), or +INFINITY+
 Description
 The function atomically unlocks the mutex specified by mutex, and waits for the condition variable cond
 to be signaled. The thread execution is suspended and does not consume any CPU time until the
 condition variable is signaled or the amount of time specified by timeout has passed. If timeout is
-GLFW_INFINITY, glfwWaitCond will wait forever for cond to be signaled. Before returning to the
-calling thread, glfwWaitCond automatically re-acquires the mutex.
++INFINITY+ glfw::WaitCond will wait forever for cond to be signaled. Before returning to the
+calling thread, glfw::WaitCond automatically re-acquires the mutex.
 Notes
-The mutex specified by mutex must be locked by the calling thread before entrance to glfwWaitCond.
+The mutex specified by mutex must be locked by the calling thread before entrance to glfw::WaitCond.
 A condition variable must always be associated with a mutex, to avoid the race condition where a thread
 prepares to wait on a condition variable and another thread signals the condition just before the first
 thread actually waits on it.
@@ -1405,56 +1405,56 @@ token
 Return values
 none
 Description
-glfwEnable is used to enable a certain feature, while glfwDisable is used to disable it. Below follows a
+glfw::Enable is used to enable a certain feature, while glfw::Disable is used to disable it. Below follows a
 description of each feature.
-GLFW_AUTO_POLL_EVENTS
-When GLFW_AUTO_POLL_EVENTS is enabled, glfwPollEvents is automatically called each time
-that glfwSwapBuffers is called.
-When GLFW_AUTO_POLL_EVENTS is disabled, calling glfwSwapBuffers will not result in a call to
-glfwPollEvents. This can be useful if glfwSwapBuffers needs to be called from within a callback
-function, since calling glfwPollEvents from a callback function is not allowed.
-GLFW_KEY_REPEAT
-When GLFW_KEY_REPEAT is enabled, the key and character callback functions are called repeatedly
++AUTO_POLL_EVENTS+
+When +AUTO_POLL_EVENTS+ is enabled, glfw::PollEvents is automatically called each time
+that glfw::SwapBuffers is called.
+When +AUTO_POLL_EVENTS+ is disabled, calling glfw::SwapBuffers will not result in a call to
+glfw::PollEvents. This can be useful if glfw::SwapBuffers needs to be called from within a callback
+function, since calling glfw::PollEvents from a callback function is not allowed.
++KEY_REPEAT+
+When +KEY_REPEAT+ is enabled, the key and character callback functions are called repeatedly
 when a key is held down long enough (according to the system key repeat configuration).
-When GLFW_KEY_REPEAT is disabled, the key and character callback functions are only called once
+When +KEY_REPEAT+ is disabled, the key and character callback functions are only called once
 when a key is pressed (and once when it is released).
-GLFW_MOUSE_CURSOR
-When GLFW_MOUSE_CURSOR is enabled, the mouse cursor is visible, and mouse coordinates are
++MOUSE_CURSOR+
+When +MOUSE_CURSOR+ is enabled, the mouse cursor is visible, and mouse coordinates are
 relative to the upper left corner of the client area of the GLFW window. The coordinates are limited to
 the client area of the window.
-When GLFW_MOUSE_CURSOR is disabled, the mouse cursor is invisible, and mouse coordinates are
+When +MOUSE_CURSOR+ is disabled, the mouse cursor is invisible, and mouse coordinates are
 not limited to the drawing area of the window. It is as if the mouse coordinates are recieved directly
 from the mouse, without being restricted or manipulated by the windowing system.
-GLFW_STICKY_KEYS
-When GLFW_STICKY_KEYS is enabled, keys which are pressed will not be released until they are
-physically released and checked with glfwGetKey. This behavior makes it possible to catch keys that
-were pressed and then released again between two calls to glfwPollEvents, glfwWaitEvents or
-glfwSwapBuffers, which would otherwise have been reported as released. Care should be taken when
-using this mode, since keys that are not checked with glfwGetKey will never be released. Note also that
-enabling GLFW_STICKY_KEYS does not affect the behavior of the keyboard callback functionality.
-When GLFW_STICKY_KEYS is disabled, the status of a key that is reported by glfwGetKey is always
-the physical state of the key. Disabling GLFW_STICKY_KEYS also clears the sticky information for
++STICKY_KEYS+
+When +STICKY_KEYS+ is enabled, keys which are pressed will not be released until they are
+physically released and checked with glfw::GetKey. This behavior makes it possible to catch keys that
+were pressed and then released again between two calls to glfw::PollEvents, glfw::WaitEvents or
+glfw::SwapBuffers, which would otherwise have been reported as released. Care should be taken when
+using this mode, since keys that are not checked with glfw::GetKey will never be released. Note also that
+enabling +STICKY_KEYS+ does not affect the behavior of the keyboard callback functionality.
+When +STICKY_KEYS+ is disabled, the status of a key that is reported by glfw::GetKey is always
+the physical state of the key. Disabling +STICKY_KEYS+ also clears the sticky information for
 all keys.
-GLFW_STICKY_MOUSE_BUTTONS
-When GLFW_STICKY_MOUSE_BUTTONS is enabled, mouse buttons that are pressed will not be
-released until they are physically released and checked with glfwGetMouseButton. This behavior
++STICKY_MOUSE_BUTTONS+
+When +STICKY_MOUSE_BUTTONS+ is enabled, mouse buttons that are pressed will not be
+released until they are physically released and checked with glfw::GetMouseButton. This behavior
 makes it possible to catch mouse buttons which were pressed and then released again between two calls
-to glfwPollEvents, glfwWaitEvents or glfwSwapBuffers, which would otherwise have been reported
+to glfw::PollEvents, glfw::WaitEvents or glfw::SwapBuffers, which would otherwise have been reported
 as released. Care should be taken when using this mode, since mouse buttons that are not checked with
-glfwGetMouseButton will never be released. Note also that enabling
-GLFW_STICKY_MOUSE_BUTTONS does not affect the behavior of the mouse button callback
+glfw::GetMouseButton will never be released. Note also that enabling
++STICKY_MOUSE_BUTTONS+ does not affect the behavior of the mouse button callback
 functionality.
-When GLFW_STICKY_MOUSE_BUTTONS is disabled, the status of a mouse button that is reported
-by glfwGetMouseButton is always the physical state of the mouse button. Disabling
-GLFW_STICKY_MOUSE_BUTTONS also clears the sticky information for all mouse buttons.
-GLFW_SYSTEM_KEYS
-When GLFW_SYSTEM_KEYS is enabled, pressing standard system key combinations, such as
+When +STICKY_MOUSE_BUTTONS+ is disabled, the status of a mouse button that is reported
+by glfw::GetMouseButton is always the physical state of the mouse button. Disabling
++STICKY_MOUSE_BUTTONS+ also clears the sticky information for all mouse buttons.
++SYSTEM_KEYS+
+When +SYSTEM_KEYS+ is enabled, pressing standard system key combinations, such as
 ALT+TAB under Windows, will give the normal behavior. Note that when ALT+TAB is issued under
 Windows in this mode so that the GLFW application is deselected when GLFW is operating in
 fullscreen mode, the GLFW application window will be minimized and the video mode will be set to
 the original desktop mode. When the GLFW application is re-selected, the video mode will be set to
 the GLFW video mode again.
-When GLFW_SYSTEM_KEYS is disabled, pressing standard system key combinations will have no
+When +SYSTEM_KEYS+ is disabled, pressing standard system key combinations will have no
 effect, since those key combinations are blocked by GLFW. This mode can be useful in situations when
 the GLFW program must not be interrupted (normally for games in fullscreen mode).
 ")
@@ -1465,56 +1465,56 @@ token
 Return values
 none
 Description
-glfwEnable is used to enable a certain feature, while glfwDisable is used to disable it. Below follows a
+glfw::Enable is used to enable a certain feature, while glfw::Disable is used to disable it. Below follows a
 description of each feature.
-GLFW_AUTO_POLL_EVENTS
-When GLFW_AUTO_POLL_EVENTS is enabled, glfwPollEvents is automatically called each time
-that glfwSwapBuffers is called.
-When GLFW_AUTO_POLL_EVENTS is disabled, calling glfwSwapBuffers will not result in a call to
-glfwPollEvents. This can be useful if glfwSwapBuffers needs to be called from within a callback
-function, since calling glfwPollEvents from a callback function is not allowed.
-GLFW_KEY_REPEAT
-When GLFW_KEY_REPEAT is enabled, the key and character callback functions are called repeatedly
++AUTO_POLL_EVENTS+
+When +AUTO_POLL_EVENTS+ is enabled, glfw::PollEvents is automatically called each time
+that glfw::SwapBuffers is called.
+When +AUTO_POLL_EVENTS+ is disabled, calling glfw::SwapBuffers will not result in a call to
+glfw::PollEvents. This can be useful if glfw::SwapBuffers needs to be called from within a callback
+function, since calling glfw::PollEvents from a callback function is not allowed.
++KEY_REPEAT+
+When +KEY_REPEAT+ is enabled, the key and character callback functions are called repeatedly
 when a key is held down long enough (according to the system key repeat configuration).
-When GLFW_KEY_REPEAT is disabled, the key and character callback functions are only called once
+When +KEY_REPEAT+ is disabled, the key and character callback functions are only called once
 when a key is pressed (and once when it is released).
-GLFW_MOUSE_CURSOR
-When GLFW_MOUSE_CURSOR is enabled, the mouse cursor is visible, and mouse coordinates are
++MOUSE_CURSOR+
+When +MOUSE_CURSOR+ is enabled, the mouse cursor is visible, and mouse coordinates are
 relative to the upper left corner of the client area of the GLFW window. The coordinates are limited to
 the client area of the window.
-When GLFW_MOUSE_CURSOR is disabled, the mouse cursor is invisible, and mouse coordinates are
+When +MOUSE_CURSOR+ is disabled, the mouse cursor is invisible, and mouse coordinates are
 not limited to the drawing area of the window. It is as if the mouse coordinates are recieved directly
 from the mouse, without being restricted or manipulated by the windowing system.
-GLFW_STICKY_KEYS
-When GLFW_STICKY_KEYS is enabled, keys which are pressed will not be released until they are
-physically released and checked with glfwGetKey. This behavior makes it possible to catch keys that
-were pressed and then released again between two calls to glfwPollEvents, glfwWaitEvents or
-glfwSwapBuffers, which would otherwise have been reported as released. Care should be taken when
-using this mode, since keys that are not checked with glfwGetKey will never be released. Note also that
-enabling GLFW_STICKY_KEYS does not affect the behavior of the keyboard callback functionality.
-When GLFW_STICKY_KEYS is disabled, the status of a key that is reported by glfwGetKey is always
-the physical state of the key. Disabling GLFW_STICKY_KEYS also clears the sticky information for
++STICKY_KEYS+
+When +STICKY_KEYS+ is enabled, keys which are pressed will not be released until they are
+physically released and checked with glfw::GetKey. This behavior makes it possible to catch keys that
+were pressed and then released again between two calls to glfw::PollEvents, glfw::WaitEvents or
+glfw::SwapBuffers, which would otherwise have been reported as released. Care should be taken when
+using this mode, since keys that are not checked with glfw::GetKey will never be released. Note also that
+enabling +STICKY_KEYS+ does not affect the behavior of the keyboard callback functionality.
+When +STICKY_KEYS+ is disabled, the status of a key that is reported by glfwGetKey is always
+the physical state of the key. Disabling +STICKY_KEYS+ also clears the sticky information for
 all keys.
-GLFW_STICKY_MOUSE_BUTTONS
-When GLFW_STICKY_MOUSE_BUTTONS is enabled, mouse buttons that are pressed will not be
-released until they are physically released and checked with glfwGetMouseButton. This behavior
++STICKY_MOUSE_BUTTONS+
+When +STICKY_MOUSE_BUTTONS+ is enabled, mouse buttons that are pressed will not be
+released until they are physically released and checked with glfw::GetMouseButton. This behavior
 makes it possible to catch mouse buttons which were pressed and then released again between two calls
-to glfwPollEvents, glfwWaitEvents or glfwSwapBuffers, which would otherwise have been reported
+to glfw::PollEvents, glfw::WaitEvents or glfw::SwapBuffers, which would otherwise have been reported
 as released. Care should be taken when using this mode, since mouse buttons that are not checked with
-glfwGetMouseButton will never be released. Note also that enabling
-GLFW_STICKY_MOUSE_BUTTONS does not affect the behavior of the mouse button callback
+glfw::GetMouseButton will never be released. Note also that enabling
++STICKY_MOUSE_BUTTONS+ does not affect the behavior of the mouse button callback
 functionality.
-When GLFW_STICKY_MOUSE_BUTTONS is disabled, the status of a mouse button that is reported
+When +STICKY_MOUSE_BUTTONS+ is disabled, the status of a mouse button that is reported
 by glfwGetMouseButton is always the physical state of the mouse button. Disabling
-GLFW_STICKY_MOUSE_BUTTONS also clears the sticky information for all mouse buttons.
-GLFW_SYSTEM_KEYS
-When GLFW_SYSTEM_KEYS is enabled, pressing standard system key combinations, such as
++STICKY_MOUSE_BUTTONS+ also clears the sticky information for all mouse buttons.
++SYSTEM_KEYS+
+When +SYSTEM_KEYS+ is enabled, pressing standard system key combinations, such as
 ALT+TAB under Windows, will give the normal behavior. Note that when ALT+TAB is issued under
 Windows in this mode so that the GLFW application is deselected when GLFW is operating in
 fullscreen mode, the GLFW application window will be minimized and the video mode will be set to
 the original desktop mode. When the GLFW application is re-selected, the video mode will be set to
 the GLFW video mode again.
-When GLFW_SYSTEM_KEYS is disabled, pressing standard system key combinations will have no
+When +SYSTEM_KEYS+ is disabled, pressing standard system key combinations will have no
 effect, since those key combinations are blocked by GLFW. This mode can be useful in situations when
 the GLFW program must not be interrupted (normally for games in fullscreen mode).
 ")
