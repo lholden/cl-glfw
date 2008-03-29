@@ -10,58 +10,59 @@
 
 (in-package #:cl-glfw-types)
 
-(defctype enum :uint32)
-(define-foreign-type boolean-type ()
-  ()
-  (:actual-type :uint8)
-  (:simple-parser boolean))
-(defctype bitfield :uint32)
-(defctype byte :int8)
-(defctype short :int16)
-(defctype int :int32)
-(defctype sizei :int32)
-(defctype ubyte :uint8)
-(defctype ushort :uint16)
-(defctype uint :uint32)
-(define-foreign-type float-type ()
-  ()
-  (:actual-type :float)
-  (:simple-parser float))
-(defctype clampf float)
-(define-foreign-type double-type ()
-  ()
-  (:actual-type :double)
-  (:simple-parser double))
-(defctype clampd double)
-(defctype void :void)
+(defmacro defgltype (type parser actual-type)
+  `(define-foreign-type ,type ()
+       ()
+     (:actual-type ,actual-type)
+     (:simple-parser ,parser)))
+
+(defgltype gl-enum enum :uint32)
+(defgltype gl-boolean boolean :uint8)
+(defgltype gl-bitfield bitfield :uint32)
+(defgltype gl-byte byte :int8)
+(defgltype gl-short short :int16)
+(defgltype gl-int int :int32)
+(defgltype gl-sizei sizei :int32)
+(defgltype gl-ubyte ubyte :uint8)
+(defgltype gl-ushort ushort :uint16)
+(defgltype gl-uint uint :uint32)
+(defgltype gl-float float :float)
+(defgltype gl-clampf clampf :float)
+(defgltype gl-double double :double)
+(defgltype gl-clampd clampd :double)
+(defgltype gl-void void :void)
 
 #-cffi-features:no-long-long
-(defctype uint64 :uint64)
+(defgltype gl-uint64 uint64 :uint64)
 #-cffi-features:no-long-long
-(defctype int64 :int64)
+(defgltype gl-int64 int64 :int64)
 
 ;; Find a CFFI integer type the same foreign-size as a pointer
-(defctype intptr #.(find-symbol (format nil "INT~d" (* 8 (cffi:foreign-type-size :pointer))) (find-package '#:keyword)))
-(defctype sizeiptr #.(find-symbol (format nil "INT~d" (* 8 (cffi:foreign-type-size :pointer))) (find-package '#:keyword)))
+(defgltype gl-intprt intptr #.(find-symbol (format nil "INT~d" (* 8 (cffi:foreign-type-size :pointer))) (find-package '#:keyword)))
+(defgltype gl-sizeiptr sizeiptr #.(find-symbol (format nil "INT~d" (* 8 (cffi:foreign-type-size :pointer))) (find-package '#:keyword)))
 
-(defctype handle :unsigned-int)
+(defgltype gl-handle handle :unsigned-int)
+(defgltype gl-char char :char)
+(defgltype gl-string string :string)
+(defgltype gl-half half :unsigned-short) ; this is how glext.h defines it anyway
 
-(defctype char :char)
 
-(defctype string :string)
-
-(defctype half :unsigned-short) ; this is how glext.h defines it anyway
-
-(defmethod cffi:expand-to-foreign (value (type boolean-type))
+(defmethod cffi:expand-to-foreign (value (type gl-boolean))
   `(if ,value 1 0))
 
-(defmethod cffi:expand-from-foreign (value (type boolean-type))
+(defmethod cffi:expand-from-foreign (value (type gl-boolean))
   `(not (= ,value 0)))
 
-(defmethod cffi:expand-to-foreign (value (type float-type))
+(defmethod cffi:expand-to-foreign (value (type gl-clampf))
   `(coerce ,value 'single-float))
 
-(defmethod cffi:expand-to-foreign (value (type double-type))
+(defmethod cffi:expand-to-foreign (value (type gl-clampd))
+  `(coerce ,value 'double-float))
+
+(defmethod cffi:expand-to-foreign (value (type gl-float))
+  `(coerce ,value 'single-float))
+
+(defmethod cffi:expand-to-foreign (value (type gl-double))
   `(coerce ,value 'double-float))
 
 ;; TODO: Maybe we can find/write a converter to a half? Does anyone want it?
