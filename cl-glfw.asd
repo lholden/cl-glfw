@@ -11,4 +11,5 @@
   :depends-on (cffi cl-glfw-types)
   :components ((:module lib :serial t 
                         :components ((:file "glfw-package")
+                                     (:file "glfw-lib")
                                      (:file "glfw")))))
