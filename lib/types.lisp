@@ -1,10 +1,10 @@
 (defpackage #:cl-glfw-types
   (:use #:cl #:cffi)
-  (:shadow #:boolean #:byte #:float #:char #:string)
+  (:shadow #:boolean #:byte #:float #:char #:string #:pointer)
   (:export #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
            #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 
            #:intptr #:sizeiptr 
-           #:handle
+           #:handle #:pointer
            #:char #:string
            #:half))
 
@@ -31,6 +31,7 @@
 (defgltype gl-double double :double)
 (defgltype gl-clampd clampd :double)
 (defgltype gl-void void :void)
+(defgltype gl-void-ptr pointer :pointer)
 
 #-cffi-features:no-long-long
 (defgltype gl-uint64 uint64 :uint64)
