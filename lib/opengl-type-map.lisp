@@ -6,7 +6,7 @@
           enum |BinormalPointerTypeEXT| enum |BlendEquationMode| enum
           |BlendEquationModeEXT| enum |BlendFuncSeparateParameterEXT| enum
           |BlendingFactorDest| enum |BlendingFactorSrc| enum |Boolean| boolean
-          |BooleanPointer| :pointer |Char| char |CharPointer| :pointer
+          |BooleanPointer| pointer |Char| char |CharPointer| pointer
           |CheckedFloat32| float |CheckedInt32| int |ClampColorTargetARB| enum
           |ClampColorModeARB| enum |ClampedColorF| clampf |ClampedFloat32|
           clampf |ClampedFloat64| clampd |ClampedStencilValue| int
@@ -32,12 +32,12 @@
           |FeedbackElement| float |FeedbackType| enum |FenceNV| uint
           |FenceConditionNV| enum |FenceParameterNameNV| enum |FfdMaskSGIX|
           bitfield |FfdTargetSGIX| enum |Float32| float |Float32Pointer|
-          :pointer |Float64| double |Float64Pointer| :pointer |FogParameter|
+          pointer |Float64| double |Float64Pointer| pointer |FogParameter|
           enum |FogPointerTypeEXT| enum |FogPointerTypeIBM| enum
           |FragmentLightModelParameterSGIX| enum |FragmentLightNameSGIX| enum
           |FragmentLightParameterSGIX| enum |FramebufferAttachment| enum
           |FramebufferTarget| enum |FrontFaceDirection| enum |FunctionPointer|
-          :pointer |GetColorTableParameterPName| enum
+          pointer |GetColorTableParameterPName| enum
           |GetColorTableParameterPNameSGI| enum |GetConvolutionParameterPName|
           enum |GetHistogramParameterPName| enum
           |GetHistogramParameterPNameEXT| enum |GetMapQuery| enum
@@ -60,7 +60,7 @@
           enum |MatrixIndexPointerTypeARB| enum |MatrixMode| enum
           |MatrixTransformNV| enum |MeshMode1| enum |MeshMode2| enum
           |MinmaxTarget| enum |MinmaxTargetEXT| enum |NormalPointerType| enum
-          |NurbsCallback| enum |NurbsObj| :pointer |NurbsProperty| enum
+          |NurbsCallback| enum |NurbsObj| pointer |NurbsProperty| enum
           |NurbsTrim| enum |OcclusionQueryParameterNameNV| enum |PixelCopyType|
           enum |PixelFormat| enum |PixelInternalFormat| enum |PixelMap| enum
           |PixelStoreParameter| enum |PixelTexGenModeSGIX| enum
@@ -69,7 +69,7 @@
           |PixelType| enum |PointParameterNameARB| enum |PolygonMode| enum
           |ProgramNV| uint |ProgramCharacterNV| ubyte |ProgramParameterNV| enum
           |ProgramParameterPName| enum |QuadricCallback| enum
-          |QuadricDrawStyle| enum |QuadricNormal| enum |QuadricObj| :pointer
+          |QuadricDrawStyle| enum |QuadricNormal| enum |QuadricObj| pointer
           |QuadricOrientation| enum |ReadBufferMode| enum |RenderbufferTarget|
           enum |RenderingMode| enum |ReplacementCodeSUN| uint
           |ReplacementCodeTypeSUN| enum |SamplePassARB| enum |SamplePatternEXT|
@@ -79,7 +79,7 @@
           |StencilFunction| enum |StencilFaceDirection| enum |StencilOp| enum
           |StencilValue| int |String| string |StringName| enum
           |TangentPointerTypeEXT| enum |TessCallback| enum |TessContour| enum
-          |TessProperty| enum |TesselatorObj| :pointer |TexCoordPointerType|
+          |TessProperty| enum |TesselatorObj| pointer |TexCoordPointerType|
           enum |Texture| uint |TextureComponentCount| int |TextureCoordName|
           enum |TextureEnvParameter| enum |TextureEnvTarget| enum
           |TextureFilterSGIS| enum |TextureGenParameter| enum
@@ -87,8 +87,8 @@
           |TextureTarget| enum |TextureUnit| enum |UInt16| ushort |UInt32| uint
           |UInt8| ubyte |VertexAttribEnum| enum |VertexAttribEnumNV| enum
           |VertexAttribPointerTypeNV| enum |VertexPointerType| enum
-          |VertexWeightPointerTypeEXT| enum |Void| void |VoidPointer| :pointer
-          |ConstVoidPointer| :pointer |WeightPointerTypeARB| enum |WinCoord|
+          |VertexWeightPointerTypeEXT| enum |Void| void |VoidPointer| pointer
+          |ConstVoidPointer| pointer |WeightPointerTypeARB| enum |WinCoord|
           int |void| :void |ArrayObjectPNameATI| enum |ArrayObjectUsageATI|
           enum |ConstFloat32| float |ConstInt32| int |ConstUInt32| uint
           |ConstVoid| void |DataTypeEXT| enum |FragmentOpATI| enum
@@ -109,4 +109,4 @@
           |ObjectTypeAPPLE| enum |VertexArrayPNameAPPLE| enum
           |DrawBufferModeATI| enum |Half16NV| half |PixelDataRangeTargetNV|
           enum |GLenum| enum |handleARB| handle |charARB| char |charPointerARB|
-          :pointer |Int64EXT| int64 |UInt64EXT| uint64)) 
+          pointer |Int64EXT| int64 |UInt64EXT| uint64)) 

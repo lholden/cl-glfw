@@ -31,7 +31,7 @@
 (defgltype gl-double double :double)
 (defgltype gl-clampd clampd :double)
 (defgltype gl-void void :void)
-(defgltype gl-void-ptr pointer :pointer)
+
 
 #-cffi-features:no-long-long
 (defgltype gl-uint64 uint64 :uint64)
@@ -46,7 +46,7 @@
 (defgltype gl-char char :char)
 (defgltype gl-string string :string)
 (defgltype gl-half half :unsigned-short) ; this is how glext.h defines it anyway
-
+(defctype pointer :pointer)
 
 (defmethod cffi:expand-to-foreign (value (type gl-boolean))
   `(if ,value 1 0))

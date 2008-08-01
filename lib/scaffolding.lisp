@@ -1,7 +1,7 @@
 (defpackage #:cl-glfw-scaffolding
   (:use #:cl #:cffi #:cl-glfw-types)
   (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float
-                          #:char #:string)
+                          #:char #:string #:pointer)
   (:export #:defglfun #:defglextfun #:*type-map*))
 
 (in-package #:cl-glfw-scaffolding)
@@ -28,8 +28,8 @@
 (defun final-arg-type (arg)
   (let ((type (get-type (getf arg :type))))
     (cond
-      ((equal "VOID" (symbol-name type)) :pointer)
-      ((getf arg :array) (if (equal (symbol-name type) "CHAR") :string :pointer))
+      ((equal "VOID" (symbol-name type)) 'cl-glfw-types:pointer)
+      ((getf arg :array) (if (equal (symbol-name type) "CHAR") :string 'cl-glfw-types:pointer))
       (t type))))
 
 (defun arg-element-type (arg)
