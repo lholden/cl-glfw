@@ -1,5 +1,5 @@
 (defpackage #:cl-glfw-scaffolding
-  (:use #:cl #:cffi)
+  (:use #:cl #:cffi #:cl-glfw-types)
   (:export #:defglfun #:defglextfun #:*type-map*))
 (in-package #:cl-glfw-scaffolding)
 
@@ -19,22 +19,24 @@
 (defun final-arg-name (arg)
   (deconstant (intern (string-upcase (symbol-name (getf arg :name))))))
 
+(defun get-type (sym)
+  (intern (string (getf *type-map* sym)) :cl-glfw-types))
 
 (defun final-arg-type (arg)
-  (let ((type (getf *type-map* (getf arg :type))))
+  (let ((type (get-type (getf arg :type))))
     (cond
       ((equal "VOID" (symbol-name type)) :pointer)
       ((getf arg :array) (if (equal (symbol-name type) "CHAR") :string :pointer))
       (t type))))
 
 (defun arg-element-type (arg)
-  (getf *type-map* (getf arg :type)))
+  (get-type (getf arg :type)))
 
 (defun conc-symbols (&rest symbols)
   (intern (apply #'concatenate (cons 'cl:string (mapcar #'symbol-name symbols)))))
 
 (defun array-wrappable-p (arg #|args|#)
-  (let ((resolved-type (getf *type-map* (getf arg :type))))
+  (let ((resolved-type (get-type (getf arg :type))))
     (and (getf arg :array)
          ;; we must have a type, ie. not a void* pointer
          (not (equal "VOID" (symbol-name resolved-type)))
@@ -54,7 +56,7 @@
 (defun gl-function-definition (func-spec &optional (c-prefix "gl") (lisp-prefix '#:||))
   `(defcfun (,(concatenate 'cl:string c-prefix (c-name-of func-spec))
               ,(conc-symbols lisp-prefix (lisp-name-of func-spec)))
-       ,(getf *type-map* (intern (freturn-of func-spec)))
+       ,(get-type (intern (freturn-of func-spec)))
      ,@(mapcar #'(lambda (arg) (list (final-arg-name arg) (final-arg-type arg)))
                (args-of func-spec))))
 
@@ -63,7 +65,7 @@
                     ,@(mapcan #'(lambda (arg)
                                   `(,(final-arg-type arg) ,(final-arg-name arg)))
                               (args-of func-spec))
-                    ,(getf *type-map* (intern (freturn-of func-spec)))))
+                    ,(get-type (intern (freturn-of func-spec)))))
 
 (defun expand-a-wrapping (func-spec final-content)
   (let* ((func-spec (copy-tree func-spec)) ; duplicate because we're not supposed to modify macro params
