@@ -3,47 +3,6 @@
 (defconstant +false+ 0)
 (defconstant +true+ 1)
 
-(defmacro defcfun+doc ((c-name lisp-name) return-type (&body args) docstring)
-  `(progn
-     (defcfun (,c-name ,lisp-name) ,return-type ,@args)
-     (setf (documentation #',lisp-name 'function) ,docstring)))
-
-(defmacro defcfun+out+doc ((c-name lisp-name) return-type (&body args) docstring)
-  (let ((internal-name (intern (format nil "%~a" lisp-name)))
-	(in-arg-names (mapcar #'second (remove-if-not #'(lambda (arg)
-							  (eql (car arg) :in))
-						      args)))
-	(out-args (mapcar #'cdr (remove-if-not #'(lambda (arg)
-						   (eql (car arg) :out))
-					       args))))
-    `(progn
-       (defcfun (,c-name ,internal-name) ,return-type 
-	 ,@(mapcar #'(lambda (arg)
-		       (if (eql (car arg) :out)
-			   (list (second arg) :pointer)
-			   (cdr arg)))
-		   args))
-       (defun ,lisp-name ,in-arg-names
-	 ,docstring
-	 (with-foreign-objects ,out-args
-	   (,internal-name ,@(mapcar #'second args))
-	   (list ,@(mapcar #'(lambda (arg)
-			       `(mem-ref ,(first arg) ',(second arg)))
-			   out-args)))))))
-
-;; ECL's DFFI seems to have issues if you don't put the full path in
-#+(and unix ecl)
-(setf cffi:*foreign-library-directories* 
-      (list "/usr/local/lib/" "/usr/lib/"))
-
-(cffi:define-foreign-library libglfw
-  '(:or
-    (:darwin  (:framework "GLFW"))
-    (:unix (:or "glfw" "libglfw"  #P"/usr/local/lib/libglfw.so"))
-    (:windows (:or "glfw.dll" "libglfw.dll")) 
-    (t (:default "libglfw"))))
-
-(cffi:use-foreign-library libglfw)
 
 ;; Key and button state/action definitions
 (defconstant +release+ 0)
@@ -156,7 +115,7 @@
 
 
 ;;========================================================================
-;; Other definitions
+ ;; Other definitions
 ;;========================================================================
 
 ;; glfwOpenWindow modes
