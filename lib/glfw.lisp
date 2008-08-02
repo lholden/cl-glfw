@@ -268,7 +268,7 @@ depthbits
 stencilbits
       The number of bits to use for the stencil buffer (0 means no stencil buffer).
 mode
-      Selects which type of OpenGL™ window to use. mode can be either GLFW_WINDOW, which
+      Selects which type of OpenGL window to use. mode can be either GLFW_WINDOW, which
       will generate a normal desktop window, or GLFW_FULLSCREEN, which will generate a
       window which covers the entire screen. When GLFW_FULLSCREEN is selected, the video
       mode will be changed to the resolution that closest matches the width and height parameters.
@@ -280,7 +280,7 @@ If the function fails, nil is returned.
 Description
 The function opens a window that best matches the parameters given to the function. How well the
 resulting window matches the desired window depends mostly on the available hardware and
-OpenGL™ drivers. In general, selecting a fullscreen mode has better chances of generating a close
+OpenGL drivers. In general, selecting a fullscreen mode has better chances of generating a close
 match than does a normal desktop window, since GLFW can freely select from all the available video
 modes. A desktop window is normally restricted to the video mode of the desktop.
 
@@ -320,7 +320,7 @@ the resulting video signal, or in the worst case it may even be damaged!
 ")
 
 (defcfun+doc ("glfwCloseWindow" close-window) :void ()
-	 "The function closes an opened window and destroys the associated OpenGL™ context.")
+	 "The function closes an opened window and destroys the associated OpenGL context.")
 
 (defmacro with-open-window ((&optional (title "cl-glfw window") (width 0) (height 0)
 				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
@@ -390,7 +390,7 @@ A window has to be opened for this function to have any effect.
 Notes
 Window close events are recorded continuously, but only reported when glfwPollEvents,
 glfwWaitEvents or glfwSwapBuffers is called.
-The OpenGL™ context is still valid when this function is called.
+The OpenGL context is still valid when this function is called.
 Note that the window close callback function is not called when glfwCloseWindow is called, but only
 when the close request comes from the window manager.
 Do not call glfwCloseWindow from a window close callback function. Close the window by returning
@@ -423,7 +423,7 @@ the client area of the window (i.e. excluding any window borders and decorations
 If the window is in fullscreen mode, the video mode will be changed to a resolution that closest matches
 the width and height parameters (the number of color bits will not be changed).
 Notes
-The OpenGL™ context is guaranteed to be preserved after calling glfwSetWindowSize, even if the
+The OpenGL context is guaranteed to be preserved after calling glfwSetWindowSize, even if the
 video mode is changed.
 ")
 
@@ -490,9 +490,9 @@ The function is used for acquiring various properties of an opened window.
 
 Notes
 GLFW_ACCELERATED is only supported under Windows. Other systems will always return
-GL_TRUE. Under Windows, GLFW_ACCELERATED means that the OpenGL™ renderer is a 3rd
-party renderer, rather than the fallback Microsoft software OpenGL™ renderer. In other words, it is
-not a real guarantee that the OpenGL™ renderer is actually hardware accelerated.
+GL_TRUE. Under Windows, GLFW_ACCELERATED means that the OpenGL renderer is a 3rd
+party renderer, rather than the fallback Microsoft software OpenGL renderer. In other words, it is
+not a real guarantee that the OpenGL renderer is actually hardware accelerated.
 ")
 
 (defcfun+doc ("glfwSwapBuffers" swap-buffers) :void ()
@@ -505,7 +505,7 @@ is enabled (which is the default), glfwPollEvents is called before swapping the 
 interval
       Minimum number of monitor vertical retraces between each buffer swap performed by
       glfwSwapBuffers. If interval is zero, buffer swaps will not be synchronized to the vertical
-      refresh of the monitor (also known as ’VSync off’).
+      refresh of the monitor (also known as VSync off).
 
 Description
 The function selects the minimum number of monitor vertical retraces that should occur between two
@@ -563,7 +563,7 @@ list of the form:
 
 Notes
 The returned list is sorted, first by color depth (RedBits + GreenBits + BlueBits), and then by
-resolution (Width × Height), with the lowest resolution, fewest bits per pixel mode first. " 
+resolution (Width * Height), with the lowest resolution, fewest bits per pixel mode first. " 
   (declare (optimize (debug 3)))
   (with-foreign-object (list 'vidmode maxcount)
     (let ((count (%get-video-modes list maxcount)))
@@ -769,7 +769,7 @@ Control characters, such as tab and carriage return, are not reported to the cha
 since they are not part of the Unicode character set. Use the key callback function for such events (see
 glfwSetKeyCallback).
 The Unicode character set supports character codes above 255, so never cast a Unicode character to an
-eight bit data type (e.g. the C language ’char’ type) without first checking that the character code is less
+eight bit data type (e.g. the C language char type) without first checking that the character code is less
 than 256. Also note that Unicode character codes 0 to 255 are equal to ISO 8859-1 (Latin 1).
 ")
 (defcfun+doc ("glfwSetMouseButtonCallback" set-mouse-button-callback) :void ((cbfun :pointer))
@@ -923,7 +923,7 @@ was called.
 Notes
 The resolution of the timer depends on which system the program is running on. The worst case
 resolution is somewhere in the order of 10 ms, while for most systems the resolution should be better
-than 1 μs.
+than 1us.
 ")
 
 (defcfun+doc ("glfwSetTime" set-time) :void ((time :double))
@@ -975,19 +975,19 @@ returned.
 Description
 The function reads an image from the file specified by the parameter name and returns the image
 information and data in a GLFWimage structure, which has the following definition:
-§                                                                                                    ¤
+                                                                                                    
 typedef struct {
       int Width, Height;                 //   Image dimensions
       int Format;                        //   OpenGL pixel format
       int BytesPerPixel;                 //   Number of bytes per pixel
       unsigned char *Data;               //   Pointer to pixel data
 } GLFWimage;
-¦                                                                                                    ¥
-Width and Height give the dimensions of the image. Format specifies an OpenGL™ pixel format,
+                                                                                                    
+Width and Height give the dimensions of the image. Format specifies an OpenGL pixel format,
 which can be GL_LUMINANCE or GL_ALPHA (for gray scale images), GL_RGB or GL_RGBA.
 BytesPerPixel specifies the number of bytes per pixel. Data is a pointer to the actual pixel data.
-By default the read image is rescaled to the nearest larger 2m × 2n resolution using bilinear
-interpolation, if necessary, which is useful if the image is to be used as an OpenGL™ texture. This
+By default the read image is rescaled to the nearest larger 2m ? 2n resolution using bilinear
+interpolation, if necessary, which is useful if the image is to be used as an OpenGL texture. This
 behavior can be disabled by setting the GLFW_NO_RESCALE_BIT flag.
 Unless the flag GLFW_ORIGIN_UL_BIT is set, the first pixel in img->Data is the lower left corner of
 the image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left corner.
@@ -997,8 +997,8 @@ Notes
 glfwReadImage supports the Truevision Targa version 1 file format (.TGA). Supported pixel formats
 are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color + alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
-Please note that OpenGL™ 1.0 does not support single component alpha maps, so do not use images
-with Format = GL_ALPHA directly as textures under OpenGL™ 1.0.
+Please note that OpenGL 1.0 does not support single component alpha maps, so do not use images
+with Format = GL_ALPHA directly as textures under OpenGL 1.0.
 ")
 
 (defcfun+doc ("glfwReadMemoryImage" read-memory-image) boolean
@@ -1019,19 +1019,19 @@ returned.
 Description
 The function reads an image from the memory buffer specified by the parameter data and returns the
 image information and data in a GLFWimage structure, which has the following definition:
-§                                                                                                            ¤
+
 typedef struct {
       int Width, Height;                 //   Image dimensions
       int Format;                        //   OpenGL pixel format
       int BytesPerPixel;                 //   Number of bytes per pixel
       unsigned char *Data;               //   Pointer to pixel data
 } GLFWimage;
-¦                                                                                                            ¥
-Width and Height give the dimensions of the image. Format specifies an OpenGL™ pixel format,
+
+Width and Height give the dimensions of the image. Format specifies an OpenGL pixel format,
 which can be GL_LUMINANCE or GL_ALPHA (for gray scale images), GL_RGB or GL_RGBA.
 BytesPerPixel specifies the number of bytes per pixel. Data is a pointer to the actual pixel data.
-By default the read image is rescaled to the nearest larger 2m × 2n resolution using bilinear
-interpolation, if necessary, which is useful if the image is to be used as an OpenGL™ texture. This
+By default the read image is rescaled to the nearest larger 2m ? 2n resolution using bilinear
+interpolation, if necessary, which is useful if the image is to be used as an OpenGL texture. This
 behavior can be disabled by setting the GLFW_NO_RESCALE_BIT flag.
 Unless the flag GLFW_ORIGIN_UL_BIT is set, the first pixel in img->Data is the lower left corner of
 the image. If the flag GLFW_ORIGIN_UL_BIT is set, however, the first pixel is the upper left corner.
@@ -1042,8 +1042,8 @@ glfwReadMemoryImage supports the Truevision Targa version 1 file format (.TGA). 
 formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color +
 alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
-Please note that OpenGL™ 1.0 does not support single component alpha maps, so do not use images
-with Format = GL_ALPHA directly as textures under OpenGL™ 1.0.
+Please note that OpenGL 1.0 does not support single component alpha maps, so do not use images
+with Format = GL_ALPHA directly as textures under OpenGL 1.0.
 ")
 
 (defcfun+doc ("glfwFreeImage" free-image) :void ((img image))
@@ -1067,7 +1067,7 @@ returned.
 
 Description
 The function reads an image from the file specified by the parameter name and uploads the image to
-OpenGL™ texture memory (using the glTexImage2D function).
+OpenGL texture memory (using the glTexImage2D function).
 If the GLFW_BUILD_MIPMAPS_BIT flag is set, all mipmap levels for the loaded texture are
 generated and uploaded to texture memory.
 Unless the flag GLFW_ORIGIN_UL_BIT is set, the origin of the texture is the lower left corner of the
@@ -1081,13 +1081,13 @@ glfwLoadTexture2D supports the Truevision Targa version 1 file format (.TGA). Su
 formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color +
 alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
-The read texture is always rescaled to the nearest larger 2m × 2n resolution using bilinear interpolation,
-if necessary, since OpenGL™ requires textures to have a 2m × 2n resolution.
+The read texture is always rescaled to the nearest larger 2m ? 2n resolution using bilinear interpolation,
+if necessary, since OpenGL requires textures to have a 2m ? 2n resolution.
 If the GL_SGIS_generate_mipmap extension, which is usually hardware accelerated, is supported by
-the OpenGL™ implementation it will be used for mipmap generation. Otherwise the mipmaps will be
+the OpenGL implementation it will be used for mipmap generation. Otherwise the mipmaps will be
 generated by GLFW in software.
-Since OpenGL™ 1.0 does not support single component alpha maps, alpha map textures are converted
-to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
+Since OpenGL 1.0 does not support single component alpha maps, alpha map textures are converted
+to RGBA format under OpenGL 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
 texture is a single component texture. The red, green and blue components are set to 1.0.
 ")
 
@@ -1106,7 +1106,7 @@ returned.
 
 Description
 The function reads an image from the memory buffer specified by the parameter data and uploads the
-image to OpenGL™ texture memory (using the glTexImage2D function).
+image to OpenGL texture memory (using the glTexImage2D function).
 If the GLFW_BUILD_MIPMAPS_BIT flag is set, all mipmap levels for the loaded texture are
 generated and uploaded to texture memory.
 Unless the flag GLFW_ORIGIN_UL_BIT is set, the origin of the texture is the lower left corner of the
@@ -1120,13 +1120,13 @@ glfwLoadMemoryTexture2D supports the Truevision Targa version 1 file format (.TG
 pixel formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color
 + alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
-The read texture is always rescaled to the nearest larger 2m × 2n resolution using bilinear interpolation,
-if necessary, since OpenGL™ requires textures to have a 2m × 2n resolution.
+The read texture is always rescaled to the nearest larger 2m ? 2n resolution using bilinear interpolation,
+if necessary, since OpenGL requires textures to have a 2m ? 2n resolution.
 If the GL_SGIS_generate_mipmap extension, which is usually hardware accelerated, is supported by
-the OpenGL™ implementation it will be used for mipmap generation. Otherwise the mipmaps will be
+the OpenGL implementation it will be used for mipmap generation. Otherwise the mipmaps will be
 generated by GLFW in software.
-Since OpenGL™ 1.0 does not support single component alpha maps, alpha map textures are converted
-to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
+Since OpenGL 1.0 does not support single component alpha maps, alpha map textures are converted
+to RGBA format under OpenGL 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
 texture is a single component texture. The red, green and blue components are set to 1.0.
 ")
 
@@ -1143,7 +1143,7 @@ The function returns t if the texture was loaded successfully. Otherwise nil is
 returned.
 
 Description
-The function uploads the image specified by the parameter img to OpenGL™ texture memory (using
+The function uploads the image specified by the parameter img to OpenGL texture memory (using
 the glTexImage2D function).
 If the GLFW_BUILD_MIPMAPS_BIT flag is set, all mipmap levels for the loaded texture are
 generated and uploaded to texture memory.
@@ -1158,46 +1158,46 @@ glfwLoadTextureImage2D supports the Truevision Targa version 1 file format (.TGA
 pixel formats are: 8-bit gray scale, 8-bit paletted (24/32-bit color), 24-bit true color and 32-bit true color
 + alpha.
 Paletted images are translated into true color or true color + alpha pixel formats.
-The read texture is always rescaled to the nearest larger 2m × 2n resolution using bilinear interpolation,
-if necessary, since OpenGL™ requires textures to have a 2m × 2n resolution.
+The read texture is always rescaled to the nearest larger 2m ? 2n resolution using bilinear interpolation,
+if necessary, since OpenGL requires textures to have a 2m ? 2n resolution.
 If the GL_SGIS_generate_mipmap extension, which is usually hardware accelerated, is supported by
-the OpenGL™ implementation it will be used for mipmap generation. Otherwise the mipmaps will be
+the OpenGL implementation it will be used for mipmap generation. Otherwise the mipmaps will be
 generated by GLFW in software.
-Since OpenGL™ 1.0 does not support single component alpha maps, alpha map textures are converted
-to RGBA format under OpenGL™ 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
+Since OpenGL 1.0 does not support single component alpha maps, alpha map textures are converted
+to RGBA format under OpenGL 1.0 when the GLFW_ALPHA_MAP_BIT flag is set and the loaded
 texture is a single component texture. The red, green and blue components are set to 1.0. ")
 
 
 (defcfun+doc ("glfwExtensionSupported" extension-supported) boolean ((extension :string))
 	     "Parameters
 extension
-      A null terminated ISO 8859-1 string containing the name of an OpenGL™ extension.
+      A null terminated ISO 8859-1 string containing the name of an OpenGL extension.
 Return values
 The function returns t if the extension is supported. Otherwise it returns nil.
 Description
-The function does a string search in the list of supported OpenGL™ extensions to find if the specified
+The function does a string search in the list of supported OpenGL extensions to find if the specified
 extension is listed.
 Notes
-An OpenGL™ context must be created before this function can be called (i.e. an OpenGL™ window
+An OpenGL context must be created before this function can be called (i.e. an OpenGL window
 must have been opened with glfwOpenWindow).
-In addition to checking for OpenGL™ extensions, GLFW also checks for extensions in the operating
-system “glue API”, such as WGL extensions under Windows and glX extensions under the X Window
+In addition to checking for OpenGL extensions, GLFW also checks for extensions in the operating
+system ?glue API?, such as WGL extensions under Windows and glX extensions under the X Window
 System.
 ")
 
 (defcfun+doc ("glfwGetProcAddress" get-proc-address) :pointer ((procname :string))
 	     "Parameters
 procname
-       A null terminated ISO 8859-1 string containing the name of an OpenGL™ extension function.
+       A null terminated ISO 8859-1 string containing the name of an OpenGL extension function.
 Return values
-The function returns the pointer to the specified OpenGL™ function if it is supported, otherwise
+The function returns the pointer to the specified OpenGL function if it is supported, otherwise
 NULL is returned.
 Description
-The function acquires the pointer to an OpenGL™ extension function. Some (but not all) OpenGL™
+The function acquires the pointer to an OpenGL extension function. Some (but not all) OpenGL
 extensions define new API functions, which are usually not available through normal linking. It is
 therefore necessary to get access to those API functions at runtime.
 Notes
-An OpenGL™ context must be created before this function can be called (i.e. an OpenGL™ window
+An OpenGL context must be created before this function can be called (i.e. an OpenGL window
 must have been opened with glfwOpenWindow).
 Some systems do not support dynamic function pointer retrieval, in which case glfwGetProcAddress
 will always return NULL.
@@ -1208,16 +1208,16 @@ will always return NULL.
 							    (:out rev :int))
 		 "Return values
 The function returns the major and minor version numbers and the revision for the currently used
-OpenGL™ implementation as a list (major minor rev).
+OpenGL implementation as a list (major minor rev).
 
 Description
-The function returns the OpenGL™ implementation version. This is a convenient function that parses
+The function returns the OpenGL implementation version. This is a convenient function that parses
 the version number information from the string returned by calling
-glGetString( GL_VERSION ). The OpenGL™ version information can be used to determine
-what functionality is supported by the used OpenGL™ implementation.
+glGetString( GL_VERSION ). The OpenGL version information can be used to determine
+what functionality is supported by the used OpenGL implementation.
 
 Notes
-An OpenGL™ context must be created before this function can be called (i.e. an OpenGL™ window
+An OpenGL context must be created before this function can be called (i.e. an OpenGL window
 must have been opened with glfwOpenWindow). ")
 
 (defctype thread :int)
