@@ -105,9 +105,9 @@ with +s."
 suitable for cl-glfw-types or CFFI."
   (let ((s (string-strip-endings (symbol-name type-map-type) *strippable-type-endings*)))
     (cond ((equal s "*") :void)
-	  ((find #\* (format nil "~a" s)) :pointer)
+	  ((find #\* (format nil "~a" s)) 'pointer)
 	  ((equal (subseq s 0 2) "GL") (intern (string-upcase (subseq s 2))))
-	  ((equal s "_GLfuncptr") :pointer)
+	  ((equal s "_GLfuncptr") 'pointer)
 	  (t s))))
 
 (defun set-type-maps ()
@@ -244,7 +244,7 @@ suitable for cl-glfw-types or CFFI."
   `(defpackage #:cl-glfw-opengl
      (:use #:cffi #:cl #:cl-glfw-types #:cl-glfw-scaffolding)
      (:nicknames #:gl #:opengl)
-     (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float #:char #:string)
+     (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float #:char #:string #:pointer)
      (:export
       #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei #:ubyte #:ushort #:uint 
       #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 

@@ -4,10 +4,10 @@
             (:use #:cffi #:cl #:cl-glfw-types #:cl-glfw-scaffolding)
             (:nicknames #:gl #:opengl)
             (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float
-             #:char #:string)
+             #:char #:string #:pointer)
             (:export #:enum #:boolean #:bitfield #:byte #:short #:int #:sizei
              #:ubyte #:ushort #:uint #:float #:clampf #:double #:clampd #:void
-             #:uint64 #:int64 #:intptr #:sizeiptr #:handle #:char #:string
+             #:uint64 #:int64 #:intptr #:sizeiptr #:handle #:char #:string   #:pointer
              #:half #:+current-bit+ #:+point-bit+ #:+line-bit+ #:+polygon-bit+
              #:+polygon-stipple-bit+ #:+pixel-mode-bit+ #:+lighting-bit+
              #:+fog-bit+ #:+depth-buffer-bit+ #:+accum-buffer-bit+
