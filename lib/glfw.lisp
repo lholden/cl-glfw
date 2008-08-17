@@ -231,23 +231,27 @@ depthbits
 stencilbits
       The number of bits to use for the stencil buffer (0 means no stencil buffer).
 mode
-      Selects which type of OpenGL window to use. mode can be either GLFW_WINDOW, which
-      will generate a normal desktop window, or GLFW_FULLSCREEN, which will generate a
-      window which covers the entire screen. When GLFW_FULLSCREEN is selected, the video
+      Selects which type of OpenGL window to use. mode can be either +WINDOW+, which
+      will generate a normal desktop window, or +FULLSCREEN+ which will generate a
+      window which covers the entire screen. When +FULLSCREEN+ is selected, the video
       mode will be changed to the resolution that closest matches the width and height parameters.
 
 Return values
 If the function succeeds, t is returned.
 If the function fails, nil is returned.
 
-Description
-The function opens a window that best matches the parameters given to the function. How well the
-resulting window matches the desired window depends mostly on the available hardware and
-OpenGL drivers. In general, selecting a fullscreen mode has better chances of generating a close
-match than does a normal desktop window, since GLFW can freely select from all the available video
-modes. A desktop window is normally restricted to the video mode of the desktop.
+Description 
+
+The function opens a window that best matches the parameters given to
+the function. How well the resulting window matches the desired window
+depends mostly on the available hardware and OpenGL drivers. In
+general, selecting a fullscreen mode has better chances of generating
+a close match than does a normal desktop window, since GLFW can freely
+select from all the available video modes. A desktop window is
+normally restricted to the video mode of the desktop.
 
 Notes
+
 For additional control of window properties, see glfw::OpenWindowHint.
 In fullscreen mode the mouse cursor is hidden by default, and any system screensavers are prohibited
 from starting. In windowed mode the mouse cursor is visible, and screensavers are allowed to start. To
@@ -368,9 +372,10 @@ title
 Description
 The function changes the title of the opened window.
 
-Notes
-The title property of a window is often used in situations other than for the window title, such as the title
-of an application icon when it is in iconified state.")
+Notes 
+The title property of a window is often used in situations other
+than for the window title, such as the title of an application icon
+when it is in iconified state.")
 
 (defcfun+doc ("glfwSetWindowSize" set-window-size) :void ((width :int) (height :int))
 	     "Parameters
@@ -381,11 +386,16 @@ height
 Return values
 none
 Description
-The function changes the size of an opened window. The width and height parameters denote the size of
-the client area of the window (i.e. excluding any window borders and decorations).
-If the window is in fullscreen mode, the video mode will be changed to a resolution that closest matches
-the width and height parameters (the number of color bits will not be changed).
+
+The function changes the size of an opened window. The width and
+height parameters denote the size of the client area of the
+window (i.e. excluding any window borders and decorations).  If the
+window is in fullscreen mode, the video mode will be changed to a
+resolution that closest matches the width and height parameters (the
+number of color bits will not be changed).
+
 Notes
+
 The OpenGL context is guaranteed to be preserved after calling glfwSetWindowSize, even if the
 video mode is changed.
 ")
