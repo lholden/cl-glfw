@@ -172,7 +172,19 @@
 ;; Time spans longer than this (seconds) are considered to be infinity
 (defconstant +infinity+ 100000d0)
 
-(defcfun+doc ("glfwInit" init) boolean ()
+(defparameter *was-init* nil
+  "True if we have already initialized.")
+(declaim (type cl:boolean *was-init*))
+
+(defparameter *init-hooks* nil
+  "A list of funcallable objects invoked just after initialization.")
+(defparameter *terminate-hooks* nil
+  "A list of funcallable objects invoked just before termination.")
+(declaim (type list *init-hooks* *terminate-hooks*))
+
+(cffi:defcfun ("glfwInit" %init) boolean)
+
+(defun init ()
   "Return values
 If the function succeeds, t is returned.
 If the function fails, nil is returned.
@@ -180,13 +192,27 @@ If the function fails, nil is returned.
 The glfwInit function initializes GLFW. No other GLFW functions may be used before this function
 has been called.
 
+On successful initialization, the list of functions in *init-hooks* is called.
+
 Notes
 This function may take several seconds to complete on some systems, while on other systems it may
-take only a fraction of a second to complete.")
+take only a fraction of a second to complete."
+  (when (%init)
+    (setf *was-init* t)
+    (mapc #'funcall *init-hooks*)
+    t))
 
-(defcfun+doc ("glfwTerminate" terminate) :void ()
+(cffi:defcfun ("glfwTerminate" %terminate) :void)
+
+(defun terminate ()
       "The function terminates GLFW. Among other things it closes the window, if it is opened, and kills any
-running threads. This function must be called before a program exits.")
+running threads. This function must be called before a program exits.
+
+Before termination, the list of functions in *terminate-hooks* is called.
+"
+  (mapc #'funcall *terminate-hooks*)
+  (setf *was-init* nil)
+  (%terminate))
 
 (defcfun+out+doc ("glfwGetVersion" get-version) :void ((:out major :int)
 						       (:out minor :int)
@@ -197,7 +223,7 @@ GLFW library as a list (major minor rev).")
 
 (defmacro with-init (&body forms)
   "Call glfw:init, execute forms and clean-up with glfw:terminate once finished.
-This makes a nice wrapper to an application higher-level form. 
+This makes a nice wrapper to an application higher-level form.
 Signals an error on failure to initialize. Wrapped in a block named glfw:with-init."
   `(if (glfw:init)
        (unwind-protect
@@ -211,9 +237,9 @@ Signals an error on failure to initialize. Wrapped in a block named glfw:with-in
   (depthbits :int) (stencilbits :int) (mode :int))
 
 (declaim (inline open-window))
-(defun open-window (&optional (width 0) (height 0)
-		    (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
-		    (depthbits 0) (stencilbits 0) (mode +window+))
+(defun open-window (&key (width 0) (height 0)
+                    (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
+                    (depthbits 0) (stencilbits 0) (mode +window+))
   "width
       The width of the window. If width is zero, it will be calculated as width = 4/3 height, if height is
       not zero. If both width and height are zero, then width will be set to 640.
@@ -240,7 +266,7 @@ Return values
 If the function succeeds, t is returned.
 If the function fails, nil is returned.
 
-Description 
+Description
 
 The function opens a window that best matches the parameters given to
 the function. How well the resulting window matches the desired window
@@ -261,9 +287,10 @@ In order to determine the actual properties of an opened window, use glfw::GetWi
 glfw::GetWindowSize (or glfw::SetWindowSizeCallback).
 "
   (%open-window width height redbits greenbits bluebits alphabits depthbits stencilbits mode))
-  
 
-(defcfun+doc ("glfwOpenWindowHint" open-window-hint) :void ((target :int) (hint :int)) 
+ 
+
+(defcfun+doc ("glfwOpenWindowHint" open-window-hint) :void ((target :int) (hint :int))
 	 "target
        Can be any of the constants in the table 3.1.
 hint
@@ -289,7 +316,7 @@ the resulting video signal, or in the worst case it may even be damaged!
 (defcfun+doc ("glfwCloseWindow" close-window) :void ()
 	 "The function closes an opened window and destroys the associated OpenGL context.")
 
-(defmacro with-open-window ((&optional (title "cl-glfw window") (width 0) (height 0)
+(defmacro with-open-window ((&key (title "cl-glfw window") (width 0) (height 0)
 				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
 				       (depthbits 0) (stencilbits 0) (mode +window+))
 			    &body forms)
@@ -299,7 +326,7 @@ Takes the same parameters as open-window, with the addition of 'title' which wil
 set the window title after opening.
 Wrapped in a block named glfw:with-open-window."
   `(if (%open-window ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
-       (unwind-protect 
+       (unwind-protect
 	    (block with-open-window
 	      (glfw:set-window-title ,title)
 	      ,@forms)
@@ -307,16 +334,16 @@ Wrapped in a block named glfw:with-open-window."
 	   (close-window)))
        (error "Error initializing glfw window.")))
 
-(defmacro with-init-window ((&optional (title "cl-glfw window") (width 0) (height 0)
+(defmacro with-init-window ((&key (title "cl-glfw window") (width 0) (height 0)
 				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
 				       (depthbits 0) (stencilbits 0) (mode +window+))
 			    &body forms)
   "Wraps forms in with-init, with-open-window. Passes through the other arguments to open-window."
   `(with-init
-     (with-open-window (,title ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
+     (with-open-window (:title ,title :width ,width :height ,height :redbits ,redbits :greenbits ,greenbits :bluebits ,bluebits :alphabits ,alphabits :depthbits ,depthbits :stencilbits ,stencilbits :mode ,mode)
        ,@forms)))
 
-(defmacro do-window ((&optional (title "cl-glfw window") (width 0) (height 0)
+(defmacro do-window ((&key (title "cl-glfw window") (width 0) (height 0)
 				(redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
 				(depthbits 0) (stencilbits 0) (mode +window+))
 		     (&body setup-forms)
@@ -326,33 +353,62 @@ setting the title given,
 running setup-forms and then running forms in a loop, with calls to swap-buffers after each loop iteration.
 The loop is in a block named do-window [so can be exited by a call to (return-from glfw:do-window)].
 If the window is closed, the loop is also exited."
-  `(with-init-window (,title ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
+  `(with-init-window (:title ,title :width ,width :height ,height :redbits ,redbits :greenbits ,greenbits :bluebits ,bluebits :alphabits ,alphabits :depthbits ,depthbits :stencilbits ,stencilbits :mode ,mode)
      ,@setup-forms
      (loop named do-window do
 	  ,@forms
 	  (glfw:swap-buffers)
-	  (unless (= +true+ (glfw:get-window-param glfw:+opened+))	 
+	  (unless (= +true+ (glfw:get-window-param glfw:+opened+))	
 	    (return-from do-window)))))
 
-(defcfun+doc ("glfwSetWindowCloseCallback" set-window-close-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-      Pointer to a callback function that will be called when a user requests that the window should be
-      closed, typically by clicking the window close icon (e.g. the cross in the upper right corner of a
-      window under Microsoft Windows). The function should have the following C language
-      prototype:
-      int GLFWCALL functionname( void );
-      Where functionname is the name of the callback function. The return value of the callback
-      function indicates wether or not the window close action should continue. If the function returns
-      GL_TRUE, the window will be closed. If the function returns GL_FALSE, the window will not
-      be closed.
-      If cbfun is NULL, any previously selected callback function will be deselected.
+(defmacro define-callback-setter (c-name callback-prefix return-type (&body args) &key before-form after-form documentation)
+  (let* ((callback-name (intern (format nil "~A-CALLBACK" callback-prefix)))
+         (special-name (intern (format nil "*~S*" callback-name)))
+         (setter-name (intern (format nil "SET-~S" callback-name)))
+         (internal-setter-name (intern (format nil "%~S" setter-name))))
+    `(progn
+       (defparameter ,special-name nil)
+       (cffi:defcallback ,callback-name ,return-type ,args
+         (when ,special-name
+           (prog2
+               ,before-form
+               (funcall ,special-name ,@(mapcar #'car args))
+             ,after-form)))
+       (cffi:defcfun (,c-name ,internal-setter-name) :void (cbfun :pointer))
+       (defun ,setter-name (callback)
+         ,(format nil "GENERAL CL-GLFW CALLBACK NOTES
 
-      If you declare your callback as returning glfw:boolean, you can use t and nil as return types.
+All callback setting functions can take either a pointer to a C function,
+a function object, a function symbol, or nil to clear the callback function.
 
-Description
-The function selects which function to be called upon a window close event.
-A window has to be opened for this function to have any effect.
+THIS CALLBACK FUNCTION
+
+~a" documentation)
+         (cl:cond
+           ((null callback)
+            (,internal-setter-name (cffi:null-pointer)))
+           ((symbolp callback)
+            (setf ,special-name callback)
+            (,internal-setter-name (cffi:callback ,callback-name)))
+           ((functionp callback)
+            (setf ,special-name callback)
+            (,internal-setter-name (cffi:callback ,callback-name)))
+           ((cffi:pointerp callback)
+            (,internal-setter-name callback))
+           (t (error "Not an acceptable callback. Must be foreign pointer, function object, function's symbol, or nil.")))))))
+
+
+(define-callback-setter "glfwSetWindowCloseCallback" #:window-close :int ()
+                        :documentation
+                        "
+Function that will be called when a user requests that the window should be
+closed, typically by clicking the window close icon (e.g. the cross in the upper right corner of a
+window under Microsoft Windows). The function should have the following type:
+(function () integer)
+
+The return value of the callback function indicates whether or not the window close action should continue. If the function returns
+gl:+true+, the window will be closed. If the function returns gl:+false+, the window will not
+be closed. If you give a CFFI callback returning glfw:boolean, you can use t and nil as return types.
 
 Notes
 Window close events are recorded continuously, but only reported when glfwPollEvents,
@@ -361,8 +417,9 @@ The OpenGL context is still valid when this function is called.
 Note that the window close callback function is not called when glfwCloseWindow is called, but only
 when the close request comes from the window manager.
 Do not call glfwCloseWindow from a window close callback function. Close the window by returning
-GL_TRUE from the function.
+gl:+true+ from the function.
 ")
+
 
 (defcfun+doc ("glfwSetWindowTitle" set-window-title) :void ((title :string))
 	     "Parameters
@@ -372,7 +429,7 @@ title
 Description
 The function changes the title of the opened window.
 
-Notes 
+Notes
 The title property of a window is often used in situations other
 than for the window title, such as the title of an application icon
 when it is in iconified state.")
@@ -424,19 +481,12 @@ of the client area of the window (i.e. excluding any window borders and decorati
     (list (mem-ref width :int)
 	  (mem-ref height :int))))
 
-(defcfun+doc ("glfwSetWindowSizeCallback" set-window-size-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-      Pointer to a callback function that will be called every time the window size changes. The
-      function should have the following C language prototype:
-      void GLFWCALL functionname( int width, int height );
-      Where functionname is the name of the callback function, and width and height are the
-      dimensions of the window client area.
-      If cbfun is NULL, any previously selected callback function will be deselected.
-Return values
-none
-Description
-The function selects which function to be called upon a window size change event.
+(define-callback-setter "glfwSetWindowSizeCallback" #:window-size :void ((width :int) (height :int))
+                        :documentation
+                        "
+Function that will be called every time the window size changes. The
+function should takes the arguments (width height) giving the new width and height of the window client area.
+
 A window has to be opened for this function to have any effect.
 Notes
 Window size changes are recorded continuously, but only reported when glfwPollEvents,
@@ -454,7 +504,7 @@ video mode will be restored.")
 param
       A token selecting which parameter the function should return (see table 3.2).
 
-Return values 
+Return values
 
 The function returns different parameters depending on the value of
 param. Table 3.2 lists valid param values, and their corresponding
@@ -497,14 +547,11 @@ This function will only have an effect on hardware and drivers that
 support user selection of the swap interval. ")
 
 
-(defcfun+doc ("glfwSetWindowRefreshCallback" set-window-refresh-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-       Pointer to a callback function that will be called when the window client area needs to be
-       refreshed. The function should have the following CFFI  prototype:
-       (cffi:defcallback callback-name :void ((width :int) (height :int)) .. body ..)
-       Where callback is the name of the callback function.
-       If cbfun is the null-pointer, any previously selected callback function will be deselected.
+(define-callback-setter "glfwSetWindowRefreshCallback" #:window-refresh :void ()
+                        :documentation
+                        "
+Function that will be called when the window client area needs to be
+refreshed. The function takes no arguments and returns nothing (void).
 
 Description
 
@@ -520,7 +567,7 @@ Window refresh events are recorded continuously, but only reported when glfwPoll
 glfwWaitEvents or glfwSwapBuffers is called.
 ")
 
-(defcstruct vidmode 
+(defcstruct vidmode
   (width :int)
   (height :int)
   (redbits :int)
@@ -545,7 +592,7 @@ list of the form:
 
 Notes
 The returned list is sorted, first by color depth (RedBits + GreenBits + BlueBits), and then by
-resolution (Width * Height), with the lowest resolution, fewest bits per pixel mode first. " 
+resolution (Width * Height), with the lowest resolution, fewest bits per pixel mode first. "
   (declare (optimize (debug 3)))
   (with-foreign-object (list 'vidmode maxcount)
     (let ((count (%get-video-modes list maxcount)))
@@ -611,6 +658,29 @@ by glfw::PollEvents too, and the function may behave differently on different sy
 assumptions about when or why glfw::WaitEvents will return.
 ")
 
+(defmacro key-int-to-symbol (key-form)
+  `(case ,key-form
+     ,@(sort
+        (loop for special-key in  '("backspace" "del" "down" "end" "enter" "esc" "f1" "f10" "f11" "f12" "f13"
+                                    "f14" "f15" "f16" "f17" "f18" "f19" "f2" "f20" "f21" "f22" "f23" "f24" "f25"
+                                    "f3" "f4" "f5" "f6" "f7" "f8" "f9" "home" "insert" "kp-0" "kp-1" "kp-2" "kp-3"
+                                    "kp-4" "kp-5" "kp-6" "kp-7" "kp-8" "kp-9" "kp-add" "kp-decimal" "kp-divide"
+                                    "kp-enter" "kp-equal" "kp-multiply" "kp-subtract" "lalt" "lctrl" "left"
+                                    "lshift" "pagedown" "pageup" "ralt" "rctrl" "right" "rshift"
+                                    "special" "tab" "unknown" "up")
+           collect
+           `(,(symbol-value (find-symbol (string-upcase (format nil "+key-~a+" special-key)) (find-package '#:glfw)))
+              ,(intern (string-upcase special-key) (find-package '#:keyword))))
+        #'(lambda (a b) (< (car a) (car b))))))
+
+
+(defun lispify-key (key-int)
+  "Convert key-int from GLFW's integer representation to lisp characters if from 0 to 255, or keywords, if not within 0-255 inclusive."
+  (if (and (>= key-int 0) (< key-int 256))
+      (code-char key-int)
+      (key-int-to-symbol key-int)))
+
+
 (defcfun+doc ("glfwGetKey" get-key) :int ((key :int))
 	     "Parameters
 key
@@ -635,6 +705,20 @@ A window must be opened for the function to have any effect, and glfw::PollEvent
 glfw::SwapBuffers must be called before any keyboard events are recorded and reported by
 glfw::GetKey.
 ")
+
+
+(defun lispify-mouse-button (button-int)
+  "Convert button-int from GLFW's integer representation to a lisp keyword."
+  (case button-int
+    (#.glfw:+mouse-button-left+ :left)
+    (#.glfw:+mouse-button-middle+ :middle)
+    (#.glfw:+mouse-button-right+ :right)
+    (#.glfw:+mouse-button-4+ :button-4)
+    (#.glfw:+mouse-button-5+ :button-5)
+    (#.glfw:+mouse-button-6+ :button-6)
+    (#.glfw:+mouse-button-7+ :button-7)
+    (#.glfw:+mouse-button-8+ :button-8)))
+
 
 (defcfun+doc ("glfwGetMouseButton" get-mouse-button) :int ((button :int))
 	     "Parameters
@@ -707,43 +791,42 @@ The function changes the position of the mouse wheel.
 ")
 
 
-(defcfun+doc ("glfwSetKeyCallback" set-key-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-      Pointer to a callback function that will be called every time a key is pressed or released. The
-      function should have the following C language prototype:
-      void GLFWCALL functionname( int key, int action );
-      Where functionname is the name of the callback function, key is a key identifier, which is an
-      uppercase printable ISO 8859-1 character or a special key identifier (see table 3.3), and action is
-      either +PRESS+ or +RELEASE+
-      If cbfun is NULL, any previously selected callback function will be deselected.
-Return values
-none
+(define-callback-setter "glfwSetKeyCallback" #:key :void ((key :int) (action :int))
+                        :before-form (setf key (lispify-key key))
+                        :documentation
+                        "
+Function that will be called every time a key is pressed or released.
+Function should take the arguments (key action), where key is either a character,
+if the key pressed was a member of iso-8859-1, or a keyword representing the key pressed if not.
+See the GLFW manual, table 3.3 for special key identifiers. Action is either glfw:+press+ or
+glfw:+release+. Use set-char-callback instead if you want to read just characters.
+
 Description
 The function selects which function to be called upon a keyboard key event. The callback function is
 called every time the state of a single key is changed (from released to pressed or vice versa). The
 reported keys are unaffected by any modifiers (such as shift or alt).
 A window has to be opened for this function to have any effect.
+
 Notes
 Keyboard events are recorded continuously, but only reported when glfw::PollEvents, glfw::WaitEvents
 or glfw::SwapBuffers is called.
 ")
-(defcfun+doc ("glfwSetCharCallback" set-char-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-       Pointer to a callback function that will be called every time a printable character is generated by
-       the keyboard. The function should have the following C language prototype:
-       void GLFWCALL functionname( int character, int action );
-       Where functionname is the name of the callback function, character is a Unicode (ISO 10646)
-       character, and action is either +PRESS+ or +RELEASE+
-       If cbfun is NULL, any previously selected callback function will be deselected.
-Return values
-none
+(define-callback-setter "glfwSetCharCallback" #:char :void ((character :int) (action :int))
+                        :before-form (setf character (code-char character))
+                        :documentation
+                        "
+Function that will be called every time a printable character is generated by
+the keyboard. The function should take the arguments (character action)
+where character is a lisp character and action is either glfw:+press+ or glfw:+release+.
+
+NB this makes the presumption that your lisp implementation will use Unicode for code-char.
+
 Description
 The function selects which function to be called upon a keyboard character event. The callback function
 is called every time a key that results in a printable Unicode character is pressed or released. Characters
 are affected by modifiers (such as shift or alt).
 A window has to be opened for this function to have any effect.
+
 Notes
 Character events are recorded continuously, but only reported when glfw::PollEvents, glfw::WaitEvents
 or glfw::SwapBuffers is called.
@@ -754,20 +837,19 @@ The Unicode character set supports character codes above 255, so never cast a Un
 eight bit data type (e.g. the C language char type) without first checking that the character code is less
 than 256. Also note that Unicode character codes 0 to 255 are equal to ISO 8859-1 (Latin 1).
 ")
-(defcfun+doc ("glfwSetMouseButtonCallback" set-mouse-button-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-      Pointer to a callback function that will be called every time a mouse button is pressed or released.
-      The function should have the following C language prototype:
-      void GLFWCALL functionname( int button, int action );
-      Where functionname is the name of the callback function, button is a mouse button identifier (see
-      table 3.4 on page 56), and action is either +PRESS+ or +RELEASE+
-      If cbfun is NULL, any previously selected callback function will be deselected.
-Return values
-none
+
+(define-callback-setter "glfwSetMouseButtonCallback" #:mouse-button :void ((button :int) (action :int))
+                        :before-form (setf button (lispify-mouse-button button))
+                        :documentation
+                        "
+Function that will be called every time a mouse button is pressed or released.
+The function takes the arguments (button action), where button is a keyword symbol as returned by
+lispify-mouse-button and action is either glfw:+press+ or glfw:+release+.
+
 Description
 The function selects which function to be called upon a mouse button event.
 A window has to be opened for this function to have any effect.
+
 Notes
 Mouse button events are recorded continuously, but only reported when glfw::PollEvents,
 glfw::WaitEvents or glfw::SwapBuffers is called.
@@ -775,34 +857,34 @@ glfw::WaitEvents or glfw::SwapBuffers is called.
 +MOUSE_BUTTON_RIGHT+ is equal to +MOUSE_BUTTON_2+
 +MOUSE_BUTTON_MIDDLE+ is equal to +MOUSE_BUTTON_3+
 ")
-(defcfun+doc ("glfwSetMousePosCallback" set-mouse-pos-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-      Pointer to a callback function that will be called every time the mouse is moved. The function
-      should have the following C language prototype:
-      void GLFWCALL functionname( int x, int y );
-      Where functionname is the name of the callback function, and x and y are the mouse coordinates
-      (see glfw::GetMousePos for more information on mouse coordinates).
-      If cbfun is NULL, any previously selected callback function will be deselected.
-Return values
-none
+(define-callback-setter "glfwSetMousePosCallback" #:mouse-pos :void ((x :int) (y :int))
+                        :documentation
+                        "
+Function that will be called every time the mouse is moved.
+The function takes the arguments (x y), where x and y are the current position of the mouse.
+
 Description
 The function selects which function to be called upon a mouse motion event.
 A window has to be opened for this function to have any effect.
+
 Notes
 Mouse motion events are recorded continuously, but only reported when glfw::PollEvents,
 glfw::WaitEvents or glfw::SwapBuffers is called.
 ")
-(defcfun+doc ("glfwSetMouseWheelCallback" set-mouse-wheel-callback) :void ((cbfun :pointer))
-	     "Parameters
-cbfun
-      Pointer to a callback function that will be called every time the mouse wheel is moved. The
-      function should have the following C language prototype:
-      void GLFWCALL functionname( int pos );
-      Where functionname is the name of the callback function, and pos is the mouse wheel position.
-      If cbfun is NULL, any previously selected callback function will be deselected.
-Return values
-none
+
+(defparameter *mouse-wheel-cumulative* nil)
+(define-callback-setter "glfwSetMouseWheelCallback" #:mouse-wheel :void ((pos :int))
+                        :after-form (unless *mouse-wheel-cumulative* (glfw:set-mouse-wheel 0))
+                        :documentation
+                        "
+Function that will be called every time the mouse wheel is moved.
+The function takes one argument: the position of the mouse wheel.
+This DIFFERS FROM GLFW's DEFAULT behaviour in that the position is
+reset after every call to this function, effectively giving the delta.
+As most programs are only interested in the delta anyway, this is thought
+to save others recording the state of it again.
+If you wish to have the original GLFW behaviour, set cl-glfw:*mouse-wheel-cumulative* to t.
+
 Description
 The function selects which function to be called upon a mouse wheel event.
 A window has to be opened for this function to have any effect.
@@ -957,14 +1039,14 @@ returned.
 Description
 The function reads an image from the file specified by the parameter name and returns the image
 information and data in a GLFWimage structure, which has the following definition:
-                                                                                                    
+
 typedef struct {
       int Width, Height;                 //   Image dimensions
       int Format;                        //   OpenGL pixel format
       int BytesPerPixel;                 //   Number of bytes per pixel
       unsigned char *Data;               //   Pointer to pixel data
 } GLFWimage;
-                                                                                                    
+
 Width and Height give the dimensions of the image. Format specifies an OpenGL pixel format,
 which can be GL_LUMINANCE or GL_ALPHA (for gray scale images), GL_RGB or GL_RGBA.
 BytesPerPixel specifies the number of bytes per pixel. Data is a pointer to the actual pixel data.
@@ -1217,7 +1299,7 @@ must have been opened with glfwOpenWindow). ")
 (defctype mutex :pointer)
 (defctype cond :pointer)
 
-(defcfun+doc ("glfwCreateThread" create-thread) thread ((fun threadfun) (arg :pointer) ) 
+(defcfun+doc ("glfwCreateThread" create-thread) thread ((fun threadfun) (arg :pointer) )
 "Parameters
 fun
       A pointer to a function that acts as the entry point for the new thread. The function should have
@@ -1239,7 +1321,7 @@ Notes
 Even if the function returns a positive thread ID, indicating that the thread was created successfully, the
 thread may be unable to execute, for instance if the thread start address is not a valid thread entry point.
 ")
-(defcfun+doc ("glfwDestroyThread" destroy-thread) :void ((id thread)) 
+(defcfun+doc ("glfwDestroyThread" destroy-thread) :void ((id thread))
 "Parameters
 ID
       A thread identification handle, which is returned by glfw::CreateThread or glfw::GetThreadID.
@@ -1250,7 +1332,7 @@ This function is a very dangerous operation, which may interrupt a thread in the
 operation, and its use is discouraged. You should always try to end a thread in a graceful way using
 thread communication, and use glfw::WaitThread in order to wait for the thread to die.
 ")
-(defcfun+doc ("glfwWaitThread" wait-thread) boolean ((id thread) (waitmode :int) ) 
+(defcfun+doc ("glfwWaitThread" wait-thread) boolean ((id thread) (waitmode :int) )
 "Parameters
 ID
       A thread identification handle, which is returned by glfw::CreateThread or glfw::GetThreadID.
@@ -1262,7 +1344,7 @@ did not exist, in which case glfw::WaitThread will return immediately regardless
 function returns nil if waitmode is +NOWAIT+ and the specified thread exists and is still
 running.
 ")
-(defcfun+doc ("glfwGetThreadID" get-thread-id) thread () 
+(defcfun+doc ("glfwGetThreadID" get-thread-id) thread ()
 "Return values
 The function returns a thread identification handle for the calling thread.
 Description
@@ -1270,14 +1352,14 @@ The function determines the thread ID for the calling thread. The ID is the same
 by glfw::CreateThread when the thread was created.
 ")
 
-(defcfun+doc ("glfwCreateMutex" create-mutex) mutex () 
+(defcfun+doc ("glfwCreateMutex" create-mutex) mutex ()
 "Return values
 The function returns a mutex handle, or NULL if the mutex could not be created.
 Description
 The function creates a mutex object, which can be used to control access to data that is shared between
 threads.
 ")
-(defcfun+doc ("glfwDestroyMutex" destroy-mutex) :void ((mutex mutex)) 
+(defcfun+doc ("glfwDestroyMutex" destroy-mutex) :void ((mutex mutex))
 "Parameters
 mutex
       A mutex object handle.
@@ -1285,7 +1367,7 @@ Description
 The function destroys a mutex object. After a mutex object has been destroyed, it may no longer be
 used by any thread.
 ")
-(defcfun+doc ("glfwLockMutex" lock-mutex) :void ((mutex mutex)) 
+(defcfun+doc ("glfwLockMutex" lock-mutex) :void ((mutex mutex))
 "Parameters
 mutex
       A mutex object handle.
@@ -1295,7 +1377,7 @@ thread, the function will block the calling thread until it is released by the l
 function returns, the calling thread has an exclusive lock on the mutex. To release the mutex, call
 glfw::UnlockMutex.
 ")
-(defcfun+doc ("glfwUnlockMutex" unlock-mutex) :void ((mutex mutex)) 
+(defcfun+doc ("glfwUnlockMutex" unlock-mutex) :void ((mutex mutex))
 "Parameters
 mutex
       A mutex object handle.
@@ -1320,14 +1402,14 @@ The lock is then released when the stack is unwound."
        (unwind-protect (progn ,@forms)
 	 (glfw:unlock-mutex ,smutex)))))
 
-(defcfun+doc ("glfwCreateCond" create-cond) cond () 
+(defcfun+doc ("glfwCreateCond" create-cond) cond ()
 "Return values
 The function returns a condition variable handle, or NULL if the condition variable could not be
 created.
 Description
 The function creates a condition variable object, which can be used to synchronize threads.
 ")
-(defcfun+doc ("glfwDestroyCond" destroy-cond) :void ((cond cond)) 
+(defcfun+doc ("glfwDestroyCond" destroy-cond) :void ((cond cond))
 "Parameters
 cond
       A condition variable object handle.
@@ -1335,7 +1417,7 @@ Description
 The function destroys a condition variable object. After a condition variable object has been destroyed,
 it may no longer be used by any thread.
 ")
-(defcfun+doc ("glfwWaitCond" wait-cond) :void ((cond cond) (mutex mutex) (timeout :double)) 
+(defcfun+doc ("glfwWaitCond" wait-cond) :void ((cond cond) (mutex mutex) (timeout :double))
 "  arameters
 cond
        A condition variable object handle.
@@ -1356,7 +1438,7 @@ A condition variable must always be associated with a mutex, to avoid the race c
 prepares to wait on a condition variable and another thread signals the condition just before the first
 thread actually waits on it.
 ")
-(defcfun+doc ("glfwSignalCond" signal-cond) :void ((cond cond)) 
+(defcfun+doc ("glfwSignalCond" signal-cond) :void ((cond cond))
 "Parameters
 cond
        A condition variable object handle.
@@ -1368,7 +1450,7 @@ Notes
 When several threads are waiting for the condition variable, which thread is started depends on
 operating system scheduling rules, and may vary from system to system and from time to time.
 ")
-(defcfun+doc ("glfwBroadcastCond" broadcast-cond) :void ((cond cond)) 
+(defcfun+doc ("glfwBroadcastCond" broadcast-cond) :void ((cond cond))
 "Parameters
 cond
       A condition variable object handle.
@@ -1381,7 +1463,7 @@ depends on operating system scheduling rules, and may vary from system to system
 time.
 ")
 
-(defcfun+doc ("glfwGetNumberOfProcessors" get-number-of-processors) :int () 
+(defcfun+doc ("glfwGetNumberOfProcessors" get-number-of-processors) :int ()
 "Return values
 The function returns the number of active processors in the system.
 Description

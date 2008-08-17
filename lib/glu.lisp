@@ -13,7 +13,8 @@
 			  (:default "GLU")
 			  (:default "glu")
 			  (:default "openglu32")
-			  (:default "glu32"))))
+			  (:default "glu32")
+                          "libGLU.so.1")))
 ;;  Extensions 
 (defconstant +ext-object-space-tess+ 1)
 (defconstant +ext-nurbs-tessellator+ 1)

@@ -3,7 +3,7 @@
 (asdf:oos 'asdf:load-op '#:cl-opengl)
 (asdf:oos 'asdf:load-op '#:cl-glu)
 
-(glfw:do-window ("A Simple cl-opengl Example")
+(glfw:do-window (:title "A Simple cl-opengl Example")
     ((gl:matrix-mode :projection)
      (gl:load-identity)
      (unwind-protect (glu:perspective 45 4/3 0.1 50)

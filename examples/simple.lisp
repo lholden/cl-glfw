@@ -3,7 +3,7 @@
 (asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
 (asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 
-(glfw:do-window ("A Simple Example")
+(glfw:do-window (:title "A Simple Example")
     ((gl:with-setup-projection
        (glu:perspective 45 4/3 0.1 50)))
   (gl:clear gl:+color-buffer-bit+)

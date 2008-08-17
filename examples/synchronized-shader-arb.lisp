@@ -8,7 +8,7 @@
 
 ;; This example uses the gl:synchronizing-program-arb mechanism to reload+recompile+relink shader files on-file-change
 
-(glfw:do-window ("An ARB Synchronized Shader Example")
+(glfw:do-window (:title "An ARB Synchronized Shader Example")
     ((gl:with-setup-projection
        (glu:perspective 45 4/3 0.1 50))
      (unless  (and (gl-ext:load-extension "ARB_shader_objects")

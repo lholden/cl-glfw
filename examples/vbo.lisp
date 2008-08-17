@@ -95,7 +95,7 @@
       *normals-array*    (cffi:foreign-alloc 'gl:float :initial-contents *normals-array*)
       *vertices-array*   (cffi:foreign-alloc 'gl:float :initial-contents *vertices-array*))
 
-(glfw:do-window ("A VBO Example" 0 0 0 0 0 0 16)
+(glfw:do-window (:title "A VBO Example" :depthbits 16)
     ((gl:enable gl:+depth-test+)
      (gl:depth-func gl:+less+)
      (gl:enable gl:+light0+)

@@ -5,12 +5,11 @@
 
 (let ((frames 0)
       t0 t1)
-  (glfw:do-window ("Spinning Triangle" 640 480)
-    ((glfw:enable glfw:+sticky-keys+)
-     (glfw:swap-interval 0)
-     (setf t0 (glfw:get-time)
-           t1 (glfw:get-time)))
-
+  (glfw:do-window (:title "Spinning Triangle")
+      ((glfw:enable glfw:+sticky-keys+)
+       (glfw:swap-interval 0)
+       (setf t0 (glfw:get-time)
+	     t1 (glfw:get-time)))    
     (when (eql (glfw:get-key glfw:+key-esc+) glfw:+press+)
       (return-from glfw:do-window))
 

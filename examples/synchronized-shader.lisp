@@ -8,7 +8,7 @@
 
 ;; This example uses the gl:synchronizing-program mechanism to reload+recompile+relink shader files on-file-change
 
-(glfw:do-window ("An OpenGL 2.0 Synchronized Shader Example")
+(glfw:do-window (:title "An OpenGL 2.0 Synchronized Shader Example")
     ((gl:with-setup-projection
        (glu:perspective 45 4/3 0.1 50)))
   (gl:clear gl:+color-buffer-bit+)

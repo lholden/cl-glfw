@@ -6,7 +6,7 @@
 (let ((frames 0)
       t0 
       t1)
-  (glfw:do-window ("Spinning Triangle" 640 480)
+  (glfw:do-window (:title "Mipmap Demo" :width 640 :height 480)
       ((glfw:enable glfw:+sticky-keys+)
        (glfw:swap-interval 0)
 
@@ -28,7 +28,7 @@
 
     (when (or (> (- t1 t0) 1.0) 
 	      (zerop frames))
-      (glfw:set-window-title (format nil "Spinning Triangle (~,1f FPS)" (/ frames (- t1 t0))))
+      (glfw:set-window-title (format nil "Mipmap Demo (~,1f FPS)" (/ frames (- t1 t0))))
       (setf frames 0)
       (setf t0 t1))
 

@@ -7,7 +7,7 @@
 (defparameter *shader-program* nil)
 (defparameter *uniform-time* nil)
 
-(glfw:do-window ("An ARB Extension Shader Example")
+(glfw:do-window (:title "An ARB Extension Shader Example")
     ((gl:with-setup-projection
        (glu:perspective 45 4/3 0.1 50))
      (when (and (gl-ext:load-extension "ARB_shader_objects")

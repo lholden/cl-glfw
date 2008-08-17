@@ -32,7 +32,6 @@
 (defgltype gl-clampd clampd :double)
 (defgltype gl-void void :void)
 
-
 #-cffi-features:no-long-long
 (defgltype gl-uint64 uint64 :uint64)
 #-cffi-features:no-long-long
