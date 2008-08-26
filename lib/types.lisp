@@ -5,7 +5,7 @@
            #:float #:clampf #:double #:clampd #:void #:uint64 #:int64 
            #:intptr #:sizeiptr 
            #:handle #:pointer
-           #:char #:string
+           #:char
            #:half))
 
 (in-package #:cl-glfw-types)
@@ -44,7 +44,7 @@
 
 (defgltype gl-handle handle :unsigned-int)
 (defgltype gl-char char :char)
-(defgltype gl-string string :string)
+;;(defctype string :string)
 (defgltype gl-half half :unsigned-short) ; this is how glext.h defines it anyway
 (defctype pointer :pointer)
 

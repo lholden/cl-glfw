@@ -1,7 +1,7 @@
 (defpackage #:cl-glfw-scaffolding
   (:use #:cl #:cffi #:cl-glfw-types)
   (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float
-                          #:char #:string #:pointer)
+                          #:char #:pointer)
   (:export #:defglfun #:defglextfun #:*type-map*))
 
 (in-package #:cl-glfw-scaffolding)
@@ -23,7 +23,11 @@
   (deconstant (intern (string-upcase (symbol-name (getf arg :name))))))
 
 (defun get-type (sym)
-  (intern (cl:string (getf *type-map* sym)) :cl-glfw-types))
+  (let ((type-string (cl:string (getf *type-map* sym))))
+;;    (format t "Type string ~S " type-string)
+    (if (string-equal "string" type-string)
+      (intern type-string :keyword)
+      (intern type-string :cl-glfw-types))))
 
 (defun final-arg-type (arg)
   (let ((type (get-type (getf arg :type))))

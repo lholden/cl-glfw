@@ -77,7 +77,7 @@
           |SelectName| uint |SeparableTarget| enum |SeparableTargetEXT| enum
           |ShadingModel| enum |SizeI| sizei |SpriteParameterNameSGIX| enum
           |StencilFunction| enum |StencilFaceDirection| enum |StencilOp| enum
-          |StencilValue| int |String| string |StringName| enum
+          |StencilValue| int |String| :string |StringName| enum
           |TangentPointerTypeEXT| enum |TessCallback| enum |TessContour| enum
           |TessProperty| enum |TesselatorObj| pointer |TexCoordPointerType|
           enum |Texture| uint |TextureComponentCount| int |TextureCoordName|
