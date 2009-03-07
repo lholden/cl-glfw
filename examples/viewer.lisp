@@ -241,68 +241,69 @@ fills (0 to rows, 0 to cols, 0)"
 (defparameter *view-roty* 0)
 (defparameter *view-rotz* 0)
 
-(cffi:defcallback key-callback :void ((key :int) (action :int))
+(defun key-callback (key action)
   (when (eql action glfw:+press+)
-    (cond ((eql key (char-code #\Z))
-	   (if (eql (glfw:get-key glfw:+key-lshift+) glfw:+press+)
-	       (decf *view-rotz* 5)
-	       (incf *view-rotz* 5)))
-          ((eql key glfw:+key-esc+)   (glfw:close-window))
-          ((eql key glfw:+key-up+)    (incf *view-rotx* 5))
-          ((eql key glfw:+key-down+)  (decf *view-rotx* 5))
-          ((eql key glfw:+key-left+)  (incf *view-roty* 5))
-          ((eql key glfw:+key-right+) (decf *view-roty* 5)))))
+    (case key 
+      (#\Z
+       (if (eql (glfw:get-key glfw:+key-lshift+) glfw:+press+)
+           (decf *view-rotz* 5)
+           (incf *view-rotz* 5)))
+      (:esc   (glfw:close-window))
+      (:up    (incf *view-rotx* 5))
+      (:down  (decf *view-rotx* 5))
+      (:left  (incf *view-roty* 5))
+      (:right (decf *view-roty* 5)))))
 
 (defun view-gl-object (obj)
- (let ((frames 0)
-      t0 t1)
-   (setf *view-rotx* 0
-         *view-roty* 0
-         *view-rotz* 0)
-  (glfw:do-window ("Shape Viewer" 640 480)
-      ((glfw:enable glfw:+sticky-keys+)
-       (glfw:enable glfw:+key-repeat+)
-       (gl:enable gl:+cull-face+)
-       (glfw:swap-interval 0)
-       (glfw:set-key-callback (cffi:callback key-callback))
-       (setf t0 (glfw:get-time)
-	     t1 (glfw:get-time)))    
+  (let ((frames 0)
+        t0 t1)
+    (setf *view-rotx* 0
+          *view-roty* 0
+          *view-rotz* 0)
+    (glfw:do-window (:title "Shape Viewer" :width 640 :height 480)
+        ((glfw:enable glfw:+sticky-keys+)
+         (glfw:enable glfw:+key-repeat+)
+         (gl:enable gl:+cull-face+)
+         (glfw:swap-interval 0)
+         (glfw:set-key-callback 'key-callback)
+         (setf t0 (glfw:get-time)
+               t1 (glfw:get-time)))    
 
-    (when (eql (glfw:get-key glfw:+key-esc+) glfw:+press+)
-      (return-from glfw:do-window))
+      (when (eql (glfw:get-key glfw:+key-esc+) glfw:+press+)
+        (return-from glfw:do-window))
 
-    (setf t1 (glfw:get-time))
+      (setf t1 (glfw:get-time))
 
-    (when (> (- t1 t0) 1) 
-      (glfw:set-window-title (format nil "Shape Viewer (~,1f FPS)" (/ frames (- t1 t0))))
-      (setf frames 0
-	    t0 t1))
+      (when (> (- t1 t0) 1) 
+        (glfw:set-window-title (format nil "Shape Viewer (~,1f FPS)" (/ frames (- t1 t0))))
+        (setf frames 0
+              t0 t1))
 
-    (incf frames)
+      (incf frames)
     
-    (destructuring-bind (width height) (glfw:get-window-size)
-      (setf height (max height 1))
-      (gl:viewport 0 0 width height)
+      (destructuring-bind (width height) (glfw:get-window-size)
+        (setf height (max height 1))
+        (gl:viewport 0 0 width height)
 
-      (gl:clear-color 0 0 0 0)
-      (gl:clear gl:+color-buffer-bit+)
+        (gl:clear-color 0 0 0 0)
+        (gl:clear gl:+color-buffer-bit+)
 
-      (gl:matrix-mode gl:+projection+)
-      (gl:load-identity)
-      (glu:perspective 65 (/ width height) 1 100)
-      (gl:matrix-mode gl:+modelview+)
-      (gl:load-identity)
-      (glu:look-at 0  1 0
-		   0 20 0
-		   0  0 1)
+        (gl:matrix-mode gl:+projection+)
+        (gl:load-identity)
+        (glu:perspective 65 (/ width height) 1 100)
+        (gl:matrix-mode gl:+modelview+)
+        (gl:load-identity)
+        (glu:look-at 0  1 0
+                     0 20 0
+                     0  0 1)
       
-      (gl:translate-f 0 14 0)
+        (gl:translate-f 0 14 0)
       
-      (gl:with-push-matrix
-        (gl:rotate-f *view-rotx* 1 0 0)
-        (gl:rotate-f *view-roty* 0 1 0)
-        (gl:rotate-f *view-rotz* 0 0 1)
+        (gl:with-push-matrix
+            (gl:rotate-f *view-rotx* 1 0 0)
+          (gl:rotate-f *view-roty* 0 1 0)
+          (gl:rotate-f *view-rotz* 0 0 1)
 
-        (render-gl-object obj))))))
+          (render-gl-object obj))))))
 
-(view-gl-object *cube*)
+(view-gl-object *tetrahedron*)

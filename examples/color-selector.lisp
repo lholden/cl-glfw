@@ -13,17 +13,18 @@
 (defparameter *green* 0)
 (defparameter *blue* 0)
 
-(cffi:defcallback key-callback :void ((key :int) (action :int))
+(defun key-callback (key action)
   (when (eql action glfw:+press+)
-    (cond ((eql key (char-code #\Z))
-	   (if (eql (glfw:get-key glfw:+key-lshift+) glfw:+press+)
-	       (decf *blue*)
-	       (incf *blue*)))
-          ((eql key glfw:+key-esc+)   (glfw:close-window))
-          ((eql key glfw:+key-up+)    (incf *red*))
-          ((eql key glfw:+key-down+)  (decf *red*))
-          ((eql key glfw:+key-left+)  (decf *green*))
-          ((eql key glfw:+key-right+) (incf *green*)))))
+    (case key
+      (#\Z 
+       (if (eql (glfw:get-key glfw:+key-lshift+) glfw:+press+)
+           (decf *blue*)
+           (incf *blue*)))
+      (:esc   (glfw:close-window))
+      (:up    (incf *red*))
+      (:down  (decf *red*))
+      (:left  (decf *green*))
+      (:right (incf *green*)))))
 
 (defun color-selector ()
  (let ((frames 0)
@@ -31,14 +32,14 @@
    (setf *red* 0
          *green* 0
          *blue* 0)
-  (glfw:do-window ("Color Selector" 640 480)
+  (glfw:do-window (:title "Color Selector" :width 640 :height 480)
       ((glfw:enable glfw:+sticky-keys+)
        (glfw:enable glfw:+key-repeat+)
        (gl:disable gl:+cull-face+)
        (gl:enable gl:+depth-test+)
        (gl:depth-mask gl:+true+)
        (glfw:swap-interval 0)
-       (glfw:set-key-callback (cffi:callback key-callback))
+       (glfw:set-key-callback 'key-callback)
        (setf t0 (glfw:get-time)
 	     t1 (glfw:get-time)))    
 
