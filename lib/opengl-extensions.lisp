@@ -30,6 +30,6 @@
   (let ((extension (extension-available-p extension)))
     (when extension
       (handler-case
-	(asdf:oos 'asdf:load-op (string-downcase (format nil "cl-glfw-opengl-~a" extension)))
-	(asdf:missing-component () (warn "Extension ~a has nothing to load~%" extension)))
+          (asdf:oos 'asdf:load-op (string-downcase (format nil "cl-glfw-opengl-~a" extension)))
+        (asdf:missing-component () (warn "Extension ~a has nothing to load~%" extension)))
       t)))
