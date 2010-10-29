@@ -9,7 +9,7 @@
 
 (cffi:define-foreign-library libglfw
   (:darwin  (:framework "GLFW"))
-  (:unix (:or "glfw" "libglfw.so"  #P"/usr/local/lib/libglfw.so"))
+  (:unix (:or "glfw" "libglfw.so" "libglfw.so.2"  #P"/usr/local/lib/libglfw.so"))
   (:windows (:or "glfw.dll" "libglfw.dll")) 
   (t (:default "libglfw")))
 
