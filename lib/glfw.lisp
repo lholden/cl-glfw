@@ -77,7 +77,14 @@
   (defconstant +key-kp-decimal+ (+ +key-special+ 60))
   (defconstant +key-kp-equal+ (+ +key-special+ 61))
   (defconstant +key-kp-enter+ (+ +key-special+ 62))
-  (defconstant +key-last+ +key-kp-enter+)
+  (defconstant +key-kp-num-lock+ (+ +key-special+ 63))
+  (defconstant +key-caps-lock+ (+ +key-special+ 64))
+  (defconstant +key-scroll-lock+ (+ +key-special+ 65))
+  (defconstant +key-pause+ (+ +key-special+ 66))
+  (defconstant +key-lsuper+ (+ +key-special+ 67))
+  (defconstant +key-rsuper+ (+ +key-special+ 68))
+  (defconstant +key-menu+ (+ +key-special+ 69))
+  (defconstant +key-last+ +key-menu+)
 
   ;; Mouse button definitions
   (defconstant +mouse-button-1+ 0)
@@ -146,6 +153,14 @@
   (defconstant +stereo+ #x00020011)
   (defconstant +window-no-resize+ #x00020012)
   (defconstant +fsaa-samples+ #x00020013)
+  (defconstant +opengl-version-major+ #x00020014)
+  (defconstant +opengl-version-minor+ #x00020015)
+  (defconstant +opengl-forward-compat+ #x00020016)
+  (defconstant +opengl-debug-context+ #x00020017)
+  (defconstant +opengl-profile+ #x00020018)
+
+  (defconstant +opengl-core-profile+ #x00050001)
+  (defconstant +opengl-compat-profile+ #x00050002)
 
   ;; glfwEnable/glfwDisable tokens
   (defconstant +mouse-cursor+ #x00030001)
@@ -668,7 +683,8 @@ assumptions about when or why glfw::WaitEvents will return.
                                     "kp-4" "kp-5" "kp-6" "kp-7" "kp-8" "kp-9" "kp-add" "kp-decimal" "kp-divide"
                                     "kp-enter" "kp-equal" "kp-multiply" "kp-subtract" "lalt" "lctrl" "left"
                                     "lshift" "pagedown" "pageup" "ralt" "rctrl" "right" "rshift"
-                                    "special" "tab" "unknown" "up")
+                                    "special" "tab" "unknown" "up"
+				    "kp-num-lock" "caps-lock" "scroll-lock" "pause" "lsuper" "rsuper" "menu")
            collect
            `(,(symbol-value (find-symbol (string-upcase (format nil "+key-~a+" special-key)) (find-package '#:glfw)))
               ,(intern (string-upcase special-key) (find-package '#:keyword))))
