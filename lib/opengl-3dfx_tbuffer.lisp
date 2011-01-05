@@ -6,4 +6,4 @@
 
 (defglextfun "TbufferMask3DFX" tbuffer-mask-3dfx :return "void" :args
  ((:name |mask| :type |UInt32| :direction :in)) :category "3DFX_tbuffer"
- :version "1.2") 
+ :deprecated nil :version "1.2") 

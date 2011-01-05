@@ -6,8 +6,8 @@
 
 (defglextfun "SamplePatternSGIS" sample-pattern-sgis :return "void" :args
  ((:name |pattern| :type |SamplePatternSGIS| :direction :in)) :category
- "SGIS_multisample" :version "1.0") 
+ "SGIS_multisample" :deprecated nil :version "1.0") 
 (defglextfun "SampleMaskSGIS" sample-mask-sgis :return "void" :args
  ((:name |value| :type |ClampedFloat32| :direction :in)
   (:name |invert| :type |Boolean| :direction :in))
- :category "SGIS_multisample" :version "1.1") 
+ :category "SGIS_multisample" :deprecated nil :version "1.1") 

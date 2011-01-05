@@ -4,46 +4,47 @@
 
 ;;;; sgi_color_table
 
+(defconstant +bgr+ #x80E0) 
 (defglextfun "GetColorTableParameterivSGI" get-color-table-parameteriv-sgi
  :return "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |pname| :type |GetColorTableParameterPNameSGI| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 
 (defglextfun "GetColorTableParameterfvSGI" get-color-table-parameterfv-sgi
  :return "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |pname| :type |GetColorTableParameterPNameSGI| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 
 (defglextfun "GetColorTableSGI" get-color-table-sgi :return "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
   (:name |table| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 
 (defglextfun "CopyColorTableSGI" copy-color-table-sgi :return "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 
 (defglextfun "ColorTableParameterivSGI" color-table-parameteriv-sgi :return
  "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |pname| :type |ColorTableParameterPNameSGI| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 
 (defglextfun "ColorTableParameterfvSGI" color-table-parameterfv-sgi :return
  "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |pname| :type |ColorTableParameterPNameSGI| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 
 (defglextfun "ColorTableSGI" color-table-sgi :return "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
@@ -52,4 +53,4 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |table| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
- :category "SGI_color_table" :version "1.0") 
+ :category "SGI_color_table" :deprecated nil :version "1.0") 

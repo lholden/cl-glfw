@@ -5,19 +5,22 @@
 ;;;; apple_vertex_array_object
 
 (defconstant +vertex-array-binding-apple+ #x85B5) 
+(defconstant +texture-range-length-apple+ #x85B7) 
+(defconstant +texture-range-pointer-apple+ #x85B8) 
+(defconstant +vertex-array-binding-apple+ #x85B5) 
 (defglextfun "IsVertexArrayAPPLE" is-vertex-array-apple :return "Boolean" :args
  ((:name |array| :type |UInt32| :direction :in)) :category
- "APPLE_vertex_array_object" :version "1.2") 
+ "APPLE_vertex_array_object" :deprecated nil :version "1.2") 
 (defglextfun "GenVertexArraysAPPLE" gen-vertex-arrays-apple :return "void"
  :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |arrays| :type |UInt32| :direction :out :array t :size n))
- :category "APPLE_vertex_array_object" :version "1.2") 
+ :category "APPLE_vertex_array_object" :deprecated nil :version "1.2") 
 (defglextfun "DeleteVertexArraysAPPLE" delete-vertex-arrays-apple :return
  "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |arrays| :type |UInt32| :direction :in :array t :size n))
- :category "APPLE_vertex_array_object" :version "1.2") 
+ :category "APPLE_vertex_array_object" :deprecated nil :version "1.2") 
 (defglextfun "BindVertexArrayAPPLE" bind-vertex-array-apple :return "void"
  :args ((:name |array| :type |UInt32| :direction :in)) :category
- "APPLE_vertex_array_object" :version "1.2") 
+ "APPLE_vertex_array_object" :deprecated nil :version "1.2") 

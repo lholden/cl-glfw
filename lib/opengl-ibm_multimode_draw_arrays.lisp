@@ -13,7 +13,7 @@
    (|primcount|))
   (:name |primcount| :type |SizeI| :direction :in)
   (:name |modestride| :type |Int32| :direction :in))
- :category "IBM_multimode_draw_arrays" :version "1.1") 
+ :category "IBM_multimode_draw_arrays" :deprecated nil :version "1.1") 
 (defglextfun "MultiModeDrawArraysIBM" multi-mode-draw-arrays-ibm :return "void"
  :args
  ((:name |mode| :type |BeginMode| :direction :in :array t :size (|primcount|))
@@ -21,4 +21,4 @@
   (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
   (:name |primcount| :type |SizeI| :direction :in)
   (:name |modestride| :type |Int32| :direction :in))
- :category "IBM_multimode_draw_arrays" :version "1.1") 
+ :category "IBM_multimode_draw_arrays" :deprecated nil :version "1.1") 

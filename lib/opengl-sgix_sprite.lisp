@@ -15,20 +15,20 @@
  ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
- :category "SGIX_sprite" :version "1.0") 
+ :category "SGIX_sprite" :deprecated nil :version "1.0") 
 (defglextfun "SpriteParameteriSGIX" sprite-parameter-i-sgix :return "void"
  :args
  ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
   (:name |param| :type |CheckedInt32| :direction :in))
- :category "SGIX_sprite" :version "1.0") 
+ :category "SGIX_sprite" :deprecated nil :version "1.0") 
 (defglextfun "SpriteParameterfvSGIX" sprite-parameter-fv-sgix :return "void"
  :args
  ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
- :category "SGIX_sprite" :version "1.0") 
+ :category "SGIX_sprite" :deprecated nil :version "1.0") 
 (defglextfun "SpriteParameterfSGIX" sprite-parameter-f-sgix :return "void"
  :args
  ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
   (:name |param| :type |CheckedFloat32| :direction :in))
- :category "SGIX_sprite" :version "1.0") 
+ :category "SGIX_sprite" :deprecated nil :version "1.0") 

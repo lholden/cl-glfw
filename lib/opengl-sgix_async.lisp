@@ -6,21 +6,21 @@
 
 (defglextfun "IsAsyncMarkerSGIX" is-async-marker-sgix :return "Boolean" :args
  ((:name |marker| :type |UInt32| :direction :in)) :category "SGIX_async"
- :version "1.0") 
+ :deprecated nil :version "1.0") 
 (defglextfun "DeleteAsyncMarkersSGIX" delete-async-markers-sgix :return "void"
  :args
  ((:name |marker| :type |UInt32| :direction :in)
   (:name |range| :type |SizeI| :direction :in))
- :category "SGIX_async" :version "1.0") 
+ :category "SGIX_async" :deprecated nil :version "1.0") 
 (defglextfun "GenAsyncMarkersSGIX" gen-async-markers-sgix :return "UInt32"
  :args ((:name |range| :type |SizeI| :direction :in)) :category "SGIX_async"
- :version "1.0") 
+ :deprecated nil :version "1.0") 
 (defglextfun "PollAsyncSGIX" poll-async-sgix :return "Int32" :args
  ((:name |markerp| :type |UInt32| :direction :out :array t :size #x1))
- :category "SGIX_async" :version "1.0") 
+ :category "SGIX_async" :deprecated nil :version "1.0") 
 (defglextfun "FinishAsyncSGIX" finish-async-sgix :return "Int32" :args
  ((:name |markerp| :type |UInt32| :direction :out :array t :size #x1))
- :category "SGIX_async" :version "1.0") 
+ :category "SGIX_async" :deprecated nil :version "1.0") 
 (defglextfun "AsyncMarkerSGIX" async-marker-sgix :return "void" :args
  ((:name |marker| :type |UInt32| :direction :in)) :category "SGIX_async"
- :version "1.0") 
+ :deprecated nil :version "1.0") 

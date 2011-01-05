@@ -4,15 +4,10 @@
 
 ;;;; ext_texture3d
 
-(defconstant +pack-skip-images+ #x806B) 
-(defconstant +pack-image-height+ #x806C) 
-(defconstant +unpack-skip-images+ #x806D) 
-(defconstant +unpack-image-height+ #x806E) 
-(defconstant +texture-3d+ #x806F) 
-(defconstant +proxy-texture-3d+ #x8070) 
-(defconstant +texture-depth+ #x8071) 
-(defconstant +texture-wrap-r+ #x8072) 
-(defconstant +max-3d-texture-size+ #x8073) 
+(defconstant +texture-3d-binding-oes+ #x806A) 
+(defconstant +texture-3d-oes+ #x806F) 
+(defconstant +texture-wrap-r-oes+ #x8072) 
+(defconstant +max-3d-texture-size-oes+ #x8073) 
 (defglextfun "TexSubImage3DEXT" tex-sub-image-3d-ext :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
@@ -26,7 +21,7 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
- :category "EXT_texture3D" :version "1.0") 
+ :category "EXT_texture3D" :deprecated nil :version "1.0") 
 (defglextfun "TexImage3DEXT" tex-image-3d-ext :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
@@ -39,4 +34,4 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
- :category "EXT_texture3D" :version "1.0") 
+ :category "EXT_texture3D" :deprecated nil :version "1.0") 

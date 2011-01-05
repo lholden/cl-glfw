@@ -9,13 +9,13 @@
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |ArrayObjectPNameATI| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size pname))
- :category "ATI_vertex_attrib_array_object" :version "1.2") 
+ :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2") 
 (defglextfun "GetVertexAttribArrayObjectfvATI"
  get-vertex-attrib-array-object-fv-ati :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |ArrayObjectPNameATI| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size pname))
- :category "ATI_vertex_attrib_array_object" :version "1.2") 
+ :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2") 
 (defglextfun "VertexAttribArrayObjectATI" vertex-attrib-array-object-ati
  :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
@@ -25,4 +25,4 @@
   (:name |stride| :type |SizeI| :direction :in)
   (:name |buffer| :type |UInt32| :direction :in)
   (:name |offset| :type |UInt32| :direction :in))
- :category "ATI_vertex_attrib_array_object" :version "1.2") 
+ :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2") 

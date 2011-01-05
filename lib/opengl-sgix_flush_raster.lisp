@@ -5,4 +5,4 @@
 ;;;; sgix_flush_raster
 
 (defglextfun "FlushRasterSGIX" flush-raster-sgix :return "void" :args nil
- :category "SGIX_flush_raster" :version "1.0") 
+ :category "SGIX_flush_raster" :deprecated nil :version "1.0") 

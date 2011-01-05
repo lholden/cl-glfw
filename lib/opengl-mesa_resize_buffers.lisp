@@ -5,4 +5,4 @@
 ;;;; mesa_resize_buffers
 
 (defglextfun "ResizeBuffersMESA" resize-buffers-mesa :return "void" :args nil
- :category "MESA_resize_buffers" :version "1.0") 
+ :category "MESA_resize_buffers" :deprecated nil :version "1.0") 

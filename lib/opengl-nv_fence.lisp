@@ -7,29 +7,32 @@
 (defconstant +all-completed-nv+ #x84F2) 
 (defconstant +fence-status-nv+ #x84F3) 
 (defconstant +fence-condition-nv+ #x84F4) 
+(defconstant +all-completed-nv+ #x84F2) 
+(defconstant +fence-status-nv+ #x84F3) 
+(defconstant +fence-condition-nv+ #x84F4) 
 (defglextfun "SetFenceNV" set-fence-nv :return "void" :args
  ((:name |fence| :type |FenceNV| :direction :in)
   (:name |condition| :type |FenceConditionNV| :direction :in))
- :category "NV_fence" :version "1.2") 
+ :category "NV_fence" :deprecated nil :version "1.2") 
 (defglextfun "FinishFenceNV" finish-fence-nv :return "void" :args
- ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence" :version
- "1.2") 
+ ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence"
+ :deprecated nil :version "1.2") 
 (defglextfun "GetFenceivNV" get-fence-iv-nv :return "void" :args
  ((:name |fence| :type |FenceNV| :direction :in)
   (:name |pname| :type |FenceParameterNameNV| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "NV_fence" :version "1.2") 
+ :category "NV_fence" :deprecated nil :version "1.2") 
 (defglextfun "TestFenceNV" test-fence-nv :return "Boolean" :args
- ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence" :version
- "1.2") 
+ ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence"
+ :deprecated nil :version "1.2") 
 (defglextfun "IsFenceNV" is-fence-nv :return "Boolean" :args
- ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence" :version
- "1.2") 
+ ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence"
+ :deprecated nil :version "1.2") 
 (defglextfun "GenFencesNV" gen-fences-nv :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |fences| :type |FenceNV| :direction :out :array t :size n))
- :category "NV_fence" :version "1.2") 
+ :category "NV_fence" :deprecated nil :version "1.2") 
 (defglextfun "DeleteFencesNV" delete-fences-nv :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |fences| :type |FenceNV| :direction :in :array t :size n))
- :category "NV_fence" :version "1.2") 
+ :category "NV_fence" :deprecated nil :version "1.2") 

@@ -11,6 +11,13 @@
 (defconstant +secondary-color-array-stride-ext+ #x845C) 
 (defconstant +secondary-color-array-pointer-ext+ #x845D) 
 (defconstant +secondary-color-array-ext+ #x845E) 
+(defconstant +color-sum-ext+ #x8458) 
+(defconstant +current-secondary-color-ext+ #x8459) 
+(defconstant +secondary-color-array-size-ext+ #x845A) 
+(defconstant +secondary-color-array-type-ext+ #x845B) 
+(defconstant +secondary-color-array-stride-ext+ #x845C) 
+(defconstant +secondary-color-array-pointer-ext+ #x845D) 
+(defconstant +secondary-color-array-ext+ #x845E) 
 (defglextfun "SecondaryColorPointerEXT" secondary-color-pointer-ext :return
  "void" :args
  ((:name |size| :type |Int32| :direction :in)
@@ -18,71 +25,71 @@
   (:name |stride| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :in :array t :size
    (|size| |type| |stride|) :retained t))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3usvEXT" secondary-color-3usv-ext :return "void"
  :args ((:name |v| :type |ColorUS| :direction :in :array t :size #x3))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3usEXT" secondary-color-3us-ext :return "void"
  :args
  ((:name |red| :type |ColorUS| :direction :in)
   (:name |green| :type |ColorUS| :direction :in)
   (:name |blue| :type |ColorUS| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3uivEXT" secondary-color-3uiv-ext :return "void"
  :args ((:name |v| :type |ColorUI| :direction :in :array t :size #x3))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3uiEXT" secondary-color-3ui-ext :return "void"
  :args
  ((:name |red| :type |ColorUI| :direction :in)
   (:name |green| :type |ColorUI| :direction :in)
   (:name |blue| :type |ColorUI| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3ubvEXT" secondary-color-3ubv-ext :return "void"
  :args ((:name |v| :type |ColorUB| :direction :in :array t :size #x3))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3ubEXT" secondary-color-3ub-ext :return "void"
  :args
  ((:name |red| :type |ColorUB| :direction :in)
   (:name |green| :type |ColorUB| :direction :in)
   (:name |blue| :type |ColorUB| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3svEXT" secondary-color-3sv-ext :return "void"
  :args ((:name |v| :type |ColorS| :direction :in :array t :size #x3)) :category
- "EXT_secondary_color" :version "1.1") 
+ "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3sEXT" secondary-color-3s-ext :return "void" :args
  ((:name |red| :type |ColorS| :direction :in)
   (:name |green| :type |ColorS| :direction :in)
   (:name |blue| :type |ColorS| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3ivEXT" secondary-color-3iv-ext :return "void"
  :args ((:name |v| :type |ColorI| :direction :in :array t :size #x3)) :category
- "EXT_secondary_color" :version "1.1") 
+ "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3iEXT" secondary-color-3i-ext :return "void" :args
  ((:name |red| :type |ColorI| :direction :in)
   (:name |green| :type |ColorI| :direction :in)
   (:name |blue| :type |ColorI| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3fvEXT" secondary-color-3fv-ext :return "void"
  :args ((:name |v| :type |ColorF| :direction :in :array t :size #x3)) :category
- "EXT_secondary_color" :version "1.1") 
+ "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3fEXT" secondary-color-3f-ext :return "void" :args
  ((:name |red| :type |ColorF| :direction :in)
   (:name |green| :type |ColorF| :direction :in)
   (:name |blue| :type |ColorF| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3dvEXT" secondary-color-3dv-ext :return "void"
  :args ((:name |v| :type |ColorD| :direction :in :array t :size #x3)) :category
- "EXT_secondary_color" :version "1.1") 
+ "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3dEXT" secondary-color-3d-ext :return "void" :args
  ((:name |red| :type |ColorD| :direction :in)
   (:name |green| :type |ColorD| :direction :in)
   (:name |blue| :type |ColorD| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3bvEXT" secondary-color-3bv-ext :return "void"
  :args ((:name |v| :type |ColorB| :direction :in :array t :size #x3)) :category
- "EXT_secondary_color" :version "1.1") 
+ "EXT_secondary_color" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColor3bEXT" secondary-color-3b-ext :return "void" :args
  ((:name |red| :type |ColorB| :direction :in)
   (:name |green| :type |ColorB| :direction :in)
   (:name |blue| :type |ColorB| :direction :in))
- :category "EXT_secondary_color" :version "1.1") 
+ :category "EXT_secondary_color" :deprecated nil :version "1.1") 

@@ -16,20 +16,20 @@
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |GetColorTableParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
- :category "EXT_paletted_texture" :version "1.1") 
+ :category "EXT_paletted_texture" :deprecated nil :version "1.1") 
 (defglextfun "GetColorTableParameterivEXT" get-color-table-parameter-iv-ext
  :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |GetColorTableParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "EXT_paletted_texture" :version "1.1") 
+ :category "EXT_paletted_texture" :deprecated nil :version "1.1") 
 (defglextfun "GetColorTableEXT" get-color-table-ext :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
   (:name |data| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
- :category "EXT_paletted_texture" :version "1.1") 
+ :category "EXT_paletted_texture" :deprecated nil :version "1.1") 
 (defglextfun "ColorTableEXT" color-table-ext :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |internalFormat| :type |PixelInternalFormat| :direction :in)
@@ -38,4 +38,4 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |table| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
- :category "EXT_paletted_texture" :version "1.1") 
+ :category "EXT_paletted_texture" :deprecated nil :version "1.1") 

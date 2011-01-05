@@ -13,6 +13,16 @@
 (defconstant +pixel-transform-2d-stack-depth-ext+ #x8336) 
 (defconstant +max-pixel-transform-2d-stack-depth-ext+ #x8337) 
 (defconstant +pixel-transform-2d-matrix-ext+ #x8338) 
+(defconstant +fragment-material-ext+ #x8349) 
+(defconstant +fragment-normal-ext+ #x834A) 
+(defconstant +fragment-color-ext+ #x834C) 
+(defconstant +attenuation-ext+ #x834D) 
+(defconstant +shadow-attenuation-ext+ #x834E) 
+(defconstant +texture-application-mode-ext+ #x834F) 
+(defconstant +texture-light-ext+ #x8350) 
+(defconstant +texture-material-face-ext+ #x8351) 
+(defconstant +texture-material-parameter-ext+ #x8352) 
+(defconstant +fragment-depth-ext+ #x8452) 
 (defconstant +pixel-transform-2d-ext+ #x8330) 
 (defconstant +pixel-mag-filter-ext+ #x8331) 
 (defconstant +pixel-min-filter-ext+ #x8332) 
@@ -27,22 +37,22 @@
  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size #x1))
- :category "EXT_pixel_transform" :version "1.1") 
+ :category "EXT_pixel_transform" :deprecated nil :version "1.1") 
 (defglextfun "PixelTransformParameterivEXT" pixel-transform-parameter-iv-ext
  :return "void" :args
  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
   (:name |params| :type |Int32| :direction :in :array t :size #x1))
- :category "EXT_pixel_transform" :version "1.1") 
+ :category "EXT_pixel_transform" :deprecated nil :version "1.1") 
 (defglextfun "PixelTransformParameterfEXT" pixel-transform-parameter-f-ext
  :return "void" :args
  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
   (:name |param| :type |Float32| :direction :in))
- :category "EXT_pixel_transform" :version "1.1") 
+ :category "EXT_pixel_transform" :deprecated nil :version "1.1") 
 (defglextfun "PixelTransformParameteriEXT" pixel-transform-parameter-i-ext
  :return "void" :args
  ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
   (:name |param| :type |Int32| :direction :in))
- :category "EXT_pixel_transform" :version "1.1") 
+ :category "EXT_pixel_transform" :deprecated nil :version "1.1") 

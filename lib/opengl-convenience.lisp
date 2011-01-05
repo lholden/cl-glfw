@@ -288,9 +288,11 @@ For an example, please see examples/synchronized-shader.lisp."
 				    shader-type-sources)))))
     (let ((program-spec (gethash program-name *synchronizing-shader-programs*)))
       ;; compile out-of-date shaders 
+      ;; TODO is (some ...) a great idea here really? Maybe they won't all load at the same time?
       (when (some #'(lambda (shader-entry)
 		      (destructuring-bind (shader source last-time) shader-entry
-			(let ((now-time (file-write-date source)))
+			(let ((now-time (handler-case (file-write-date source)
+					  (file-error (condition) 0))))
 			  (when (> now-time last-time)
 			    (with-open-file (in source :direction :input)
 			      ((?extension shader-source-from-stream-arb shader-source-from-stream) shader in))

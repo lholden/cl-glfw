@@ -4,10 +4,11 @@
 
 ;;;; sgis_fog_function
 
+(defconstant +clamp-to-border+ #x812D) 
 (defglextfun "GetFogFuncSGIS" get-fog-func-sgis :return "void" :args
  ((:name |points| :type |Float32| :direction :out :array t)) :category
- "SGIS_fog_function" :version "1.1") 
+ "SGIS_fog_function" :deprecated nil :version "1.1") 
 (defglextfun "FogFuncSGIS" fog-func-sgis :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |points| :type |Float32| :direction :in :array t :size n*2))
- :category "SGIS_fog_function" :version "1.1") 
+ :category "SGIS_fog_function" :deprecated nil :version "1.1") 

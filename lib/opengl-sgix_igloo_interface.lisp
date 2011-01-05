@@ -8,4 +8,4 @@
  ((:name |pname| :type |IglooFunctionSelectSGIX| :direction :in)
   (:name |params| :type |IglooParameterSGIX| :direction :in :array t :size
    (|pname|)))
- :category "SGIX_igloo_interface" :version "1.0") 
+ :category "SGIX_igloo_interface" :deprecated nil :version "1.0") 

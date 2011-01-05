@@ -11,32 +11,32 @@
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :out :array t :size
    (|pname|)))
- :category "SGIS_pixel_texture" :version "1.0") 
+ :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 
 (defglextfun "GetPixelTexGenParameterivSGIS"
  get-pixel-tex-gen-parameter-iv-sgis :return "void" :args
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :out :array t :size
    (|pname|)))
- :category "SGIS_pixel_texture" :version "1.0") 
+ :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 
 (defglextfun "PixelTexGenParameterfvSGIS" pixel-tex-gen-parameter-fv-sgis
  :return "void" :args
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
- :category "SGIS_pixel_texture" :version "1.0") 
+ :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 
 (defglextfun "PixelTexGenParameterfSGIS" pixel-tex-gen-parameter-f-sgis :return
  "void" :args
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |param| :type |CheckedFloat32| :direction :in))
- :category "SGIS_pixel_texture" :version "1.0") 
+ :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 
 (defglextfun "PixelTexGenParameterivSGIS" pixel-tex-gen-parameter-iv-sgis
  :return "void" :args
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
- :category "SGIS_pixel_texture" :version "1.0") 
+ :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 
 (defglextfun "PixelTexGenParameteriSGIS" pixel-tex-gen-parameter-i-sgis :return
  "void" :args
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |param| :type |CheckedInt32| :direction :in))
- :category "SGIS_pixel_texture" :version "1.0") 
+ :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 

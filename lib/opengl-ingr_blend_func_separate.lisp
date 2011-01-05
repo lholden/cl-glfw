@@ -10,4 +10,4 @@
   (:name |dfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
   (:name |sfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in)
   (:name |dfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in))
- :category "INGR_blend_func_separate" :version "1.0") 
+ :category "INGR_blend_func_separate" :deprecated nil :version "1.0") 

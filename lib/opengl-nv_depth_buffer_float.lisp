@@ -8,14 +8,19 @@
 (defconstant +depth32f-stencil8-nv+ #x8DAC) 
 (defconstant +float-32-unsigned-int-24-8-rev-nv+ #x8DAD) 
 (defconstant +depth-buffer-float-mode-nv+ #x8DAF) 
+(defconstant +shader-include-arb+ #x8DAE) 
+(defconstant +depth-component32f-nv+ #x8DAB) 
+(defconstant +depth32f-stencil8-nv+ #x8DAC) 
+(defconstant +float-32-unsigned-int-24-8-rev-nv+ #x8DAD) 
+(defconstant +depth-buffer-float-mode-nv+ #x8DAF) 
 (defglextfun "DepthBoundsdNV" depth-bounds-d-nv :return "void" :args
  ((:name |zmin| :type |Float64| :direction :in)
   (:name |zmax| :type |Float64| :direction :in))
- :category "NV_depth_buffer_float" :version "2.0") 
+ :category "NV_depth_buffer_float" :deprecated nil :version "2.0") 
 (defglextfun "ClearDepthdNV" clear-depth-d-nv :return "void" :args
  ((:name |depth| :type |Float64| :direction :in)) :category
- "NV_depth_buffer_float" :version "2.0") 
-(defglextfun "DepthRangedNV" depth-ranged-nv :return "void" :args
+ "NV_depth_buffer_float" :deprecated nil :version "2.0") 
+(defglextfun "DepthRangedNV" depth-range-d-nv :return "void" :args
  ((:name |zNear| :type |Float64| :direction :in)
   (:name |zFar| :type |Float64| :direction :in))
- :category "NV_depth_buffer_float" :version "2.0") 
+ :category "NV_depth_buffer_float" :deprecated nil :version "2.0") 

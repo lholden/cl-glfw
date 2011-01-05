@@ -7,4 +7,4 @@
 (defconstant +unpack-constant-data-sunx+ #x81D5) 
 (defconstant +texture-constant-data-sunx+ #x81D6) 
 (defglextfun "FinishTextureSUNX" finish-texture-sunx :return "void" :args nil
- :category "SUNX_constant_data" :version "1.1") 
+ :category "SUNX_constant_data" :deprecated nil :version "1.1") 

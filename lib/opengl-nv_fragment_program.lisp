@@ -5,39 +5,39 @@
 ;;;; nv_fragment_program
 
 (defconstant +max-fragment-program-local-parameters-nv+ #x8868) 
-(defconstant +fragment-program-nv+ #x8870) 
-(defconstant +max-texture-coords-nv+ #x8871) 
-(defconstant +max-texture-image-units-nv+ #x8872) 
-(defconstant +fragment-program-binding-nv+ #x8873) 
-(defconstant +program-error-string-nv+ #x8874) 
+(defconstant +max-vertex-attribs+ #x8869) 
+(defconstant +vertex-attrib-array-normalized+ #x886A) 
+(defconstant +max-vertex-attribs-arb+ #x8869) 
+(defconstant +vertex-attrib-array-normalized-arb+ #x886A) 
+(defconstant +max-fragment-program-local-parameters-nv+ #x8868) 
 (defglextfun "GetProgramNamedParameterdvNV" get-program-named-parameter-dv-nv
  :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |len| :type |SizeI| :direction :in)
   (:name |name| :type |UInt8| :direction :in :array t :size #x1)
   (:name |params| :type |Float64| :direction :out :array t :size #x4))
- :category "NV_fragment_program" :version "1.2") 
+ :category "NV_fragment_program" :deprecated nil :version "1.2") 
 (defglextfun "GetProgramNamedParameterfvNV" get-program-named-parameter-fv-nv
  :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |len| :type |SizeI| :direction :in)
   (:name |name| :type |UInt8| :direction :in :array t :size #x1)
   (:name |params| :type |Float32| :direction :out :array t :size #x4))
- :category "NV_fragment_program" :version "1.2") 
+ :category "NV_fragment_program" :deprecated nil :version "1.2") 
 (defglextfun "ProgramNamedParameter4dvNV" program-named-parameter-4dv-nv
  :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |len| :type |SizeI| :direction :in)
   (:name |name| :type |UInt8| :direction :in :array t :size #x1)
   (:name |v| :type |Float64| :direction :in :array t :size #x4))
- :category "NV_fragment_program" :version "1.2") 
+ :category "NV_fragment_program" :deprecated nil :version "1.2") 
 (defglextfun "ProgramNamedParameter4fvNV" program-named-parameter-4fv-nv
  :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |len| :type |SizeI| :direction :in)
   (:name |name| :type |UInt8| :direction :in :array t :size #x1)
   (:name |v| :type |Float32| :direction :in :array t :size #x4))
- :category "NV_fragment_program" :version "1.2") 
+ :category "NV_fragment_program" :deprecated nil :version "1.2") 
 (defglextfun "ProgramNamedParameter4dNV" program-named-parameter-4d-nv :return
  "void" :args
  ((:name |id| :type |UInt32| :direction :in)
@@ -47,7 +47,7 @@
   (:name |y| :type |Float64| :direction :in)
   (:name |z| :type |Float64| :direction :in)
   (:name |w| :type |Float64| :direction :in))
- :category "NV_fragment_program" :version "1.2") 
+ :category "NV_fragment_program" :deprecated nil :version "1.2") 
 (defglextfun "ProgramNamedParameter4fNV" program-named-parameter-4f-nv :return
  "void" :args
  ((:name |id| :type |UInt32| :direction :in)
@@ -57,4 +57,4 @@
   (:name |y| :type |Float32| :direction :in)
   (:name |z| :type |Float32| :direction :in)
   (:name |w| :type |Float32| :direction :in))
- :category "NV_fragment_program" :version "1.2") 
+ :category "NV_fragment_program" :deprecated nil :version "1.2") 

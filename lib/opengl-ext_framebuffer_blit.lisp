@@ -6,8 +6,12 @@
 
 (defconstant +read-framebuffer-ext+ #x8CA8) 
 (defconstant +draw-framebuffer-ext+ #x8CA9) 
-(defconstant +read-framebuffer-binding-ext+ #x8CA6) 
-(defconstant +draw-framebuffer-binding-ext+ #x8CAA) 
+(defconstant +draw-framebuffer-binding-ext+ #x8CA6) 
+(defconstant +read-framebuffer-binding-ext+ #x8CAA) 
+(defconstant +read-framebuffer-ext+ #x8CA8) 
+(defconstant +draw-framebuffer-ext+ #x8CA9) 
+(defconstant +draw-framebuffer-binding-ext+ #x8CA6) 
+(defconstant +read-framebuffer-binding-ext+ #x8CAA) 
 (defglextfun "BlitFramebufferEXT" blit-framebuffer-ext :return "void" :args
  ((:name |srcX0| :type |Int32| :direction :in)
   (:name |srcY0| :type |Int32| :direction :in)
@@ -19,4 +23,4 @@
   (:name |dstY1| :type |Int32| :direction :in)
   (:name |mask| :type |ClearBufferMask| :direction :in)
   (:name |filter| :type |GLenum| :direction :in))
- :category "EXT_framebuffer_blit" :version "1.5") 
+ :category "EXT_framebuffer_blit" :deprecated nil :version "1.5") 

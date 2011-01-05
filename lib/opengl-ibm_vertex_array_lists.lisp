@@ -28,7 +28,7 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|size| |type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "TexCoordPointerListIBM" tex-coord-pointer-list-ibm :return "void"
  :args
  ((:name |size| :type |Int32| :direction :in)
@@ -37,7 +37,7 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|size| |type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "NormalPointerListIBM" normal-pointer-list-ibm :return "void"
  :args
  ((:name |type| :type |NormalPointerType| :direction :in)
@@ -45,14 +45,14 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "IndexPointerListIBM" index-pointer-list-ibm :return "void" :args
  ((:name |type| :type |IndexPointerType| :direction :in)
   (:name |stride| :type |Int32| :direction :in)
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "FogCoordPointerListIBM" fog-coord-pointer-list-ibm :return "void"
  :args
  ((:name |type| :type |FogPointerTypeIBM| :direction :in)
@@ -60,14 +60,14 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "EdgeFlagPointerListIBM" edge-flag-pointer-list-ibm :return "void"
  :args
  ((:name |stride| :type |Int32| :direction :in)
   (:name |pointer| :type |BooleanPointer| :direction :in :array t :size
    (|stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "SecondaryColorPointerListIBM" secondary-color-pointer-list-ibm
  :return "void" :args
  ((:name |size| :type |Int32| :direction :in)
@@ -76,7 +76,7 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|size| |type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
 (defglextfun "ColorPointerListIBM" color-pointer-list-ibm :return "void" :args
  ((:name |size| :type |Int32| :direction :in)
   (:name |type| :type |ColorPointerType| :direction :in)
@@ -84,4 +84,4 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|size| |type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
- :category "IBM_vertex_array_lists" :version "1.1") 
+ :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 

@@ -8,6 +8,15 @@
 (defconstant +texture-resident-ext+ #x8067) 
 (defconstant +texture-1d-binding-ext+ #x8068) 
 (defconstant +texture-2d-binding-ext+ #x8069) 
+(defconstant +pack-skip-images+ #x806B) 
+(defconstant +pack-image-height+ #x806C) 
+(defconstant +unpack-skip-images+ #x806D) 
+(defconstant +unpack-image-height+ #x806E) 
+(defconstant +texture-3d+ #x806F) 
+(defconstant +proxy-texture-3d+ #x8070) 
+(defconstant +texture-depth+ #x8071) 
+(defconstant +texture-wrap-r+ #x8072) 
+(defconstant +max-3d-texture-size+ #x8073) 
 (defconstant +texture-priority-ext+ #x8066) 
 (defconstant +texture-resident-ext+ #x8067) 
 (defconstant +texture-1d-binding-ext+ #x8068) 
@@ -17,25 +26,25 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |textures| :type |Texture| :direction :in :array t :size n)
   (:name |priorities| :type |ClampedFloat32| :direction :in :array t :size n))
- :category "EXT_texture_object" :version "1.0") 
+ :category "EXT_texture_object" :deprecated nil :version "1.0") 
 (defglextfun "IsTextureEXT" is-texture-ext :return "Boolean" :args
  ((:name |texture| :type |Texture| :direction :in)) :category
- "EXT_texture_object" :version "1.0") 
+ "EXT_texture_object" :deprecated nil :version "1.0") 
 (defglextfun "GenTexturesEXT" gen-textures-ext :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |textures| :type |Texture| :direction :out :array t :size n))
- :category "EXT_texture_object" :version "1.0") 
+ :category "EXT_texture_object" :deprecated nil :version "1.0") 
 (defglextfun "DeleteTexturesEXT" delete-textures-ext :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |textures| :type |Texture| :direction :in :array t :size n))
- :category "EXT_texture_object" :version "1.0") 
+ :category "EXT_texture_object" :deprecated nil :version "1.0") 
 (defglextfun "BindTextureEXT" bind-texture-ext :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |texture| :type |Texture| :direction :in))
- :category "EXT_texture_object" :version "1.0") 
+ :category "EXT_texture_object" :deprecated nil :version "1.0") 
 (defglextfun "AreTexturesResidentEXT" are-textures-resident-ext :return
  "Boolean" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |textures| :type |Texture| :direction :in :array t :size n)
   (:name |residences| :type |Boolean| :direction :out :array t :size n))
- :category "EXT_texture_object" :version "1.0") 
+ :category "EXT_texture_object" :deprecated nil :version "1.0") 

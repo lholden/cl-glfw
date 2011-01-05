@@ -52,7 +52,7 @@ open("#{BASE}/src/gl.spec.lisp","w") do |o|
 	    end
 	  end
 	  o.puts(%{)})
-        when /^\t([a-z0-9-]*)\s*(.*)/
+        when /^\t([a-z0-9-]*)\s*(.*?)(#|$)/
           o.puts(":"+$1+" ("+$2.split(/\s+/).compact.collect{|s|'"'+s+'"'}.join(' ')+")")
         when /^$/ then o.puts
         else o.puts(";?"+l)
@@ -95,8 +95,8 @@ open("#{BASE}/src/gl.spec.lisp","w") do |o|
             o.puts(%{|#{$1}| #{$2}})
           when /^(?:\t| {4,})use\s+(\w+)\s+(\w+)/   
             o.puts(%{|#{$2}| (:use |#{$1}|)})
-          when /^(\w+)(,\*)*,\s+(\w+)(,\*)*/
-            o.puts(%{("#{$1}" "#{$3}")})
+#          when /^(\w+)(,\*)*,\s+(\w+)(,\*)*/
+#            o.puts(%{("#{$1}" "#{$3}")})
           when /^\s*(#+)(.*)/ then o.puts((';'*$1.length)+$2)
           when /^$/ then o.puts
           else o.puts ";;? #{l}"

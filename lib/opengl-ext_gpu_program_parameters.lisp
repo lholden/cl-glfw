@@ -10,11 +10,11 @@
   (:name |index| :type |UInt32| :direction :in)
   (:name |count| :type |SizeI| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size count*4))
- :category "EXT_gpu_program_parameters" :version "1.2") 
+ :category "EXT_gpu_program_parameters" :deprecated nil :version "1.2") 
 (defglextfun "ProgramEnvParameters4fvEXT" program-env-parameters-4fv-ext
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |count| :type |SizeI| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size count*4))
- :category "EXT_gpu_program_parameters" :version "1.2") 
+ :category "EXT_gpu_program_parameters" :deprecated nil :version "1.2") 

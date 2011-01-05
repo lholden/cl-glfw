@@ -4,6 +4,10 @@
 
 ;;;; sgix_pixel_texture
 
+(defconstant +texture-min-lod+ #x813A) 
+(defconstant +texture-max-lod+ #x813B) 
+(defconstant +texture-base-level+ #x813C) 
+(defconstant +texture-max-level+ #x813D) 
 (defglextfun "PixelTexGenSGIX" pixel-tex-gen-sgix :return "void" :args
  ((:name |mode| :type |PixelTexGenModeSGIX| :direction :in)) :category
- "SGIX_pixel_texture" :version "1.0") 
+ "SGIX_pixel_texture" :deprecated nil :version "1.0") 

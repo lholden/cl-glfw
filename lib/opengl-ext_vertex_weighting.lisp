@@ -4,6 +4,28 @@
 
 ;;;; ext_vertex_weighting
 
+(defconstant +modelview1-stack-depth-ext+ #x8502) 
+(defconstant +modelview-matrix1-ext+ #x8506) 
+(defconstant +incr-wrap+ #x8507) 
+(defconstant +decr-wrap+ #x8508) 
+(defconstant +vertex-weighting-ext+ #x8509) 
+(defconstant +modelview1-ext+ #x850A) 
+(defconstant +current-vertex-weight-ext+ #x850B) 
+(defconstant +vertex-weight-array-ext+ #x850C) 
+(defconstant +vertex-weight-array-size-ext+ #x850D) 
+(defconstant +vertex-weight-array-type-ext+ #x850E) 
+(defconstant +vertex-weight-array-stride-ext+ #x850F) 
+(defconstant +vertex-weight-array-pointer-ext+ #x8510) 
+(defconstant +texture-cube-map+ #x8513) 
+(defconstant +texture-binding-cube-map+ #x8514) 
+(defconstant +texture-cube-map-positive-x+ #x8515) 
+(defconstant +texture-cube-map-negative-x+ #x8516) 
+(defconstant +texture-cube-map-positive-y+ #x8517) 
+(defconstant +texture-cube-map-negative-y+ #x8518) 
+(defconstant +texture-cube-map-positive-z+ #x8519) 
+(defconstant +texture-cube-map-negative-z+ #x851A) 
+(defconstant +proxy-texture-cube-map+ #x851B) 
+(defconstant +max-cube-map-texture-size+ #x851C) 
 (defconstant +modelview0-stack-depth-ext+ #xBA3) 
 (defconstant +modelview1-stack-depth-ext+ #x8502) 
 (defconstant +modelview0-matrix-ext+ #xBA6) 
@@ -24,10 +46,10 @@
   (:name |stride| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :in :array t :size (|type| |stride|)
    :retained t))
- :category "EXT_vertex_weighting" :version "1.1") 
+ :category "EXT_vertex_weighting" :deprecated nil :version "1.1") 
 (defglextfun "VertexWeightfvEXT" vertex-weight-fv-ext :return "void" :args
  ((:name |weight| :type |Float32| :direction :in :array t :size #x1)) :category
- "EXT_vertex_weighting" :version "1.1") 
+ "EXT_vertex_weighting" :deprecated nil :version "1.1") 
 (defglextfun "VertexWeightfEXT" vertex-weight-f-ext :return "void" :args
  ((:name |weight| :type |Float32| :direction :in)) :category
- "EXT_vertex_weighting" :version "1.1") 
+ "EXT_vertex_weighting" :deprecated nil :version "1.1") 

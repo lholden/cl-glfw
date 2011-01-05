@@ -4,13 +4,15 @@
 
 ;;;; sgix_polynomial_ffd
 
+(defconstant +max-deformation-order-sgix+ #x8197) 
+(defconstant +max-deformation-order-sgix+ #x8197) 
 (defglextfun "LoadIdentityDeformationMapSGIX"
  load-identity-deformation-map-sgix :return "void" :args
  ((:name |mask| :type |FfdMaskSGIX| :direction :in)) :category
- "SGIX_polynomial_ffd" :version "1.0") 
+ "SGIX_polynomial_ffd" :deprecated nil :version "1.0") 
 (defglextfun "DeformSGIX" deform-sgix :return "void" :args
  ((:name |mask| :type |FfdMaskSGIX| :direction :in)) :category
- "SGIX_polynomial_ffd" :version "1.0") 
+ "SGIX_polynomial_ffd" :deprecated nil :version "1.0") 
 (defglextfun "DeformationMap3fSGIX" deformation-map-3f-sgix :return "void"
  :args
  ((:name |target| :type |FfdTargetSGIX| :direction :in)
@@ -28,7 +30,7 @@
   (:name |worder| :type |CheckedInt32| :direction :in)
   (:name |points| :type |CoordF| :direction :in :array t :size
    (|target| |ustride| |uorder| |vstride| |vorder| |wstride| |worder|)))
- :category "SGIX_polynomial_ffd" :version "1.0") 
+ :category "SGIX_polynomial_ffd" :deprecated nil :version "1.0") 
 (defglextfun "DeformationMap3dSGIX" deformation-map-3d-sgix :return "void"
  :args
  ((:name |target| :type |FfdTargetSGIX| :direction :in)
@@ -46,4 +48,4 @@
   (:name |worder| :type |CheckedInt32| :direction :in)
   (:name |points| :type |CoordD| :direction :in :array t :size
    (|target| |ustride| |uorder| |vstride| |vorder| |wstride| |worder|)))
- :category "SGIX_polynomial_ffd" :version "1.0") 
+ :category "SGIX_polynomial_ffd" :deprecated nil :version "1.0") 

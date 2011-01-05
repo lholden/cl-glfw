@@ -9,4 +9,4 @@
   (:name |green| :type |ClampedColorF| :direction :in)
   (:name |blue| :type |ClampedColorF| :direction :in)
   (:name |alpha| :type |ClampedColorF| :direction :in))
- :category "EXT_blend_color" :version "1.0") 
+ :category "EXT_blend_color" :deprecated nil :version "1.0") 

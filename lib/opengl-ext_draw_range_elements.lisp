@@ -15,4 +15,4 @@
   (:name |type| :type |DrawElementsType| :direction :in)
   (:name |indices| :type |Void| :direction :in :array t :size
    (|count| |type|)))
- :category "EXT_draw_range_elements" :version "1.1") 
+ :category "EXT_draw_range_elements" :deprecated nil :version "1.1") 

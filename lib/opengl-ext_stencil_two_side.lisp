@@ -6,6 +6,10 @@
 
 (defconstant +stencil-test-two-side-ext+ #x8910) 
 (defconstant +active-stencil-face-ext+ #x8911) 
+(defconstant +samples-passed+ #x8914) 
+(defconstant +samples-passed-arb+ #x8914) 
+(defconstant +stencil-test-two-side-ext+ #x8910) 
+(defconstant +active-stencil-face-ext+ #x8911) 
 (defglextfun "ActiveStencilFaceEXT" active-stencil-face-ext :return "void"
  :args ((:name |face| :type |StencilFaceDirection| :direction :in)) :category
- "EXT_stencil_two_side" :version "1.3") 
+ "EXT_stencil_two_side" :deprecated nil :version "1.3") 

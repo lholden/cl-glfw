@@ -24,34 +24,34 @@
  ((:name |target| :type |ImageTransformTargetHP| :direction :in)
   (:name |pname| :type |ImageTransformPNameHP| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
- :category "HP_image_transform" :version "1.1") 
+ :category "HP_image_transform" :deprecated nil :version "1.1") 
 (defglextfun "GetImageTransformParameterivHP"
  get-image-transform-parameter-iv-hp :return "void" :args
  ((:name |target| :type |ImageTransformTargetHP| :direction :in)
   (:name |pname| :type |ImageTransformPNameHP| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "HP_image_transform" :version "1.1") 
+ :category "HP_image_transform" :deprecated nil :version "1.1") 
 (defglextfun "ImageTransformParameterfvHP" image-transform-parameter-fv-hp
  :return "void" :args
  ((:name |target| :type |ImageTransformTargetHP| :direction :in)
   (:name |pname| :type |ImageTransformPNameHP| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size (|pname|)))
- :category "HP_image_transform" :version "1.1") 
+ :category "HP_image_transform" :deprecated nil :version "1.1") 
 (defglextfun "ImageTransformParameterivHP" image-transform-parameter-iv-hp
  :return "void" :args
  ((:name |target| :type |ImageTransformTargetHP| :direction :in)
   (:name |pname| :type |ImageTransformPNameHP| :direction :in)
   (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
- :category "HP_image_transform" :version "1.1") 
+ :category "HP_image_transform" :deprecated nil :version "1.1") 
 (defglextfun "ImageTransformParameterfHP" image-transform-parameter-f-hp
  :return "void" :args
  ((:name |target| :type |ImageTransformTargetHP| :direction :in)
   (:name |pname| :type |ImageTransformPNameHP| :direction :in)
   (:name |param| :type |Float32| :direction :in))
- :category "HP_image_transform" :version "1.1") 
+ :category "HP_image_transform" :deprecated nil :version "1.1") 
 (defglextfun "ImageTransformParameteriHP" image-transform-parameter-i-hp
  :return "void" :args
  ((:name |target| :type |ImageTransformTargetHP| :direction :in)
   (:name |pname| :type |ImageTransformPNameHP| :direction :in)
   (:name |param| :type |Int32| :direction :in))
- :category "HP_image_transform" :version "1.1") 
+ :category "HP_image_transform" :deprecated nil :version "1.1") 

@@ -8,31 +8,31 @@
  :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |index| :type |UInt32| :direction :in))
- :category "EXT_draw_buffers2" :version "2.0") 
+ :category "EXT_draw_buffers2" :deprecated nil :version "2.0") 
 (defglextfun "DisableIndexedEXT" disable-indexed-ext :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |index| :type |UInt32| :direction :in))
- :category "EXT_draw_buffers2" :version "2.0") 
+ :category "EXT_draw_buffers2" :deprecated nil :version "2.0") 
 (defglextfun "EnableIndexedEXT" enable-indexed-ext :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |index| :type |UInt32| :direction :in))
- :category "EXT_draw_buffers2" :version "2.0") 
+ :category "EXT_draw_buffers2" :deprecated nil :version "2.0") 
 (defglextfun "GetIntegerIndexedvEXT" get-integer-indexed-v-ext :return "void"
  :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |data| :type |Int32| :direction :out :array t :size (|target|)))
- :category "EXT_draw_buffers2" :version "2.0") 
+ :category "EXT_draw_buffers2" :deprecated nil :version "2.0") 
 (defglextfun "GetBooleanIndexedvEXT" get-boolean-indexed-v-ext :return "void"
  :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |data| :type |Boolean| :direction :out :array t :size (|target|)))
- :category "EXT_draw_buffers2" :version "2.0") 
+ :category "EXT_draw_buffers2" :deprecated nil :version "2.0") 
 (defglextfun "ColorMaskIndexedEXT" color-mask-indexed-ext :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |r| :type |Boolean| :direction :in)
   (:name |g| :type |Boolean| :direction :in)
   (:name |b| :type |Boolean| :direction :in)
   (:name |a| :type |Boolean| :direction :in))
- :category "EXT_draw_buffers2" :version "2.0") 
+ :category "EXT_draw_buffers2" :deprecated nil :version "2.0") 

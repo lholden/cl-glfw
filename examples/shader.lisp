@@ -1,8 +1,7 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
-(asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
-(asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 (asdf:oos 'asdf:load-op '#:cl-glfw-opengl-version_2_0)
+(asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 
 (defparameter *shader-program* nil)
 (defparameter *uniform-time* nil)

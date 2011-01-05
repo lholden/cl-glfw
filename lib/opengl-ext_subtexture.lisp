@@ -15,7 +15,7 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height|)))
- :category "EXT_subtexture" :version "1.0") 
+ :category "EXT_subtexture" :deprecated nil :version "1.0") 
 (defglextfun "TexSubImage1DEXT" tex-sub-image-1d-ext :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
@@ -25,4 +25,4 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
- :category "EXT_subtexture" :version "1.0") 
+ :category "EXT_subtexture" :deprecated nil :version "1.0") 

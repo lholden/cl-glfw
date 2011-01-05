@@ -27,13 +27,13 @@
           |ConvolutionTarget| enum |ConvolutionTargetEXT| enum |CoordD| double
           |CoordF| float |CoordI| int |CoordS| short |CullFaceMode| enum
           |CullParameterEXT| enum |DepthFunction| enum |DrawBufferMode| enum
-          |DrawElementsType| enum |ElementPointerTypeATI| enum |EnableCap| enum
-          |ErrorCode| enum |EvalMapsModeNV| enum |EvalTargetNV| enum
-          |FeedbackElement| float |FeedbackType| enum |FenceNV| uint
-          |FenceConditionNV| enum |FenceParameterNameNV| enum |FfdMaskSGIX|
-          bitfield |FfdTargetSGIX| enum |Float32| float |Float32Pointer|
-          pointer |Float64| double |Float64Pointer| pointer |FogParameter|
-          enum |FogPointerTypeEXT| enum |FogPointerTypeIBM| enum
+          |DrawBufferName| int |DrawElementsType| enum |ElementPointerTypeATI|
+          enum |EnableCap| enum |ErrorCode| enum |EvalMapsModeNV| enum
+          |EvalTargetNV| enum |FeedbackElement| float |FeedbackType| enum
+          |FenceNV| uint |FenceConditionNV| enum |FenceParameterNameNV| enum
+          |FfdMaskSGIX| bitfield |FfdTargetSGIX| enum |Float32| float
+          |Float32Pointer| pointer |Float64| double |Float64Pointer| pointer
+          |FogParameter| enum |FogPointerTypeEXT| enum |FogPointerTypeIBM| enum
           |FragmentLightModelParameterSGIX| enum |FragmentLightNameSGIX| enum
           |FragmentLightParameterSGIX| enum |FramebufferAttachment| enum
           |FramebufferTarget| enum |FrontFaceDirection| enum |FunctionPointer|
@@ -77,7 +77,7 @@
           |SelectName| uint |SeparableTarget| enum |SeparableTargetEXT| enum
           |ShadingModel| enum |SizeI| sizei |SpriteParameterNameSGIX| enum
           |StencilFunction| enum |StencilFaceDirection| enum |StencilOp| enum
-          |StencilValue| int |String| :string |StringName| enum
+          |StencilValue| int |String| string |StringName| enum
           |TangentPointerTypeEXT| enum |TessCallback| enum |TessContour| enum
           |TessProperty| enum |TesselatorObj| pointer |TexCoordPointerType|
           enum |Texture| uint |TextureComponentCount| int |TextureCoordName|
@@ -88,25 +88,37 @@
           |UInt8| ubyte |VertexAttribEnum| enum |VertexAttribEnumNV| enum
           |VertexAttribPointerTypeNV| enum |VertexPointerType| enum
           |VertexWeightPointerTypeEXT| enum |Void| void |VoidPointer| pointer
-          |ConstVoidPointer| pointer |WeightPointerTypeARB| enum |WinCoord|
-          int |void| :void |ArrayObjectPNameATI| enum |ArrayObjectUsageATI|
-          enum |ConstFloat32| float |ConstInt32| int |ConstUInt32| uint
-          |ConstVoid| void |DataTypeEXT| enum |FragmentOpATI| enum
-          |GetTexBumpParameterATI| enum |GetVariantValueEXT| enum
-          |ParameterRangeEXT| enum |PreserveModeATI| enum |ProgramFormatARB|
-          enum |ProgramTargetARB| enum |ProgramTarget| enum
-          |ProgramPropertyARB| enum |ProgramStringPropertyARB| enum
-          |ScalarType| enum |SwizzleOpATI| enum |TexBumpParameterATI| enum
-          |VariantCapEXT| enum |VertexAttribPointerPropertyARB| enum
-          |VertexAttribPointerTypeARB| enum |VertexAttribPropertyARB| enum
-          |VertexShaderCoordOutEXT| enum |VertexShaderOpEXT| enum
-          |VertexShaderParameterEXT| enum |VertexShaderStorageTypeEXT| enum
-          |VertexShaderTextureUnitParameter| enum |VertexShaderWriteMaskEXT|
-          enum |VertexStreamATI| enum |PNTrianglesPNameATI| enum |BufferOffset|
-          intptr |BufferSize| sizeiptr |BufferAccessARB| enum |BufferOffsetARB|
-          intptr |BufferPNameARB| enum |BufferPointerNameARB| enum
-          |BufferSizeARB| sizeiptr |BufferTargetARB| enum |BufferUsageARB| enum
+          |ConstVoidPointer| pointer |WeightPointerTypeARB| enum |WinCoord| int
+          |void| :void |ArrayObjectPNameATI| enum |ArrayObjectUsageATI| enum
+          |ConstFloat32| float |ConstInt32| int |ConstUInt32| uint |ConstVoid|
+          void |DataTypeEXT| enum |FragmentOpATI| enum |GetTexBumpParameterATI|
+          enum |GetVariantValueEXT| enum |ParameterRangeEXT| enum
+          |PreserveModeATI| enum |ProgramFormatARB| enum |ProgramTargetARB|
+          enum |ProgramTarget| enum |ProgramPropertyARB| enum
+          |ProgramStringPropertyARB| enum |ScalarType| enum |SwizzleOpATI| enum
+          |TexBumpParameterATI| enum |VariantCapEXT| enum
+          |VertexAttribPointerPropertyARB| enum |VertexAttribPointerTypeARB|
+          enum |VertexAttribPropertyARB| enum |VertexShaderCoordOutEXT| enum
+          |VertexShaderOpEXT| enum |VertexShaderParameterEXT| enum
+          |VertexShaderStorageTypeEXT| enum |VertexShaderTextureUnitParameter|
+          enum |VertexShaderWriteMaskEXT| enum |VertexStreamATI| enum
+          |PNTrianglesPNameATI| enum |BufferOffset| intptr |BufferSize|
+          sizeiptr |BufferAccessARB| enum |BufferOffsetARB| intptr
+          |BufferPNameARB| enum |BufferPointerNameARB| enum |BufferSizeARB|
+          sizeiptr |BufferTargetARB| enum |BufferUsageARB| enum
           |ObjectTypeAPPLE| enum |VertexArrayPNameAPPLE| enum
           |DrawBufferModeATI| enum |Half16NV| half |PixelDataRangeTargetNV|
-          enum |GLenum| enum |handleARB| handle |charARB| char |charPointerARB|
-          pointer |Int64EXT| int64 |UInt64EXT| uint64)) 
+          enum |TypeEnum| enum |GLbitfield| bitfield |GLenum| enum |Int64|
+          int64 |UInt64| uint64 |handleARB| handle |charARB| char
+          |charPointerARB| pointer |sync| sync |Int64EXT| int64 |UInt64EXT|
+          uint64 |FramebufferAttachmentParameterName| enum |Framebuffer| uint
+          |FramebufferStatus| enum |GetFramebufferParameter| enum |Intptr|
+          intptr |ProgramFormat| enum |ProgramProperty| enum
+          |ProgramStringProperty| enum |Renderbuffer| uint
+          |RenderbufferParameterName| enum |Sizeiptr| sizeiptr
+          |TextureInternalFormat| enum |VertexBufferObjectAccess| enum
+          |VertexBufferObjectParameter| enum |VertexBufferObjectUsage| enum
+          |BufferAccessMask| bitfield |GetMultisamplePNameNV| enum
+          |SampleMaskNV| bitfield gldebugprocarb debugproc gldebugprocamd
+          debugprocamd |vdpauSurfaceNV| vdpausurface |cl_context| pointer
+          |cl_event| pointer)) 

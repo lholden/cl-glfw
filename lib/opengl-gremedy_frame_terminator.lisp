@@ -5,4 +5,4 @@
 ;;;; gremedy_frame_terminator
 
 (defglextfun "FrameTerminatorGREMEDY" frame-terminator-gremedy :return "void"
- :args nil :category "GREMEDY_frame_terminator" :version "1.0") 
+ :args nil :category "GREMEDY_frame_terminator" :deprecated nil :version "1.0") 

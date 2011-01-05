@@ -15,13 +15,24 @@
 (defconstant +texture-compressed-arb+ #x86A1) 
 (defconstant +num-compressed-texture-formats-arb+ #x86A2) 
 (defconstant +compressed-texture-formats-arb+ #x86A3) 
+(defconstant +compressed-alpha-arb+ #x84E9) 
+(defconstant +compressed-luminance-arb+ #x84EA) 
+(defconstant +compressed-luminance-alpha-arb+ #x84EB) 
+(defconstant +compressed-intensity-arb+ #x84EC) 
+(defconstant +compressed-rgb-arb+ #x84ED) 
+(defconstant +compressed-rgba-arb+ #x84EE) 
+(defconstant +texture-compression-hint-arb+ #x84EF) 
+(defconstant +texture-compressed-image-size-arb+ #x86A0) 
+(defconstant +texture-compressed-arb+ #x86A1) 
+(defconstant +num-compressed-texture-formats-arb+ #x86A2) 
+(defconstant +compressed-texture-formats-arb+ #x86A3) 
 (defglextfun "GetCompressedTexImageARB" get-compressed-tex-image-arb :return
  "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |img| :type |CompressedTextureARB| :direction :out :array t :size
    (|target| |level|)))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 
 (defglextfun "CompressedTexSubImage1DARB" compressed-tex-sub-image-1d-arb
  :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
@@ -32,7 +43,7 @@
   (:name |imageSize| :type |SizeI| :direction :in)
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 
 (defglextfun "CompressedTexSubImage2DARB" compressed-tex-sub-image-2d-arb
  :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
@@ -45,7 +56,7 @@
   (:name |imageSize| :type |SizeI| :direction :in)
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 
 (defglextfun "CompressedTexSubImage3DARB" compressed-tex-sub-image-3d-arb
  :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
@@ -60,7 +71,7 @@
   (:name |imageSize| :type |SizeI| :direction :in)
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 
 (defglextfun "CompressedTexImage1DARB" compressed-tex-image-1d-arb :return
  "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
@@ -71,7 +82,7 @@
   (:name |imageSize| :type |SizeI| :direction :in)
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 
 (defglextfun "CompressedTexImage2DARB" compressed-tex-image-2d-arb :return
  "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
@@ -83,7 +94,7 @@
   (:name |imageSize| :type |SizeI| :direction :in)
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 
 (defglextfun "CompressedTexImage3DARB" compressed-tex-image-3d-arb :return
  "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
@@ -96,4 +107,4 @@
   (:name |imageSize| :type |SizeI| :direction :in)
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
- :category "ARB_texture_compression" :version "1.2") 
+ :category "ARB_texture_compression" :deprecated nil :version "1.2") 

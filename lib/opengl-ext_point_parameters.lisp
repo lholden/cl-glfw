@@ -8,12 +8,16 @@
 (defconstant +point-size-max-ext+ #x8127) 
 (defconstant +point-fade-threshold-size-ext+ #x8128) 
 (defconstant +distance-attenuation-ext+ #x8129) 
+(defconstant +point-size-min-ext+ #x8126) 
+(defconstant +point-size-max-ext+ #x8127) 
+(defconstant +point-fade-threshold-size-ext+ #x8128) 
+(defconstant +distance-attenuation-ext+ #x8129) 
 (defglextfun "PointParameterfvEXT" point-parameter-fv-ext :return "void" :args
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
- :category "EXT_point_parameters" :version "1.0") 
+ :category "EXT_point_parameters" :deprecated nil :version "1.0") 
 (defglextfun "PointParameterfEXT" point-parameter-f-ext :return "void" :args
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |param| :type |CheckedFloat32| :direction :in))
- :category "EXT_point_parameters" :version "1.0") 
+ :category "EXT_point_parameters" :deprecated nil :version "1.0") 

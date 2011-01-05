@@ -6,7 +6,14 @@
 
 (defconstant +depth-bounds-test-ext+ #x8890) 
 (defconstant +depth-bounds-ext+ #x8891) 
+(defconstant +array-buffer+ #x8892) 
+(defconstant +element-array-buffer+ #x8893) 
+(defconstant +array-buffer-binding+ #x8894) 
+(defconstant +element-array-buffer-binding+ #x8895) 
+(defconstant +vertex-attrib-array-buffer-binding+ #x889F) 
+(defconstant +depth-bounds-test-ext+ #x8890) 
+(defconstant +depth-bounds-ext+ #x8891) 
 (defglextfun "DepthBoundsEXT" depth-bounds-ext :return "void" :args
  ((:name |zmin| :type |ClampedFloat64| :direction :in)
   (:name |zmax| :type |ClampedFloat64| :direction :in))
- :category "EXT_depth_bounds_test" :version "1.2") 
+ :category "EXT_depth_bounds_test" :deprecated nil :version "1.2") 

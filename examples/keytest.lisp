@@ -1,6 +1,6 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
-(asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
+(asdf:oos 'asdf:load-op '#:cl-glfw-opengl-version_1_0)
 
 (defparameter *key-repeat* nil)
 (defparameter *system-keys* t)

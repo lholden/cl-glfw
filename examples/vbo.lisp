@@ -1,8 +1,7 @@
 (require '#:asdf)
 (asdf:oos 'asdf:load-op '#:cl-glfw)
-(asdf:oos 'asdf:load-op '#:cl-glfw-opengl)
-(asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 (asdf:oos 'asdf:load-op '#:cl-glfw-opengl-version_1_1)
+(asdf:oos 'asdf:load-op '#:cl-glfw-glu)
 
 (defparameter *use-vbo* t)
 

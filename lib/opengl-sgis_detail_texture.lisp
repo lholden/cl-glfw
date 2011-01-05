@@ -4,13 +4,21 @@
 
 ;;;; sgis_detail_texture
 
+(defconstant +multisample+ #x809D) 
+(defconstant +sample-alpha-to-coverage+ #x809E) 
+(defconstant +sample-alpha-to-one+ #x809F) 
+(defconstant +sample-coverage+ #x80A0) 
+(defconstant +sample-buffers+ #x80A8) 
+(defconstant +samples+ #x80A9) 
+(defconstant +sample-coverage-value+ #x80AA) 
+(defconstant +sample-coverage-invert+ #x80AB) 
 (defglextfun "GetDetailTexFuncSGIS" get-detail-tex-func-sgis :return "void"
  :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |points| :type |Float32| :direction :out :array t :size (|target|)))
- :category "SGIS_detail_texture" :version "1.0") 
+ :category "SGIS_detail_texture" :deprecated nil :version "1.0") 
 (defglextfun "DetailTexFuncSGIS" detail-tex-func-sgis :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |n| :type |SizeI| :direction :in)
   (:name |points| :type |Float32| :direction :in :array t :size n*2))
- :category "SGIS_detail_texture" :version "1.0") 
+ :category "SGIS_detail_texture" :deprecated nil :version "1.0") 

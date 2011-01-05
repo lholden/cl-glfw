@@ -19,7 +19,7 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth| |size4d|)))
- :category "SGIS_texture4D" :version "1.0") 
+ :category "SGIS_texture4D" :deprecated nil :version "1.0") 
 (defglextfun "TexImage4DSGIS" tex-image-4d-sgis :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
@@ -33,4 +33,4 @@
   (:name |type| :type |PixelType| :direction :in)
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth| |size4d|)))
- :category "SGIS_texture4D" :version "1.0") 
+ :category "SGIS_texture4D" :deprecated nil :version "1.0") 

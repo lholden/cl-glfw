@@ -6,6 +6,8 @@
 
 (defconstant +perturb-ext+ #x85AE) 
 (defconstant +texture-normal-ext+ #x85AF) 
+(defconstant +perturb-ext+ #x85AE) 
+(defconstant +texture-normal-ext+ #x85AF) 
 (defglextfun "TextureNormalEXT" texture-normal-ext :return "void" :args
  ((:name |mode| :type |TextureNormalModeEXT| :direction :in)) :category
- "EXT_texture_perturb_normal" :version "1.1") 
+ "EXT_texture_perturb_normal" :deprecated nil :version "1.1") 

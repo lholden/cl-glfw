@@ -7,7 +7,10 @@
 (defconstant +index-test-ext+ #x81B5) 
 (defconstant +index-test-func-ext+ #x81B6) 
 (defconstant +index-test-ref-ext+ #x81B7) 
+(defconstant +index-test-ext+ #x81B5) 
+(defconstant +index-test-func-ext+ #x81B6) 
+(defconstant +index-test-ref-ext+ #x81B7) 
 (defglextfun "IndexFuncEXT" index-func-ext :return "void" :args
  ((:name |func| :type |IndexFunctionEXT| :direction :in)
   (:name |ref| :type |ClampedFloat32| :direction :in))
- :category "EXT_index_func" :version "1.1") 
+ :category "EXT_index_func" :deprecated nil :version "1.1") 

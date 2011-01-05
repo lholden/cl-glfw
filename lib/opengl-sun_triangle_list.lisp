@@ -27,22 +27,22 @@
   (:name |stride| :type |SizeI| :direction :in)
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size
    (|type| |stride|) :retained t))
- :category "SUN_triangle_list" :version "1.1") 
+ :category "SUN_triangle_list" :deprecated nil :version "1.1") 
 (defglextfun "ReplacementCodeubvSUN" replacement-code-ubv-sun :return "void"
  :args ((:name |code| :type |UInt8| :direction :in :array t)) :category
- "SUN_triangle_list" :version "1.1") 
+ "SUN_triangle_list" :deprecated nil :version "1.1") 
 (defglextfun "ReplacementCodeusvSUN" replacement-code-usv-sun :return "void"
  :args ((:name |code| :type |UInt16| :direction :in :array t)) :category
- "SUN_triangle_list" :version "1.1") 
+ "SUN_triangle_list" :deprecated nil :version "1.1") 
 (defglextfun "ReplacementCodeuivSUN" replacement-code-uiv-sun :return "void"
  :args ((:name |code| :type |UInt32| :direction :in :array t)) :category
- "SUN_triangle_list" :version "1.1") 
+ "SUN_triangle_list" :deprecated nil :version "1.1") 
 (defglextfun "ReplacementCodeubSUN" replacement-code-ub-sun :return "void"
  :args ((:name |code| :type |UInt8| :direction :in)) :category
- "SUN_triangle_list" :version "1.1") 
+ "SUN_triangle_list" :deprecated nil :version "1.1") 
 (defglextfun "ReplacementCodeusSUN" replacement-code-us-sun :return "void"
  :args ((:name |code| :type |UInt16| :direction :in)) :category
- "SUN_triangle_list" :version "1.1") 
+ "SUN_triangle_list" :deprecated nil :version "1.1") 
 (defglextfun "ReplacementCodeuiSUN" replacement-code-ui-sun :return "void"
  :args ((:name |code| :type |UInt32| :direction :in)) :category
- "SUN_triangle_list" :version "1.1") 
+ "SUN_triangle_list" :deprecated nil :version "1.1") 

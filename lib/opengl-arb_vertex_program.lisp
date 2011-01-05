@@ -5,28 +5,9 @@
 ;;;; arb_vertex_program
 
 (defconstant +color-sum-arb+ #x8458) 
-(defconstant +vertex-program-arb+ #x8620) 
-(defconstant +vertex-attrib-array-enabled-arb+ #x8622) 
-(defconstant +vertex-attrib-array-size-arb+ #x8623) 
-(defconstant +vertex-attrib-array-stride-arb+ #x8624) 
-(defconstant +vertex-attrib-array-type-arb+ #x8625) 
-(defconstant +current-vertex-attrib-arb+ #x8626) 
-(defconstant +program-length-arb+ #x8627) 
-(defconstant +program-string-arb+ #x8628) 
-(defconstant +max-program-matrix-stack-depth-arb+ #x862E) 
-(defconstant +max-program-matrices-arb+ #x862F) 
-(defconstant +current-matrix-stack-depth-arb+ #x8640) 
-(defconstant +current-matrix-arb+ #x8641) 
-(defconstant +vertex-program-point-size-arb+ #x8642) 
-(defconstant +vertex-program-two-side-arb+ #x8643) 
-(defconstant +vertex-attrib-array-pointer-arb+ #x8645) 
-(defconstant +program-error-position-arb+ #x864B) 
-(defconstant +program-binding-arb+ #x8677) 
+(defconstant +color-sum-arb+ #x8458) 
 (defconstant +max-vertex-attribs-arb+ #x8869) 
 (defconstant +vertex-attrib-array-normalized-arb+ #x886A) 
-(defconstant +program-error-string-arb+ #x8874) 
-(defconstant +program-format-ascii-arb+ #x8875) 
-(defconstant +program-format-arb+ #x8876) 
 (defconstant +program-instructions-arb+ #x88A0) 
 (defconstant +max-program-instructions-arb+ #x88A1) 
 (defconstant +program-native-instructions-arb+ #x88A2) 
@@ -85,72 +66,72 @@
 (defconstant +matrix31-arb+ #x88DF) 
 (defglextfun "IsProgramARB" is-program-arb :return "Boolean" :args
  ((:name |program| :type |UInt32| :direction :in)) :category
- "ARB_vertex_program" :version "1.3") 
+ "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetVertexAttribPointervARB" get-vertex-attrib-pointerv-arb
  :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |VertexAttribPointerPropertyARB| :direction :in)
   (:name |pointer| :type |VoidPointer| :direction :out :array t :size #x1))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetVertexAttribivARB" get-vertex-attrib-iv-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |VertexAttribPropertyARB| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetVertexAttribfvARB" get-vertex-attrib-fv-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |VertexAttribPropertyARB| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetVertexAttribdvARB" get-vertex-attrib-dv-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |VertexAttribPropertyARB| :direction :in)
   (:name |params| :type |Float64| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetProgramStringARB" get-program-string-arb :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |pname| :type |ProgramStringPropertyARB| :direction :in)
   (:name |string| :type |Void| :direction :out :array t :size
    (|target| |pname|)))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetProgramivARB" get-program-iv-arb :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |pname| :type |ProgramPropertyARB| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size #x1))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetProgramLocalParameterfvARB" get-program-local-parameter-fv-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetProgramLocalParameterdvARB" get-program-local-parameter-dv-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float64| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetProgramEnvParameterfvARB" get-program-env-parameter-fv-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GetProgramEnvParameterdvARB" get-program-env-parameter-dv-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float64| :direction :out :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramLocalParameter4fvARB" program-local-parameter-4fv-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramLocalParameter4fARB" program-local-parameter-4f-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
@@ -159,13 +140,13 @@
   (:name |y| :type |Float32| :direction :in)
   (:name |z| :type |Float32| :direction :in)
   (:name |w| :type |Float32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramLocalParameter4dvARB" program-local-parameter-4dv-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float64| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramLocalParameter4dARB" program-local-parameter-4d-arb
  :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
@@ -174,13 +155,13 @@
   (:name |y| :type |Float64| :direction :in)
   (:name |z| :type |Float64| :direction :in)
   (:name |w| :type |Float64| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramEnvParameter4fvARB" program-env-parameter-4fv-arb :return
  "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramEnvParameter4fARB" program-env-parameter-4f-arb :return
  "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
@@ -189,13 +170,13 @@
   (:name |y| :type |Float32| :direction :in)
   (:name |z| :type |Float32| :direction :in)
   (:name |w| :type |Float32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramEnvParameter4dvARB" program-env-parameter-4dv-arb :return
  "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |params| :type |Float64| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramEnvParameter4dARB" program-env-parameter-4d-arb :return
  "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
@@ -204,31 +185,31 @@
   (:name |y| :type |Float64| :direction :in)
   (:name |z| :type |Float64| :direction :in)
   (:name |w| :type |Float64| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "GenProgramsARB" gen-programs-arb :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |programs| :type |UInt32| :direction :out :array t :size n))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "DeleteProgramsARB" delete-programs-arb :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |programs| :type |UInt32| :direction :in :array t :size n))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "BindProgramARB" bind-program-arb :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |program| :type |UInt32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "ProgramStringARB" program-string-arb :return "void" :args
  ((:name |target| :type |ProgramTargetARB| :direction :in)
   (:name |format| :type |ProgramFormatARB| :direction :in)
   (:name |len| :type |SizeI| :direction :in)
   (:name |string| :type |Void| :direction :in :array t :size len))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "DisableVertexAttribArrayARB" disable-vertex-attrib-array-arb
  :return "void" :args ((:name |index| :type |UInt32| :direction :in)) :category
- "ARB_vertex_program" :version "1.3") 
+ "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "EnableVertexAttribArrayARB" enable-vertex-attrib-array-arb
  :return "void" :args ((:name |index| :type |UInt32| :direction :in)) :category
- "ARB_vertex_program" :version "1.3") 
+ "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttribPointerARB" vertex-attrib-pointer-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
@@ -238,172 +219,172 @@
   (:name |stride| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :in :array t :size
    (|size| |type| |stride|) :retained t))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4usvARB" vertex-attrib-4usv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |UInt16| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4uivARB" vertex-attrib-4uiv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |UInt32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4ubvARB" vertex-attrib-4ubv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |UInt8| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4svARB" vertex-attrib-4sv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int16| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4sARB" vertex-attrib-4s-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Int16| :direction :in)
   (:name |y| :type |Int16| :direction :in)
   (:name |z| :type |Int16| :direction :in)
   (:name |w| :type |Int16| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4ivARB" vertex-attrib-4iv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4fvARB" vertex-attrib-4fv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4fARB" vertex-attrib-4f-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float32| :direction :in)
   (:name |y| :type |Float32| :direction :in)
   (:name |z| :type |Float32| :direction :in)
   (:name |w| :type |Float32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4dvARB" vertex-attrib-4dv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float64| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4dARB" vertex-attrib-4d-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in)
   (:name |y| :type |Float64| :direction :in)
   (:name |z| :type |Float64| :direction :in)
   (:name |w| :type |Float64| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4bvARB" vertex-attrib-4bv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int8| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NusvARB" vertex-attrib-4n-usv-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |UInt16| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NuivARB" vertex-attrib-4n-uiv-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |UInt32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NubvARB" vertex-attrib-4n-ubv-arb :return "void"
  :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |UInt8| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NubARB" vertex-attrib-4n-ub-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |UInt8| :direction :in)
   (:name |y| :type |UInt8| :direction :in)
   (:name |z| :type |UInt8| :direction :in)
   (:name |w| :type |UInt8| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NsvARB" vertex-attrib-4n-sv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int16| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NivARB" vertex-attrib-4n-iv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int32| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib4NbvARB" vertex-attrib-4n-bv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int8| :direction :in :array t :size #x4))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib3svARB" vertex-attrib-3sv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int16| :direction :in :array t :size #x3))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib3sARB" vertex-attrib-3s-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Int16| :direction :in)
   (:name |y| :type |Int16| :direction :in)
   (:name |z| :type |Int16| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib3fvARB" vertex-attrib-3fv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float32| :direction :in :array t :size #x3))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib3fARB" vertex-attrib-3f-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float32| :direction :in)
   (:name |y| :type |Float32| :direction :in)
   (:name |z| :type |Float32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib3dvARB" vertex-attrib-3dv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float64| :direction :in :array t :size #x3))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib3dARB" vertex-attrib-3d-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in)
   (:name |y| :type |Float64| :direction :in)
   (:name |z| :type |Float64| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib2svARB" vertex-attrib-2sv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int16| :direction :in :array t :size #x2))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib2sARB" vertex-attrib-2s-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Int16| :direction :in)
   (:name |y| :type |Int16| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib2fvARB" vertex-attrib-2fv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float32| :direction :in :array t :size #x2))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib2fARB" vertex-attrib-2f-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float32| :direction :in)
   (:name |y| :type |Float32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib2dvARB" vertex-attrib-2dv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float64| :direction :in :array t :size #x2))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib2dARB" vertex-attrib-2d-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in)
   (:name |y| :type |Float64| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib1svARB" vertex-attrib-1sv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Int16| :direction :in :array t :size #x1))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib1sARB" vertex-attrib-1s-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Int16| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib1fvARB" vertex-attrib-1fv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float32| :direction :in :array t :size #x1))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib1fARB" vertex-attrib-1f-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float32| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib1dvARB" vertex-attrib-1dv-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |v| :type |Float64| :direction :in :array t :size #x1))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 
 (defglextfun "VertexAttrib1dARB" vertex-attrib-1d-arb :return "void" :args
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in))
- :category "ARB_vertex_program" :version "1.3") 
+ :category "ARB_vertex_program" :deprecated nil :version "1.3") 

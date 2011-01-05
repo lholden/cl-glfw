@@ -11,4 +11,4 @@
 (defglextfun "PolygonOffsetEXT" polygon-offset-ext :return "void" :args
  ((:name |factor| :type |Float32| :direction :in)
   (:name |bias| :type |Float32| :direction :in))
- :category "EXT_polygon_offset" :version "1.0") 
+ :category "EXT_polygon_offset" :deprecated nil :version "1.0") 

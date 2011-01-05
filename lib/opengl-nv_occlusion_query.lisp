@@ -8,33 +8,37 @@
 (defconstant +current-occlusion-query-id-nv+ #x8865) 
 (defconstant +pixel-count-nv+ #x8866) 
 (defconstant +pixel-count-available-nv+ #x8867) 
+(defconstant +pixel-counter-bits-nv+ #x8864) 
+(defconstant +current-occlusion-query-id-nv+ #x8865) 
+(defconstant +pixel-count-nv+ #x8866) 
+(defconstant +pixel-count-available-nv+ #x8867) 
 (defglextfun "GetOcclusionQueryuivNV" get-occlusion-query-uiv-nv :return "void"
  :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |pname| :type |OcclusionQueryParameterNameNV| :direction :in)
   (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
- :category "NV_occlusion_query" :version "1.2") 
+ :category "NV_occlusion_query" :deprecated nil :version "1.2") 
 (defglextfun "GetOcclusionQueryivNV" get-occlusion-query-iv-nv :return "void"
  :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |pname| :type |OcclusionQueryParameterNameNV| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "NV_occlusion_query" :version "1.2") 
+ :category "NV_occlusion_query" :deprecated nil :version "1.2") 
 (defglextfun "EndOcclusionQueryNV" end-occlusion-query-nv :return "void" :args
- nil :category "NV_occlusion_query" :version "1.2") 
+ nil :category "NV_occlusion_query" :deprecated nil :version "1.2") 
 (defglextfun "BeginOcclusionQueryNV" begin-occlusion-query-nv :return "void"
  :args ((:name |id| :type |UInt32| :direction :in)) :category
- "NV_occlusion_query" :version "1.2") 
+ "NV_occlusion_query" :deprecated nil :version "1.2") 
 (defglextfun "IsOcclusionQueryNV" is-occlusion-query-nv :return "Boolean" :args
  ((:name |id| :type |UInt32| :direction :in)) :category "NV_occlusion_query"
- :version "1.2") 
+ :deprecated nil :version "1.2") 
 (defglextfun "DeleteOcclusionQueriesNV" delete-occlusion-queries-nv :return
  "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |ids| :type |UInt32| :direction :in :array t :size n))
- :category "NV_occlusion_query" :version "1.2") 
+ :category "NV_occlusion_query" :deprecated nil :version "1.2") 
 (defglextfun "GenOcclusionQueriesNV" gen-occlusion-queries-nv :return "void"
  :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |ids| :type |UInt32| :direction :out :array t :size n))
- :category "NV_occlusion_query" :version "1.2") 
+ :category "NV_occlusion_query" :deprecated nil :version "1.2") 

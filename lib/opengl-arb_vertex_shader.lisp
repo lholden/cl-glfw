@@ -4,17 +4,11 @@
 
 ;;;; arb_vertex_shader
 
-(defconstant +vertex-shader-arb+ #x8B31) 
-(defconstant +max-vertex-uniform-components-arb+ #x8B4A) 
-(defconstant +max-varying-floats-arb+ #x8B4B) 
-(defconstant +max-combined-texture-image-units-arb+ #x8B4D) 
-(defconstant +object-active-attributes-arb+ #x8B89) 
-(defconstant +object-active-attribute-max-length-arb+ #x8B8A) 
 (defglextfun "GetAttribLocationARB" get-attrib-location-arb :return "Int32"
  :args
  ((:name |programObj| :type |handleARB| :direction :in)
   (:name |name| :type |charARB| :direction :in :array t))
- :category "ARB_vertex_shader" :version "1.2") 
+ :category "ARB_vertex_shader" :deprecated nil :version "1.2") 
 (defglextfun "GetActiveAttribARB" get-active-attrib-arb :return "void" :args
  ((:name |programObj| :type |handleARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
@@ -23,10 +17,10 @@
   (:name |size| :type |Int32| :direction :out :array t :size #x1)
   (:name |type| :type |GLenum| :direction :out :array t :size #x1)
   (:name |name| :type |charARB| :direction :out :array t))
- :category "ARB_vertex_shader" :version "1.2") 
+ :category "ARB_vertex_shader" :deprecated nil :version "1.2") 
 (defglextfun "BindAttribLocationARB" bind-attrib-location-arb :return "void"
  :args
  ((:name |programObj| :type |handleARB| :direction :in)
   (:name |index| :type |UInt32| :direction :in)
   (:name |name| :type |charARB| :direction :in :array t))
- :category "ARB_vertex_shader" :version "1.2") 
+ :category "ARB_vertex_shader" :deprecated nil :version "1.2") 

@@ -12,4 +12,4 @@
   (:name |green| :type |Boolean| :direction :in)
   (:name |blue| :type |Boolean| :direction :in)
   (:name |alpha| :type |Boolean| :direction :in))
- :category "SGIS_texture_color_mask" :version "1.1") 
+ :category "SGIS_texture_color_mask" :deprecated nil :version "1.1") 

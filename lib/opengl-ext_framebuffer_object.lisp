@@ -5,6 +5,8 @@
 ;;;; ext_framebuffer_object
 
 (defconstant +invalid-framebuffer-operation-ext+ #x506) 
+(defconstant +invalid-framebuffer-operation-oes+ #x506) 
+(defconstant +invalid-framebuffer-operation-ext+ #x506) 
 (defconstant +max-renderbuffer-size-ext+ #x84E8) 
 (defconstant +framebuffer-binding-ext+ #x8CA6) 
 (defconstant +renderbuffer-binding-ext+ #x8CA7) 
@@ -57,21 +59,21 @@
 (defconstant +renderbuffer-stencil-size-ext+ #x8D55) 
 (defglextfun "GenerateMipmapEXT" generate-mipmap-ext :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)) :category
- "EXT_framebuffer_object" :version "1.2") 
+ "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "GetFramebufferAttachmentParameterivEXT"
  get-framebuffer-attachment-parameter-iv-ext :return "void" :args
  ((:name |target| :type |FramebufferTarget| :direction :in)
   (:name |attachment| :type |FramebufferAttachment| :direction :in)
   (:name |pname| :type |GLenum| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "FramebufferRenderbufferEXT" framebuffer-renderbuffer-ext :return
  "void" :args
  ((:name |target| :type |FramebufferTarget| :direction :in)
   (:name |attachment| :type |FramebufferAttachment| :direction :in)
   (:name |renderbuffertarget| :type |RenderbufferTarget| :direction :in)
   (:name |renderbuffer| :type |UInt32| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "FramebufferTexture3DEXT" framebuffer-texture-3d-ext :return
  "void" :args
  ((:name |target| :type |FramebufferTarget| :direction :in)
@@ -80,7 +82,7 @@
   (:name |texture| :type |UInt32| :direction :in)
   (:name |level| :type |Int32| :direction :in)
   (:name |zoffset| :type |Int32| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "FramebufferTexture2DEXT" framebuffer-texture-2d-ext :return
  "void" :args
  ((:name |target| :type |FramebufferTarget| :direction :in)
@@ -88,7 +90,7 @@
   (:name |textarget| :type |GLenum| :direction :in)
   (:name |texture| :type |UInt32| :direction :in)
   (:name |level| :type |Int32| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "FramebufferTexture1DEXT" framebuffer-texture-1d-ext :return
  "void" :args
  ((:name |target| :type |FramebufferTarget| :direction :in)
@@ -96,52 +98,52 @@
   (:name |textarget| :type |GLenum| :direction :in)
   (:name |texture| :type |UInt32| :direction :in)
   (:name |level| :type |Int32| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "CheckFramebufferStatusEXT" check-framebuffer-status-ext :return
  "GLenum" :args ((:name |target| :type |FramebufferTarget| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "GenFramebuffersEXT" gen-framebuffers-ext :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |framebuffers| :type |UInt32| :direction :out :array t :size n))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "DeleteFramebuffersEXT" delete-framebuffers-ext :return "void"
  :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |framebuffers| :type |UInt32| :direction :in :array t :size n))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "BindFramebufferEXT" bind-framebuffer-ext :return "void" :args
  ((:name |target| :type |FramebufferTarget| :direction :in)
   (:name |framebuffer| :type |UInt32| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "IsFramebufferEXT" is-framebuffer-ext :return "Boolean" :args
  ((:name |framebuffer| :type |UInt32| :direction :in)) :category
- "EXT_framebuffer_object" :version "1.2") 
+ "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "GetRenderbufferParameterivEXT" get-renderbuffer-parameter-iv-ext
  :return "void" :args
  ((:name |target| :type |RenderbufferTarget| :direction :in)
   (:name |pname| :type |GLenum| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "RenderbufferStorageEXT" renderbuffer-storage-ext :return "void"
  :args
  ((:name |target| :type |RenderbufferTarget| :direction :in)
   (:name |internalformat| :type |GLenum| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
   (:name |height| :type |SizeI| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "GenRenderbuffersEXT" gen-renderbuffers-ext :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |renderbuffers| :type |UInt32| :direction :out :array t :size n))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "DeleteRenderbuffersEXT" delete-renderbuffers-ext :return "void"
  :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |renderbuffers| :type |UInt32| :direction :in :array t :size n))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "BindRenderbufferEXT" bind-renderbuffer-ext :return "void" :args
  ((:name |target| :type |RenderbufferTarget| :direction :in)
   (:name |renderbuffer| :type |UInt32| :direction :in))
- :category "EXT_framebuffer_object" :version "1.2") 
+ :category "EXT_framebuffer_object" :deprecated nil :version "1.2") 
 (defglextfun "IsRenderbufferEXT" is-renderbuffer-ext :return "Boolean" :args
  ((:name |renderbuffer| :type |UInt32| :direction :in)) :category
- "EXT_framebuffer_object" :version "1.2") 
+ "EXT_framebuffer_object" :deprecated nil :version "1.2") 

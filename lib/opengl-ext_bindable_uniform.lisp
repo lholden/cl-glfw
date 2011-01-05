@@ -7,6 +7,9 @@
 (defconstant +max-vertex-bindable-uniforms-ext+ #x8DE2) 
 (defconstant +max-fragment-bindable-uniforms-ext+ #x8DE3) 
 (defconstant +max-geometry-bindable-uniforms-ext+ #x8DE4) 
+(defconstant +max-vertex-bindable-uniforms-ext+ #x8DE2) 
+(defconstant +max-fragment-bindable-uniforms-ext+ #x8DE3) 
+(defconstant +max-geometry-bindable-uniforms-ext+ #x8DE4) 
 (defconstant +max-bindable-uniform-size-ext+ #x8DED) 
 (defconstant +uniform-buffer-ext+ #x8DEE) 
 (defconstant +uniform-buffer-binding-ext+ #x8DEF) 
@@ -14,14 +17,14 @@
  "BufferOffset" :args
  ((:name |program| :type |UInt32| :direction :in)
   (:name |location| :type |Int32| :direction :in))
- :category "EXT_bindable_uniform" :version "2.0") 
+ :category "EXT_bindable_uniform" :deprecated nil :version "2.0") 
 (defglextfun "GetUniformBufferSizeEXT" get-uniform-buffer-size-ext :return
  "Int32" :args
  ((:name |program| :type |UInt32| :direction :in)
   (:name |location| :type |Int32| :direction :in))
- :category "EXT_bindable_uniform" :version "2.0") 
+ :category "EXT_bindable_uniform" :deprecated nil :version "2.0") 
 (defglextfun "UniformBufferEXT" uniform-buffer-ext :return "void" :args
  ((:name |program| :type |UInt32| :direction :in)
   (:name |location| :type |Int32| :direction :in)
   (:name |buffer| :type |UInt32| :direction :in))
- :category "EXT_bindable_uniform" :version "2.0") 
+ :category "EXT_bindable_uniform" :deprecated nil :version "2.0") 
