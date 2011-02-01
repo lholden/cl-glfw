@@ -6,3 +6,4 @@ src/enumext.spec
 *.fasl
 *.fas
 *~
+\#*\#
