@@ -4,6 +4,5 @@
 
 (defsystem cl-glfw-ftgl
   :depends-on (cffi)
-  :components ((:module lib :serial t 
-			:components ((:file "ftgl-package")
-				     (:file "ftgl")))))
+  :components ((:module lib
+			:components ((:file "ftgl")))))

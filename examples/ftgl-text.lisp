@@ -8,7 +8,7 @@
   (glfw:do-window (:title "FTGL Text example")
       ((gl:with-setup-projection
 	 (glu:perspective 45 4/3 10 500))
-       (setf font (ftgl:create-texture-font "/usr/share/fonts/truetype/freefont/FreeSans.ttf"))
+       (setf font (ftgl:create-texture-font))
        (ftgl:set-font-face-size font 20 0))
     (gl:clear gl:+color-buffer-bit+)
     (gl:load-identity)
