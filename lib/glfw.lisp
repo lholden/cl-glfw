@@ -255,7 +255,25 @@ Signals an error on failure to initialize. Wrapped in a block named glfw:with-in
 (declaim (inline open-window))
 (defun open-window (&key (width 0) (height 0)
                     (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
-                    (depthbits 0) (stencilbits 0) (mode +window+))
+                    (depthbits 0) (stencilbits 0) (mode +window+)
+		    title
+		    ;;The hints
+		    (refresh-rate 0 refresh-rate-p)
+		    (accum-red-bits 0 accum-red-bits-p)
+		    (accum-green-bits 0 accum-green-bits-p)
+		    (accum-blue-bits 0 accum-blue-bits-p)
+		    (accum-alpha-bits 0 accum-alpha-bits-p)
+		    (aux-buffers 0 aux-buffers-p)
+		    (stereo nil stereo-p)
+		    (window-no-resize nil window-no-resize-p)
+		    (fsaa-samples 0 fsaa-samples-p)
+		    (opengl-version-major 1 opengl-version-major-p)
+		    (opengl-version-minor 1 opengl-version-minor-p)
+		    (opengl-forward-compat nil opengl-forward-compat-p)
+		    (opengl-debug-context nil opengl-debug-context-p)
+		    (opengl-profile 0 opengl-profile-p)
+		    (opengl-core-profile 0 opengl-core-profile-p)
+		    (opengl-compat-profile 0 opengl-compat-profile-p))
   "width
       The width of the window. If width is zero, it will be calculated as width = 4/3 height, if height is
       not zero. If both width and height are zero, then width will be set to 640.
@@ -302,7 +320,35 @@ change the visibility of the mouse cursor, use glfwEnable or glfwDisable with th
 In order to determine the actual properties of an opened window, use glfw::GetWindowParam and
 glfw::GetWindowSize (or glfw::SetWindowSizeCallback).
 "
-  (%open-window width height redbits greenbits bluebits alphabits depthbits stencilbits mode))
+  (macrolet ((output-int-hints (&rest names)
+	       `(progn
+		  ,@(loop for name in names collect
+			 `(when ,(intern (format nil "~a-P" name) '#:cl-glfw)
+			    (open-window-hint ,(intern (format nil "+~A+" name) '#:cl-glfw)
+					      ,name)))))
+	     (output-boolean-hints (&rest names)
+	       `(progn
+		  ,@(loop for name in names collect
+			 `(when ,(intern (format nil "~a-P" name) '#:cl-glfw)
+			    (open-window-hint ,(intern (format nil "+~A+" name) '#:cl-glfw)
+					      (if ,name +true+ +false+)))))))
+    (output-int-hints refresh-rate 
+		      accum-red-bits accum-green-bits accum-blue-bits
+		      accum-alpha-bits
+		      aux-buffers
+		      fsaa-samples
+		      opengl-version-major
+		      opengl-version-minor
+		      opengl-profile
+		      opengl-core-profile
+		      opengl-compat-profile)
+    (output-boolean-hints stereo
+			  window-no-resize
+			  opengl-forward-compat
+			  opengl-debug-context))
+  (if (%open-window width height redbits greenbits bluebits alphabits depthbits stencilbits mode)
+      (when title (set-window-title title))
+      (error "Error initializing glfw window.")))
 
  
 
@@ -332,36 +378,45 @@ the resulting video signal, or in the worst case it may even be damaged!
 (defcfun+doc ("glfwCloseWindow" close-window) :void ()
 	 "The function closes an opened window and destroys the associated OpenGL context.")
 
-(defmacro with-open-window ((&key (title "cl-glfw window") (width 0) (height 0)
-				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
-				       (depthbits 0) (stencilbits 0) (mode +window+))
+(defmacro with-open-window ((&rest open-window-keys)
 			    &body forms)
   "Wraps forms such that there is an open window for them to execute in and cleans up the
 window afterwards. An error is signalled if there was an error opening the window.
 Takes the same parameters as open-window, with the addition of 'title' which will
 set the window title after opening.
 Wrapped in a block named glfw:with-open-window."
-  `(if (%open-window ,width ,height ,redbits ,greenbits ,bluebits ,alphabits ,depthbits ,stencilbits ,mode)
-       (unwind-protect
-	    (block with-open-window
-	      (glfw:set-window-title ,title)
-	      ,@forms)
-	 (when (= +true+ (glfw:get-window-param glfw:+opened+))
-	   (close-window)))
-       (error "Error initializing glfw window.")))
+  `(progn
+     (open-window ,@open-window-keys)
+     (unwind-protect
+	  (block with-open-window ,@forms)
+       (when (= +true+ (glfw:get-window-param glfw:+opened+))
+	 (close-window)))))
 
-(defmacro with-init-window ((&key (title "cl-glfw window") (width 0) (height 0)
-				       (redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
-				       (depthbits 0) (stencilbits 0) (mode +window+))
+(defmacro with-init-window ((&rest open-window-keys)
 			    &body forms)
   "Wraps forms in with-init, with-open-window. Passes through the other arguments to open-window."
   `(with-init
-     (with-open-window (:title ,title :width ,width :height ,height :redbits ,redbits :greenbits ,greenbits :bluebits ,bluebits :alphabits ,alphabits :depthbits ,depthbits :stencilbits ,stencilbits :mode ,mode)
+     (with-open-window (,@open-window-keys)
        ,@forms)))
 
-(defmacro do-window ((&key (title "cl-glfw window") (width 0) (height 0)
-				(redbits 0) (greenbits 0) (bluebits 0) (alphabits 0)
-				(depthbits 0) (stencilbits 0) (mode +window+))
+(defmacro do-open-window ((&rest open-window-keys)
+		     (&body setup-forms)
+		     &body forms)
+  "High-level convenience macro for opening a window (given the optional window parameters),
+setting the title given,
+running setup-forms and then running forms in a loop, with calls to swap-buffers after each loop iteration.
+The loop is in a block named do-open-window [so can be exited by a call to (return-from glfw:do-window)].
+If the window is closed, the loop is also exited."
+  `(with-open-window (,@open-window-keys)
+     ,@setup-forms
+     (loop named do-open-window do
+	  (progn
+	    ,@forms
+	    (glfw:swap-buffers)
+	    (unless (= +true+ (glfw:get-window-param glfw:+opened+))	
+	      (return-from do-open-window))))))
+
+(defmacro do-window ((&rest open-window-keys)
 		     (&body setup-forms)
 		     &body forms)
   "High-level convenience macro for initializing glfw, opening a window (given the optional window parameters),
@@ -369,13 +424,8 @@ setting the title given,
 running setup-forms and then running forms in a loop, with calls to swap-buffers after each loop iteration.
 The loop is in a block named do-window [so can be exited by a call to (return-from glfw:do-window)].
 If the window is closed, the loop is also exited."
-  `(with-init-window (:title ,title :width ,width :height ,height :redbits ,redbits :greenbits ,greenbits :bluebits ,bluebits :alphabits ,alphabits :depthbits ,depthbits :stencilbits ,stencilbits :mode ,mode)
-     ,@setup-forms
-     (loop named do-window do
-	  ,@forms
-	  (glfw:swap-buffers)
-	  (unless (= +true+ (glfw:get-window-param glfw:+opened+))	
-	    (return-from do-window)))))
+  `(with-init 
+     (do-open-window (,@open-window-keys) (,@setup-forms) ,@forms)))
 
 (defmacro define-callback-setter (c-name callback-prefix return-type (&body args) &key before-form after-form documentation)
   (let* ((callback-name (intern (format nil "~A-CALLBACK" callback-prefix)))
