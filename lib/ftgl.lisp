@@ -54,7 +54,10 @@
 
 (define-foreign-library ftgl
   (:unix (:or "libftgl" "libftgl.so.2"))
+  (:win32 "ftgl.dll")
   (t (:default "libftgl")))
+
+
 (use-foreign-library ftgl)
 
 (defctype font :pointer)
@@ -192,10 +195,12 @@
         #+unix #P"/usr/share/fonts/**/*.ttf"
         #+unix #P"/usr/X11/share/fonts/**/FreeSans.ttf"
         #+unix #P"/usr/X11/share/fonts/**/*.ttf"
-        #+win32 #P"/WIN*/Fonts/verdana.ttf"
+        #+win32 #P"/Win*/Fonts/verdana.ttf"
+        #+win32 #P"/Win*/Fonts/*.ttf"
         #+win32 #P"/WIN*/Fonts/*.ttf"
         #+darwin #P"/Library/Fonts/Arial.ttf"
-        #+darwin #P"/Library/Fonts/*.ttf")
+        #+darwin #P"/Library/Fonts/*.ttf"
+	#P"*.ttf")
   "A list of pathnames that should match to at least one TTF font. Patches Welcome.")
 
 
