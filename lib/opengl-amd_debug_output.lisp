@@ -61,3 +61,31 @@
   (:name |ids| :type |UInt32| :direction :in :array t :size count)
   (:name |enabled| :type |Boolean| :direction :in))
  :category "AMD_debug_output" :deprecated nil :version "4.1") 
+(make-extension-loader |AMD_debug_output|
+ (("GetDebugMessageLogAMD" get-debug-message-log-amd :return "UInt32" :args
+   ((:name |count| :type |UInt32| :direction :in)
+    (:name |bufsize| :type |SizeI| :direction :in)
+    (:name |categories| :type |GLenum| :direction :out :array t :size count)
+    (:name |severities| :type |UInt32| :direction :out :array t :size count)
+    (:name |ids| :type |UInt32| :direction :out :array t :size count)
+    (:name |lengths| :type |SizeI| :direction :out :array t :size count)
+    (:name |message| :type |Char| :direction :out :array t :size bufsize))
+   :category "AMD_debug_output" :deprecated nil :version "4.1")
+  ("DebugMessageCallbackAMD" debug-message-callback-amd :return "void" :args
+   ((:name |callback| :type gldebugprocamd :direction :in)
+    ("userParam" "Void" "out" "reference"))
+   :category "AMD_debug_output" :deprecated nil :version "4.1")
+  ("DebugMessageInsertAMD" debug-message-insert-amd :return "void" :args
+   ((:name |category| :type |GLenum| :direction :in)
+    (:name |severity| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in)
+    (:name |length| :type |SizeI| :direction :in)
+    (:name |buf| :type |Char| :direction :in :array t :size length))
+   :category "AMD_debug_output" :deprecated nil :version "4.1")
+  ("DebugMessageEnableAMD" debug-message-enable-amd :return "void" :args
+   ((:name |category| :type |GLenum| :direction :in)
+    (:name |severity| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size count)
+    (:name |enabled| :type |Boolean| :direction :in))
+   :category "AMD_debug_output" :deprecated nil :version "4.1"))) 

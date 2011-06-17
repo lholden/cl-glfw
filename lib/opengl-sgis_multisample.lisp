@@ -11,3 +11,11 @@
  ((:name |value| :type |ClampedFloat32| :direction :in)
   (:name |invert| :type |Boolean| :direction :in))
  :category "SGIS_multisample" :deprecated nil :version "1.1") 
+(make-extension-loader |SGIS_multisample|
+ (("SamplePatternSGIS" sample-pattern-sgis :return "void" :args
+   ((:name |pattern| :type |SamplePatternSGIS| :direction :in)) :category
+   "SGIS_multisample" :deprecated nil :version "1.0")
+  ("SampleMaskSGIS" sample-mask-sgis :return "void" :args
+   ((:name |value| :type |ClampedFloat32| :direction :in)
+    (:name |invert| :type |Boolean| :direction :in))
+   :category "SGIS_multisample" :deprecated nil :version "1.1"))) 

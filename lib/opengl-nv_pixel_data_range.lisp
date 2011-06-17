@@ -24,3 +24,12 @@
   (:name |length| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :out :array t :size length))
  :category "NV_pixel_data_range" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_pixel_data_range|
+ (("FlushPixelDataRangeNV" flush-pixel-data-range-nv :return "void" :args
+   ((:name |target| :type |PixelDataRangeTargetNV| :direction :in)) :category
+   "NV_pixel_data_range" :deprecated nil :version "1.2")
+  ("PixelDataRangeNV" pixel-data-range-nv :return "void" :args
+   ((:name |target| :type |PixelDataRangeTargetNV| :direction :in)
+    (:name |length| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :out :array t :size length))
+   :category "NV_pixel_data_range" :deprecated nil :version "1.2"))) 

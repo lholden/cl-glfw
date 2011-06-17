@@ -20,3 +20,14 @@
   (:name |width| :type |SizeI| :direction :in)
   (:name |height| :type |SizeI| :direction :in))
  :category "NV_framebuffer_multisample_coverage" :deprecated nil :version "1.5") 
+(make-extension-loader |NV_framebuffer_multisample_coverage|
+ (("RenderbufferStorageMultisampleCoverageNV"
+   renderbuffer-storage-multisample-coverage-nv :return "void" :args
+   ((:name |target| :type |RenderbufferTarget| :direction :in)
+    (:name |coverageSamples| :type |SizeI| :direction :in)
+    (:name |colorSamples| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "NV_framebuffer_multisample_coverage" :deprecated nil :version
+   "1.5"))) 

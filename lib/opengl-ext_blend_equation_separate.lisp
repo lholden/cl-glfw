@@ -13,3 +13,8 @@
  ((:name |modeRGB| :type |BlendEquationModeEXT| :direction :in)
   (:name |modeAlpha| :type |BlendEquationModeEXT| :direction :in))
  :category "EXT_blend_equation_separate" :deprecated nil :version "1.2") 
+(make-extension-loader |EXT_blend_equation_separate|
+ (("BlendEquationSeparateEXT" blend-equation-separate-ext :return "void" :args
+   ((:name |modeRGB| :type |BlendEquationModeEXT| :direction :in)
+    (:name |modeAlpha| :type |BlendEquationModeEXT| :direction :in))
+   :category "EXT_blend_equation_separate" :deprecated nil :version "1.2"))) 

@@ -15,3 +15,11 @@
   (:name |writeOffset| :type |BufferOffset| :direction :in)
   (:name |size| :type |BufferSize| :direction :in))
  :category "ARB_copy_buffer" :deprecated nil :version "3.0") 
+(make-extension-loader |ARB_copy_buffer|
+ (("CopyBufferSubData" copy-buffer-sub-data :return "void" :args
+   ((:name |readTarget| :type |GLenum| :direction :in)
+    (:name |writeTarget| :type |GLenum| :direction :in)
+    (:name |readOffset| :type |BufferOffset| :direction :in)
+    (:name |writeOffset| :type |BufferOffset| :direction :in)
+    (:name |size| :type |BufferSize| :direction :in))
+   :category "ARB_copy_buffer" :deprecated nil :version "3.0"))) 

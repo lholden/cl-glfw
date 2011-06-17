@@ -25,3 +25,16 @@
   (:name |dpfail| :type |StencilOp| :direction :in)
   (:name |dppass| :type |StencilOp| :direction :in))
  :category "ATI_separate_stencil" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_separate_stencil|
+ (("StencilFuncSeparateATI" stencil-func-separate-ati :return "void" :args
+   ((:name |frontfunc| :type |StencilFunction| :direction :in)
+    (:name |backfunc| :type |StencilFunction| :direction :in)
+    (:name |ref| :type |ClampedStencilValue| :direction :in)
+    (:name |mask| :type |MaskedStencilValue| :direction :in))
+   :category "ATI_separate_stencil" :deprecated nil :version "1.2")
+  ("StencilOpSeparateATI" stencil-op-separate-ati :return "void" :args
+   ((:name |face| :type |StencilFaceDirection| :direction :in)
+    (:name |sfail| :type |StencilOp| :direction :in)
+    (:name |dpfail| :type |StencilOp| :direction :in)
+    (:name |dppass| :type |StencilOp| :direction :in))
+   :category "ATI_separate_stencil" :deprecated nil :version "1.2"))) 

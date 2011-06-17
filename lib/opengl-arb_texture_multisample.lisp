@@ -74,3 +74,30 @@
   (:name |height| :type |SizeI| :direction :in)
   (:name |fixedsamplelocations| :type |Boolean| :direction :in))
  :category "ARB_texture_multisample" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_texture_multisample|
+ (("SampleMaski" sample-mask-i :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |mask| :type |GLbitfield| :direction :in))
+   :category "ARB_texture_multisample" :deprecated nil :version "1.2")
+  ("GetMultisamplefv" get-multisample-fv :return "void" :args
+   ((:name |pname| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |val| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "ARB_texture_multisample" :deprecated nil :version "1.2")
+  ("TexImage3DMultisample" tex-image-3dmultisample :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |samples| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |Int32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |fixedsamplelocations| :type |Boolean| :direction :in))
+   :category "ARB_texture_multisample" :deprecated nil :version "1.2")
+  ("TexImage2DMultisample" tex-image-2dmultisample :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |samples| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |Int32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |fixedsamplelocations| :type |Boolean| :direction :in))
+   :category "ARB_texture_multisample" :deprecated nil :version "1.2"))) 

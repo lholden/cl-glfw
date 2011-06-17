@@ -24,3 +24,15 @@
  ((:name |zNear| :type |Float64| :direction :in)
   (:name |zFar| :type |Float64| :direction :in))
  :category "NV_depth_buffer_float" :deprecated nil :version "2.0") 
+(make-extension-loader |NV_depth_buffer_float|
+ (("DepthBoundsdNV" depth-bounds-d-nv :return "void" :args
+   ((:name |zmin| :type |Float64| :direction :in)
+    (:name |zmax| :type |Float64| :direction :in))
+   :category "NV_depth_buffer_float" :deprecated nil :version "2.0")
+  ("ClearDepthdNV" clear-depth-d-nv :return "void" :args
+   ((:name |depth| :type |Float64| :direction :in)) :category
+   "NV_depth_buffer_float" :deprecated nil :version "2.0")
+  ("DepthRangedNV" depth-range-d-nv :return "void" :args
+   ((:name |zNear| :type |Float64| :direction :in)
+    (:name |zFar| :type |Float64| :direction :in))
+   :category "NV_depth_buffer_float" :deprecated nil :version "2.0"))) 

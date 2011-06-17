@@ -65,3 +65,35 @@
  ((:name |condition| :type |GLenum| :direction :in)
   (:name |flags| :type |GLbitfield| :direction :in))
  :category "ARB_sync" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_sync|
+ (("GetSynciv" get-sync-iv :return "void" :args
+   ((:name |sync| :type |sync| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |values| :type |Int32| :direction :out :array t :size length))
+   :category "ARB_sync" :deprecated nil :version "1.2")
+  ("GetInteger64v" get-integer-64v :return "void" :args
+   ((:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int64| :direction :out :array t :size (|pname|)))
+   :category "ARB_sync" :deprecated nil :version "1.2")
+  ("WaitSync" wait-sync :return "void" :args
+   ((:name |sync| :type |sync| :direction :in)
+    (:name |flags| :type |GLbitfield| :direction :in)
+    (:name |timeout| :type |UInt64| :direction :in))
+   :category "ARB_sync" :deprecated nil :version "1.2")
+  ("ClientWaitSync" client-wait-sync :return "GLenum" :args
+   ((:name |sync| :type |sync| :direction :in)
+    (:name |flags| :type |GLbitfield| :direction :in)
+    (:name |timeout| :type |UInt64| :direction :in))
+   :category "ARB_sync" :deprecated nil :version "1.2")
+  ("DeleteSync" delete-sync :return "void" :args
+   ((:name |sync| :type |sync| :direction :in)) :category "ARB_sync"
+   :deprecated nil :version "1.2")
+  ("IsSync" is-sync :return "Boolean" :args
+   ((:name |sync| :type |sync| :direction :in)) :category "ARB_sync"
+   :deprecated nil :version "1.2")
+  ("FenceSync" fence-sync :return "sync" :args
+   ((:name |condition| :type |GLenum| :direction :in)
+    (:name |flags| :type |GLbitfield| :direction :in))
+   :category "ARB_sync" :deprecated nil :version "1.2"))) 

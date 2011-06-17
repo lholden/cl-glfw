@@ -28,3 +28,17 @@
   (:name |location| :type |Int32| :direction :in)
   (:name |buffer| :type |UInt32| :direction :in))
  :category "EXT_bindable_uniform" :deprecated nil :version "2.0") 
+(make-extension-loader |EXT_bindable_uniform|
+ (("GetUniformOffsetEXT" get-uniform-offset-ext :return "BufferOffset" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in))
+   :category "EXT_bindable_uniform" :deprecated nil :version "2.0")
+  ("GetUniformBufferSizeEXT" get-uniform-buffer-size-ext :return "Int32" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in))
+   :category "EXT_bindable_uniform" :deprecated nil :version "2.0")
+  ("UniformBufferEXT" uniform-buffer-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "EXT_bindable_uniform" :deprecated nil :version "2.0"))) 

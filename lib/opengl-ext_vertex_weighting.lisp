@@ -53,3 +53,17 @@
 (defglextfun "VertexWeightfEXT" vertex-weight-f-ext :return "void" :args
  ((:name |weight| :type |Float32| :direction :in)) :category
  "EXT_vertex_weighting" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_vertex_weighting|
+ (("VertexWeightPointerEXT" vertex-weight-pointer-ext :return "void" :args
+   ((:name |size| :type |SizeI| :direction :in)
+    (:name |type| :type |VertexWeightPointerTypeEXT| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride|) :retained t))
+   :category "EXT_vertex_weighting" :deprecated nil :version "1.1")
+  ("VertexWeightfvEXT" vertex-weight-fv-ext :return "void" :args
+   ((:name |weight| :type |Float32| :direction :in :array t :size #x1))
+   :category "EXT_vertex_weighting" :deprecated nil :version "1.1")
+  ("VertexWeightfEXT" vertex-weight-f-ext :return "void" :args
+   ((:name |weight| :type |Float32| :direction :in)) :category
+   "EXT_vertex_weighting" :deprecated nil :version "1.1"))) 

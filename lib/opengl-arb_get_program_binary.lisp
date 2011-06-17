@@ -27,3 +27,22 @@
   (:name |binaryFormat| :type |GLenum| :direction :out :array t :size #x1)
   (:name |binary| :type |Void| :direction :out :array t :size (|length|)))
  :category "ARB_get_program_binary" :deprecated nil :version "4.1") 
+(make-extension-loader |ARB_get_program_binary|
+ (("ProgramParameteri" program-parameter-i :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |pname| :type |ProgramParameterPName| :direction :in)
+    (:name |value| :type |Int32| :direction :in))
+   :category "ARB_get_program_binary" :deprecated nil :version "3.0")
+  ("ProgramBinary" program-binary :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |binaryFormat| :type |GLenum| :direction :in)
+    (:name |binary| :type |Void| :direction :in :array t :size length)
+    (:name |length| :type |SizeI| :direction :in))
+   :category "ARB_get_program_binary" :deprecated nil :version "4.1")
+  ("GetProgramBinary" get-program-binary :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |binaryFormat| :type |GLenum| :direction :out :array t :size #x1)
+    (:name |binary| :type |Void| :direction :out :array t :size (|length|)))
+   :category "ARB_get_program_binary" :deprecated nil :version "4.1"))) 

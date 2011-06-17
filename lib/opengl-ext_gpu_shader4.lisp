@@ -113,3 +113,61 @@
   (:name |params| :type |UInt32| :direction :out :array t :size
    (|program| |location|)))
  :category "EXT_gpu_shader4" :deprecated nil :version "2.0") 
+(make-extension-loader |EXT_gpu_shader4|
+ (("Uniform4uivEXT" uniform-4uiv-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count*4))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform3uivEXT" uniform-3uiv-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count*3))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform2uivEXT" uniform-2uiv-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count*2))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform1uivEXT" uniform-1uiv-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform4uiEXT" uniform-4ui-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in)
+    (:name |v2| :type |UInt32| :direction :in)
+    (:name |v3| :type |UInt32| :direction :in))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform3uiEXT" uniform-3ui-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in)
+    (:name |v2| :type |UInt32| :direction :in))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform2uiEXT" uniform-2ui-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("Uniform1uiEXT" uniform-1ui-ext :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("GetFragDataLocationEXT" get-frag-data-location-ext :return "Int32" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("BindFragDataLocationEXT" bind-frag-data-location-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |color| :type |UInt32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0")
+  ("GetUniformuivEXT" get-uniform-uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size
+     (|program| |location|)))
+   :category "EXT_gpu_shader4" :deprecated nil :version "2.0"))) 

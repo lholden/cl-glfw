@@ -19,3 +19,18 @@
   (:name |count| :type |SizeI| :direction :in)
   (:name |primcount| :type |SizeI| :direction :in))
  :category "EXT_draw_instanced" :deprecated nil :version "2.0") 
+(make-extension-loader |EXT_draw_instanced|
+ (("DrawElementsInstancedEXT" draw-elements-instanced-ext :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|))
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "EXT_draw_instanced" :deprecated nil :version "2.0")
+  ("DrawArraysInstancedEXT" draw-arrays-instanced-ext :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |start| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "EXT_draw_instanced" :deprecated nil :version "2.0"))) 

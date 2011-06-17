@@ -38,3 +38,27 @@
   (:name |pointer| :type |VoidPointer| :direction :in :array t :size #x4
    :retained t))
  :category "INTEL_parallel_arrays" :deprecated nil :version "1.1") 
+(make-extension-loader |INTEL_parallel_arrays|
+ (("TexCoordPointervINTEL" tex-coord-pointerv-intel :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexPointerType| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size #x4
+     :retained t))
+   :category "INTEL_parallel_arrays" :deprecated nil :version "1.1")
+  ("ColorPointervINTEL" color-pointerv-intel :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexPointerType| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size #x4
+     :retained t))
+   :category "INTEL_parallel_arrays" :deprecated nil :version "1.1")
+  ("NormalPointervINTEL" normal-pointerv-intel :return "void" :args
+   ((:name |type| :type |NormalPointerType| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size #x4
+     :retained t))
+   :category "INTEL_parallel_arrays" :deprecated nil :version "1.1")
+  ("VertexPointervINTEL" vertex-pointerv-intel :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexPointerType| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size #x4
+     :retained t))
+   :category "INTEL_parallel_arrays" :deprecated nil :version "1.1"))) 

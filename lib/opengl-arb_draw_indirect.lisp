@@ -22,3 +22,13 @@
  ((:name |mode| :type |GLenum| :direction :in)
   (:name |indirect| :type |Void| :direction :in :array t))
  :category "ARB_draw_indirect" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_draw_indirect|
+ (("DrawElementsIndirect" draw-elements-indirect :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |indirect| :type |Void| :direction :in :array t))
+   :category "ARB_draw_indirect" :deprecated nil :version "1.2")
+  ("DrawArraysIndirect" draw-arrays-indirect :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |indirect| :type |Void| :direction :in :array t))
+   :category "ARB_draw_indirect" :deprecated nil :version "1.2"))) 

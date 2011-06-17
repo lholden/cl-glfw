@@ -47,3 +47,37 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |ids| :type |UInt32| :direction :out :array t :size n))
  :category "ARB_occlusion_query" :deprecated nil :version "1.5") 
+(make-extension-loader |ARB_occlusion_query|
+ (("GetQueryObjectuivARB" get-query-object-uiv-arb :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size pname))
+   :category "ARB_occlusion_query" :deprecated nil :version "1.5")
+  ("GetQueryObjectivARB" get-query-object-iv-arb :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size pname))
+   :category "ARB_occlusion_query" :deprecated nil :version "1.5")
+  ("GetQueryivARB" get-query-iv-arb :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size pname))
+   :category "ARB_occlusion_query" :deprecated nil :version "1.5")
+  ("EndQueryARB" end-query-arb :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)) :category
+   "ARB_occlusion_query" :deprecated nil :version "1.5")
+  ("BeginQueryARB" begin-query-arb :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "ARB_occlusion_query" :deprecated nil :version "1.5")
+  ("IsQueryARB" is-query-arb :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "ARB_occlusion_query"
+   :deprecated nil :version "1.5")
+  ("DeleteQueriesARB" delete-queries-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_occlusion_query" :deprecated nil :version "1.5")
+  ("GenQueriesARB" gen-queries-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_occlusion_query" :deprecated nil :version "1.5"))) 

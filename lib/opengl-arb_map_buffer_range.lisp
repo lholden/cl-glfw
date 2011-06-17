@@ -28,3 +28,15 @@
   (:name |length| :type |BufferSize| :direction :in)
   (:name |access| :type |BufferAccessMask| :direction :in))
  :category "ARB_map_buffer_range" :deprecated nil :version "3.0") 
+(make-extension-loader |ARB_map_buffer_range|
+ (("FlushMappedBufferRange" flush-mapped-buffer-range :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in)
+    (:name |length| :type |BufferSize| :direction :in))
+   :category "ARB_map_buffer_range" :deprecated nil :version "3.0")
+  ("MapBufferRange" map-buffer-range :return "VoidPointer" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in)
+    (:name |length| :type |BufferSize| :direction :in)
+    (:name |access| :type |BufferAccessMask| :direction :in))
+   :category "ARB_map_buffer_range" :deprecated nil :version "3.0"))) 

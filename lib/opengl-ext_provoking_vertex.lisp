@@ -15,3 +15,7 @@
 (defglextfun "ProvokingVertexEXT" provoking-vertex-ext :return "void" :args
  ((:name |mode| :type |GLenum| :direction :in)) :category
  "EXT_provoking_vertex" :deprecated nil :version "2.1") 
+(make-extension-loader |EXT_provoking_vertex|
+ (("ProvokingVertexEXT" provoking-vertex-ext :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)) :category
+   "EXT_provoking_vertex" :deprecated nil :version "2.1"))) 

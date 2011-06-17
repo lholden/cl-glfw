@@ -76,3 +76,36 @@
   (:name |ids| :type |UInt32| :direction :in :array t :size count)
   (:name |enabled| :type |Boolean| :direction :in))
  :category "ARB_debug_output" :deprecated nil :version "4.1") 
+(make-extension-loader |ARB_debug_output|
+ (("GetDebugMessageLogARB" get-debug-message-log-arb :return "UInt32" :args
+   ((:name |count| :type |UInt32| :direction :in)
+    (:name |bufsize| :type |SizeI| :direction :in)
+    (:name |sources| :type |GLenum| :direction :out :array t :size count)
+    (:name |types| :type |GLenum| :direction :out :array t :size count)
+    (:name |ids| :type |UInt32| :direction :out :array t :size count)
+    (:name |severities| :type |GLenum| :direction :out :array t :size count)
+    (:name |lengths| :type |SizeI| :direction :out :array t :size count)
+    (:name |messageLog| :type |Char| :direction :out :array t :size
+     (|lengths|)))
+   :category "ARB_debug_output" :deprecated nil :version "4.1")
+  ("DebugMessageCallbackARB" debug-message-callback-arb :return "void" :args
+   ((:name |callback| :type gldebugprocarb :direction :in)
+    (:name |userParam| :type |Void| :direction :in :array t :size
+     (|callback|)))
+   :category "ARB_debug_output" :deprecated nil :version "4.1")
+  ("DebugMessageInsertARB" debug-message-insert-arb :return "void" :args
+   ((:name |source| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in)
+    (:name |severity| :type |GLenum| :direction :in)
+    (:name |length| :type |SizeI| :direction :in)
+    (:name |buf| :type |Char| :direction :in :array t :size length))
+   :category "ARB_debug_output" :deprecated nil :version "4.1")
+  ("DebugMessageControlARB" debug-message-control-arb :return "void" :args
+   ((:name |source| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |severity| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size count)
+    (:name |enabled| :type |Boolean| :direction :in))
+   :category "ARB_debug_output" :deprecated nil :version "4.1"))) 

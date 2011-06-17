@@ -19,3 +19,18 @@
   (:name |count| :type |SizeI| :direction :in)
   (:name |primcount| :type |SizeI| :direction :in))
  :category "ARB_draw_instanced" :deprecated nil :version "2.0") 
+(make-extension-loader |ARB_draw_instanced|
+ (("DrawElementsInstancedARB" draw-elements-instanced-arb :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|))
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "ARB_draw_instanced" :deprecated nil :version "2.0")
+  ("DrawArraysInstancedARB" draw-arrays-instanced-arb :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |first| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "ARB_draw_instanced" :deprecated nil :version "2.0"))) 

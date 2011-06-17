@@ -183,3 +183,180 @@
  ((:name |type| :type |GLenum| :direction :in)
   (:name |value| :type |UInt32| :direction :in))
  :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_vertex_type_2_10_10_10_rev|
+ (("VertexAttribP4uiv" vertex-attrib-p-4uiv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP4ui" vertex-attrib-p-4ui :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP3uiv" vertex-attrib-p-3uiv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP3ui" vertex-attrib-p-3ui :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP2uiv" vertex-attrib-p-2uiv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP2ui" vertex-attrib-p-2ui :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP1uiv" vertex-attrib-p-1uiv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexAttribP1ui" vertex-attrib-p-1ui :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("SecondaryColorP3uiv" secondary-color-p-3uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |color| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("SecondaryColorP3ui" secondary-color-p-3ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |color| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("ColorP4uiv" color-p-4uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |color| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("ColorP4ui" color-p-4ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |color| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("ColorP3uiv" color-p-3uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |color| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("ColorP3ui" color-p-3ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |color| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("NormalP3uiv" normal-p-3uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("NormalP3ui" normal-p-3ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP4uiv" multi-tex-coord-p-4uiv :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP4ui" multi-tex-coord-p-4ui :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP3uiv" multi-tex-coord-p-3uiv :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP3ui" multi-tex-coord-p-3ui :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP2uiv" multi-tex-coord-p-2uiv :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP2ui" multi-tex-coord-p-2ui :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP1uiv" multi-tex-coord-p-1uiv :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("MultiTexCoordP1ui" multi-tex-coord-p-1ui :return "void" :args
+   ((:name |texture| :type |GLenum| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP4uiv" tex-coord-p-4uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP4ui" tex-coord-p-4ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP3uiv" tex-coord-p-3uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP3ui" tex-coord-p-3ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP2uiv" tex-coord-p-2uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP2ui" tex-coord-p-2ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP1uiv" tex-coord-p-1uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("TexCoordP1ui" tex-coord-p-1ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |coords| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexP4uiv" vertex-p-4uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexP4ui" vertex-p-4ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexP3uiv" vertex-p-3uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexP3ui" vertex-p-3ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexP2uiv" vertex-p-2uiv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2")
+  ("VertexP2ui" vertex-p-2ui :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |value| :type |UInt32| :direction :in))
+   :category "ARB_vertex_type_2_10_10_10_rev" :deprecated nil :version "1.2"))) 

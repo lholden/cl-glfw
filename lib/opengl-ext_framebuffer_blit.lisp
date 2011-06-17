@@ -24,3 +24,16 @@
   (:name |mask| :type |ClearBufferMask| :direction :in)
   (:name |filter| :type |GLenum| :direction :in))
  :category "EXT_framebuffer_blit" :deprecated nil :version "1.5") 
+(make-extension-loader |EXT_framebuffer_blit|
+ (("BlitFramebufferEXT" blit-framebuffer-ext :return "void" :args
+   ((:name |srcX0| :type |Int32| :direction :in)
+    (:name |srcY0| :type |Int32| :direction :in)
+    (:name |srcX1| :type |Int32| :direction :in)
+    (:name |srcY1| :type |Int32| :direction :in)
+    (:name |dstX0| :type |Int32| :direction :in)
+    (:name |dstY0| :type |Int32| :direction :in)
+    (:name |dstX1| :type |Int32| :direction :in)
+    (:name |dstY1| :type |Int32| :direction :in)
+    (:name |mask| :type |ClearBufferMask| :direction :in)
+    (:name |filter| :type |GLenum| :direction :in))
+   :category "EXT_framebuffer_blit" :deprecated nil :version "1.5"))) 

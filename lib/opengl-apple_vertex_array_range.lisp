@@ -29,3 +29,18 @@
  ((:name |length| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :out :array t :size length))
  :category "APPLE_vertex_array_range" :deprecated nil :version "1.2") 
+(make-extension-loader |APPLE_vertex_array_range|
+ (("VertexArrayParameteriAPPLE" vertex-array-parameter-i-apple :return "void"
+   :args
+   ((:name |pname| :type |VertexArrayPNameAPPLE| :direction :in)
+    (:name |param| :type |Int32| :direction :in))
+   :category "APPLE_vertex_array_range" :deprecated nil :version "1.2")
+  ("FlushVertexArrayRangeAPPLE" flush-vertex-array-range-apple :return "void"
+   :args
+   ((:name |length| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :out :array t :size length))
+   :category "APPLE_vertex_array_range" :deprecated nil :version "1.2")
+  ("VertexArrayRangeAPPLE" vertex-array-range-apple :return "void" :args
+   ((:name |length| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :out :array t :size length))
+   :category "APPLE_vertex_array_range" :deprecated nil :version "1.2"))) 

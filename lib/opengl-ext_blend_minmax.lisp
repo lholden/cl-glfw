@@ -10,3 +10,7 @@
 (defglextfun "BlendEquationEXT" blend-equation-ext :return "void" :args
  ((:name |mode| :type |BlendEquationModeEXT| :direction :in)) :category
  "EXT_blend_minmax" :deprecated nil :version "1.0") 
+(make-extension-loader |EXT_blend_minmax|
+ (("BlendEquationEXT" blend-equation-ext :return "void" :args
+   ((:name |mode| :type |BlendEquationModeEXT| :direction :in)) :category
+   "EXT_blend_minmax" :deprecated nil :version "1.0"))) 

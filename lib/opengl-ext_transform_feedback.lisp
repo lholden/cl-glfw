@@ -60,3 +60,44 @@
 (defglextfun "BeginTransformFeedbackEXT" begin-transform-feedback-ext :return
  "void" :args ((:name |primitiveMode| :type |GLenum| :direction :in)) :category
  "EXT_transform_feedback" :deprecated nil :version "2.0") 
+(make-extension-loader |EXT_transform_feedback|
+ (("GetTransformFeedbackVaryingEXT" get-transform-feedback-varying-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |size| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |type| :type |GLenum| :direction :out :array t :size #x1)
+    (:name |name| :type |Char| :direction :out :array t :size (|length|)))
+   :category "EXT_transform_feedback" :deprecated nil :version "2.0")
+  ("TransformFeedbackVaryingsEXT" transform-feedback-varyings-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |varyings| :type |CharPointer| :direction :in :array t :size count)
+    (:name |bufferMode| :type |GLenum| :direction :in))
+   :category "EXT_transform_feedback" :deprecated nil :version "2.0")
+  ("BindBufferBaseEXT" bind-buffer-base-ext :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "EXT_transform_feedback" :deprecated nil :version "2.0")
+  ("BindBufferOffsetEXT" bind-buffer-offset-ext :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in))
+   :category "EXT_transform_feedback" :deprecated nil :version "2.0")
+  ("BindBufferRangeEXT" bind-buffer-range-ext :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in)
+    (:name |size| :type |BufferSize| :direction :in))
+   :category "EXT_transform_feedback" :deprecated nil :version "2.0")
+  ("EndTransformFeedbackEXT" end-transform-feedback-ext :return "void" :args
+   nil :category "EXT_transform_feedback" :deprecated nil :version "2.0")
+  ("BeginTransformFeedbackEXT" begin-transform-feedback-ext :return "void"
+   :args ((:name |primitiveMode| :type |GLenum| :direction :in)) :category
+   "EXT_transform_feedback" :deprecated nil :version "2.0"))) 

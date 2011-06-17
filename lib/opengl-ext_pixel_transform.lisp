@@ -56,3 +56,28 @@
   (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
   (:name |param| :type |Int32| :direction :in))
  :category "EXT_pixel_transform" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_pixel_transform|
+ (("PixelTransformParameterfvEXT" pixel-transform-parameter-fv-ext :return
+   "void" :args
+   ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+    (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size #x1))
+   :category "EXT_pixel_transform" :deprecated nil :version "1.1")
+  ("PixelTransformParameterivEXT" pixel-transform-parameter-iv-ext :return
+   "void" :args
+   ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+    (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size #x1))
+   :category "EXT_pixel_transform" :deprecated nil :version "1.1")
+  ("PixelTransformParameterfEXT" pixel-transform-parameter-f-ext :return "void"
+   :args
+   ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+    (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+    (:name |param| :type |Float32| :direction :in))
+   :category "EXT_pixel_transform" :deprecated nil :version "1.1")
+  ("PixelTransformParameteriEXT" pixel-transform-parameter-i-ext :return "void"
+   :args
+   ((:name |target| :type |PixelTransformTargetEXT| :direction :in)
+    (:name |pname| :type |PixelTransformPNameEXT| :direction :in)
+    (:name |param| :type |Int32| :direction :in))
+   :category "EXT_pixel_transform" :deprecated nil :version "1.1"))) 

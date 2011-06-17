@@ -42,3 +42,30 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |ids| :type |UInt32| :direction :out :array t :size n))
  :category "NV_occlusion_query" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_occlusion_query|
+ (("GetOcclusionQueryuivNV" get-occlusion-query-uiv-nv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |OcclusionQueryParameterNameNV| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
+   :category "NV_occlusion_query" :deprecated nil :version "1.2")
+  ("GetOcclusionQueryivNV" get-occlusion-query-iv-nv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |OcclusionQueryParameterNameNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "NV_occlusion_query" :deprecated nil :version "1.2")
+  ("EndOcclusionQueryNV" end-occlusion-query-nv :return "void" :args nil
+   :category "NV_occlusion_query" :deprecated nil :version "1.2")
+  ("BeginOcclusionQueryNV" begin-occlusion-query-nv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "NV_occlusion_query"
+   :deprecated nil :version "1.2")
+  ("IsOcclusionQueryNV" is-occlusion-query-nv :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "NV_occlusion_query"
+   :deprecated nil :version "1.2")
+  ("DeleteOcclusionQueriesNV" delete-occlusion-queries-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size n))
+   :category "NV_occlusion_query" :deprecated nil :version "1.2")
+  ("GenOcclusionQueriesNV" gen-occlusion-queries-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :out :array t :size n))
+   :category "NV_occlusion_query" :deprecated nil :version "1.2"))) 

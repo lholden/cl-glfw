@@ -19,3 +19,18 @@
 (defglextfun "BindVertexArray" bind-vertex-array :return "void" :args
  ((:name |array| :type |UInt32| :direction :in)) :category
  "ARB_vertex_array_object" :deprecated nil :version "3.0") 
+(make-extension-loader |ARB_vertex_array_object|
+ (("IsVertexArray" is-vertex-array :return "Boolean" :args
+   ((:name |array| :type |UInt32| :direction :in)) :category
+   "ARB_vertex_array_object" :deprecated nil :version "3.0")
+  ("GenVertexArrays" gen-vertex-arrays :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |arrays| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_vertex_array_object" :deprecated nil :version "3.0")
+  ("DeleteVertexArrays" delete-vertex-arrays :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |arrays| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_vertex_array_object" :deprecated nil :version "3.0")
+  ("BindVertexArray" bind-vertex-array :return "void" :args
+   ((:name |array| :type |UInt32| :direction :in)) :category
+   "ARB_vertex_array_object" :deprecated nil :version "3.0"))) 

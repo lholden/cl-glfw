@@ -33,3 +33,21 @@
   (:name |name| :type |UInt32| :direction :in)
   (:name |option| :type |GLenum| :direction :in))
  :category "APPLE_object_purgeable" :deprecated nil :version "1.5") 
+(make-extension-loader |APPLE_object_purgeable|
+ (("GetObjectParameterivAPPLE" get-object-parameter-iv-apple :return "void"
+   :args
+   ((:name |objectType| :type |GLenum| :direction :in)
+    (:name |name| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "APPLE_object_purgeable" :deprecated nil :version "1.5")
+  ("ObjectUnpurgeableAPPLE" object-unpurgeable-apple :return "GLenum" :args
+   ((:name |objectType| :type |GLenum| :direction :in)
+    (:name |name| :type |UInt32| :direction :in)
+    (:name |option| :type |GLenum| :direction :in))
+   :category "APPLE_object_purgeable" :deprecated nil :version "1.5")
+  ("ObjectPurgeableAPPLE" object-purgeable-apple :return "GLenum" :args
+   ((:name |objectType| :type |GLenum| :direction :in)
+    (:name |name| :type |UInt32| :direction :in)
+    (:name |option| :type |GLenum| :direction :in))
+   :category "APPLE_object_purgeable" :deprecated nil :version "1.5"))) 

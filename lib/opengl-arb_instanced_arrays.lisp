@@ -11,3 +11,8 @@
  ((:name |index| :type |UInt32| :direction :in)
   (:name |divisor| :type |UInt32| :direction :in))
  :category "ARB_instanced_arrays" :deprecated nil :version "2.0") 
+(make-extension-loader |ARB_instanced_arrays|
+ (("VertexAttribDivisorARB" vertex-attrib-divisor-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |divisor| :type |UInt32| :direction :in))
+   :category "ARB_instanced_arrays" :deprecated nil :version "2.0"))) 

@@ -37,3 +37,17 @@
   (:name |index| :type |UInt32| :direction :in)
   (:name |val| :type |Float32| :direction :out :array t :size #x2))
  :category "NV_explicit_multisample" :deprecated nil :version nil) 
+(make-extension-loader |NV_explicit_multisample|
+ (("TexRenderbufferNV" tex-renderbuffer-nv :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |renderbuffer| :type |UInt32| :direction :in))
+   :category "NV_explicit_multisample" :deprecated nil :version nil)
+  ("SampleMaskIndexedNV" sample-mask-indexed-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |mask| :type |SampleMaskNV| :direction :in))
+   :category "NV_explicit_multisample" :deprecated nil :version nil)
+  ("GetMultisamplefvNV" get-multisample-fv-nv :return "void" :args
+   ((:name |pname| :type |GetMultisamplePNameNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |val| :type |Float32| :direction :out :array t :size #x2))
+   :category "NV_explicit_multisample" :deprecated nil :version nil))) 

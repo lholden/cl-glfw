@@ -48,3 +48,30 @@
   (:name |textures| :type |Texture| :direction :in :array t :size n)
   (:name |residences| :type |Boolean| :direction :out :array t :size n))
  :category "EXT_texture_object" :deprecated nil :version "1.0") 
+(make-extension-loader |EXT_texture_object|
+ (("PrioritizeTexturesEXT" prioritize-textures-ext :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |textures| :type |Texture| :direction :in :array t :size n)
+    (:name |priorities| :type |ClampedFloat32| :direction :in :array t :size
+     n))
+   :category "EXT_texture_object" :deprecated nil :version "1.0")
+  ("IsTextureEXT" is-texture-ext :return "Boolean" :args
+   ((:name |texture| :type |Texture| :direction :in)) :category
+   "EXT_texture_object" :deprecated nil :version "1.0")
+  ("GenTexturesEXT" gen-textures-ext :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |textures| :type |Texture| :direction :out :array t :size n))
+   :category "EXT_texture_object" :deprecated nil :version "1.0")
+  ("DeleteTexturesEXT" delete-textures-ext :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |textures| :type |Texture| :direction :in :array t :size n))
+   :category "EXT_texture_object" :deprecated nil :version "1.0")
+  ("BindTextureEXT" bind-texture-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |texture| :type |Texture| :direction :in))
+   :category "EXT_texture_object" :deprecated nil :version "1.0")
+  ("AreTexturesResidentEXT" are-textures-resident-ext :return "Boolean" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |textures| :type |Texture| :direction :in :array t :size n)
+    (:name |residences| :type |Boolean| :direction :out :array t :size n))
+   :category "EXT_texture_object" :deprecated nil :version "1.0"))) 

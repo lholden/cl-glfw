@@ -35,3 +35,31 @@
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
  :category "EXT_texture3D" :deprecated nil :version "1.0") 
+(make-extension-loader |EXT_texture3D|
+ (("TexSubImage3DEXT" tex-sub-image-3d-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "EXT_texture3D" :deprecated nil :version "1.0")
+  ("TexImage3DEXT" tex-image-3d-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "EXT_texture3D" :deprecated nil :version "1.0"))) 

@@ -22,3 +22,11 @@
 (defglextfun "FlushVertexArrayRangeNV" flush-vertex-array-range-nv :return
  "void" :args nil :category "NV_vertex_array_range" :deprecated nil :version
  "1.1") 
+(make-extension-loader |NV_vertex_array_range|
+ (("VertexArrayRangeNV" vertex-array-range-nv :return "void" :args
+   ((:name |length| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size (|length|)
+     :retained t))
+   :category "NV_vertex_array_range" :deprecated nil :version "1.1")
+  ("FlushVertexArrayRangeNV" flush-vertex-array-range-nv :return "void" :args
+   nil :category "NV_vertex_array_range" :deprecated nil :version "1.1"))) 

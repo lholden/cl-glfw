@@ -68,11 +68,11 @@
                (args-of func-spec))))
 
 (defun gl-funcall-definition (func-spec fpointer)
-  `(foreign-funcall ,fpointer
-                    ,@(mapcan #'(lambda (arg)
-                                  `(,(final-arg-type arg) ,(final-arg-name arg)))
-                              (args-of func-spec))
-                    ,(get-type (intern (freturn-of func-spec)))))
+  `(cffi:foreign-funcall-pointer
+    ,fpointer
+    ,@(mapcan #'(lambda (arg) (list (final-arg-type arg) (final-arg-name arg)))
+	      (args-of func-spec))
+    ,(get-type (intern (freturn-of func-spec)))))
 
 (defun expand-a-wrapping (func-spec final-content)
   (let* ((func-spec (copy-tree func-spec)) ; duplicate because we're not supposed to modify macro params
@@ -118,24 +118,36 @@
         ;; in the case that there is no more wrapping to be done, emit the final content to start unwinding
         final-content)))
 
+(defun proc-parameter-name-of (func-spec) 
+  (intern (format nil "*PROC-~A*" (lisp-name-of func-spec))))
+
+(defun gl-function-name-of (func-spec)
+  (concatenate 'cl:string "gl" (c-name-of func-spec)))
+
 (defun wrapped-win32-gl-function-definition (func-spec)
-  `(let ((fpointer (foreign-funcall "wglGetProcAddress"
-                                    :string ,(concatenate 'cl:string "gl" (c-name-of func-spec))
-                                    :pointer)))
-     ;; I know the CFFI guide recommends against holding pointers, but for extensions on win,
-     ;; function pointers are the only way to do it. I don't think the locations are compiled
-     ;; in-to the fasl files, as it's a top-level form.
-     (when (null-pointer-p fpointer)
-       (warn "Can't find function ~a" (first func-spec)))
-     (defun ,(lisp-name-of func-spec)
-         ,(mapcar #'(lambda (arg) (final-arg-name arg))
-           (args-of func-spec))
-       ;; if there is more than 0 wrappable arrays
-       ,(let ((args (args-of func-spec)))
-          (if (some #'array-wrappable-p args)
-              (expand-a-wrapping func-spec
-                                 (gl-funcall-definition func-spec 'fpointer))
-              (gl-funcall-definition func-spec 'fpointer))))))
+  (let ((parameter-name (proc-parameter-name-of func-spec)))
+    `(progn
+       (defparameter ,parameter-name nil)
+       (defun ,(lisp-name-of func-spec)
+	   ,(mapcar #'(lambda (arg) (final-arg-name arg))
+		    (args-of func-spec))
+	 ,(let ((args (args-of func-spec))
+		(funcall-definition (gl-funcall-definition func-spec parameter-name)))
+	       ;; if there is more than 0 wrappable arrays
+	       (if (some #'array-wrappable-p args)
+		   (expand-a-wrapping func-spec funcall-definition)
+		   funcall-definition))))))
+
+(defmacro make-extension-loader (extension-name (&rest function-specs))
+  #-win32 (declare (ignore function-specs))
+  `(defun ,(intern (format nil "LOAD-~A" extension-name)) ()
+     #+win32
+     (setf 
+      ;;Won't refer to gl:get-proc-address symbol directly here, as it's loaded after the scaffolding
+      ,@(let ((get-proc-address-func (find-symbol "GET-PROC-ADDRESS" (find-package '#:cl-glfw-opengl))))
+	     (loop for function-spec in function-specs nconcing
+		  (list (proc-parameter-name-of function-spec)
+			(list get-proc-address-func (gl-function-name-of function-spec))))))))
 
 (defun wrapped-gl-function-definition (func-spec)
   (let ((args (args-of func-spec)))

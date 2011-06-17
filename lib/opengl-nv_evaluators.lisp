@@ -116,3 +116,67 @@
   (:name |points| :type |Void| :direction :in :array t :size
    (|target| |uorder| |vorder|)))
  :category "NV_evaluators" :deprecated nil :version "1.1") 
+(make-extension-loader |NV_evaluators|
+ (("EvalMapsNV" eval-maps-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |mode| :type |EvalMapsModeNV| :direction :in))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("GetMapAttribParameterfvNV" get-map-attrib-parameter-fv-nv :return "void"
+   :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |MapAttribParameterNV| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("GetMapAttribParameterivNV" get-map-attrib-parameter-iv-nv :return "void"
+   :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |MapAttribParameterNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("GetMapParameterfvNV" get-map-parameter-fv-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |pname| :type |MapParameterNV| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size
+     (|target| |pname|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("GetMapParameterivNV" get-map-parameter-iv-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |pname| :type |MapParameterNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size
+     (|target| |pname|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("GetMapControlPointsNV" get-map-control-points-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |MapTypeNV| :direction :in)
+    (:name |ustride| :type |SizeI| :direction :in)
+    (:name |vstride| :type |SizeI| :direction :in)
+    (:name |packed| :type |Boolean| :direction :in)
+    (:name |points| :type |Void| :direction :out :array t :size (|target|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("MapParameterfvNV" map-parameter-fv-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |pname| :type |MapParameterNV| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|target| |pname|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("MapParameterivNV" map-parameter-iv-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |pname| :type |MapParameterNV| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|target| |pname|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1")
+  ("MapControlPointsNV" map-control-points-nv :return "void" :args
+   ((:name |target| :type |EvalTargetNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |type| :type |MapTypeNV| :direction :in)
+    (:name |ustride| :type |SizeI| :direction :in)
+    (:name |vstride| :type |SizeI| :direction :in)
+    (:name |uorder| :type |CheckedInt32| :direction :in)
+    (:name |vorder| :type |CheckedInt32| :direction :in)
+    (:name |packed| :type |Boolean| :direction :in)
+    (:name |points| :type |Void| :direction :in :array t :size
+     (|target| |uorder| |vorder|)))
+   :category "NV_evaluators" :deprecated nil :version "1.1"))) 

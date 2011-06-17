@@ -19,3 +19,10 @@
  ((:name |id| :type |UInt32| :direction :in)
   (:name |mode| :type |TypeEnum| :direction :in))
  :category "NV_conditional_render" :deprecated nil :version nil) 
+(make-extension-loader |NV_conditional_render|
+ (("EndConditionalRenderNV" end-conditional-render-nv :return "void" :args nil
+   :category "NV_conditional_render" :deprecated nil :version nil)
+  ("BeginConditionalRenderNV" begin-conditional-render-nv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |mode| :type |TypeEnum| :direction :in))
+   :category "NV_conditional_render" :deprecated nil :version nil))) 

@@ -1,7 +1,7 @@
 Top-level ASDF packages:
 
  * cl-glfw - GLFW bindings for Common Lisp.
- * cl-glfw-opengl - OpenGL bindings for Common Lisp.
+ * cl-glfw-opengl-version_* - OpenGL bindings for Common Lisp.
  * cl-glfw-glu (requires cl-glfw-opengl) - OpenGL Utilities bindings for Common Lisp.
 
 ABOUT
@@ -9,13 +9,13 @@ ABOUT
 A public domain set of CFFI bindings and convenience macros for the GLFW, GLU
 and OpenGL libraries.
 
-The OpenGL bindings are automatically generated from the (supposedly) canonical
-spec-files from http://www.opengl.org/registry/
+The OpenGL bindings are automatically generated from the spec-files from 
+http://www.opengl.org/registry/
 
 The GLU binding was hand-coerced from a tidied up header file, through swig, so
 it's pretty much a direct mapping onto the API.
 
-cl-glfw is independent of cl-glfw-opengl (and cl-glfw-glu). cl-glfw-opengl and
+cl-glfw is independent of cl-glfw-opengl-* and cl-glfw-glu. cl-glfw-opengl and
 cl-glfw-glu may be used without cl-glfw. cl-glfw-glu, however, does depend on
 cl-glfw-opengl. So, you should be able to use cl-glfw and
 cl-glfw-opengl/cl-glfw-glu independently of each other; for example, using

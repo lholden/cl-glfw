@@ -14,3 +14,10 @@
  ((:name |first| :type |Int32| :direction :in)
   (:name |count| :type |SizeI| :direction :in))
  :category "EXT_compiled_vertex_array" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_compiled_vertex_array|
+ (("UnlockArraysEXT" unlock-arrays-ext :return "void" :args nil :category
+   "EXT_compiled_vertex_array" :deprecated nil :version "1.1")
+  ("LockArraysEXT" lock-arrays-ext :return "void" :args
+   ((:name |first| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in))
+   :category "EXT_compiled_vertex_array" :deprecated nil :version "1.1"))) 

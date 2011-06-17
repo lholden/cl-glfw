@@ -46,3 +46,29 @@
 (defglextfun "ReplacementCodeuiSUN" replacement-code-ui-sun :return "void"
  :args ((:name |code| :type |UInt32| :direction :in)) :category
  "SUN_triangle_list" :deprecated nil :version "1.1") 
+(make-extension-loader |SUN_triangle_list|
+ (("ReplacementCodePointerSUN" replacement-code-pointer-sun :return "void"
+   :args
+   ((:name |type| :type |ReplacementCodeTypeSUN| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|type| |stride|) :retained t))
+   :category "SUN_triangle_list" :deprecated nil :version "1.1")
+  ("ReplacementCodeubvSUN" replacement-code-ubv-sun :return "void" :args
+   ((:name |code| :type |UInt8| :direction :in :array t)) :category
+   "SUN_triangle_list" :deprecated nil :version "1.1")
+  ("ReplacementCodeusvSUN" replacement-code-usv-sun :return "void" :args
+   ((:name |code| :type |UInt16| :direction :in :array t)) :category
+   "SUN_triangle_list" :deprecated nil :version "1.1")
+  ("ReplacementCodeuivSUN" replacement-code-uiv-sun :return "void" :args
+   ((:name |code| :type |UInt32| :direction :in :array t)) :category
+   "SUN_triangle_list" :deprecated nil :version "1.1")
+  ("ReplacementCodeubSUN" replacement-code-ub-sun :return "void" :args
+   ((:name |code| :type |UInt8| :direction :in)) :category "SUN_triangle_list"
+   :deprecated nil :version "1.1")
+  ("ReplacementCodeusSUN" replacement-code-us-sun :return "void" :args
+   ((:name |code| :type |UInt16| :direction :in)) :category "SUN_triangle_list"
+   :deprecated nil :version "1.1")
+  ("ReplacementCodeuiSUN" replacement-code-ui-sun :return "void" :args
+   ((:name |code| :type |UInt32| :direction :in)) :category "SUN_triangle_list"
+   :deprecated nil :version "1.1"))) 

@@ -394,3 +394,385 @@
   (:name |stages| :type |GLbitfield| :direction :in)
   (:name |program| :type |UInt32| :direction :in))
  :category "ARB_separate_shader_objects" :deprecated nil :version "4.1") 
+(make-extension-loader |ARB_separate_shader_objects|
+ (("GetProgramPipelineInfoLog" get-program-pipeline-info-log :return "void"
+   :args
+   ((:name |pipeline| :type |UInt32| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |infoLog| :type |Char| :direction :out :array t :size (|length|)))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ValidateProgramPipeline" validate-program-pipeline :return "void" :args
+   ((:name |pipeline| :type |UInt32| :direction :in)) :category
+   "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix4x3dv" program-uniform-matrix-4x-3dv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix3x4dv" program-uniform-matrix-3x-4dv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix4x2dv" program-uniform-matrix-4x-2dv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix2x4dv" program-uniform-matrix-2x-4dv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix3x2dv" program-uniform-matrix-3x-2dv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix2x3dv" program-uniform-matrix-2x-3dv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix4x3fv" program-uniform-matrix-4x-3fv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix3x4fv" program-uniform-matrix-3x-4fv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix4x2fv" program-uniform-matrix-4x-2fv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix2x4fv" program-uniform-matrix-2x-4fv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix3x2fv" program-uniform-matrix-3x-2fv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix2x3fv" program-uniform-matrix-2x-3fv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix4dv" program-uniform-matrix-4dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x4))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix3dv" program-uniform-matrix-3dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x3))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix2dv" program-uniform-matrix-2dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x2))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix4fv" program-uniform-matrix-4fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x4))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix3fv" program-uniform-matrix-3fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x3))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniformMatrix2fv" program-uniform-matrix-2fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x2))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4uiv" program-uniform-4uiv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x4))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4ui" program-uniform-4ui :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in)
+    (:name |v2| :type |UInt32| :direction :in)
+    (:name |v3| :type |UInt32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4dv" program-uniform-4dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x4))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4d" program-uniform-4d :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float64| :direction :in)
+    (:name |v1| :type |Float64| :direction :in)
+    (:name |v2| :type |Float64| :direction :in)
+    (:name |v3| :type |Float64| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4fv" program-uniform-4fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x4))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4f" program-uniform-4f :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in)
+    (:name |v2| :type |Float32| :direction :in)
+    (:name |v3| :type |Float32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4iv" program-uniform-4iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size #x4))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform4i" program-uniform-4i :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in)
+    (:name |v2| :type |Int32| :direction :in)
+    (:name |v3| :type |Int32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3uiv" program-uniform-3uiv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x3))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3ui" program-uniform-3ui :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in)
+    (:name |v2| :type |UInt32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3dv" program-uniform-3dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x3))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3d" program-uniform-3d :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float64| :direction :in)
+    (:name |v1| :type |Float64| :direction :in)
+    (:name |v2| :type |Float64| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3fv" program-uniform-3fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x3))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3f" program-uniform-3f :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in)
+    (:name |v2| :type |Float32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3iv" program-uniform-3iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size #x3))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform3i" program-uniform-3i :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in)
+    (:name |v2| :type |Int32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2uiv" program-uniform-2uiv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x2))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2ui" program-uniform-2ui :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2dv" program-uniform-2dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x2))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2d" program-uniform-2d :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float64| :direction :in)
+    (:name |v1| :type |Float64| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2fv" program-uniform-2fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x2))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2f" program-uniform-2f :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2iv" program-uniform-2iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size #x2))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform2i" program-uniform-2i :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1uiv" program-uniform-1uiv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size #x1))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1ui" program-uniform-1ui :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1dv" program-uniform-1dv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size #x1))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1d" program-uniform-1d :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float64| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1fv" program-uniform-1fv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size #x1))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1f" program-uniform-1f :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1iv" program-uniform-1iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size #x1))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ProgramUniform1i" program-uniform-1i :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("GetProgramPipelineiv" get-program-pipeline-iv :return "void" :args
+   ((:name |pipeline| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("IsProgramPipeline" is-program-pipeline :return "Boolean" :args
+   ((:name |pipeline| :type |UInt32| :direction :in)) :category
+   "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("GenProgramPipelines" gen-program-pipelines :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |pipelines| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("DeleteProgramPipelines" delete-program-pipelines :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |pipelines| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("BindProgramPipeline" bind-program-pipeline :return "void" :args
+   ((:name |pipeline| :type |UInt32| :direction :in)) :category
+   "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("CreateShaderProgramv" create-shader-programv :return "UInt32" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |strings| :type |CharPointer| :direction :in :array t :size count))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("ActiveShaderProgram" active-shader-program :return "void" :args
+   ((:name |pipeline| :type |UInt32| :direction :in)
+    (:name |program| :type |UInt32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1")
+  ("UseProgramStages" use-program-stages :return "void" :args
+   ((:name |pipeline| :type |UInt32| :direction :in)
+    (:name |stages| :type |GLbitfield| :direction :in)
+    (:name |program| :type |UInt32| :direction :in))
+   :category "ARB_separate_shader_objects" :deprecated nil :version "4.1"))) 

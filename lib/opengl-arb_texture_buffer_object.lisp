@@ -19,3 +19,9 @@
   (:name |internalformat| :type |GLenum| :direction :in)
   (:name |buffer| :type |UInt32| :direction :in))
  :category "ARB_texture_buffer_object" :deprecated nil :version "3.0") 
+(make-extension-loader |ARB_texture_buffer_object|
+ (("TexBufferARB" tex-buffer-arb :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |internalformat| :type |GLenum| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "ARB_texture_buffer_object" :deprecated nil :version "3.0"))) 

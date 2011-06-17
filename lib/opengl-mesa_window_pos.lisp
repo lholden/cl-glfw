@@ -100,3 +100,100 @@
  ((:name |x| :type |CoordD| :direction :in)
   (:name |y| :type |CoordD| :direction :in))
  :category "MESA_window_pos" :deprecated nil :version "1.0") 
+(make-extension-loader |MESA_window_pos|
+ (("WindowPos4svMESA" window-pos-4sv-mesa :return "void" :args
+   ((:name |v| :type |CoordS| :direction :in :array t :size #x4)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4sMESA" window-pos-4s-mesa :return "void" :args
+   ((:name |x| :type |CoordS| :direction :in)
+    (:name |y| :type |CoordS| :direction :in)
+    (:name |z| :type |CoordS| :direction :in)
+    (:name |w| :type |CoordS| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4ivMESA" window-pos-4iv-mesa :return "void" :args
+   ((:name |v| :type |CoordI| :direction :in :array t :size #x4)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4iMESA" window-pos-4i-mesa :return "void" :args
+   ((:name |x| :type |CoordI| :direction :in)
+    (:name |y| :type |CoordI| :direction :in)
+    (:name |z| :type |CoordI| :direction :in)
+    (:name |w| :type |CoordI| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4fvMESA" window-pos-4fv-mesa :return "void" :args
+   ((:name |v| :type |CoordF| :direction :in :array t :size #x4)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4fMESA" window-pos-4f-mesa :return "void" :args
+   ((:name |x| :type |CoordF| :direction :in)
+    (:name |y| :type |CoordF| :direction :in)
+    (:name |z| :type |CoordF| :direction :in)
+    (:name |w| :type |CoordF| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4dvMESA" window-pos-4dv-mesa :return "void" :args
+   ((:name |v| :type |CoordD| :direction :in :array t :size #x4)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos4dMESA" window-pos-4d-mesa :return "void" :args
+   ((:name |x| :type |CoordD| :direction :in)
+    (:name |y| :type |CoordD| :direction :in)
+    (:name |z| :type |CoordD| :direction :in)
+    (:name |w| :type |CoordD| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3svMESA" window-pos-3sv-mesa :return "void" :args
+   ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3sMESA" window-pos-3s-mesa :return "void" :args
+   ((:name |x| :type |CoordS| :direction :in)
+    (:name |y| :type |CoordS| :direction :in)
+    (:name |z| :type |CoordS| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3ivMESA" window-pos-3iv-mesa :return "void" :args
+   ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3iMESA" window-pos-3i-mesa :return "void" :args
+   ((:name |x| :type |CoordI| :direction :in)
+    (:name |y| :type |CoordI| :direction :in)
+    (:name |z| :type |CoordI| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3fvMESA" window-pos-3fv-mesa :return "void" :args
+   ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3fMESA" window-pos-3f-mesa :return "void" :args
+   ((:name |x| :type |CoordF| :direction :in)
+    (:name |y| :type |CoordF| :direction :in)
+    (:name |z| :type |CoordF| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3dvMESA" window-pos-3dv-mesa :return "void" :args
+   ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos3dMESA" window-pos-3d-mesa :return "void" :args
+   ((:name |x| :type |CoordD| :direction :in)
+    (:name |y| :type |CoordD| :direction :in)
+    (:name |z| :type |CoordD| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2svMESA" window-pos-2sv-mesa :return "void" :args
+   ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2sMESA" window-pos-2s-mesa :return "void" :args
+   ((:name |x| :type |CoordS| :direction :in)
+    (:name |y| :type |CoordS| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2ivMESA" window-pos-2iv-mesa :return "void" :args
+   ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2iMESA" window-pos-2i-mesa :return "void" :args
+   ((:name |x| :type |CoordI| :direction :in)
+    (:name |y| :type |CoordI| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2fvMESA" window-pos-2fv-mesa :return "void" :args
+   ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2fMESA" window-pos-2f-mesa :return "void" :args
+   ((:name |x| :type |CoordF| :direction :in)
+    (:name |y| :type |CoordF| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2dvMESA" window-pos-2dv-mesa :return "void" :args
+   ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :category
+   "MESA_window_pos" :deprecated nil :version "1.0")
+  ("WindowPos2dMESA" window-pos-2d-mesa :return "void" :args
+   ((:name |x| :type |CoordD| :direction :in)
+    (:name |y| :type |CoordD| :direction :in))
+   :category "MESA_window_pos" :deprecated nil :version "1.0"))) 

@@ -130,3 +130,116 @@
   (:name |z| :type |Int32| :direction :in)
   (:name |w| :type |Int32| :direction :in))
  :category "NV_gpu_program4" :deprecated nil :version "1.3") 
+(make-extension-loader |NV_gpu_program4|
+ (("GetProgramEnvParameterIuivNV" get-program-env-parameter-i-uiv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("GetProgramEnvParameterIivNV" get-program-env-parameter-i-iv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("GetProgramLocalParameterIuivNV" get-program-local-parameter-i-uiv-nv
+   :return "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("GetProgramLocalParameterIivNV" get-program-local-parameter-i-iv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramEnvParametersI4uivNV" program-env-parameters-i-4uiv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size count*4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramEnvParameterI4uivNV" program-env-parameter-i-4uiv-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramEnvParameterI4uiNV" program-env-parameter-i-4ui-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |UInt32| :direction :in)
+    (:name |y| :type |UInt32| :direction :in)
+    (:name |z| :type |UInt32| :direction :in)
+    (:name |w| :type |UInt32| :direction :in))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramEnvParametersI4ivNV" program-env-parameters-i-4iv-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size count*4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramEnvParameterI4ivNV" program-env-parameter-i-4iv-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramEnvParameterI4iNV" program-env-parameter-i-4i-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int32| :direction :in)
+    (:name |y| :type |Int32| :direction :in)
+    (:name |z| :type |Int32| :direction :in)
+    (:name |w| :type |Int32| :direction :in))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramLocalParametersI4uivNV" program-local-parameters-i-4uiv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size count*4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramLocalParameterI4uivNV" program-local-parameter-i-4uiv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramLocalParameterI4uiNV" program-local-parameter-i-4ui-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |UInt32| :direction :in)
+    (:name |y| :type |UInt32| :direction :in)
+    (:name |z| :type |UInt32| :direction :in)
+    (:name |w| :type |UInt32| :direction :in))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramLocalParametersI4ivNV" program-local-parameters-i-4iv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size count*4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramLocalParameterI4ivNV" program-local-parameter-i-4iv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size #x4))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3")
+  ("ProgramLocalParameterI4iNV" program-local-parameter-i-4i-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int32| :direction :in)
+    (:name |y| :type |Int32| :direction :in)
+    (:name |z| :type |Int32| :direction :in)
+    (:name |w| :type |Int32| :direction :in))
+   :category "NV_gpu_program4" :deprecated nil :version "1.3"))) 

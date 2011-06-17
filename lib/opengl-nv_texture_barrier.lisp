@@ -6,3 +6,6 @@
 
 (defglextfun "TextureBarrierNV" texture-barrier-nv :return "void" :args nil
  :category "NV_texture_barrier" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_texture_barrier|
+ (("TextureBarrierNV" texture-barrier-nv :return "void" :args nil :category
+   "NV_texture_barrier" :deprecated nil :version "1.2"))) 

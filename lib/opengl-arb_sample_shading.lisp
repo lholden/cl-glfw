@@ -11,3 +11,7 @@
 (defglextfun "MinSampleShadingARB" min-sample-shading-arb :return "void" :args
  ((:name |value| :type |ClampedColorF| :direction :in)) :category
  "ARB_sample_shading" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_sample_shading|
+ (("MinSampleShadingARB" min-sample-shading-arb :return "void" :args
+   ((:name |value| :type |ClampedColorF| :direction :in)) :category
+   "ARB_sample_shading" :deprecated nil :version "1.2"))) 

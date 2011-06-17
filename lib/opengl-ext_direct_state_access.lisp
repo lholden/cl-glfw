@@ -1617,3 +1617,1547 @@
 (defglextfun "ClientAttribDefaultEXT" client-attrib-default-ext :return "void"
  :args ((:name |mask| :type |ClientAttribMask| :direction :in)) :category
  "EXT_direct_state_access" :deprecated nil :version nil) 
+(make-extension-loader |EXT_direct_state_access|
+ (("ProgramUniformMatrix4x3dvEXT" program-uniform-matrix-4x-3dv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix4x2dvEXT" program-uniform-matrix-4x-2dv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix3x4dvEXT" program-uniform-matrix-3x-4dv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix3x2dvEXT" program-uniform-matrix-3x-2dv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix2x4dvEXT" program-uniform-matrix-2x-4dv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix2x3dvEXT" program-uniform-matrix-2x-3dv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix4dvEXT" program-uniform-matrix-4dv-ext :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix3dvEXT" program-uniform-matrix-3dv-ext :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniformMatrix2dvEXT" program-uniform-matrix-2dv-ext :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform4dvEXT" program-uniform-4dv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform3dvEXT" program-uniform-3dv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform2dvEXT" program-uniform-2dv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform1dvEXT" program-uniform-1dv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float64| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform4dEXT" program-uniform-4d-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform3dEXT" program-uniform-3d-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform2dEXT" program-uniform-2d-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("ProgramUniform1dEXT" program-uniform-1d-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |x| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version "1.2")
+  ("MultiTexRenderbufferEXT" multi-tex-renderbuffer-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |renderbuffer| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureRenderbufferEXT" texture-renderbuffer-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |renderbuffer| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferTextureFaceEXT" named-framebuffer-texture-face-ext :return
+   "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |face| :type |TextureTarget| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferTextureLayerEXT" named-framebuffer-texture-layer-ext
+   :return "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |layer| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferTextureEXT" named-framebuffer-texture-ext :return "void"
+   :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedRenderbufferStorageMultisampleCoverageEXT"
+   named-renderbuffer-storage-multisample-coverage-ext :return "void" :args
+   ((:name |renderbuffer| :type |Renderbuffer| :direction :in)
+    (:name |coverageSamples| :type |SizeI| :direction :in)
+    (:name |colorSamples| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedRenderbufferStorageMultisampleEXT"
+   named-renderbuffer-storage-multisample-ext :return "void" :args
+   ((:name |renderbuffer| :type |Renderbuffer| :direction :in)
+    (:name |samples| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetFramebufferParameterivEXT" get-framebuffer-parameter-iv-ext :return
+   "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |pname| :type |GetFramebufferParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("FramebufferReadBufferEXT" framebuffer-read-buffer-ext :return "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |mode| :type |ReadBufferMode| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("FramebufferDrawBuffersEXT" framebuffer-draw-buffers-ext :return "void"
+   :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |n| :type |SizeI| :direction :in)
+    (:name |bufs| :type |DrawBufferMode| :direction :in :array t :size n))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("FramebufferDrawBufferEXT" framebuffer-draw-buffer-ext :return "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |mode| :type |DrawBufferMode| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GenerateMultiTexMipmapEXT" generate-multi-tex-mipmap-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GenerateTextureMipmapEXT" generate-texture-mipmap-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedFramebufferAttachmentParameterivEXT"
+   get-named-framebuffer-attachment-parameter-iv-ext :return "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |pname| :type |FramebufferAttachmentParameterName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferRenderbufferEXT" named-framebuffer-renderbuffer-ext :return
+   "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |renderbuffertarget| :type |RenderbufferTarget| :direction :in)
+    (:name |renderbuffer| :type |Renderbuffer| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferTexture3DEXT" named-framebuffer-texture-3d-ext :return
+   "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |textarget| :type |TextureTarget| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferTexture2DEXT" named-framebuffer-texture-2d-ext :return
+   "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |textarget| :type |TextureTarget| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedFramebufferTexture1DEXT" named-framebuffer-texture-1d-ext :return
+   "void" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |textarget| :type |TextureTarget| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CheckNamedFramebufferStatusEXT" check-named-framebuffer-status-ext :return
+   "FramebufferStatus" :args
+   ((:name |framebuffer| :type |Framebuffer| :direction :in)
+    (:name |target| :type |FramebufferTarget| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedRenderbufferParameterivEXT" get-named-renderbuffer-parameter-iv-ext
+   :return "void" :args
+   ((:name |renderbuffer| :type |Renderbuffer| :direction :in)
+    (:name |pname| :type |RenderbufferParameterName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedRenderbufferStorageEXT" named-renderbuffer-storage-ext :return "void"
+   :args
+   ((:name |renderbuffer| :type |Renderbuffer| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexBufferEXT" multi-tex-buffer-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |internalformat| :type |TypeEnum| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureBufferEXT" texture-buffer-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |internalformat| :type |TypeEnum| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedBufferSubDataEXT" get-named-buffer-sub-data-ext :return "void"
+   :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |Intptr| :direction :in)
+    (:name |size| :type |Sizeiptr| :direction :in)
+    (:name |data| :type |Void| :direction :out :array t :size (|size|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedBufferPointervEXT" get-named-buffer-pointerv-ext :return "void"
+   :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexBufferObjectParameter| :direction :in)
+    (:name |params| :type |VoidPointer| :direction :out :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedBufferParameterivEXT" get-named-buffer-parameter-iv-ext :return
+   "void" :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexBufferObjectParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedCopyBufferSubDataEXT" named-copy-buffer-sub-data-ext :return "void"
+   :args
+   ((:name |readBuffer| :type |UInt32| :direction :in)
+    (:name |writeBuffer| :type |UInt32| :direction :in)
+    (:name |readOffset| :type |Intptr| :direction :in)
+    (:name |writeOffset| :type |Intptr| :direction :in)
+    (:name |size| :type |Sizeiptr| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("FlushMappedNamedBufferRangeEXT" flush-mapped-named-buffer-range-ext :return
+   "void" :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |Intptr| :direction :in)
+    (:name |length| :type |Sizeiptr| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MapNamedBufferRangeEXT" map-named-buffer-range-ext :return "VoidPointer"
+   :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |Intptr| :direction :in)
+    (:name |length| :type |Sizeiptr| :direction :in)
+    (:name |access| :type |BufferAccessMask| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("UnmapNamedBufferEXT" unmap-named-buffer-ext :return "Boolean" :args
+   ((:name |buffer| :type |UInt32| :direction :in)) :category
+   "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MapNamedBufferEXT" map-named-buffer-ext :return "VoidPointer" :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |access| :type |VertexBufferObjectAccess| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedBufferSubDataEXT" named-buffer-sub-data-ext :return "void" :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |Intptr| :direction :in)
+    (:name |size| :type |Sizeiptr| :direction :in)
+    (:name |data| :type |Void| :direction :in :array t :size (|size|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedBufferDataEXT" named-buffer-data-ext :return "void" :args
+   ((:name |buffer| :type |UInt32| :direction :in)
+    (:name |size| :type |Sizeiptr| :direction :in)
+    (:name |data| :type |Void| :direction :in :array t :size (|size|))
+    (:name |usage| :type |VertexBufferObjectUsage| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform4uivEXT" program-uniform-4uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform3uivEXT" program-uniform-3uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count*3))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform2uivEXT" program-uniform-2uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count*2))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform1uivEXT" program-uniform-1uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |UInt32| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform4uiEXT" program-uniform-4ui-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in)
+    (:name |v2| :type |UInt32| :direction :in)
+    (:name |v3| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform3uiEXT" program-uniform-3ui-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in)
+    (:name |v2| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform2uiEXT" program-uniform-2ui-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in)
+    (:name |v1| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform1uiEXT" program-uniform-1ui-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix4x3fvEXT" program-uniform-matrix-4x-3fv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*12))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix3x4fvEXT" program-uniform-matrix-3x-4fv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*12))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix4x2fvEXT" program-uniform-matrix-4x-2fv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*8))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix2x4fvEXT" program-uniform-matrix-2x-4fv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*8))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix3x2fvEXT" program-uniform-matrix-3x-2fv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*6))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix2x3fvEXT" program-uniform-matrix-2x-3fv-ext :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*6))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix4fvEXT" program-uniform-matrix-4fv-ext :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*16))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix3fvEXT" program-uniform-matrix-3fv-ext :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*9))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniformMatrix2fvEXT" program-uniform-matrix-2fv-ext :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform4ivEXT" program-uniform-4iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform3ivEXT" program-uniform-3iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count*3))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform2ivEXT" program-uniform-2iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count*2))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform1ivEXT" program-uniform-1iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform4fvEXT" program-uniform-4fv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform3fvEXT" program-uniform-3fv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*3))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform2fvEXT" program-uniform-2fv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count*2))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform1fvEXT" program-uniform-1fv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform4iEXT" program-uniform-4i-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in)
+    (:name |v2| :type |Int32| :direction :in)
+    (:name |v3| :type |Int32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform3iEXT" program-uniform-3i-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in)
+    (:name |v2| :type |Int32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform2iEXT" program-uniform-2i-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform1iEXT" program-uniform-1i-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform4fEXT" program-uniform-4f-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in)
+    (:name |v2| :type |Float32| :direction :in)
+    (:name |v3| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform3fEXT" program-uniform-3f-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in)
+    (:name |v2| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform2fEXT" program-uniform-2f-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ProgramUniform1fEXT" program-uniform-1f-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexParameterIuivEXT" get-multi-tex-parameter-i-uiv-ext :return
+   "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexParameterIivEXT" get-multi-tex-parameter-i-iv-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexParameterIuivEXT" multi-tex-parameter-i-uiv-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexParameterIivEXT" multi-tex-parameter-i-iv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureParameterIuivEXT" get-texture-parameter-i-uiv-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureParameterIivEXT" get-texture-parameter-i-iv-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureParameterIuivEXT" texture-parameter-i-uiv-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureParameterIivEXT" texture-parameter-i-iv-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedProgramLocalParameterIuivEXT"
+   get-named-program-local-parameter-i-uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedProgramLocalParameterIivEXT"
+   get-named-program-local-parameter-i-iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParametersI4uivEXT"
+   named-program-local-parameters-i-4uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameterI4uivEXT"
+   named-program-local-parameter-i-4uiv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameterI4uiEXT" named-program-local-parameter-i-4ui-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |UInt32| :direction :in)
+    (:name |y| :type |UInt32| :direction :in)
+    (:name |z| :type |UInt32| :direction :in)
+    (:name |w| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParametersI4ivEXT"
+   named-program-local-parameters-i-4iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameterI4ivEXT" named-program-local-parameter-i-4iv-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameterI4iEXT" named-program-local-parameter-i-4i-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int32| :direction :in)
+    (:name |y| :type |Int32| :direction :in)
+    (:name |z| :type |Int32| :direction :in)
+    (:name |w| :type |Int32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameters4fvEXT" named-program-local-parameters-4fv-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size count*4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedProgramStringEXT" get-named-program-string-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |pname| :type |ProgramStringProperty| :direction :in)
+    (:name |string| :type |Void| :direction :out :array t :size
+     (|program| |pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedProgramivEXT" get-named-program-iv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |pname| :type |ProgramProperty| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x1))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedProgramLocalParameterfvEXT"
+   get-named-program-local-parameter-fv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetNamedProgramLocalParameterdvEXT"
+   get-named-program-local-parameter-dv-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameter4fvEXT" named-program-local-parameter-4fv-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameter4fEXT" named-program-local-parameter-4f-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameter4dvEXT" named-program-local-parameter-4dv-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float64| :direction :in :array t :size #x4))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramLocalParameter4dEXT" named-program-local-parameter-4d-ext
+   :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("NamedProgramStringEXT" named-program-string-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |target| :type |ProgramTarget| :direction :in)
+    (:name |format| :type |ProgramFormat| :direction :in)
+    (:name |len| :type |SizeI| :direction :in)
+    (:name |string| :type |Void| :direction :in :array t :size len))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetCompressedMultiTexImageEXT" get-compressed-multi-tex-image-ext :return
+   "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |lod| :type |CheckedInt32| :direction :in)
+    (:name |img| :type |Void| :direction :out :array t :size (|target| |lod|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedMultiTexSubImage1DEXT" compressed-multi-tex-sub-image-1d-ext
+   :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedMultiTexSubImage2DEXT" compressed-multi-tex-sub-image-2d-ext
+   :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedMultiTexSubImage3DEXT" compressed-multi-tex-sub-image-3d-ext
+   :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedMultiTexImage1DEXT" compressed-multi-tex-image-1d-ext :return
+   "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedMultiTexImage2DEXT" compressed-multi-tex-image-2d-ext :return
+   "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedMultiTexImage3DEXT" compressed-multi-tex-image-3d-ext :return
+   "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetCompressedTextureImageEXT" get-compressed-texture-image-ext :return
+   "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |lod| :type |CheckedInt32| :direction :in)
+    (:name |img| :type |Void| :direction :out :array t :size (|target| |lod|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedTextureSubImage1DEXT" compressed-texture-sub-image-1d-ext :return
+   "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedTextureSubImage2DEXT" compressed-texture-sub-image-2d-ext :return
+   "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedTextureSubImage3DEXT" compressed-texture-sub-image-3d-ext :return
+   "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedTextureImage1DEXT" compressed-texture-image-1d-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedTextureImage2DEXT" compressed-texture-image-2d-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CompressedTextureImage3DEXT" compressed-texture-image-3d-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |bits| :type |Void| :direction :in :array t :size imagesize))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetPointerIndexedvEXT" get-pointer-indexed-v-ext :return "void" :args
+   ((:name |target| :type |TypeEnum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |data| :type |VoidPointer| :direction :out :array t :size
+     (|target|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetDoubleIndexedvEXT" get-double-indexed-v-ext :return "void" :args
+   ((:name |target| :type |TypeEnum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |data| :type |Float64| :direction :out :array t :size (|target|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetFloatIndexedvEXT" get-float-indexed-v-ext :return "void" :args
+   ((:name |target| :type |TypeEnum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |data| :type |Float32| :direction :out :array t :size (|target|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexGenivEXT" get-multi-tex-gen-iv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexGenfvEXT" get-multi-tex-gen-fv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexGendvEXT" get-multi-tex-gen-dv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexEnvivEXT" get-multi-tex-env-iv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureEnvTarget| :direction :in)
+    (:name |pname| :type |TextureEnvParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexEnvfvEXT" get-multi-tex-env-fv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureEnvTarget| :direction :in)
+    (:name |pname| :type |TextureEnvParameter| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexGenivEXT" multi-tex-gen-iv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexGeniEXT" multi-tex-gen-i-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |param| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexGenfvEXT" multi-tex-gen-fv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexGenfEXT" multi-tex-gen-f-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexGendvEXT" multi-tex-gen-dv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |params| :type |Float64| :direction :in :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexGendEXT" multi-tex-gen-d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |pname| :type |TextureGenParameter| :direction :in)
+    (:name |param| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexEnvivEXT" multi-tex-env-iv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureEnvTarget| :direction :in)
+    (:name |pname| :type |TextureEnvParameter| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexEnviEXT" multi-tex-env-i-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureEnvTarget| :direction :in)
+    (:name |pname| :type |TextureEnvParameter| :direction :in)
+    (:name |param| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexEnvfvEXT" multi-tex-env-fv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureEnvTarget| :direction :in)
+    (:name |pname| :type |TextureEnvParameter| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexEnvfEXT" multi-tex-env-f-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureEnvTarget| :direction :in)
+    (:name |pname| :type |TextureEnvParameter| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexCoordPointerEXT" multi-tex-coord-pointer-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |TexCoordPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("DisableClientStateIndexedEXT" disable-client-state-indexed-ext :return
+   "void" :args
+   ((:name |array| :type |EnableCap| :direction :in)
+    (:name |index| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("EnableClientStateIndexedEXT" enable-client-state-indexed-ext :return "void"
+   :args
+   ((:name |array| :type |EnableCap| :direction :in)
+    (:name |index| :type |UInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("BindMultiTextureEXT" bind-multi-texture-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |texture| :type |Texture| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyMultiTexSubImage3DEXT" copy-multi-tex-sub-image-3d-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexSubImage3DEXT" multi-tex-sub-image-3d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexImage3DEXT" multi-tex-image-3d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexLevelParameterivEXT" get-multi-tex-level-parameter-iv-ext
+   :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexLevelParameterfvEXT" get-multi-tex-level-parameter-fv-ext
+   :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexParameterivEXT" get-multi-tex-parameter-iv-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexParameterfvEXT" get-multi-tex-parameter-fv-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetMultiTexImageEXT" get-multi-tex-image-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :out :array t :size
+     (|target| |level| |format| |type|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyMultiTexSubImage2DEXT" copy-multi-tex-sub-image-2d-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyMultiTexSubImage1DEXT" copy-multi-tex-sub-image-1d-ext :return "void"
+   :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyMultiTexImage2DEXT" copy-multi-tex-image-2d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyMultiTexImage1DEXT" copy-multi-tex-image-1d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexSubImage2DEXT" multi-tex-sub-image-2d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexSubImage1DEXT" multi-tex-sub-image-1d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexImage2DEXT" multi-tex-image-2d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexImage1DEXT" multi-tex-image-1d-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexParameterivEXT" multi-tex-parameter-iv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexParameteriEXT" multi-tex-parameter-i-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |param| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexParameterfvEXT" multi-tex-parameter-fv-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MultiTexParameterfEXT" multi-tex-parameter-f-ext :return "void" :args
+   ((:name |texunit| :type |TextureUnit| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyTextureSubImage3DEXT" copy-texture-sub-image-3d-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureSubImage3DEXT" texture-sub-image-3d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureImage3DEXT" texture-image-3d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureLevelParameterivEXT" get-texture-level-parameter-iv-ext :return
+   "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureLevelParameterfvEXT" get-texture-level-parameter-fv-ext :return
+   "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureParameterivEXT" get-texture-parameter-iv-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureParameterfvEXT" get-texture-parameter-fv-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("GetTextureImageEXT" get-texture-image-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :out :array t :size
+     (|target| |level| |format| |type|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyTextureSubImage2DEXT" copy-texture-sub-image-2d-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyTextureSubImage1DEXT" copy-texture-sub-image-1d-ext :return "void"
+   :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyTextureImage2DEXT" copy-texture-image-2d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("CopyTextureImage1DEXT" copy-texture-image-1d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureSubImage2DEXT" texture-sub-image-2d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureSubImage1DEXT" texture-sub-image-1d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureImage2DEXT" texture-image-2d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureImage1DEXT" texture-image-1d-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureParameterivEXT" texture-parameter-iv-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureParameteriEXT" texture-parameter-i-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |param| :type |CheckedInt32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureParameterfvEXT" texture-parameter-fv-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("TextureParameterfEXT" texture-parameter-f-ext :return "void" :args
+   ((:name |texture| :type |Texture| :direction :in)
+    (:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixMultTransposedEXT" matrix-mult-transpose-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float64| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixMultTransposefEXT" matrix-mult-transpose-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float32| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixLoadTransposedEXT" matrix-load-transpose-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float64| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixLoadTransposefEXT" matrix-load-transpose-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float32| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixPushEXT" matrix-push-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)) :category
+   "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixPopEXT" matrix-pop-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)) :category
+   "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixOrthoEXT" matrix-ortho-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |left| :type |Float64| :direction :in)
+    (:name |right| :type |Float64| :direction :in)
+    (:name |bottom| :type |Float64| :direction :in)
+    (:name |top| :type |Float64| :direction :in)
+    (:name |zNear| :type |Float64| :direction :in)
+    (:name |zFar| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixFrustumEXT" matrix-frustum-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |left| :type |Float64| :direction :in)
+    (:name |right| :type |Float64| :direction :in)
+    (:name |bottom| :type |Float64| :direction :in)
+    (:name |top| :type |Float64| :direction :in)
+    (:name |zNear| :type |Float64| :direction :in)
+    (:name |zFar| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixTranslatedEXT" matrix-translate-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixTranslatefEXT" matrix-translate-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixScaledEXT" matrix-scale-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixScalefEXT" matrix-scale-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixRotatedEXT" matrix-rotate-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |angle| :type |Float64| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixRotatefEXT" matrix-rotate-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |angle| :type |Float32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixLoadIdentityEXT" matrix-load-identity-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)) :category
+   "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixMultdEXT" matrix-mult-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float64| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixMultfEXT" matrix-mult-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float32| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixLoaddEXT" matrix-load-d-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float64| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("MatrixLoadfEXT" matrix-load-f-ext :return "void" :args
+   ((:name |mode| :type |MatrixMode| :direction :in)
+    (:name |m| :type |Float32| :direction :in :array t :size #x10))
+   :category "EXT_direct_state_access" :deprecated nil :version nil)
+  ("PushClientAttribDefaultEXT" push-client-attrib-default-ext :return "void"
+   :args ((:name |mask| :type |ClientAttribMask| :direction :in)) :category
+   "EXT_direct_state_access" :deprecated nil :version nil)
+  ("ClientAttribDefaultEXT" client-attrib-default-ext :return "void" :args
+   ((:name |mask| :type |ClientAttribMask| :direction :in)) :category
+   "EXT_direct_state_access" :deprecated nil :version nil))) 

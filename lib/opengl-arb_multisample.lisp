@@ -26,3 +26,8 @@
  ((:name |value| :type |ClampedFloat32| :direction :in)
   (:name |invert| :type |Boolean| :direction :in))
  :category "ARB_multisample" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_multisample|
+ (("SampleCoverageARB" sample-coverage-arb :return "void" :args
+   ((:name |value| :type |ClampedFloat32| :direction :in)
+    (:name |invert| :type |Boolean| :direction :in))
+   :category "ARB_multisample" :deprecated nil :version "1.2"))) 

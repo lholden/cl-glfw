@@ -40,3 +40,28 @@
   (:name |count| :type |SizeI| :direction :in)
   (:name |params| :type |Float32| :direction :in :array t :size count))
  :category "NV_parameter_buffer_object" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_parameter_buffer_object|
+ (("ProgramBufferParametersIuivNV" program-buffer-parameters-i-uiv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size count))
+   :category "NV_parameter_buffer_object" :deprecated nil :version "1.2")
+  ("ProgramBufferParametersIivNV" program-buffer-parameters-i-iv-nv :return
+   "void" :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size count))
+   :category "NV_parameter_buffer_object" :deprecated nil :version "1.2")
+  ("ProgramBufferParametersfvNV" program-buffer-parameters-fv-nv :return "void"
+   :args
+   ((:name |target| :type |ProgramTarget| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size count))
+   :category "NV_parameter_buffer_object" :deprecated nil :version "1.2"))) 

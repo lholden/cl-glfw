@@ -1780,6 +1780,8 @@
            #:+luminance16-snorm+
            #:+luminance16-alpha16-snorm+
            #:+intensity16-snorm+
+           #:+factor-min-amd+
+           #:+factor-max-amd+
            #:+depth-clamp-near-amd+
            #:+depth-clamp-far-amd+
            #:+shader-global-access-barrier-bit-nv+
@@ -2029,6 +2031,12 @@
            #:+rgba16-snorm+
            #:+signed-normalized+
            #:+half-apple+
+           #:load-version_1_2
+           #:load-version_1_3
+           #:load-version_1_4
+           #:load-version_1_5
+           #:load-version_2_0
+           #:load-version_2_1
            #:translate-f
            #:translate-d
            #:scale-f
@@ -2465,6 +2473,11 @@
            #:vertex-attrib-i-3i
            #:vertex-attrib-i-2i
            #:vertex-attrib-i-1i
+           #:load-version_3_0
+           #:load-version_3_1
+           #:load-version_3_2
+           #:load-version_3_3
+           #:load-version_4_0
            #:+max-elements-vertices+
            #:+max-elements-indices+
            #:+current-program+
@@ -2857,33 +2870,50 @@
            #:blend-equation-separate-i
            #:blend-equation-i
            #:min-sample-shading
+           #:load-version_4_1
+           #:multi-draw-elements-indirect-amd
+           #:multi-draw-arrays-indirect-amd
+           #:load-amd_multi_draw_indirect
            #:texture-barrier-nv
+           #:load-nv_texture_barrier
            #:copy-image-sub-data-nv
+           #:load-nv_copy_image
            #:blend-equation-separate-indexed-amd
            #:blend-equation-indexed-amd
            #:blend-func-separate-indexed-amd
            #:blend-func-indexed-amd
+           #:load-amd_draw_buffers_blend
            #:frame-terminator-gremedy
+           #:load-gremedy_frame_terminator
            #:is-enabled-indexed-ext
            #:disable-indexed-ext
            #:enable-indexed-ext
            #:get-integer-indexed-v-ext
            #:get-boolean-indexed-v-ext
            #:color-mask-indexed-ext
+           #:load-ext_draw_buffers2
            #:draw-elements-instanced-ext
            #:draw-arrays-instanced-ext
+           #:load-ext_draw_instanced
            #:program-local-parameters-4fv-ext
            #:program-env-parameters-4fv-ext
+           #:load-ext_gpu_program_parameters
            #:string-marker-gremedy
+           #:load-gremedy_string_marker
            #:get-vertex-attrib-array-object-iv-ati
            #:get-vertex-attrib-array-object-fv-ati
            #:vertex-attrib-array-object-ati
+           #:load-ati_vertex_attrib_array_object
            #:unmap-object-buffer-ati
            #:map-object-buffer-ati
+           #:load-ati_map_object_buffer
            #:igloo-interface-sgix
+           #:load-sgix_igloo_interface
            #:tbuffer-mask-3dfx
+           #:load-3dfx_tbuffer
            #:multi-mode-draw-elements-ibm
            #:multi-mode-draw-arrays-ibm
+           #:load-ibm_multimode_draw_arrays
            #:window-pos-4sv-mesa
            #:window-pos-4s-mesa
            #:window-pos-4iv-mesa
@@ -2908,8 +2938,11 @@
            #:window-pos-2f-mesa
            #:window-pos-2dv-mesa
            #:window-pos-2d-mesa
+           #:load-mesa_window_pos
            #:resize-buffers-mesa
+           #:load-mesa_resize_buffers
            #:blend-func-separate-ingr
+           #:load-ingr_blend_func_separate
            #:replacement-codeui-tex-coord-2f-color-4f-normal-3f-vertex-3fv-sun
            #:replacement-codeui-tex-coord-2f-color-4f-normal-3f-vertex-3f-sun
            #:replacement-codeui-tex-coord-2f-normal-3f-vertex-3fv-sun
@@ -2950,29 +2983,39 @@
            #:color-4ub-vertex-3f-sun
            #:color-4ub-vertex-2fv-sun
            #:color-4ub-vertex-2f-sun
+           #:load-sun_vertex
            #:multi-draw-elements-ext
            #:multi-draw-arrays-ext
+           #:load-ext_multi_draw_arrays
            #:copy-color-sub-table-ext
            #:color-sub-table-ext
+           #:load-ext_color_subtable
            #:flush-raster-sgix
+           #:load-sgix_flush_raster
            #:tag-sample-buffer-sgix
+           #:load-sgix_tag_sample_buffer
            #:copy-tex-sub-image-3d-ext
            #:copy-tex-sub-image-2d-ext
            #:copy-tex-sub-image-1d-ext
            #:copy-tex-image-2d-ext
            #:copy-tex-image-1d-ext
+           #:load-ext_copy_texture
            #:tex-sub-image-2d-ext
            #:tex-sub-image-1d-ext
+           #:load-ext_subtexture
            #:blend-func-separate-i-arb
            #:blend-func-i-arb
            #:blend-equation-separate-i-arb
            #:blend-equation-i-arb
+           #:load-arb_draw_buffers_blend
            #:multi-draw-elements-base-vertex
            #:draw-elements-instanced-base-vertex
            #:draw-range-elements-base-vertex
            #:draw-elements-base-vertex
+           #:load-arb_draw_elements_base_vertex
            #:draw-elements-instanced-arb
            #:draw-arrays-instanced-arb
+           #:load-arb_draw_instanced
            #:window-pos-3sv-arb
            #:window-pos-3s-arb
            #:window-pos-3iv-arb
@@ -2989,6 +3032,7 @@
            #:window-pos-2f-arb
            #:window-pos-2dv-arb
            #:window-pos-2d-arb
+           #:load-arb_window_pos
            #:+texture2-arb+
            #:+texture3-arb+
            #:+texture4-arb+
@@ -3056,6 +3100,7 @@
            #:multi-tex-coord-1d-arb
            #:client-active-texture-arb
            #:active-texture-arb
+           #:load-arb_multitexture
            #:+transpose-modelview-matrix-arb+
            #:+transpose-projection-matrix-arb+
            #:+transpose-texture-matrix-arb+
@@ -3064,6 +3109,7 @@
            #:mult-transpose-matrix-f-arb
            #:load-transpose-matrix-d-arb
            #:load-transpose-matrix-f-arb
+           #:load-arb_transpose_matrix
            #:+multisample-arb+
            #:+sample-alpha-to-coverage-arb+
            #:+sample-alpha-to-one-arb+
@@ -3074,6 +3120,7 @@
            #:+sample-coverage-invert-arb+
            #:+multisample-bit-arb+
            #:sample-coverage-arb
+           #:load-arb_multisample
            #:+compressed-alpha-arb+
            #:+compressed-luminance-arb+
            #:+compressed-luminance-alpha-arb+
@@ -3092,12 +3139,14 @@
            #:compressed-tex-image-1d-arb
            #:compressed-tex-image-2d-arb
            #:compressed-tex-image-3d-arb
+           #:load-arb_texture_compression
            #:+point-size-min-arb+
            #:+point-size-max-arb+
            #:+point-fade-threshold-size-arb+
            #:+point-distance-attenuation-arb+
            #:point-parameter-fv-arb
            #:point-parameter-f-arb
+           #:load-arb_point_parameters
            #:+max-vertex-units-oes+
            #:+weight-array-oes+
            #:+weight-array-type-oes+
@@ -3156,6 +3205,7 @@
            #:weight-iv-arb
            #:weight-sv-arb
            #:weight-bv-arb
+           #:load-arb_vertex_blend
            #:+matrix-palette-oes+
            #:+max-palette-matrices-oes+
            #:+current-palette-matrix-oes+
@@ -3180,6 +3230,7 @@
            #:matrix-index-usv-arb
            #:matrix-index-ubv-arb
            #:current-palette-matrix-arb
+           #:load-arb_matrix_palette
            #:+color-sum-arb+
            #:is-program-arb
            #:get-vertex-attrib-pointerv-arb
@@ -3243,6 +3294,7 @@
            #:vertex-attrib-1f-arb
            #:vertex-attrib-1dv-arb
            #:vertex-attrib-1d-arb
+           #:load-arb_vertex_program
            #:+weight-array-buffer-binding-oes+
            #:+program-instructions-arb+
            #:+max-program-instructions-arb+
@@ -3307,6 +3359,7 @@
            #:gen-buffers-arb
            #:delete-buffers-arb
            #:bind-buffer-arb
+           #:load-arb_vertex_buffer_object
            #:+query-counter-bits-arb+
            #:+current-query-arb+
            #:+query-result-arb+
@@ -3319,6 +3372,7 @@
            #:is-query-arb
            #:delete-queries-arb
            #:gen-queries-arb
+           #:load-arb_occlusion_query
            #:get-shader-source-arb
            #:get-uniform-iv-arb
            #:get-uniform-fv-arb
@@ -3358,9 +3412,11 @@
            #:detach-object-arb
            #:get-handle-arb
            #:delete-object-arb
+           #:load-arb_shader_objects
            #:get-attrib-location-arb
            #:get-active-attrib-arb
            #:bind-attrib-location-arb
+           #:load-arb_vertex_shader
            #:+max-draw-buffers-arb+
            #:+draw-buffer0-arb+
            #:+draw-buffer1-arb+
@@ -3379,6 +3435,7 @@
            #:+draw-buffer14-arb+
            #:+draw-buffer15-arb+
            #:draw-buffers-arb
+           #:load-arb_draw_buffers
            #:+writeonly-rendering-qcom+
            #:+max-draw-buffers+
            #:+draw-buffer0+
@@ -3403,6 +3460,7 @@
            #:+clamp-read-color-arb+
            #:+fixed-only-arb+
            #:clamp-color-arb
+           #:load-arb_color_buffer_float
            #:+invalid-framebuffer-operation+
            #:+framebuffer-attachment-color-encoding+
            #:+framebuffer-attachment-component-type+
@@ -3499,6 +3557,7 @@
            #:delete-renderbuffers
            #:bind-renderbuffer
            #:is-renderbuffer
+           #:load-arb_framebuffer_object
            #:+lines-adjacency-arb+
            #:+line-strip-adjacency-arb+
            #:+triangles-adjacency-arb+
@@ -3515,8 +3574,10 @@
            #:framebuffer-texture-layer-arb
            #:framebuffer-texture-arb
            #:program-parameter-i-arb
+           #:load-arb_geometry_shader4
            #:+vertex-attrib-array-divisor-arb+
            #:vertex-attrib-divisor-arb
+           #:load-arb_instanced_arrays
            #:+map-read-bit+
            #:+map-write-bit+
            #:+map-invalidate-range-bit+
@@ -3525,17 +3586,20 @@
            #:+map-unsynchronized-bit+
            #:flush-mapped-buffer-range
            #:map-buffer-range
+           #:load-arb_map_buffer_range
            #:+texture-buffer-arb+
            #:+max-texture-buffer-size-arb+
            #:+texture-binding-buffer-arb+
            #:+texture-buffer-data-store-binding-arb+
            #:+texture-buffer-format-arb+
            #:tex-buffer-arb
+           #:load-arb_texture_buffer_object
            #:+vertex-array-binding+
            #:is-vertex-array
            #:gen-vertex-arrays
            #:delete-vertex-arrays
            #:bind-vertex-array
+           #:load-arb_vertex_array_object
            #:+uniform-buffer+
            #:+uniform-buffer-binding+
            #:+uniform-buffer-start+
@@ -3574,11 +3638,14 @@
            #:get-active-uniform-name
            #:get-active-uniforms-iv
            #:get-uniform-indices
+           #:load-arb_uniform_buffer_object
            #:+copy-read-buffer+
            #:+copy-write-buffer+
            #:copy-buffer-sub-data
+           #:load-arb_copy_buffer
            #:+quads-follow-provoking-vertex-convention+
            #:provoking-vertex
+           #:load-arb_provoking_vertex
            #:+max-server-wait-timeout+
            #:+object-type+
            #:+sync-condition+
@@ -3601,6 +3668,7 @@
            #:delete-sync
            #:is-sync
            #:fence-sync
+           #:load-arb_sync
            #:+sample-position+
            #:+sample-mask+
            #:+sample-mask-value+
@@ -3626,9 +3694,11 @@
            #:get-multisample-fv
            #:tex-image-3dmultisample
            #:tex-image-2dmultisample
+           #:load-arb_texture_multisample
            #:+sample-shading-arb+
            #:+min-sample-shading-value-arb+
            #:min-sample-shading-arb
+           #:load-arb_sample_shading
            #:+unsigned-int-10-10-10-2-oes+
            #:+int-10-10-10-2-oes+
            #:+named-string-length-arb+
@@ -3639,12 +3709,14 @@
            #:compile-shader-include-arb
            #:delete-named-string-arb
            #:named-string-arb
+           #:load-arb_shading_language_include
            #:+src1-color+
            #:+one-minus-src1-color+
            #:+one-minus-src1-alpha+
            #:+max-dual-source-draw-buffers+
            #:get-frag-data-index
            #:bind-frag-data-location-indexed
+           #:load-arb_blend_func_extended
            #:+sampler-binding+
            #:get-sampler-parameter-i-uiv
            #:get-sampler-parameter-fv
@@ -3660,11 +3732,13 @@
            #:is-sampler
            #:delete-samplers
            #:gen-samplers
+           #:load-arb_sampler_objects
            #:+depth-component16-nonlinear-nv+
            #:+timestamp+
            #:get-query-objectui-64v
            #:get-query-objecti-64v
            #:query-counter
+           #:load-arb_timer_query
            #:+int-2-10-10-10-rev+
            #:vertex-attrib-p-4uiv
            #:vertex-attrib-p-4ui
@@ -3704,10 +3778,12 @@
            #:vertex-p-3ui
            #:vertex-p-2uiv
            #:vertex-p-2ui
+           #:load-arb_vertex_type_2_10_10_10_rev
            #:+draw-indirect-buffer+
            #:+draw-indirect-buffer-binding+
            #:draw-elements-indirect
            #:draw-arrays-indirect
+           #:load-arb_draw_indirect
            #:get-uniform-dv
            #:uniform-matrix-4x-3dv
            #:uniform-matrix-4x-2dv
@@ -3726,6 +3802,7 @@
            #:uniform-3d
            #:uniform-2d
            #:uniform-1d
+           #:load-arb_gpu_shader_fp64
            #:+active-subroutines+
            #:+active-subroutine-uniforms+
            #:+active-subroutine-uniform-locations+
@@ -3745,6 +3822,7 @@
            #:get-active-subroutine-uniform-iv
            #:get-subroutine-index
            #:get-subroutine-uniform-location
+           #:load-arb_shader_subroutine
            #:+patch-vertices+
            #:+patch-default-inner-level+
            #:+patch-default-outer-level+
@@ -3778,6 +3856,7 @@
            #:+tess-control-shader+
            #:patch-parameter-fv
            #:patch-parameter-i
+           #:load-arb_tessellation_shader
            #:+transform-feedback+
            #:+transform-feedback-buffer-paused+
            #:+transform-feedback-buffer-active+
@@ -3789,17 +3868,20 @@
            #:gen-transform-feedbacks
            #:delete-transform-feedbacks
            #:bind-transform-feedback
+           #:load-arb_transform_feedback2
            #:+max-transform-feedback-buffers+
            #:get-query-indexed-iv
            #:end-query-indexed
            #:begin-query-indexed
            #:draw-transform-feedback-stream
+           #:load-arb_transform_feedback3
            #:+shader-binary-formats+
            #:clear-depth-f
            #:depth-range-f
            #:get-shader-precision-format
            #:shader-binary
            #:release-shader-compiler
+           #:load-arb_es2_compatibility
            #:+stencil-back-func+
            #:+stencil-back-fail+
            #:+stencil-back-pass-depth-fail+
@@ -3807,6 +3889,7 @@
            #:program-parameter-i
            #:program-binary
            #:get-program-binary
+           #:load-arb_get_program_binary
            #:get-program-pipeline-info-log
            #:validate-program-pipeline
            #:program-uniform-matrix-4x-3dv
@@ -3867,6 +3950,7 @@
            #:create-shader-programv
            #:active-shader-program
            #:use-program-stages
+           #:load-arb_separate_shader_objects
            #:+double-mat2+
            #:+double-mat3+
            #:+double-mat4+
@@ -3886,6 +3970,7 @@
            #:vertex-attrib-l-3d
            #:vertex-attrib-l-2d
            #:vertex-attrib-l-1d
+           #:load-arb_vertex_attrib_64bit
            #:+fragments-instrument-sgix+
            #:+fragments-instrument-counters-sgix+
            #:+fragments-instrument-max-sgix+
@@ -3902,9 +3987,11 @@
            #:viewport-indexed-fv
            #:viewport-indexed-f
            #:viewport-arrayv
+           #:load-arb_viewport_array
            #:+sync-cl-event-arb+
            #:+sync-cl-event-complete-arb+
            #:create-sync-from-clevent-arb
+           #:load-arb_cl_event
            #:+debug-output-synchronous-arb+
            #:+debug-next-logged-message-length-arb+
            #:+debug-callback-function-arb+
@@ -3931,6 +4018,7 @@
            #:debug-message-callback-arb
            #:debug-message-insert-arb
            #:debug-message-control-arb
+           #:load-arb_debug_output
            #:+context-flag-robust-access-bit-arb+
            #:+lose-context-on-reset-arb+
            #:+guilty-context-reset-arb+
@@ -3958,18 +4046,23 @@
            #:getn-map-fv-arb
            #:getn-map-dv-arb
            #:get-graphics-reset-status-arb
+           #:load-arb_robustness
            #:blend-color-ext
+           #:load-ext_blend_color
            #:+polygon-offset-ext+
            #:+polygon-offset-factor-ext+
            #:polygon-offset-ext
+           #:load-ext_polygon_offset
            #:+texture-3d-binding-oes+
            #:+texture-3d-oes+
            #:+texture-wrap-r-oes+
            #:+max-3d-texture-size-oes+
            #:tex-sub-image-3d-ext
            #:tex-image-3d-ext
+           #:load-ext_texture3d
            #:tex-filter-func-sgis
            #:get-tex-filter-func-sgis
+           #:load-sgis_texture_filter4
            #:+unsigned-byte-3-3-2+
            #:+unsigned-short-4-4-4-4+
            #:+unsigned-short-5-5-5-1+
@@ -3992,6 +4085,7 @@
            #:get-histogram-parameter-iv-ext
            #:get-histogram-parameter-fv-ext
            #:get-histogram-ext
+           #:load-ext_histogram
            #:separable-filter-2d-ext
            #:get-separable-filter-ext
            #:get-convolution-parameter-iv-ext
@@ -4005,6 +4099,7 @@
            #:convolution-parameter-f-ext
            #:convolution-filter-2d-ext
            #:convolution-filter-1d-ext
+           #:load-ext_convolution
            #:+bgr+
            #:get-color-table-parameteriv-sgi
            #:get-color-table-parameterfv-sgi
@@ -4013,6 +4108,7 @@
            #:color-table-parameteriv-sgi
            #:color-table-parameterfv-sgi
            #:color-table-sgi
+           #:load-sgi_color_table
            #:+pixel-group-color-sgis+
            #:get-pixel-tex-gen-parameter-fv-sgis
            #:get-pixel-tex-gen-parameter-iv-sgis
@@ -4020,13 +4116,16 @@
            #:pixel-tex-gen-parameter-f-sgis
            #:pixel-tex-gen-parameter-iv-sgis
            #:pixel-tex-gen-parameter-i-sgis
+           #:load-sgis_pixel_texture
            #:+texture-min-lod+
            #:+texture-max-lod+
            #:+texture-base-level+
            #:+texture-max-level+
            #:pixel-tex-gen-sgix
+           #:load-sgix_pixel_texture
            #:tex-sub-image-4d-sgis
            #:tex-image-4d-sgis
+           #:load-sgis_texture4d
            #:+pack-skip-images+
            #:+pack-image-height+
            #:+unpack-skip-images+
@@ -4046,6 +4145,7 @@
            #:delete-textures-ext
            #:bind-texture-ext
            #:are-textures-resident-ext
+           #:load-ext_texture_object
            #:+multisample+
            #:+sample-alpha-to-coverage+
            #:+sample-alpha-to-one+
@@ -4056,10 +4156,13 @@
            #:+sample-coverage-invert+
            #:get-detail-tex-func-sgis
            #:detail-tex-func-sgis
+           #:load-sgis_detail_texture
            #:get-sharpen-tex-func-sgis
            #:sharpen-tex-func-sgis
+           #:load-sgis_sharpen_texture
            #:sample-pattern-sgis
            #:sample-mask-sgis
+           #:load-sgis_multisample
            #:+vertex-array-ext+
            #:+normal-array-ext+
            #:+color-array-ext+
@@ -4095,9 +4198,11 @@
            #:draw-arrays-ext
            #:color-pointer-ext
            #:array-element-ext
+           #:load-ext_vertex_array
            #:+blend-equation-rgb+
            #:+blend-equation-rgb-oes+
            #:blend-equation-ext
+           #:load-ext_blend_minmax
            #:+sprite-axial-sgix+
            #:+sprite-object-aligned-sgix+
            #:+sprite-eye-aligned-sgix+
@@ -4105,30 +4210,38 @@
            #:sprite-parameter-i-sgix
            #:sprite-parameter-fv-sgix
            #:sprite-parameter-f-sgix
+           #:load-sgix_sprite
            #:+point-size-min-ext+
            #:+point-size-max-ext+
            #:+point-fade-threshold-size-ext+
            #:+distance-attenuation-ext+
            #:point-parameter-fv-ext
            #:point-parameter-f-ext
+           #:load-ext_point_parameters
            #:point-parameter-fv-sgis
            #:point-parameter-f-sgis
+           #:load-sgis_point_parameters
            #:stop-instruments-sgix
            #:start-instruments-sgix
            #:read-instruments-sgix
            #:poll-instruments-sgix
            #:instruments-buffer-sgix
            #:get-instruments-sgix
+           #:load-sgix_instruments
            #:frame-zoom-sgix
+           #:load-sgix_framezoom
            #:+max-deformation-order-sgix+
            #:load-identity-deformation-map-sgix
            #:deform-sgix
            #:deformation-map-3f-sgix
            #:deformation-map-3d-sgix
+           #:load-sgix_polynomial_ffd
            #:reference-plane-sgix
+           #:load-sgix_reference_plane
            #:+clamp-to-border+
            #:get-fog-func-sgis
            #:fog-func-sgis
+           #:load-sgis_fog_function
            #:+image-scale-x-hp+
            #:+image-scale-y-hp+
            #:+image-translate-x-hp+
@@ -4150,6 +4263,7 @@
            #:image-transform-parameter-iv-hp
            #:image-transform-parameter-f-hp
            #:image-transform-parameter-i-hp
+           #:load-hp_image_transform
            #:+prefer-doublebuffer-hint-pgi+
            #:+conserve-memory-hint-pgi+
            #:+reclaim-memory-hint-pgi+
@@ -4171,6 +4285,7 @@
            #:+wide-line-hint-pgi+
            #:+back-normals-hint-pgi+
            #:hint-pgi
+           #:load-pgi_misc_hints
            #:+color-index1-ext+
            #:+color-index2-ext+
            #:+color-index4-ext+
@@ -4182,29 +4297,35 @@
            #:get-color-table-parameter-iv-ext
            #:get-color-table-ext
            #:color-table-ext
+           #:load-ext_paletted_texture
            #:list-parameter-iv-sgix
            #:list-parameter-i-sgix
            #:list-parameter-fv-sgix
            #:list-parameter-f-sgix
            #:get-list-parameter-iv-sgix
            #:get-list-parameter-fv-sgix
+           #:load-sgix_list_priority
            #:+index-material-ext+
            #:+index-material-parameter-ext+
            #:+index-material-face-ext+
            #:index-material-ext
+           #:load-ext_index_material
            #:+index-test-ext+
            #:+index-test-func-ext+
            #:+index-test-ref-ext+
            #:index-func-ext
+           #:load-ext_index_func
            #:+array-element-lock-first-ext+
            #:+array-element-lock-count-ext+
            #:unlock-arrays-ext
            #:lock-arrays-ext
+           #:load-ext_compiled_vertex_array
            #:+cull-vertex-ext+
            #:+cull-vertex-eye-position-ext+
            #:+cull-vertex-object-position-ext+
            #:cull-parameter-fv-ext
            #:cull-parameter-dv-ext
+           #:load-ext_cull_vertex
            #:+current-raster-normal-sgix+
            #:light-env-i-sgix
            #:get-fragment-material-iv-sgix
@@ -4224,18 +4345,22 @@
            #:fragment-light-fv-sgix
            #:fragment-light-f-sgix
            #:fragment-color-material-sgix
+           #:load-sgix_fragment_lighting
            #:+max-elements-vertices-ext+
            #:+max-elements-indices-ext+
            #:draw-range-elements-ext
+           #:load-ext_draw_range_elements
            #:texture-material-ext
            #:texture-light-ext
            #:apply-texture-ext
+           #:load-ext_light_texture
            #:is-async-marker-sgix
            #:delete-async-markers-sgix
            #:gen-async-markers-sgix
            #:poll-async-sgix
            #:finish-async-sgix
            #:async-marker-sgix
+           #:load-sgix_async
            #:+parallel-arrays-intel+
            #:+vertex-array-parallel-pointers-intel+
            #:+normal-array-parallel-pointers-intel+
@@ -4245,6 +4370,7 @@
            #:color-pointerv-intel
            #:normal-pointerv-intel
            #:vertex-pointerv-intel
+           #:load-intel_parallel_arrays
            #:+fragment-material-ext+
            #:+fragment-normal-ext+
            #:+fragment-color-ext+
@@ -4267,6 +4393,7 @@
            #:pixel-transform-parameter-iv-ext
            #:pixel-transform-parameter-f-ext
            #:pixel-transform-parameter-i-ext
+           #:load-ext_pixel_transform
            #:+color-sum-ext+
            #:+current-secondary-color-ext+
            #:+secondary-color-array-size-ext+
@@ -4291,9 +4418,11 @@
            #:secondary-color-3d-ext
            #:secondary-color-3bv-ext
            #:secondary-color-3b-ext
+           #:load-ext_secondary_color
            #:+perturb-ext+
            #:+texture-normal-ext+
            #:texture-normal-ext
+           #:load-ext_texture_perturb_normal
            #:+fog-coordinate-source-ext+
            #:+fog-coordinate-ext+
            #:+fragment-depth-ext+
@@ -4307,6 +4436,7 @@
            #:fog-coord-d-ext
            #:fog-coord-fv-ext
            #:fog-coord-f-ext
+           #:load-ext_fog_coord
            #:+tangent-array-ext+
            #:+binormal-array-ext+
            #:+current-tangent-ext+
@@ -4343,9 +4473,11 @@
            #:tangent-3d-ext
            #:tangent-3bv-ext
            #:tangent-3b-ext
+           #:load-ext_coordinate_frame
            #:+unpack-constant-data-sunx+
            #:+texture-constant-data-sunx+
            #:finish-texture-sunx
+           #:load-sunx_constant_data
            #:+global-alpha-sun+
            #:+global-alpha-factor-sun+
            #:global-alpha-factor-ui-sun
@@ -4356,6 +4488,7 @@
            #:global-alpha-factor-i-sun
            #:global-alpha-factor-s-sun
            #:global-alpha-factor-b-sun
+           #:load-sun_global_alpha
            #:+restart-sun+
            #:+replace-middle-sun+
            #:+replace-oldest-sun+
@@ -4380,6 +4513,7 @@
            #:replacement-code-ub-sun
            #:replacement-code-us-sun
            #:replacement-code-ui-sun
+           #:load-sun_triangle_list
            #:+blend-dst-rgb-oes+
            #:+blend-src-rgb-oes+
            #:+blend-dst-alpha-oes+
@@ -4389,6 +4523,7 @@
            #:+blend-dst-alpha-ext+
            #:+blend-src-alpha-ext+
            #:blend-func-separate-ext
+           #:load-ext_blend_func_separate
            #:+modelview-matrix1-ext+
            #:+incr-wrap+
            #:+decr-wrap+
@@ -4418,6 +4553,7 @@
            #:vertex-weight-pointer-ext
            #:vertex-weight-fv-ext
            #:vertex-weight-f-ext
+           #:load-ext_vertex_weighting
            #:+vertex-array-range-nv+
            #:+vertex-array-range-length-nv+
            #:+vertex-array-range-valid-nv+
@@ -4425,6 +4561,7 @@
            #:+vertex-array-range-pointer-nv+
            #:vertex-array-range-nv
            #:flush-vertex-array-range-nv
+           #:load-nv_vertex_array_range
            #:+register-combiners-nv+
            #:+variable-a-nv+
            #:+variable-b-nv+
@@ -4458,6 +4595,7 @@
            #:combiner-parameter-iv-nv
            #:combiner-parameter-f-nv
            #:combiner-parameter-fv-nv
+           #:load-nv_register_combiners
            #:+vertex-array-list-ibm+
            #:+normal-array-list-ibm+
            #:+color-array-list-ibm+
@@ -4482,6 +4620,7 @@
            #:edge-flag-pointer-list-ibm
            #:secondary-color-pointer-list-ibm
            #:color-pointer-list-ibm
+           #:load-ibm_vertex_array_lists
            #:+multisample-ext+
            #:+sample-alpha-to-mask-ext+
            #:+sample-alpha-to-one-ext+
@@ -4501,8 +4640,10 @@
            #:+multisample-bit-ext+
            #:sample-pattern-ext
            #:sample-mask-ext
+           #:load-ext_multisample
            #:+texture-color-writemask-sgis+
            #:texture-color-mask-sgis
+           #:load-sgis_texture_color_mask
            #:+all-completed-nv+
            #:+fence-status-nv+
            #:+fence-condition-nv+
@@ -4513,6 +4654,7 @@
            #:is-fence-nv
            #:gen-fences-nv
            #:delete-fences-nv
+           #:load-nv_fence
            #:+eval-vertex-atrrib0-nv+
            #:+eval-vertex-atrrib1-nv+
            #:+eval-vertex-atrrib2-nv+
@@ -4562,6 +4704,7 @@
            #:map-parameter-fv-nv
            #:map-parameter-iv-nv
            #:map-control-points-nv
+           #:load-nv_evaluators
            #:+unsigned-identity-nv+
            #:+unsigned-invert-nv+
            #:+expand-normal-nv+
@@ -4599,6 +4742,7 @@
            #:+per-stage-constants-nv+
            #:get-combiner-stage-parameter-fv-nv
            #:combiner-stage-parameter-fv-nv
+           #:load-nv_register_combiners2
            #:+vertex-program-nv+
            #:+vertex-state-program-nv+
            #:+attrib-array-size-nv+
@@ -4746,6 +4890,7 @@
            #:delete-programs-nv
            #:bind-program-nv
            #:are-programs-resident-nv
+           #:load-nv_vertex_program
            #:+bump-rot-matrix-ati+
            #:+bump-rot-matrix-size-ati+
            #:+bump-num-tex-units-ati+
@@ -4758,6 +4903,7 @@
            #:get-tex-bump-parameter-iv-ati
            #:tex-bump-parameter-fv-ati
            #:tex-bump-parameter-iv-ati
+           #:load-ati_envmap_bumpmap
            #:+fragment-shader-ati+
            #:+reg-0-ati+
            #:+reg-1-ati+
@@ -4876,6 +5022,7 @@
            #:delete-fragment-shader-ati
            #:bind-fragment-shader-ati
            #:gen-fragment-shaders-ati
+           #:load-ati_fragment_shader
            #:+3dc-x-amd+
            #:+3dc-xy-amd+
            #:+pn-triangles-ati+
@@ -4889,6 +5036,7 @@
            #:+pn-triangles-normal-mode-quadratic-ati+
            #:pntriangles-f-ati
            #:pntriangles-i-ati
+           #:load-ati_pn_triangles
            #:+buffer-size+
            #:+buffer-usage+
            #:+buffer-size-arb+
@@ -4913,6 +5061,7 @@
            #:update-object-buffer-ati
            #:is-object-buffer-ati
            #:new-object-buffer-ati
+           #:load-ati_vertex_array_object
            #:+atc-rgba-interpolated-alpha-amd+
            #:+vertex-shader-ext+
            #:+vertex-shader-binding-ext+
@@ -5066,6 +5215,7 @@
            #:bind-vertex-shader-ext
            #:end-vertex-shader-ext
            #:begin-vertex-shader-ext
+           #:load-ext_vertex_shader
            #:+max-vertex-streams-ati+
            #:+vertex-stream0-ati+
            #:+vertex-stream1-ati+
@@ -5121,13 +5271,16 @@
            #:vertex-stream-1i-ati
            #:vertex-stream-1sv-ati
            #:vertex-stream-1s-ati
+           #:load-ati_vertex_streams
            #:+element-array-ati+
            #:+element-array-type-ati+
            #:+element-array-pointer-ati+
            #:draw-range-element-array-ati
            #:draw-element-array-ati
            #:element-pointer-ati
+           #:load-ati_element_array
            #:draw-mesh-arrays-sun
+           #:load-sun_mesh_array
            #:+pixel-counter-bits-nv+
            #:+current-occlusion-query-id-nv+
            #:+pixel-count-nv+
@@ -5139,6 +5292,7 @@
            #:is-occlusion-query-nv
            #:delete-occlusion-queries-nv
            #:gen-occlusion-queries-nv
+           #:load-nv_occlusion_query
            #:+query-counter-bits+
            #:+current-query+
            #:+query-result+
@@ -5148,11 +5302,13 @@
            #:+point-sprite-r-mode-nv+
            #:point-parameter-iv-nv
            #:point-parameter-i-nv
+           #:load-nv_point_sprite
            #:+samples-passed+
            #:+samples-passed-arb+
            #:+stencil-test-two-side-ext+
            #:+active-stencil-face-ext+
            #:active-stencil-face-ext
+           #:load-ext_stencil_two_side
            #:+element-array-apple+
            #:+element-array-type-apple+
            #:+element-array-pointer-apple+
@@ -5161,6 +5317,7 @@
            #:draw-range-element-array-apple
            #:draw-element-array-apple
            #:element-pointer-apple
+           #:load-apple_element_array
            #:+draw-pixels-apple+
            #:+fence-apple+
            #:finish-object-apple
@@ -5171,11 +5328,13 @@
            #:set-fence-apple
            #:delete-fences-apple
            #:gen-fences-apple
+           #:load-apple_fence
            #:+vertex-array-binding-apple+
            #:is-vertex-array-apple
            #:gen-vertex-arrays-apple
            #:delete-vertex-arrays-apple
            #:bind-vertex-array-apple
+           #:load-apple_vertex_array_object
            #:+vertex-array-range-apple+
            #:+vertex-array-range-length-apple+
            #:+vertex-array-storage-hint-apple+
@@ -5183,6 +5342,7 @@
            #:vertex-array-parameter-i-apple
            #:flush-vertex-array-range-apple
            #:vertex-array-range-apple
+           #:load-apple_vertex_array_range
            #:+blend-equation-alpha+
            #:+max-draw-buffers-ati+
            #:+draw-buffer0-ati+
@@ -5202,6 +5362,7 @@
            #:+draw-buffer14-ati+
            #:+draw-buffer15-ati+
            #:draw-buffers-ati
+           #:load-ati_draw_buffers
            #:+max-vertex-attribs+
            #:+vertex-attrib-array-normalized+
            #:+max-vertex-attribs-arb+
@@ -5213,6 +5374,7 @@
            #:program-named-parameter-4fv-nv
            #:program-named-parameter-4d-nv
            #:program-named-parameter-4f-nv
+           #:load-nv_fragment_program
            #:+fixed-oes+
            #:+half-float-nv+
            #:vertex-attribs-4hv-nv
@@ -5261,6 +5423,7 @@
            #:vertex-3h-nv
            #:vertex-2hv-nv
            #:vertex-2h-nv
+           #:load-nv_half_float
            #:+write-pixel-data-range-nv+
            #:+read-pixel-data-range-nv+
            #:+write-pixel-data-range-length-nv+
@@ -5269,16 +5432,19 @@
            #:+read-pixel-data-range-pointer-nv+
            #:flush-pixel-data-range-nv
            #:pixel-data-range-nv
+           #:load-nv_pixel_data_range
            #:+primitive-restart-nv+
            #:+primitive-restart-index-nv+
            #:primitive-restart-index-nv
            #:primitive-restart-nv
+           #:load-nv_primitive_restart
            #:+stencil-back-func-ati+
            #:+stencil-back-fail-ati+
            #:+stencil-back-pass-depth-fail-ati+
            #:+stencil-back-pass-depth-pass-ati+
            #:stencil-func-separate-ati
            #:stencil-op-separate-ati
+           #:load-ati_separate_stencil
            #:+array-buffer+
            #:+element-array-buffer+
            #:+array-buffer-binding+
@@ -5287,10 +5453,12 @@
            #:+depth-bounds-test-ext+
            #:+depth-bounds-ext+
            #:depth-bounds-ext
+           #:load-ext_depth_bounds_test
            #:+blend-equation-alpha-oes+
            #:+blend-equation-rgb-ext+
            #:+blend-equation-alpha-ext+
            #:blend-equation-separate-ext
+           #:load-ext_blend_equation_separate
            #:+invalid-framebuffer-operation-oes+
            #:+invalid-framebuffer-operation-ext+
            #:+max-renderbuffer-size-ext+
@@ -5360,18 +5528,22 @@
            #:delete-renderbuffers-ext
            #:bind-renderbuffer-ext
            #:is-renderbuffer-ext
+           #:load-ext_framebuffer_object
            #:+stencil-tag-bits-ext+
            #:+stencil-clear-tag-value-ext+
            #:stencil-clear-tag-ext
+           #:load-ext_stencil_clear_tag
            #:+read-framebuffer-ext+
            #:+draw-framebuffer-ext+
            #:+draw-framebuffer-binding-ext+
            #:+read-framebuffer-binding-ext+
            #:blit-framebuffer-ext
+           #:load-ext_framebuffer_blit
            #:+renderbuffer-samples-ext+
            #:+framebuffer-incomplete-multisample-ext+
            #:+max-samples-ext+
            #:renderbuffer-storage-multisample-ext
+           #:load-ext_framebuffer_multisample
            #:+matrix0-arb+
            #:+matrix1-arb+
            #:+matrix2-arb+
@@ -5425,10 +5597,12 @@
            #:+time-elapsed-ext+
            #:get-query-objectui-64v-ext
            #:get-query-objecti-64v-ext
+           #:load-ext_timer_query
            #:+buffer-serialized-modify-apple+
            #:+buffer-flushing-unmap-apple+
            #:flush-mapped-buffer-range-apple
            #:buffer-parameter-i-apple
+           #:load-apple_flush_buffer_range
            #:+min-program-texel-offset-nv+
            #:+max-program-texel-offset-nv+
            #:+program-attrib-components-nv+
@@ -5451,6 +5625,7 @@
            #:program-local-parameters-i-4iv-nv
            #:program-local-parameter-i-4iv-nv
            #:program-local-parameter-i-4i-nv
+           #:load-nv_gpu_program4
            #:+geometry-program-nv+
            #:+max-program-output-vertices-nv+
            #:+max-program-total-output-components-nv+
@@ -5458,6 +5633,7 @@
            #:framebuffer-texture-layer-ext
            #:framebuffer-texture-ext
            #:program-vertex-limit-nv
+           #:load-nv_geometry_program4
            #:+geometry-vertices-out-arb+
            #:+geometry-input-type-arb+
            #:+geometry-output-type-arb+
@@ -5486,6 +5662,7 @@
            #:+framebuffer-attachment-layered-ext+
            #:+program-point-size-ext+
            #:program-parameter-i-ext
+           #:load-ext_geometry_shader4
            #:+vertex-attrib-array-integer-nv+
            #:get-vertex-attrib-i-uiv-ext
            #:get-vertex-attrib-i-iv-ext
@@ -5510,6 +5687,7 @@
            #:vertex-attrib-i-3i-ext
            #:vertex-attrib-i-2i-ext
            #:vertex-attrib-i-1i-ext
+           #:load-nv_vertex_program4
            #:+sampler-1d-array-ext+
            #:+sampler-2d-array-ext+
            #:+sampler-buffer-ext+
@@ -5546,12 +5724,14 @@
            #:get-frag-data-location-ext
            #:bind-frag-data-location-ext
            #:get-uniform-uiv-ext
+           #:load-ext_gpu_shader4
            #:+texture-buffer-ext+
            #:+max-texture-buffer-size-ext+
            #:+texture-binding-buffer-ext+
            #:+texture-buffer-data-store-binding-ext+
            #:+texture-buffer-format-ext+
            #:tex-buffer-ext
+           #:load-ext_texture_buffer_object
            #:+shader-include-arb+
            #:+depth-component32f-nv+
            #:+depth32f-stencil8-nv+
@@ -5560,11 +5740,13 @@
            #:depth-bounds-d-nv
            #:clear-depth-d-nv
            #:depth-range-d-nv
+           #:load-nv_depth_buffer_float
            #:+renderbuffer-coverage-samples-nv+
            #:+renderbuffer-color-samples-nv+
            #:+max-multisample-coverage-modes-nv+
            #:+multisample-coverage-modes-nv+
            #:renderbuffer-storage-multisample-coverage-nv
+           #:load-nv_framebuffer_multisample_coverage
            #:+max-program-generic-attribs-nv+
            #:+max-program-generic-results-nv+
            #:+max-program-parameter-buffer-bindings-nv+
@@ -5575,6 +5757,7 @@
            #:program-buffer-parameters-i-uiv-nv
            #:program-buffer-parameters-i-iv-nv
            #:program-buffer-parameters-fv-nv
+           #:load-nv_parameter_buffer_object
            #:+transform-feedback-varying-max-length+
            #:+transform-feedback-buffer-mode+
            #:+max-transform-feedback-separate-components+
@@ -5635,6 +5818,7 @@
            #:transform-feedback-attribs-nv
            #:end-transform-feedback-nv
            #:begin-transform-feedback-nv
+           #:load-nv_transform_feedback
            #:+max-vertex-bindable-uniforms-ext+
            #:+max-fragment-bindable-uniforms-ext+
            #:+max-geometry-bindable-uniforms-ext+
@@ -5644,6 +5828,7 @@
            #:get-uniform-offset-ext
            #:get-uniform-buffer-size-ext
            #:uniform-buffer-ext
+           #:load-ext_bindable_uniform
            #:+rgba32ui+
            #:+rgba16ui+
            #:+rgb16ui+
@@ -5714,12 +5899,14 @@
            #:get-tex-parameter-i-iv-ext
            #:tex-parameter-i-uiv-ext
            #:tex-parameter-i-iv-ext
+           #:load-ext_texture_integer
            #:+query-wait-nv+
            #:+query-no-wait-nv+
            #:+query-by-region-wait-nv+
            #:+query-by-region-no-wait-nv+
            #:end-conditional-render-nv
            #:begin-conditional-render-nv
+           #:load-nv_conditional_render
            #:+frame-nv+
            #:+fields-nv+
            #:+current-time-nv+
@@ -5732,6 +5919,7 @@
            #:get-video-iv-nv
            #:present-frame-dual-fill-nv
            #:present-frame-keyed-nv
+           #:load-nv_present_video
            #:+transform-feedback-buffer-ext+
            #:+transform-feedback-buffer-start-ext+
            #:+transform-feedback-buffer-size-ext+
@@ -5754,6 +5942,7 @@
            #:bind-buffer-range-ext
            #:end-transform-feedback-ext
            #:begin-transform-feedback-ext
+           #:load-ext_transform_feedback
            #:+program-matrix-ext+
            #:+transpose-program-matrix-ext+
            #:+program-matrix-stack-depth-ext+
@@ -5963,6 +6152,7 @@
            #:matrix-load-f-ext
            #:push-client-attrib-default-ext
            #:client-attrib-default-ext
+           #:load-ext_direct_state_access
            #:+sample-position-nv+
            #:+sample-mask-nv+
            #:+sample-mask-value-nv+
@@ -5976,6 +6166,7 @@
            #:tex-renderbuffer-nv
            #:sample-mask-indexed-nv
            #:get-multisample-fv-nv
+           #:load-nv_explicit_multisample
            #:+transform-feedback-nv+
            #:+transform-feedback-buffer-paused-nv+
            #:+transform-feedback-buffer-active-nv+
@@ -5987,6 +6178,7 @@
            #:gen-transform-feedbacks-nv
            #:delete-transform-feedbacks-nv
            #:bind-transform-feedback-nv
+           #:load-nv_transform_feedback2
            #:+texture-width-qcom+
            #:+texture-height-qcom+
            #:+texture-depth-qcom+
@@ -6027,6 +6219,7 @@
            #:get-perf-monitor-group-string-amd
            #:get-perf-monitor-counters-amd
            #:get-perf-monitor-groups-amd
+           #:load-amd_performance_monitor
            #:+sampler-buffer-amd+
            #:+int-sampler-buffer-amd+
            #:+unsigned-int-sampler-buffer-amd+
@@ -6036,11 +6229,13 @@
            #:+continuous-amd+
            #:tessellation-mode-amd
            #:tessellation-factor-amd
+           #:load-amd_vertex_shader_tesselator
            #:+quads-follow-provoking-vertex-convention-ext+
            #:+first-vertex-convention-ext+
            #:+last-vertex-convention-ext+
            #:+provoking-vertex-ext+
            #:provoking-vertex-ext
+           #:load-ext_provoking_vertex
            #:+texture-range-length-apple+
            #:+texture-range-pointer-apple+
            #:+texture-storage-hint-apple+
@@ -6049,6 +6244,7 @@
            #:+storage-shared-apple+
            #:get-tex-parameter-pointerv-apple
            #:texture-range-apple
+           #:load-apple_texture_range
            #:+vertex-attrib-map1-apple+
            #:+vertex-attrib-map2-apple+
            #:+vertex-attrib-map1-size-apple+
@@ -6066,6 +6262,7 @@
            #:is-vertex-attrib-enabled-apple
            #:disable-vertex-attrib-apple
            #:enable-vertex-attrib-apple
+           #:load-apple_vertex_program_evaluators
            #:+released-apple+
            #:+volatile-apple+
            #:+retained-apple+
@@ -6074,6 +6271,7 @@
            #:get-object-parameter-iv-apple
            #:object-unpurgeable-apple
            #:object-purgeable-apple
+           #:load-apple_object_purgeable
            #:+video-buffer-nv+
            #:+video-buffer-binding-nv+
            #:+field-upper-nv+
@@ -6115,6 +6313,7 @@
            #:bind-video-capture-stream-texture-nv
            #:bind-video-capture-stream-buffer-nv
            #:begin-video-capture-nv
+           #:load-nv_video_capture
            #:+palette4-rgb8-oes+
            #:+palette4-rgba8-oes+
            #:+palette4-r5-g6-b5-oes+
@@ -6133,6 +6332,7 @@
            #:create-shader-program-ext
            #:active-program-ext
            #:use-shader-program-ext
+           #:load-ext_separate_shader_objects
            #:+buffer-gpu-address-nv+
            #:program-uniformui-64v-nv
            #:program-uniformui-64-nv
@@ -6148,6 +6348,7 @@
            #:is-buffer-resident-nv
            #:make-buffer-non-resident-nv
            #:make-buffer-resident-nv
+           #:load-nv_shader_buffer_load
            #:+gpu-address-nv+
            #:+max-shader-buffer-address-nv+
            #:+vertex-attrib-array-unified-nv+
@@ -6187,6 +6388,7 @@
            #:normal-format-nv
            #:vertex-format-nv
            #:buffer-address-range-nv
+           #:load-nv_vertex_buffer_unified_memory
            #:+max-image-units-ext+
            #:+max-combined-image-units-and-fragment-outputs-ext+
            #:+image-binding-name-ext+
@@ -6244,6 +6446,7 @@
            #:+all-barrier-bits-ext+
            #:memory-barrier-ext
            #:bind-image-texture-ext
+           #:load-ext_shader_image_load_store
            #:+mali-shader-binary-arm+
            #:+double-vec2-ext+
            #:+double-vec3-ext+
@@ -6268,6 +6471,7 @@
            #:vertex-attrib-l-3d-ext
            #:vertex-attrib-l-2d-ext
            #:vertex-attrib-l-1d-ext
+           #:load-ext_vertex_attrib_64bit
            #:+max-geometry-program-invocations-nv+
            #:+min-fragment-interpolation-offset-nv+
            #:+max-fragment-interpolation-offset-nv+
@@ -6278,6 +6482,7 @@
            #:+max-program-subroutine-num-nv+
            #:get-program-subroutine-parameter-uiv-nv
            #:program-subroutine-parameters-uiv-nv
+           #:load-nv_gpu_program5
            #:+double-vec2+
            #:+double-vec3+
            #:+double-vec4+
@@ -6341,6 +6546,7 @@
            #:uniform-3i-64-nv
            #:uniform-2i-64-nv
            #:uniform-1i-64-nv
+           #:load-nv_gpu_shader5
            #:+int64-nv+
            #:+unsigned-int64-nv+
            #:vertex-attrib-lformat-nv
@@ -6362,6 +6568,7 @@
            #:vertex-attrib-l3i-64-nv
            #:vertex-attrib-l2i-64-nv
            #:vertex-attrib-l1i-64-nv
+           #:load-nv_vertex_attrib_integer_64bit
            #:+shader-binary-dmp+
            #:+data-buffer-amd+
            #:+performance-monitor-amd+
@@ -6371,6 +6578,7 @@
            #:is-name-amd
            #:delete-names-amd
            #:gen-names-amd
+           #:load-amd_name_gen_delete
            #:+max-debug-logged-messages-amd+
            #:+debug-logged-messages-amd+
            #:+debug-severity-high-amd+
@@ -6388,6 +6596,7 @@
            #:debug-message-callback-amd
            #:debug-message-insert-amd
            #:debug-message-enable-amd
+           #:load-amd_debug_output
            #:+surface-state-nv+
            #:+surface-registered-nv+
            #:+surface-mapped-nv+
@@ -6400,4 +6609,20 @@
            #:vdpauregister-output-surface-nv
            #:vdpauregister-video-surface-nv
            #:vdpaufin-i-nv
-           #:vdpauinit-nv)) 
+           #:vdpauinit-nv
+           #:load-nv_vdpau_interop
+           #:+texture-coverage-samples-nv+
+           #:+texture-color-samples-nv+
+           #:texture-image-3dmultisample-coverage-nv
+           #:texture-image-2dmultisample-coverage-nv
+           #:texture-image-3dmultisample-nv
+           #:texture-image-2dmultisample-nv
+           #:tex-image-3dmultisample-coverage-nv
+           #:tex-image-2dmultisample-coverage-nv
+           #:load-nv_texture_multisample
+           #:+subsample-distance-amd+
+           #:set-multisamplefv-amd
+           #:load-amd_sample_positions
+           #:+sync-x11-fence-ext+
+           #:import-sync-ext
+           #:load-ext_x11_sync_object)) 

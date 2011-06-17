@@ -38,3 +38,22 @@
 (defglextfun "FogCoordfEXT" fog-coord-f-ext :return "void" :args
  ((:name |coord| :type |CoordF| :direction :in)) :category "EXT_fog_coord"
  :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_fog_coord|
+ (("FogCoordPointerEXT" fog-coord-pointer-ext :return "void" :args
+   ((:name |type| :type |FogPointerTypeEXT| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride|) :retained t))
+   :category "EXT_fog_coord" :deprecated nil :version "1.1")
+  ("FogCoorddvEXT" fog-coord-dv-ext :return "void" :args
+   ((:name |coord| :type |CoordD| :direction :in :array t :size #x1)) :category
+   "EXT_fog_coord" :deprecated nil :version "1.1")
+  ("FogCoorddEXT" fog-coord-d-ext :return "void" :args
+   ((:name |coord| :type |CoordD| :direction :in)) :category "EXT_fog_coord"
+   :deprecated nil :version "1.1")
+  ("FogCoordfvEXT" fog-coord-fv-ext :return "void" :args
+   ((:name |coord| :type |CoordF| :direction :in :array t :size #x1)) :category
+   "EXT_fog_coord" :deprecated nil :version "1.1")
+  ("FogCoordfEXT" fog-coord-f-ext :return "void" :args
+   ((:name |coord| :type |CoordF| :direction :in)) :category "EXT_fog_coord"
+   :deprecated nil :version "1.1"))) 

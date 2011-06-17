@@ -66,3 +66,54 @@
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in))
  :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1") 
+(make-extension-loader |ARB_vertex_attrib_64bit|
+ (("GetVertexAttribLdv" get-vertex-attrib-l-dv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribLPointer" vertex-attrib-lpointer :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size size))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL4dv" vertex-attrib-l-4dv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x4))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL3dv" vertex-attrib-l-3dv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x3))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL2dv" vertex-attrib-l-2dv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x2))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL1dv" vertex-attrib-l-1dv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x1))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL4d" vertex-attrib-l-4d :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL3d" vertex-attrib-l-3d :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL2d" vertex-attrib-l-2d :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL1d" vertex-attrib-l-1d :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in))
+   :category "ARB_vertex_attrib_64bit" :deprecated nil :version "4.1"))) 

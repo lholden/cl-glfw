@@ -32,3 +32,22 @@
  ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
   (:name |param| :type |CheckedFloat32| :direction :in))
  :category "SGIX_sprite" :deprecated nil :version "1.0") 
+(make-extension-loader |SGIX_sprite|
+ (("SpriteParameterivSGIX" sprite-parameter-iv-sgix :return "void" :args
+   ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "SGIX_sprite" :deprecated nil :version "1.0")
+  ("SpriteParameteriSGIX" sprite-parameter-i-sgix :return "void" :args
+   ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
+    (:name |param| :type |CheckedInt32| :direction :in))
+   :category "SGIX_sprite" :deprecated nil :version "1.0")
+  ("SpriteParameterfvSGIX" sprite-parameter-fv-sgix :return "void" :args
+   ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "SGIX_sprite" :deprecated nil :version "1.0")
+  ("SpriteParameterfSGIX" sprite-parameter-f-sgix :return "void" :args
+   ((:name |pname| :type |SpriteParameterNameSGIX| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "SGIX_sprite" :deprecated nil :version "1.0"))) 

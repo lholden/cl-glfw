@@ -431,3 +431,201 @@
  nil :category "EXT_vertex_shader" :deprecated nil :version "1.2") 
 (defglextfun "BeginVertexShaderEXT" begin-vertex-shader-ext :return "void"
  :args nil :category "EXT_vertex_shader" :deprecated nil :version "1.2") 
+(make-extension-loader |EXT_vertex_shader|
+ (("GetLocalConstantFloatvEXT" get-local-constant-floatv-ext :return "void"
+   :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Float32| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetLocalConstantIntegervEXT" get-local-constant-integerv-ext :return "void"
+   :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Int32| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetLocalConstantBooleanvEXT" get-local-constant-booleanv-ext :return "void"
+   :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Boolean| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetInvariantFloatvEXT" get-invariant-floatv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Float32| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetInvariantIntegervEXT" get-invariant-integerv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Int32| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetInvariantBooleanvEXT" get-invariant-booleanv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Boolean| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetVariantPointervEXT" get-variant-pointerv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |VoidPointer| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetVariantFloatvEXT" get-variant-floatv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Float32| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetVariantIntegervEXT" get-variant-integerv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Int32| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GetVariantBooleanvEXT" get-variant-booleanv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |value| :type |GetVariantValueEXT| :direction :in)
+    (:name |data| :type |Boolean| :direction :out :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("IsVariantEnabledEXT" is-variant-enabled-ext :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |cap| :type |VariantCapEXT| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BindParameterEXT" bind-parameter-ext :return "UInt32" :args
+   ((:name |value| :type |VertexShaderParameterEXT| :direction :in)) :category
+   "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BindTextureUnitParameterEXT" bind-texture-unit-parameter-ext :return
+   "UInt32" :args
+   ((:name |unit| :type |TextureUnit| :direction :in)
+    (:name |value| :type |VertexShaderTextureUnitParameter| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BindTexGenParameterEXT" bind-tex-gen-parameter-ext :return "UInt32" :args
+   ((:name |unit| :type |TextureUnit| :direction :in)
+    (:name |coord| :type |TextureCoordName| :direction :in)
+    (:name |value| :type |TextureGenParameter| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BindMaterialParameterEXT" bind-material-parameter-ext :return "UInt32"
+   :args
+   ((:name |face| :type |MaterialFace| :direction :in)
+    (:name |value| :type |MaterialParameter| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BindLightParameterEXT" bind-light-parameter-ext :return "UInt32" :args
+   ((:name |light| :type |LightName| :direction :in)
+    (:name |value| :type |LightParameter| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("DisableVariantClientStateEXT" disable-variant-client-state-ext :return
+   "void" :args ((:name |id| :type |UInt32| :direction :in)) :category
+   "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("EnableVariantClientStateEXT" enable-variant-client-state-ext :return "void"
+   :args ((:name |id| :type |UInt32| :direction :in)) :category
+   "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantPointerEXT" variant-pointer-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |type| :type |ScalarType| :direction :in)
+    (:name |stride| :type |UInt32| :direction :in)
+    (:name |addr| :type |Void| :direction :in :array t :size
+     (|id| |type| |stride|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantuivEXT" variant-uiv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |UInt32| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantusvEXT" variant-usv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |UInt16| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantubvEXT" variant-ubv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |UInt8| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantdvEXT" variant-dv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |Float64| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantfvEXT" variant-fv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |Float32| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantivEXT" variant-iv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |Int32| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantsvEXT" variant-sv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |Int16| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("VariantbvEXT" variant-bv-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |addr| :type |Int8| :direction :in :array t :size (|id|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("SetLocalConstantEXT" set-local-constant-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |type| :type |ScalarType| :direction :in)
+    (:name |addr| :type |Void| :direction :in :array t :size (|id| |type|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("SetInvariantEXT" set-invariant-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |type| :type |ScalarType| :direction :in)
+    (:name |addr| :type |Void| :direction :in :array t :size (|id| |type|)))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("GenSymbolsEXT" gen-symbols-ext :return "UInt32" :args
+   ((:name |datatype| :type |DataTypeEXT| :direction :in)
+    (:name |storagetype| :type |VertexShaderStorageTypeEXT| :direction :in)
+    (:name |range| :type |ParameterRangeEXT| :direction :in)
+    (:name |components| :type |UInt32| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("ExtractComponentEXT" extract-component-ext :return "void" :args
+   ((:name |res| :type |UInt32| :direction :in)
+    (:name |src| :type |UInt32| :direction :in)
+    (:name |num| :type |UInt32| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("InsertComponentEXT" insert-component-ext :return "void" :args
+   ((:name |res| :type |UInt32| :direction :in)
+    (:name |src| :type |UInt32| :direction :in)
+    (:name |num| :type |UInt32| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("WriteMaskEXT" write-mask-ext :return "void" :args
+   ((:name |res| :type |UInt32| :direction :in)
+    (:name |in| :type |UInt32| :direction :in)
+    (:name |outX| :type |VertexShaderWriteMaskEXT| :direction :in)
+    (:name |outY| :type |VertexShaderWriteMaskEXT| :direction :in)
+    (:name |outZ| :type |VertexShaderWriteMaskEXT| :direction :in)
+    (:name |outW| :type |VertexShaderWriteMaskEXT| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("SwizzleEXT" swizzle-ext :return "void" :args
+   ((:name |res| :type |UInt32| :direction :in)
+    (:name |in| :type |UInt32| :direction :in)
+    (:name |outX| :type |VertexShaderCoordOutEXT| :direction :in)
+    (:name |outY| :type |VertexShaderCoordOutEXT| :direction :in)
+    (:name |outZ| :type |VertexShaderCoordOutEXT| :direction :in)
+    (:name |outW| :type |VertexShaderCoordOutEXT| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("ShaderOp3EXT" shader-op-3-ext :return "void" :args
+   ((:name |op| :type |VertexShaderOpEXT| :direction :in)
+    (:name |res| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg2| :type |UInt32| :direction :in)
+    (:name |arg3| :type |UInt32| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("ShaderOp2EXT" shader-op-2-ext :return "void" :args
+   ((:name |op| :type |VertexShaderOpEXT| :direction :in)
+    (:name |res| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg2| :type |UInt32| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("ShaderOp1EXT" shader-op-1-ext :return "void" :args
+   ((:name |op| :type |VertexShaderOpEXT| :direction :in)
+    (:name |res| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in))
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("DeleteVertexShaderEXT" delete-vertex-shader-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "EXT_vertex_shader"
+   :deprecated nil :version "1.2")
+  ("GenVertexShadersEXT" gen-vertex-shaders-ext :return "UInt32" :args
+   ((:name |range| :type |UInt32| :direction :in)) :category
+   "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BindVertexShaderEXT" bind-vertex-shader-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "EXT_vertex_shader"
+   :deprecated nil :version "1.2")
+  ("EndVertexShaderEXT" end-vertex-shader-ext :return "void" :args nil
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2")
+  ("BeginVertexShaderEXT" begin-vertex-shader-ext :return "void" :args nil
+   :category "EXT_vertex_shader" :deprecated nil :version "1.2"))) 

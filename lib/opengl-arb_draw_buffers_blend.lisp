@@ -27,3 +27,26 @@
  ((:name |buf| :type |UInt32| :direction :in)
   (:name |mode| :type |GLenum| :direction :in))
  :category "ARB_draw_buffers_blend" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_draw_buffers_blend|
+ (("BlendFuncSeparateiARB" blend-func-separate-i-arb :return "void" :args
+   ((:name |buf| :type |UInt32| :direction :in)
+    (:name |srcRGB| :type |GLenum| :direction :in)
+    (:name |dstRGB| :type |GLenum| :direction :in)
+    (:name |srcAlpha| :type |GLenum| :direction :in)
+    (:name |dstAlpha| :type |GLenum| :direction :in))
+   :category "ARB_draw_buffers_blend" :deprecated nil :version "1.2")
+  ("BlendFunciARB" blend-func-i-arb :return "void" :args
+   ((:name |buf| :type |UInt32| :direction :in)
+    (:name |src| :type |GLenum| :direction :in)
+    (:name |dst| :type |GLenum| :direction :in))
+   :category "ARB_draw_buffers_blend" :deprecated nil :version "1.2")
+  ("BlendEquationSeparateiARB" blend-equation-separate-i-arb :return "void"
+   :args
+   ((:name |buf| :type |UInt32| :direction :in)
+    (:name |modeRGB| :type |GLenum| :direction :in)
+    (:name |modeAlpha| :type |GLenum| :direction :in))
+   :category "ARB_draw_buffers_blend" :deprecated nil :version "1.2")
+  ("BlendEquationiARB" blend-equation-i-arb :return "void" :args
+   ((:name |buf| :type |UInt32| :direction :in)
+    (:name |mode| :type |GLenum| :direction :in))
+   :category "ARB_draw_buffers_blend" :deprecated nil :version "1.2"))) 

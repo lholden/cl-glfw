@@ -32,3 +32,15 @@
  ((:name |type| :type |GLenum| :direction :in)
   (:name |program| :type |UInt32| :direction :in))
  :category "EXT_separate_shader_objects" :deprecated nil :version "1.2") 
+(make-extension-loader |EXT_separate_shader_objects|
+ (("CreateShaderProgramEXT" create-shader-program-ext :return "UInt32" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |string| :type |Char| :direction :in :array t))
+   :category "EXT_separate_shader_objects" :deprecated nil :version "1.2")
+  ("ActiveProgramEXT" active-program-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)) :category
+   "EXT_separate_shader_objects" :deprecated nil :version "1.2")
+  ("UseShaderProgramEXT" use-shader-program-ext :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |program| :type |UInt32| :direction :in))
+   :category "EXT_separate_shader_objects" :deprecated nil :version "1.2"))) 

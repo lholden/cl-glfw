@@ -119,3 +119,51 @@
   (:name |uniformIndices| :type |UInt32| :direction :out :array t :size
    (|uniformCount|)))
  :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0") 
+(make-extension-loader |ARB_uniform_buffer_object|
+ (("UniformBlockBinding" uniform-block-binding :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformBlockIndex| :type |UInt32| :direction :in)
+    (:name |uniformBlockBinding| :type |UInt32| :direction :in))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0")
+  ("GetActiveUniformBlockName" get-active-uniform-block-name :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformBlockIndex| :type |UInt32| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |uniformBlockName| :type |Char| :direction :out :array t :size
+     bufsize))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0")
+  ("GetActiveUniformBlockiv" get-active-uniform-block-iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformBlockIndex| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0")
+  ("GetUniformBlockIndex" get-uniform-block-index :return "UInt32" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformBlockName| :type |Char| :direction :in :array t))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0")
+  ("GetActiveUniformName" get-active-uniform-name :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformIndex| :type |UInt32| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |uniformName| :type |Char| :direction :out :array t :size bufsize))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0")
+  ("GetActiveUniformsiv" get-active-uniforms-iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformCount| :type |SizeI| :direction :in)
+    (:name |uniformIndices| :type |UInt32| :direction :in :array t :size
+     (|uniformCount|))
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0")
+  ("GetUniformIndices" get-uniform-indices :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |uniformCount| :type |SizeI| :direction :in)
+    (:name |uniformNames| :type |CharPointer| :direction :in :array t :size
+     (|uniformCount|))
+    (:name |uniformIndices| :type |UInt32| :direction :out :array t :size
+     (|uniformCount|)))
+   :category "ARB_uniform_buffer_object" :deprecated nil :version "2.0"))) 

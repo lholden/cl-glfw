@@ -1590,34 +1590,36 @@
   (:name |first| :type |Int32| :direction :in)
   (:name |count| :type |SizeI| :direction :in))
  :category "VERSION_1_1" :deprecated nil :version "1.1") 
-(defglfun "ResetMinmax" reset-minmax :return "void" :args
+(defglextfun "ResetMinmax" reset-minmax :return "void" :args
  ((:name |target| :type |MinmaxTarget| :direction :in)) :category "VERSION_1_2"
  :deprecated "3.1" :version "1.2") 
-(defglfun "ResetHistogram" reset-histogram :return "void" :args
+(defglextfun "ResetHistogram" reset-histogram :return "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)) :category
  "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "Minmax" minmax :return "void" :args
+(defglextfun "Minmax" minmax :return "void" :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |sink| :type |Boolean| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "Histogram" histogram :return "void" :args
+(defglextfun "Histogram" histogram :return "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |sink| :type |Boolean| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetMinmaxParameteriv" get-minmax-parameter-iv :return "void" :args
+(defglextfun "GetMinmaxParameteriv" get-minmax-parameter-iv :return "void"
+ :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetMinmaxParameterfv" get-minmax-parameter-fv :return "void" :args
+(defglextfun "GetMinmaxParameterfv" get-minmax-parameter-fv :return "void"
+ :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetMinmax" get-minmax :return "void" :args
+(defglextfun "GetMinmax" get-minmax :return "void" :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |reset| :type |Boolean| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
@@ -1625,19 +1627,19 @@
   (:name |values| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetHistogramParameteriv" get-histogram-parameter-iv :return "void"
- :args
+(defglextfun "GetHistogramParameteriv" get-histogram-parameter-iv :return
+ "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |pname| :type |GetHistogramParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetHistogramParameterfv" get-histogram-parameter-fv :return "void"
- :args
+(defglextfun "GetHistogramParameterfv" get-histogram-parameter-fv :return
+ "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |pname| :type |GetHistogramParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetHistogram" get-histogram :return "void" :args
+(defglextfun "GetHistogram" get-histogram :return "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |reset| :type |Boolean| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
@@ -1645,7 +1647,7 @@
   (:name |values| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "SeparableFilter2D" separable-filter-2d :return "void" :args
+(defglextfun "SeparableFilter2D" separable-filter-2d :return "void" :args
  ((:name |target| :type |SeparableTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1657,7 +1659,7 @@
   (:name |column| :type |Void| :direction :in :array t :size
    (|target| |format| |type| |height|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetSeparableFilter" get-separable-filter :return "void" :args
+(defglextfun "GetSeparableFilter" get-separable-filter :return "void" :args
  ((:name |target| :type |SeparableTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
@@ -1668,27 +1670,27 @@
   (:name |span| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetConvolutionParameteriv" get-convolution-parameter-iv :return
+(defglextfun "GetConvolutionParameteriv" get-convolution-parameter-iv :return
  "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetConvolutionParameterfv" get-convolution-parameter-fv :return
+(defglextfun "GetConvolutionParameterfv" get-convolution-parameter-fv :return
  "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetConvolutionFilter" get-convolution-filter :return "void" :args
+(defglextfun "GetConvolutionFilter" get-convolution-filter :return "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
   (:name |image| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyConvolutionFilter2D" copy-convolution-filter-2d :return "void"
- :args
+(defglextfun "CopyConvolutionFilter2D" copy-convolution-filter-2d :return
+ "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
@@ -1696,39 +1698,41 @@
   (:name |width| :type |SizeI| :direction :in)
   (:name |height| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyConvolutionFilter1D" copy-convolution-filter-1d :return "void"
- :args
+(defglextfun "CopyConvolutionFilter1D" copy-convolution-filter-1d :return
+ "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameteriv" convolution-parameter-iv :return "void"
+(defglextfun "ConvolutionParameteriv" convolution-parameter-iv :return "void"
  :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameteri" convolution-parameter-i :return "void" :args
+(defglextfun "ConvolutionParameteri" convolution-parameter-i :return "void"
+ :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameterfv" convolution-parameter-fv :return "void"
+(defglextfun "ConvolutionParameterfv" convolution-parameter-fv :return "void"
  :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameterf" convolution-parameter-f :return "void" :args
+(defglextfun "ConvolutionParameterf" convolution-parameter-f :return "void"
+ :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionFilter2D" convolution-filter-2d :return "void" :args
+(defglextfun "ConvolutionFilter2D" convolution-filter-2d :return "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1738,7 +1742,7 @@
   (:name |image| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionFilter1D" convolution-filter-1d :return "void" :args
+(defglextfun "ConvolutionFilter1D" convolution-filter-1d :return "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1747,14 +1751,14 @@
   (:name |image| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyColorSubTable" copy-color-sub-table :return "void" :args
+(defglextfun "CopyColorSubTable" copy-color-sub-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |start| :type |SizeI| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorSubTable" color-sub-table :return "void" :args
+(defglextfun "ColorSubTable" color-sub-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |start| :type |SizeI| :direction :in)
   (:name |count| :type |SizeI| :direction :in)
@@ -1763,45 +1767,47 @@
   (:name |data| :type |Void| :direction :in :array t :size
    (|format| |type| |count|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetColorTableParameteriv" get-color-table-parameter-iv :return
+(defglextfun "GetColorTableParameteriv" get-color-table-parameter-iv :return
  "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |GetColorTableParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetColorTableParameterfv" get-color-table-parameter-fv :return
+(defglextfun "GetColorTableParameterfv" get-color-table-parameter-fv :return
  "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |GetColorTableParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetColorTable" get-color-table :return "void" :args
+(defglextfun "GetColorTable" get-color-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
   (:name |table| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyColorTable" copy-color-table :return "void" :args
+(defglextfun "CopyColorTable" copy-color-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorTableParameteriv" color-table-parameter-iv :return "void" :args
+(defglextfun "ColorTableParameteriv" color-table-parameter-iv :return "void"
+ :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |ColorTableParameterPName| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorTableParameterfv" color-table-parameter-fv :return "void" :args
+(defglextfun "ColorTableParameterfv" color-table-parameter-fv :return "void"
+ :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |ColorTableParameterPName| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorTable" color-table :return "void" :args
+(defglextfun "ColorTable" color-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1810,7 +1816,7 @@
   (:name |table| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyTexSubImage3D" copy-tex-sub-image-3d :return "void" :args
+(defglextfun "CopyTexSubImage3D" copy-tex-sub-image-3d :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -1821,7 +1827,7 @@
   (:name |width| :type |SizeI| :direction :in)
   (:name |height| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "TexSubImage3D" tex-sub-image-3d :return "void" :args
+(defglextfun "TexSubImage3D" tex-sub-image-3d :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -1835,7 +1841,7 @@
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "TexImage3D" tex-image-3d :return "void" :args
+(defglextfun "TexImage3D" tex-image-3d :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |internalformat| :type |TextureComponentCount| :direction :in)
@@ -1848,7 +1854,7 @@
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "DrawRangeElements" draw-range-elements :return "void" :args
+(defglextfun "DrawRangeElements" draw-range-elements :return "void" :args
  ((:name |mode| :type |BeginMode| :direction :in)
   (:name |start| :type |UInt32| :direction :in)
   (:name |end| :type |UInt32| :direction :in)
@@ -1857,190 +1863,191 @@
   (:name |indices| :type |Void| :direction :in :array t :size
    (|count| |type|)))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "BlendEquation" blend-equation :return "void" :args
+(defglextfun "BlendEquation" blend-equation :return "void" :args
  ((:name |mode| :type |BlendEquationMode| :direction :in)) :category
  "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "BlendColor" blend-color :return "void" :args
+(defglextfun "BlendColor" blend-color :return "void" :args
  ((:name |red| :type |ClampedColorF| :direction :in)
   (:name |green| :type |ClampedColorF| :direction :in)
   (:name |blue| :type |ClampedColorF| :direction :in)
   (:name |alpha| :type |ClampedColorF| :direction :in))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "MultTransposeMatrixd" mult-transpose-matrix-d :return "void" :args
- ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
- "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultTransposeMatrixf" mult-transpose-matrix-f :return "void" :args
- ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
- "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "LoadTransposeMatrixd" load-transpose-matrix-d :return "void" :args
- ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
- "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "LoadTransposeMatrixf" load-transpose-matrix-f :return "void" :args
- ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
- "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4sv" multi-tex-coord-4sv :return "void" :args
+(defglextfun "MultTransposeMatrixd" mult-transpose-matrix-d :return "void"
+ :args ((:name |m| :type |Float64| :direction :in :array t :size #x10))
+ :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
+(defglextfun "MultTransposeMatrixf" mult-transpose-matrix-f :return "void"
+ :args ((:name |m| :type |Float32| :direction :in :array t :size #x10))
+ :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
+(defglextfun "LoadTransposeMatrixd" load-transpose-matrix-d :return "void"
+ :args ((:name |m| :type |Float64| :direction :in :array t :size #x10))
+ :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
+(defglextfun "LoadTransposeMatrixf" load-transpose-matrix-f :return "void"
+ :args ((:name |m| :type |Float32| :direction :in :array t :size #x10))
+ :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
+(defglextfun "MultiTexCoord4sv" multi-tex-coord-4sv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordS| :direction :in :array t :size #x4))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4s" multi-tex-coord-4s :return "void" :args
+(defglextfun "MultiTexCoord4s" multi-tex-coord-4s :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordS| :direction :in)
   (:name |t| :type |CoordS| :direction :in)
   (:name |r| :type |CoordS| :direction :in)
   (:name |q| :type |CoordS| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4iv" multi-tex-coord-4iv :return "void" :args
+(defglextfun "MultiTexCoord4iv" multi-tex-coord-4iv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordI| :direction :in :array t :size #x4))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4i" multi-tex-coord-4i :return "void" :args
+(defglextfun "MultiTexCoord4i" multi-tex-coord-4i :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordI| :direction :in)
   (:name |t| :type |CoordI| :direction :in)
   (:name |r| :type |CoordI| :direction :in)
   (:name |q| :type |CoordI| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4fv" multi-tex-coord-4fv :return "void" :args
+(defglextfun "MultiTexCoord4fv" multi-tex-coord-4fv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordF| :direction :in :array t :size #x4))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4f" multi-tex-coord-4f :return "void" :args
+(defglextfun "MultiTexCoord4f" multi-tex-coord-4f :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordF| :direction :in)
   (:name |t| :type |CoordF| :direction :in)
   (:name |r| :type |CoordF| :direction :in)
   (:name |q| :type |CoordF| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4dv" multi-tex-coord-4dv :return "void" :args
+(defglextfun "MultiTexCoord4dv" multi-tex-coord-4dv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordD| :direction :in :array t :size #x4))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord4d" multi-tex-coord-4d :return "void" :args
+(defglextfun "MultiTexCoord4d" multi-tex-coord-4d :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordD| :direction :in)
   (:name |t| :type |CoordD| :direction :in)
   (:name |r| :type |CoordD| :direction :in)
   (:name |q| :type |CoordD| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3sv" multi-tex-coord-3sv :return "void" :args
+(defglextfun "MultiTexCoord3sv" multi-tex-coord-3sv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordS| :direction :in :array t :size #x3))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3s" multi-tex-coord-3s :return "void" :args
+(defglextfun "MultiTexCoord3s" multi-tex-coord-3s :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordS| :direction :in)
   (:name |t| :type |CoordS| :direction :in)
   (:name |r| :type |CoordS| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3iv" multi-tex-coord-3iv :return "void" :args
+(defglextfun "MultiTexCoord3iv" multi-tex-coord-3iv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordI| :direction :in :array t :size #x3))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3i" multi-tex-coord-3i :return "void" :args
+(defglextfun "MultiTexCoord3i" multi-tex-coord-3i :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordI| :direction :in)
   (:name |t| :type |CoordI| :direction :in)
   (:name |r| :type |CoordI| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3fv" multi-tex-coord-3fv :return "void" :args
+(defglextfun "MultiTexCoord3fv" multi-tex-coord-3fv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordF| :direction :in :array t :size #x3))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3f" multi-tex-coord-3f :return "void" :args
+(defglextfun "MultiTexCoord3f" multi-tex-coord-3f :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordF| :direction :in)
   (:name |t| :type |CoordF| :direction :in)
   (:name |r| :type |CoordF| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3dv" multi-tex-coord-3dv :return "void" :args
+(defglextfun "MultiTexCoord3dv" multi-tex-coord-3dv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordD| :direction :in :array t :size #x3))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord3d" multi-tex-coord-3d :return "void" :args
+(defglextfun "MultiTexCoord3d" multi-tex-coord-3d :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordD| :direction :in)
   (:name |t| :type |CoordD| :direction :in)
   (:name |r| :type |CoordD| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2sv" multi-tex-coord-2sv :return "void" :args
+(defglextfun "MultiTexCoord2sv" multi-tex-coord-2sv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordS| :direction :in :array t :size #x2))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2s" multi-tex-coord-2s :return "void" :args
+(defglextfun "MultiTexCoord2s" multi-tex-coord-2s :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordS| :direction :in)
   (:name |t| :type |CoordS| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2iv" multi-tex-coord-2iv :return "void" :args
+(defglextfun "MultiTexCoord2iv" multi-tex-coord-2iv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordI| :direction :in :array t :size #x2))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2i" multi-tex-coord-2i :return "void" :args
+(defglextfun "MultiTexCoord2i" multi-tex-coord-2i :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordI| :direction :in)
   (:name |t| :type |CoordI| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2fv" multi-tex-coord-2fv :return "void" :args
+(defglextfun "MultiTexCoord2fv" multi-tex-coord-2fv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordF| :direction :in :array t :size #x2))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2f" multi-tex-coord-2f :return "void" :args
+(defglextfun "MultiTexCoord2f" multi-tex-coord-2f :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordF| :direction :in)
   (:name |t| :type |CoordF| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2dv" multi-tex-coord-2dv :return "void" :args
+(defglextfun "MultiTexCoord2dv" multi-tex-coord-2dv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordD| :direction :in :array t :size #x2))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord2d" multi-tex-coord-2d :return "void" :args
+(defglextfun "MultiTexCoord2d" multi-tex-coord-2d :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordD| :direction :in)
   (:name |t| :type |CoordD| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1sv" multi-tex-coord-1sv :return "void" :args
+(defglextfun "MultiTexCoord1sv" multi-tex-coord-1sv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordS| :direction :in :array t :size #x1))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1s" multi-tex-coord-1s :return "void" :args
+(defglextfun "MultiTexCoord1s" multi-tex-coord-1s :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordS| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1iv" multi-tex-coord-1iv :return "void" :args
+(defglextfun "MultiTexCoord1iv" multi-tex-coord-1iv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordI| :direction :in :array t :size #x1))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1i" multi-tex-coord-1i :return "void" :args
+(defglextfun "MultiTexCoord1i" multi-tex-coord-1i :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordI| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1fv" multi-tex-coord-1fv :return "void" :args
+(defglextfun "MultiTexCoord1fv" multi-tex-coord-1fv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordF| :direction :in :array t :size #x1))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1f" multi-tex-coord-1f :return "void" :args
+(defglextfun "MultiTexCoord1f" multi-tex-coord-1f :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordF| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1dv" multi-tex-coord-1dv :return "void" :args
+(defglextfun "MultiTexCoord1dv" multi-tex-coord-1dv :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |v| :type |CoordD| :direction :in :array t :size #x1))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "MultiTexCoord1d" multi-tex-coord-1d :return "void" :args
+(defglextfun "MultiTexCoord1d" multi-tex-coord-1d :return "void" :args
  ((:name |target| :type |TextureUnit| :direction :in)
   (:name |s| :type |CoordD| :direction :in))
  :category "VERSION_1_3" :deprecated "3.1" :version "1.3") 
-(defglfun "ClientActiveTexture" client-active-texture :return "void" :args
+(defglextfun "ClientActiveTexture" client-active-texture :return "void" :args
  ((:name |texture| :type |TextureUnit| :direction :in)) :category "VERSION_1_3"
  :deprecated "3.1" :version "1.3") 
-(defglfun "GetCompressedTexImage" get-compressed-tex-image :return "void" :args
+(defglextfun "GetCompressedTexImage" get-compressed-tex-image :return "void"
+ :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |img| :type |CompressedTextureARB| :direction :out :array t :size
    (|target| |level|)))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "CompressedTexSubImage1D" compressed-tex-sub-image-1d :return "void"
- :args
+(defglextfun "CompressedTexSubImage1D" compressed-tex-sub-image-1d :return
+ "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -2050,8 +2057,8 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "CompressedTexSubImage2D" compressed-tex-sub-image-2d :return "void"
- :args
+(defglextfun "CompressedTexSubImage2D" compressed-tex-sub-image-2d :return
+ "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -2063,8 +2070,8 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "CompressedTexSubImage3D" compressed-tex-sub-image-3d :return "void"
- :args
+(defglextfun "CompressedTexSubImage3D" compressed-tex-sub-image-3d :return
+ "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -2078,7 +2085,8 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "CompressedTexImage1D" compressed-tex-image-1d :return "void" :args
+(defglextfun "CompressedTexImage1D" compressed-tex-image-1d :return "void"
+ :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
@@ -2088,7 +2096,8 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "CompressedTexImage2D" compressed-tex-image-2d :return "void" :args
+(defglextfun "CompressedTexImage2D" compressed-tex-image-2d :return "void"
+ :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
@@ -2099,7 +2108,8 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "CompressedTexImage3D" compressed-tex-image-3d :return "void" :args
+(defglextfun "CompressedTexImage3D" compressed-tex-image-3d :return "void"
+ :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
@@ -2111,180 +2121,181 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "SampleCoverage" sample-coverage :return "void" :args
+(defglextfun "SampleCoverage" sample-coverage :return "void" :args
  ((:name |value| :type |ClampedFloat32| :direction :in)
   (:name |invert| :type |Boolean| :direction :in))
  :category "VERSION_1_3" :deprecated nil :version "1.3") 
-(defglfun "ActiveTexture" active-texture :return "void" :args
+(defglextfun "ActiveTexture" active-texture :return "void" :args
  ((:name |texture| :type |TextureUnit| :direction :in)) :category "VERSION_1_3"
  :deprecated nil :version "1.3") 
-(defglfun "WindowPos3sv" window-pos-3sv :return "void" :args
+(defglextfun "WindowPos3sv" window-pos-3sv :return "void" :args
  ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3s" window-pos-3s :return "void" :args
+(defglextfun "WindowPos3s" window-pos-3s :return "void" :args
  ((:name |x| :type |CoordS| :direction :in)
   (:name |y| :type |CoordS| :direction :in)
   (:name |z| :type |CoordS| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3iv" window-pos-3iv :return "void" :args
+(defglextfun "WindowPos3iv" window-pos-3iv :return "void" :args
  ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3i" window-pos-3i :return "void" :args
+(defglextfun "WindowPos3i" window-pos-3i :return "void" :args
  ((:name |x| :type |CoordI| :direction :in)
   (:name |y| :type |CoordI| :direction :in)
   (:name |z| :type |CoordI| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3fv" window-pos-3fv :return "void" :args
+(defglextfun "WindowPos3fv" window-pos-3fv :return "void" :args
  ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3f" window-pos-3f :return "void" :args
+(defglextfun "WindowPos3f" window-pos-3f :return "void" :args
  ((:name |x| :type |CoordF| :direction :in)
   (:name |y| :type |CoordF| :direction :in)
   (:name |z| :type |CoordF| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3dv" window-pos-3dv :return "void" :args
+(defglextfun "WindowPos3dv" window-pos-3dv :return "void" :args
  ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos3d" window-pos-3d :return "void" :args
+(defglextfun "WindowPos3d" window-pos-3d :return "void" :args
  ((:name |x| :type |CoordD| :direction :in)
   (:name |y| :type |CoordD| :direction :in)
   (:name |z| :type |CoordD| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2sv" window-pos-2sv :return "void" :args
+(defglextfun "WindowPos2sv" window-pos-2sv :return "void" :args
  ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2s" window-pos-2s :return "void" :args
+(defglextfun "WindowPos2s" window-pos-2s :return "void" :args
  ((:name |x| :type |CoordS| :direction :in)
   (:name |y| :type |CoordS| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2iv" window-pos-2iv :return "void" :args
+(defglextfun "WindowPos2iv" window-pos-2iv :return "void" :args
  ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2i" window-pos-2i :return "void" :args
+(defglextfun "WindowPos2i" window-pos-2i :return "void" :args
  ((:name |x| :type |CoordI| :direction :in)
   (:name |y| :type |CoordI| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2fv" window-pos-2fv :return "void" :args
+(defglextfun "WindowPos2fv" window-pos-2fv :return "void" :args
  ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2f" window-pos-2f :return "void" :args
+(defglextfun "WindowPos2f" window-pos-2f :return "void" :args
  ((:name |x| :type |CoordF| :direction :in)
   (:name |y| :type |CoordF| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2dv" window-pos-2dv :return "void" :args
+(defglextfun "WindowPos2dv" window-pos-2dv :return "void" :args
  ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "WindowPos2d" window-pos-2d :return "void" :args
+(defglextfun "WindowPos2d" window-pos-2d :return "void" :args
  ((:name |x| :type |CoordD| :direction :in)
   (:name |y| :type |CoordD| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColorPointer" secondary-color-pointer :return "void" :args
+(defglextfun "SecondaryColorPointer" secondary-color-pointer :return "void"
+ :args
  ((:name |size| :type |Int32| :direction :in)
   (:name |type| :type |ColorPointerType| :direction :in)
   (:name |stride| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :in :array t :size
    (|size| |type| |stride|) :retained t))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3usv" secondary-color-3usv :return "void" :args
+(defglextfun "SecondaryColor3usv" secondary-color-3usv :return "void" :args
  ((:name |v| :type |ColorUS| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3us" secondary-color-3us :return "void" :args
+(defglextfun "SecondaryColor3us" secondary-color-3us :return "void" :args
  ((:name |red| :type |ColorUS| :direction :in)
   (:name |green| :type |ColorUS| :direction :in)
   (:name |blue| :type |ColorUS| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3uiv" secondary-color-3uiv :return "void" :args
+(defglextfun "SecondaryColor3uiv" secondary-color-3uiv :return "void" :args
  ((:name |v| :type |ColorUI| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3ui" secondary-color-3ui :return "void" :args
+(defglextfun "SecondaryColor3ui" secondary-color-3ui :return "void" :args
  ((:name |red| :type |ColorUI| :direction :in)
   (:name |green| :type |ColorUI| :direction :in)
   (:name |blue| :type |ColorUI| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3ubv" secondary-color-3ubv :return "void" :args
+(defglextfun "SecondaryColor3ubv" secondary-color-3ubv :return "void" :args
  ((:name |v| :type |ColorUB| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3ub" secondary-color-3ub :return "void" :args
+(defglextfun "SecondaryColor3ub" secondary-color-3ub :return "void" :args
  ((:name |red| :type |ColorUB| :direction :in)
   (:name |green| :type |ColorUB| :direction :in)
   (:name |blue| :type |ColorUB| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3sv" secondary-color-3sv :return "void" :args
+(defglextfun "SecondaryColor3sv" secondary-color-3sv :return "void" :args
  ((:name |v| :type |ColorS| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3s" secondary-color-3s :return "void" :args
+(defglextfun "SecondaryColor3s" secondary-color-3s :return "void" :args
  ((:name |red| :type |ColorS| :direction :in)
   (:name |green| :type |ColorS| :direction :in)
   (:name |blue| :type |ColorS| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3iv" secondary-color-3iv :return "void" :args
+(defglextfun "SecondaryColor3iv" secondary-color-3iv :return "void" :args
  ((:name |v| :type |ColorI| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3i" secondary-color-3i :return "void" :args
+(defglextfun "SecondaryColor3i" secondary-color-3i :return "void" :args
  ((:name |red| :type |ColorI| :direction :in)
   (:name |green| :type |ColorI| :direction :in)
   (:name |blue| :type |ColorI| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3fv" secondary-color-3fv :return "void" :args
+(defglextfun "SecondaryColor3fv" secondary-color-3fv :return "void" :args
  ((:name |v| :type |ColorF| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3f" secondary-color-3f :return "void" :args
+(defglextfun "SecondaryColor3f" secondary-color-3f :return "void" :args
  ((:name |red| :type |ColorF| :direction :in)
   (:name |green| :type |ColorF| :direction :in)
   (:name |blue| :type |ColorF| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3dv" secondary-color-3dv :return "void" :args
+(defglextfun "SecondaryColor3dv" secondary-color-3dv :return "void" :args
  ((:name |v| :type |ColorD| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3d" secondary-color-3d :return "void" :args
+(defglextfun "SecondaryColor3d" secondary-color-3d :return "void" :args
  ((:name |red| :type |ColorD| :direction :in)
   (:name |green| :type |ColorD| :direction :in)
   (:name |blue| :type |ColorD| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3bv" secondary-color-3bv :return "void" :args
+(defglextfun "SecondaryColor3bv" secondary-color-3bv :return "void" :args
  ((:name |v| :type |ColorB| :direction :in :array t :size #x3)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "SecondaryColor3b" secondary-color-3b :return "void" :args
+(defglextfun "SecondaryColor3b" secondary-color-3b :return "void" :args
  ((:name |red| :type |ColorB| :direction :in)
   (:name |green| :type |ColorB| :direction :in)
   (:name |blue| :type |ColorB| :direction :in))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "FogCoordPointer" fog-coord-pointer :return "void" :args
+(defglextfun "FogCoordPointer" fog-coord-pointer :return "void" :args
  ((:name |type| :type |FogPointerTypeEXT| :direction :in)
   (:name |stride| :type |SizeI| :direction :in)
   (:name |pointer| :type |Void| :direction :in :array t :size (|type| |stride|)
    :retained t))
  :category "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "FogCoorddv" fog-coord-dv :return "void" :args
+(defglextfun "FogCoorddv" fog-coord-dv :return "void" :args
  ((:name |coord| :type |CoordD| :direction :in :array t :size #x1)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "FogCoordd" fog-coord-d :return "void" :args
+(defglextfun "FogCoordd" fog-coord-d :return "void" :args
  ((:name |coord| :type |CoordD| :direction :in)) :category "VERSION_1_4"
  :deprecated "3.1" :version "1.4") 
-(defglfun "FogCoordfv" fog-coord-fv :return "void" :args
+(defglextfun "FogCoordfv" fog-coord-fv :return "void" :args
  ((:name |coord| :type |CoordF| :direction :in :array t :size #x1)) :category
  "VERSION_1_4" :deprecated "3.1" :version "1.4") 
-(defglfun "FogCoordf" fog-coord-f :return "void" :args
+(defglextfun "FogCoordf" fog-coord-f :return "void" :args
  ((:name |coord| :type |CoordF| :direction :in)) :category "VERSION_1_4"
  :deprecated "3.1" :version "1.4") 
-(defglfun "PointParameteriv" point-parameter-iv :return "void" :args
+(defglextfun "PointParameteriv" point-parameter-iv :return "void" :args
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "PointParameteri" point-parameter-i :return "void" :args
+(defglextfun "PointParameteri" point-parameter-i :return "void" :args
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |param| :type |Int32| :direction :in))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "PointParameterfv" point-parameter-fv :return "void" :args
+(defglextfun "PointParameterfv" point-parameter-fv :return "void" :args
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "PointParameterf" point-parameter-f :return "void" :args
+(defglextfun "PointParameterf" point-parameter-f :return "void" :args
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |param| :type |CheckedFloat32| :direction :in))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "MultiDrawElements" multi-draw-elements :return "void" :args
+(defglextfun "MultiDrawElements" multi-draw-elements :return "void" :args
  ((:name |mode| :type |BeginMode| :direction :in)
   (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
   (:name |type| :type |DrawElementsType| :direction :in)
@@ -2292,98 +2303,887 @@
    (|primcount|))
   (:name |primcount| :type |SizeI| :direction :in))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "MultiDrawArrays" multi-draw-arrays :return "void" :args
+(defglextfun "MultiDrawArrays" multi-draw-arrays :return "void" :args
  ((:name |mode| :type |BeginMode| :direction :in)
   (:name |first| :type |Int32| :direction :in :array t :size (|count|))
   (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
   (:name |primcount| :type |SizeI| :direction :in))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "BlendFuncSeparate" blend-func-separate :return "void" :args
+(defglextfun "BlendFuncSeparate" blend-func-separate :return "void" :args
  ((:name |sfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
   (:name |dfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
   (:name |sfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in)
   (:name |dfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in))
  :category "VERSION_1_4" :deprecated nil :version "1.4") 
-(defglfun "GetBufferPointerv" get-buffer-pointerv :return "void" :args
+(defglextfun "GetBufferPointerv" get-buffer-pointerv :return "void" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |pname| :type |BufferPointerNameARB| :direction :in)
   (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "GetBufferParameteriv" get-buffer-parameter-iv :return "void" :args
+(defglextfun "GetBufferParameteriv" get-buffer-parameter-iv :return "void"
+ :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |pname| :type |BufferPNameARB| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "UnmapBuffer" unmap-buffer :return "Boolean" :args
+(defglextfun "UnmapBuffer" unmap-buffer :return "Boolean" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)) :category
  "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "MapBuffer" map-buffer :return "VoidPointer" :args
+(defglextfun "MapBuffer" map-buffer :return "VoidPointer" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |access| :type |BufferAccessARB| :direction :in))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "GetBufferSubData" get-buffer-sub-data :return "void" :args
+(defglextfun "GetBufferSubData" get-buffer-sub-data :return "void" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |offset| :type |BufferOffset| :direction :in)
   (:name |size| :type |BufferSize| :direction :in)
   (:name |data| :type |Void| :direction :out :array t :size size))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "BufferSubData" buffer-sub-data :return "void" :args
+(defglextfun "BufferSubData" buffer-sub-data :return "void" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |offset| :type |BufferOffset| :direction :in)
   (:name |size| :type |BufferSize| :direction :in)
   (:name |data| :type |ConstVoid| :direction :in :array t :size size))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "BufferData" buffer-data :return "void" :args
+(defglextfun "BufferData" buffer-data :return "void" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |size| :type |BufferSize| :direction :in)
   (:name |data| :type |ConstVoid| :direction :in :array t :size size)
   (:name |usage| :type |BufferUsageARB| :direction :in))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "IsBuffer" is-buffer :return "Boolean" :args
+(defglextfun "IsBuffer" is-buffer :return "Boolean" :args
  ((:name |buffer| :type |UInt32| :direction :in)) :category "VERSION_1_5"
  :deprecated nil :version "1.5") 
-(defglfun "GenBuffers" gen-buffers :return "void" :args
+(defglextfun "GenBuffers" gen-buffers :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |buffers| :type |UInt32| :direction :out :array t :size n))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "DeleteBuffers" delete-buffers :return "void" :args
+(defglextfun "DeleteBuffers" delete-buffers :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "BindBuffer" bind-buffer :return "void" :args
+(defglextfun "BindBuffer" bind-buffer :return "void" :args
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |buffer| :type |UInt32| :direction :in))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "GetQueryObjectuiv" get-query-object-uiv :return "void" :args
+(defglextfun "GetQueryObjectuiv" get-query-object-uiv :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |pname| :type |GLenum| :direction :in)
   (:name |params| :type |UInt32| :direction :out :array t :size pname))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "GetQueryObjectiv" get-query-object-iv :return "void" :args
+(defglextfun "GetQueryObjectiv" get-query-object-iv :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)
   (:name |pname| :type |GLenum| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size pname))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "GetQueryiv" get-query-iv :return "void" :args
+(defglextfun "GetQueryiv" get-query-iv :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |pname| :type |GLenum| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size pname))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "EndQuery" end-query :return "void" :args
+(defglextfun "EndQuery" end-query :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)) :category "VERSION_1_5"
  :deprecated nil :version "1.5") 
-(defglfun "BeginQuery" begin-query :return "void" :args
+(defglextfun "BeginQuery" begin-query :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |id| :type |UInt32| :direction :in))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "IsQuery" is-query :return "Boolean" :args
+(defglextfun "IsQuery" is-query :return "Boolean" :args
  ((:name |id| :type |UInt32| :direction :in)) :category "VERSION_1_5"
  :deprecated nil :version "1.5") 
-(defglfun "DeleteQueries" delete-queries :return "void" :args
+(defglextfun "DeleteQueries" delete-queries :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |ids| :type |UInt32| :direction :in :array t :size n))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
-(defglfun "GenQueries" gen-queries :return "void" :args
+(defglextfun "GenQueries" gen-queries :return "void" :args
  ((:name |n| :type |SizeI| :direction :in)
   (:name |ids| :type |UInt32| :direction :out :array t :size n))
  :category "VERSION_1_5" :deprecated nil :version "1.5") 
+(make-extension-loader version_1_5
+ (("ResetMinmax" reset-minmax :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)) :category
+   "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ResetHistogram" reset-histogram :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)) :category
+   "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("Minmax" minmax :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |sink| :type |Boolean| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("Histogram" histogram :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |sink| :type |Boolean| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetMinmaxParameteriv" get-minmax-parameter-iv :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetMinmaxParameterfv" get-minmax-parameter-fv :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetMinmax" get-minmax :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |reset| :type |Boolean| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |values| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetHistogramParameteriv" get-histogram-parameter-iv :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |pname| :type |GetHistogramParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetHistogramParameterfv" get-histogram-parameter-fv :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |pname| :type |GetHistogramParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetHistogram" get-histogram :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |reset| :type |Boolean| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |values| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("SeparableFilter2D" separable-filter-2d :return "void" :args
+   ((:name |target| :type |SeparableTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |row| :type |Void| :direction :in :array t :size
+     (|target| |format| |type| |width|))
+    (:name |column| :type |Void| :direction :in :array t :size
+     (|target| |format| |type| |height|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetSeparableFilter" get-separable-filter :return "void" :args
+   ((:name |target| :type |SeparableTarget| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |row| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|))
+    (:name |column| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|))
+    (:name |span| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetConvolutionParameteriv" get-convolution-parameter-iv :return "void"
+   :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetConvolutionParameterfv" get-convolution-parameter-fv :return "void"
+   :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetConvolutionFilter" get-convolution-filter :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |image| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyConvolutionFilter2D" copy-convolution-filter-2d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyConvolutionFilter1D" copy-convolution-filter-1d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameteriv" convolution-parameter-iv :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameteri" convolution-parameter-i :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameterfv" convolution-parameter-fv :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameterf" convolution-parameter-f :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionFilter2D" convolution-filter-2d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |image| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionFilter1D" convolution-filter-1d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |image| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyColorSubTable" copy-color-sub-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |start| :type |SizeI| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorSubTable" color-sub-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |start| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |data| :type |Void| :direction :in :array t :size
+     (|format| |type| |count|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetColorTableParameteriv" get-color-table-parameter-iv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |GetColorTableParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetColorTableParameterfv" get-color-table-parameter-fv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |GetColorTableParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetColorTable" get-color-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |table| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyColorTable" copy-color-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorTableParameteriv" color-table-parameter-iv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |ColorTableParameterPName| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorTableParameterfv" color-table-parameter-fv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |ColorTableParameterPName| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorTable" color-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |table| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyTexSubImage3D" copy-tex-sub-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("TexSubImage3D" tex-sub-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("TexImage3D" tex-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureComponentCount| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("DrawRangeElements" draw-range-elements :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |start| :type |UInt32| :direction :in)
+    (:name |end| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|)))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("BlendEquation" blend-equation :return "void" :args
+   ((:name |mode| :type |BlendEquationMode| :direction :in)) :category
+   "VERSION_1_2" :deprecated nil :version "1.2")
+  ("BlendColor" blend-color :return "void" :args
+   ((:name |red| :type |ClampedColorF| :direction :in)
+    (:name |green| :type |ClampedColorF| :direction :in)
+    (:name |blue| :type |ClampedColorF| :direction :in)
+    (:name |alpha| :type |ClampedColorF| :direction :in))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("MultTransposeMatrixd" mult-transpose-matrix-d :return "void" :args
+   ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
+   "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultTransposeMatrixf" mult-transpose-matrix-f :return "void" :args
+   ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
+   "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("LoadTransposeMatrixd" load-transpose-matrix-d :return "void" :args
+   ((:name |m| :type |Float64| :direction :in :array t :size #x10)) :category
+   "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("LoadTransposeMatrixf" load-transpose-matrix-f :return "void" :args
+   ((:name |m| :type |Float32| :direction :in :array t :size #x10)) :category
+   "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4sv" multi-tex-coord-4sv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x4))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4s" multi-tex-coord-4s :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in)
+    (:name |t| :type |CoordS| :direction :in)
+    (:name |r| :type |CoordS| :direction :in)
+    (:name |q| :type |CoordS| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4iv" multi-tex-coord-4iv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x4))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4i" multi-tex-coord-4i :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in)
+    (:name |t| :type |CoordI| :direction :in)
+    (:name |r| :type |CoordI| :direction :in)
+    (:name |q| :type |CoordI| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4fv" multi-tex-coord-4fv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x4))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4f" multi-tex-coord-4f :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in)
+    (:name |t| :type |CoordF| :direction :in)
+    (:name |r| :type |CoordF| :direction :in)
+    (:name |q| :type |CoordF| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4dv" multi-tex-coord-4dv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x4))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord4d" multi-tex-coord-4d :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in)
+    (:name |t| :type |CoordD| :direction :in)
+    (:name |r| :type |CoordD| :direction :in)
+    (:name |q| :type |CoordD| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3sv" multi-tex-coord-3sv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x3))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3s" multi-tex-coord-3s :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in)
+    (:name |t| :type |CoordS| :direction :in)
+    (:name |r| :type |CoordS| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3iv" multi-tex-coord-3iv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x3))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3i" multi-tex-coord-3i :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in)
+    (:name |t| :type |CoordI| :direction :in)
+    (:name |r| :type |CoordI| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3fv" multi-tex-coord-3fv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x3))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3f" multi-tex-coord-3f :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in)
+    (:name |t| :type |CoordF| :direction :in)
+    (:name |r| :type |CoordF| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3dv" multi-tex-coord-3dv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x3))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord3d" multi-tex-coord-3d :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in)
+    (:name |t| :type |CoordD| :direction :in)
+    (:name |r| :type |CoordD| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2sv" multi-tex-coord-2sv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x2))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2s" multi-tex-coord-2s :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in)
+    (:name |t| :type |CoordS| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2iv" multi-tex-coord-2iv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x2))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2i" multi-tex-coord-2i :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in)
+    (:name |t| :type |CoordI| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2fv" multi-tex-coord-2fv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x2))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2f" multi-tex-coord-2f :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in)
+    (:name |t| :type |CoordF| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2dv" multi-tex-coord-2dv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x2))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord2d" multi-tex-coord-2d :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in)
+    (:name |t| :type |CoordD| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1sv" multi-tex-coord-1sv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x1))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1s" multi-tex-coord-1s :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1iv" multi-tex-coord-1iv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x1))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1i" multi-tex-coord-1i :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1fv" multi-tex-coord-1fv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x1))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1f" multi-tex-coord-1f :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1dv" multi-tex-coord-1dv :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x1))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("MultiTexCoord1d" multi-tex-coord-1d :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in))
+   :category "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("ClientActiveTexture" client-active-texture :return "void" :args
+   ((:name |texture| :type |TextureUnit| :direction :in)) :category
+   "VERSION_1_3" :deprecated "3.1" :version "1.3")
+  ("GetCompressedTexImage" get-compressed-tex-image :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |img| :type |CompressedTextureARB| :direction :out :array t :size
+     (|target| |level|)))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("CompressedTexSubImage1D" compressed-tex-sub-image-1d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("CompressedTexSubImage2D" compressed-tex-sub-image-2d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("CompressedTexSubImage3D" compressed-tex-sub-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("CompressedTexImage1D" compressed-tex-image-1d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("CompressedTexImage2D" compressed-tex-image-2d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("CompressedTexImage3D" compressed-tex-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("SampleCoverage" sample-coverage :return "void" :args
+   ((:name |value| :type |ClampedFloat32| :direction :in)
+    (:name |invert| :type |Boolean| :direction :in))
+   :category "VERSION_1_3" :deprecated nil :version "1.3")
+  ("ActiveTexture" active-texture :return "void" :args
+   ((:name |texture| :type |TextureUnit| :direction :in)) :category
+   "VERSION_1_3" :deprecated nil :version "1.3")
+  ("WindowPos3sv" window-pos-3sv :return "void" :args
+   ((:name |v| :type |CoordS| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3s" window-pos-3s :return "void" :args
+   ((:name |x| :type |CoordS| :direction :in)
+    (:name |y| :type |CoordS| :direction :in)
+    (:name |z| :type |CoordS| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3iv" window-pos-3iv :return "void" :args
+   ((:name |v| :type |CoordI| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3i" window-pos-3i :return "void" :args
+   ((:name |x| :type |CoordI| :direction :in)
+    (:name |y| :type |CoordI| :direction :in)
+    (:name |z| :type |CoordI| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3fv" window-pos-3fv :return "void" :args
+   ((:name |v| :type |CoordF| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3f" window-pos-3f :return "void" :args
+   ((:name |x| :type |CoordF| :direction :in)
+    (:name |y| :type |CoordF| :direction :in)
+    (:name |z| :type |CoordF| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3dv" window-pos-3dv :return "void" :args
+   ((:name |v| :type |CoordD| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos3d" window-pos-3d :return "void" :args
+   ((:name |x| :type |CoordD| :direction :in)
+    (:name |y| :type |CoordD| :direction :in)
+    (:name |z| :type |CoordD| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2sv" window-pos-2sv :return "void" :args
+   ((:name |v| :type |CoordS| :direction :in :array t :size #x2)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2s" window-pos-2s :return "void" :args
+   ((:name |x| :type |CoordS| :direction :in)
+    (:name |y| :type |CoordS| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2iv" window-pos-2iv :return "void" :args
+   ((:name |v| :type |CoordI| :direction :in :array t :size #x2)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2i" window-pos-2i :return "void" :args
+   ((:name |x| :type |CoordI| :direction :in)
+    (:name |y| :type |CoordI| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2fv" window-pos-2fv :return "void" :args
+   ((:name |v| :type |CoordF| :direction :in :array t :size #x2)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2f" window-pos-2f :return "void" :args
+   ((:name |x| :type |CoordF| :direction :in)
+    (:name |y| :type |CoordF| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2dv" window-pos-2dv :return "void" :args
+   ((:name |v| :type |CoordD| :direction :in :array t :size #x2)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("WindowPos2d" window-pos-2d :return "void" :args
+   ((:name |x| :type |CoordD| :direction :in)
+    (:name |y| :type |CoordD| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColorPointer" secondary-color-pointer :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |ColorPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3usv" secondary-color-3usv :return "void" :args
+   ((:name |v| :type |ColorUS| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3us" secondary-color-3us :return "void" :args
+   ((:name |red| :type |ColorUS| :direction :in)
+    (:name |green| :type |ColorUS| :direction :in)
+    (:name |blue| :type |ColorUS| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3uiv" secondary-color-3uiv :return "void" :args
+   ((:name |v| :type |ColorUI| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3ui" secondary-color-3ui :return "void" :args
+   ((:name |red| :type |ColorUI| :direction :in)
+    (:name |green| :type |ColorUI| :direction :in)
+    (:name |blue| :type |ColorUI| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3ubv" secondary-color-3ubv :return "void" :args
+   ((:name |v| :type |ColorUB| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3ub" secondary-color-3ub :return "void" :args
+   ((:name |red| :type |ColorUB| :direction :in)
+    (:name |green| :type |ColorUB| :direction :in)
+    (:name |blue| :type |ColorUB| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3sv" secondary-color-3sv :return "void" :args
+   ((:name |v| :type |ColorS| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3s" secondary-color-3s :return "void" :args
+   ((:name |red| :type |ColorS| :direction :in)
+    (:name |green| :type |ColorS| :direction :in)
+    (:name |blue| :type |ColorS| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3iv" secondary-color-3iv :return "void" :args
+   ((:name |v| :type |ColorI| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3i" secondary-color-3i :return "void" :args
+   ((:name |red| :type |ColorI| :direction :in)
+    (:name |green| :type |ColorI| :direction :in)
+    (:name |blue| :type |ColorI| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3fv" secondary-color-3fv :return "void" :args
+   ((:name |v| :type |ColorF| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3f" secondary-color-3f :return "void" :args
+   ((:name |red| :type |ColorF| :direction :in)
+    (:name |green| :type |ColorF| :direction :in)
+    (:name |blue| :type |ColorF| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3dv" secondary-color-3dv :return "void" :args
+   ((:name |v| :type |ColorD| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3d" secondary-color-3d :return "void" :args
+   ((:name |red| :type |ColorD| :direction :in)
+    (:name |green| :type |ColorD| :direction :in)
+    (:name |blue| :type |ColorD| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3bv" secondary-color-3bv :return "void" :args
+   ((:name |v| :type |ColorB| :direction :in :array t :size #x3)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("SecondaryColor3b" secondary-color-3b :return "void" :args
+   ((:name |red| :type |ColorB| :direction :in)
+    (:name |green| :type |ColorB| :direction :in)
+    (:name |blue| :type |ColorB| :direction :in))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("FogCoordPointer" fog-coord-pointer :return "void" :args
+   ((:name |type| :type |FogPointerTypeEXT| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride|) :retained t))
+   :category "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("FogCoorddv" fog-coord-dv :return "void" :args
+   ((:name |coord| :type |CoordD| :direction :in :array t :size #x1)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("FogCoordd" fog-coord-d :return "void" :args
+   ((:name |coord| :type |CoordD| :direction :in)) :category "VERSION_1_4"
+   :deprecated "3.1" :version "1.4")
+  ("FogCoordfv" fog-coord-fv :return "void" :args
+   ((:name |coord| :type |CoordF| :direction :in :array t :size #x1)) :category
+   "VERSION_1_4" :deprecated "3.1" :version "1.4")
+  ("FogCoordf" fog-coord-f :return "void" :args
+   ((:name |coord| :type |CoordF| :direction :in)) :category "VERSION_1_4"
+   :deprecated "3.1" :version "1.4")
+  ("PointParameteriv" point-parameter-iv :return "void" :args
+   ((:name |pname| :type |PointParameterNameARB| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("PointParameteri" point-parameter-i :return "void" :args
+   ((:name |pname| :type |PointParameterNameARB| :direction :in)
+    (:name |param| :type |Int32| :direction :in))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("PointParameterfv" point-parameter-fv :return "void" :args
+   ((:name |pname| :type |PointParameterNameARB| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("PointParameterf" point-parameter-f :return "void" :args
+   ((:name |pname| :type |PointParameterNameARB| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("MultiDrawElements" multi-draw-elements :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |VoidPointer| :direction :in :array t :size
+     (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("MultiDrawArrays" multi-draw-arrays :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |first| :type |Int32| :direction :in :array t :size (|count|))
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("BlendFuncSeparate" blend-func-separate :return "void" :args
+   ((:name |sfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
+    (:name |dfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
+    (:name |sfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in)
+    (:name |dfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction
+     :in))
+   :category "VERSION_1_4" :deprecated nil :version "1.4")
+  ("GetBufferPointerv" get-buffer-pointerv :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |pname| :type |BufferPointerNameARB| :direction :in)
+    (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("GetBufferParameteriv" get-buffer-parameter-iv :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |pname| :type |BufferPNameARB| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("UnmapBuffer" unmap-buffer :return "Boolean" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)) :category
+   "VERSION_1_5" :deprecated nil :version "1.5")
+  ("MapBuffer" map-buffer :return "VoidPointer" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |access| :type |BufferAccessARB| :direction :in))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("GetBufferSubData" get-buffer-sub-data :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in)
+    (:name |size| :type |BufferSize| :direction :in)
+    (:name |data| :type |Void| :direction :out :array t :size size))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("BufferSubData" buffer-sub-data :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in)
+    (:name |size| :type |BufferSize| :direction :in)
+    (:name |data| :type |ConstVoid| :direction :in :array t :size size))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("BufferData" buffer-data :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |size| :type |BufferSize| :direction :in)
+    (:name |data| :type |ConstVoid| :direction :in :array t :size size)
+    (:name |usage| :type |BufferUsageARB| :direction :in))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("IsBuffer" is-buffer :return "Boolean" :args
+   ((:name |buffer| :type |UInt32| :direction :in)) :category "VERSION_1_5"
+   :deprecated nil :version "1.5")
+  ("GenBuffers" gen-buffers :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |buffers| :type |UInt32| :direction :out :array t :size n))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("DeleteBuffers" delete-buffers :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("BindBuffer" bind-buffer :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("GetQueryObjectuiv" get-query-object-uiv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size pname))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("GetQueryObjectiv" get-query-object-iv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size pname))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("GetQueryiv" get-query-iv :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size pname))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("EndQuery" end-query :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)) :category "VERSION_1_5"
+   :deprecated nil :version "1.5")
+  ("BeginQuery" begin-query :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("IsQuery" is-query :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "VERSION_1_5"
+   :deprecated nil :version "1.5")
+  ("DeleteQueries" delete-queries :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size n))
+   :category "VERSION_1_5" :deprecated nil :version "1.5")
+  ("GenQueries" gen-queries :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :out :array t :size n))
+   :category "VERSION_1_5" :deprecated nil :version "1.5"))) 

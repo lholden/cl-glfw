@@ -39,3 +39,27 @@
  ((:name |target| :type |GLenum| :direction :in)
   (:name |id| :type |UInt32| :direction :in))
  :category "ARB_transform_feedback2" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_transform_feedback2|
+ (("DrawTransformFeedback" draw-transform-feedback :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "ARB_transform_feedback2" :deprecated nil :version "1.2")
+  ("ResumeTransformFeedback" resume-transform-feedback :return "void" :args nil
+   :category "ARB_transform_feedback2" :deprecated nil :version "1.2")
+  ("PauseTransformFeedback" pause-transform-feedback :return "void" :args nil
+   :category "ARB_transform_feedback2" :deprecated nil :version "1.2")
+  ("IsTransformFeedback" is-transform-feedback :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category
+   "ARB_transform_feedback2" :deprecated nil :version "1.2")
+  ("GenTransformFeedbacks" gen-transform-feedbacks :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_transform_feedback2" :deprecated nil :version "1.2")
+  ("DeleteTransformFeedbacks" delete-transform-feedbacks :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_transform_feedback2" :deprecated nil :version "1.2")
+  ("BindTransformFeedback" bind-transform-feedback :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "ARB_transform_feedback2" :deprecated nil :version "1.2"))) 

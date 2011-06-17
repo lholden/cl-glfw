@@ -24,3 +24,14 @@
 (defglextfun "ApplyTextureEXT" apply-texture-ext :return "void" :args
  ((:name |mode| :type |LightTextureModeEXT| :direction :in)) :category
  "EXT_light_texture" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_light_texture|
+ (("TextureMaterialEXT" texture-material-ext :return "void" :args
+   ((:name |face| :type |MaterialFace| :direction :in)
+    (:name |mode| :type |MaterialParameter| :direction :in))
+   :category "EXT_light_texture" :deprecated nil :version "1.1")
+  ("TextureLightEXT" texture-light-ext :return "void" :args
+   ((:name |pname| :type |LightTexturePNameEXT| :direction :in)) :category
+   "EXT_light_texture" :deprecated nil :version "1.1")
+  ("ApplyTextureEXT" apply-texture-ext :return "void" :args
+   ((:name |mode| :type |LightTextureModeEXT| :direction :in)) :category
+   "EXT_light_texture" :deprecated nil :version "1.1"))) 

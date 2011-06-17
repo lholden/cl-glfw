@@ -1,16 +1,15 @@
 
 (in-package #:cl-glfw)
 
+#+ecl
+(ffi:load-foreign-library "glfw" :system-library t)
 
-;; ECL's DFFI seems to have issues if you don't put the full path in
-#+(and unix ecl)
-(setf cffi:*foreign-library-directories* 
-      (list "/usr/local/lib/" "/usr/lib/"))
-
+#-ecl
 (cffi:define-foreign-library libglfw
-  (:darwin  (:framework "GLFW"))
+  (:darwin (:framework "GLFW"))
   (:unix (:or "glfw" "libglfw.so" "libglfw.so.2"  #P"/usr/local/lib/libglfw.so"))
   (:windows (:or "glfw.dll" "libglfw.dll")) 
   (t (:default "libglfw")))
 
+#-ecl
 (cffi:use-foreign-library libglfw)

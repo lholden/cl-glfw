@@ -19,3 +19,18 @@
   (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
   (:name |primcount| :type |SizeI| :direction :in))
  :category "EXT_multi_draw_arrays" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_multi_draw_arrays|
+ (("MultiDrawElementsEXT" multi-draw-elements-ext :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |VoidPointer| :direction :in :array t :size
+     (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "EXT_multi_draw_arrays" :deprecated nil :version "1.1")
+  ("MultiDrawArraysEXT" multi-draw-arrays-ext :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |first| :type |Int32| :direction :in :array t :size (|primcount|))
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in))
+   :category "EXT_multi_draw_arrays" :deprecated nil :version "1.1"))) 

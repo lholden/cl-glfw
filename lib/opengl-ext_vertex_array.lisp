@@ -112,3 +112,60 @@
 (defglextfun "ArrayElementEXT" array-element-ext :return "void" :args
  ((:name |i| :type |Int32| :direction :in)) :category "EXT_vertex_array"
  :deprecated nil :version "1.0") 
+(make-extension-loader |EXT_vertex_array|
+ (("VertexPointerEXT" vertex-pointer-ext :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|size| |type| |stride| |count|) :retained t))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("TexCoordPointerEXT" tex-coord-pointer-ext :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |TexCoordPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|size| |type| |stride| |count|) :retained t))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("NormalPointerEXT" normal-pointer-ext :return "void" :args
+   ((:name |type| :type |NormalPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride| |count|) :retained t))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("IndexPointerEXT" index-pointer-ext :return "void" :args
+   ((:name |type| :type |IndexPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride| |count|) :retained t))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("GetPointervEXT" get-pointerv-ext :return "void" :args
+   ((:name |pname| :type |GetPointervPName| :direction :in)
+    (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("EdgeFlagPointerEXT" edge-flag-pointer-ext :return "void" :args
+   ((:name |stride| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Boolean| :direction :in :array t :size
+     (|stride| |count|) :retained t))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("DrawArraysEXT" draw-arrays-ext :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |first| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("ColorPointerEXT" color-pointer-ext :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |ColorPointerType| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|size| |type| |stride| |count|) :retained t))
+   :category "EXT_vertex_array" :deprecated nil :version "1.0")
+  ("ArrayElementEXT" array-element-ext :return "void" :args
+   ((:name |i| :type |Int32| :direction :in)) :category "EXT_vertex_array"
+   :deprecated nil :version "1.0"))) 

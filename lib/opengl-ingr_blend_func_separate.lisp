@@ -11,3 +11,11 @@
   (:name |sfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in)
   (:name |dfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in))
  :category "INGR_blend_func_separate" :deprecated nil :version "1.0") 
+(make-extension-loader |INGR_blend_func_separate|
+ (("BlendFuncSeparateINGR" blend-func-separate-ingr :return "void" :args
+   ((:name |sfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
+    (:name |dfactorRGB| :type |BlendFuncSeparateParameterEXT| :direction :in)
+    (:name |sfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction :in)
+    (:name |dfactorAlpha| :type |BlendFuncSeparateParameterEXT| :direction
+     :in))
+   :category "INGR_blend_func_separate" :deprecated nil :version "1.0"))) 

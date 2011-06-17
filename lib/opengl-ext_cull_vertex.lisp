@@ -18,3 +18,12 @@
  ((:name |pname| :type |CullParameterEXT| :direction :in)
   (:name |params| :type |Float64| :direction :out :array t :size #x4))
  :category "EXT_cull_vertex" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_cull_vertex|
+ (("CullParameterfvEXT" cull-parameter-fv-ext :return "void" :args
+   ((:name |pname| :type |CullParameterEXT| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x4))
+   :category "EXT_cull_vertex" :deprecated nil :version "1.1")
+  ("CullParameterdvEXT" cull-parameter-dv-ext :return "void" :args
+   ((:name |pname| :type |CullParameterEXT| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x4))
+   :category "EXT_cull_vertex" :deprecated nil :version "1.1"))) 

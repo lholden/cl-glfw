@@ -388,3 +388,319 @@
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in))
  :category "ARB_vertex_program" :deprecated nil :version "1.3") 
+(make-extension-loader |ARB_vertex_program|
+ (("IsProgramARB" is-program-arb :return "Boolean" :args
+   ((:name |program| :type |UInt32| :direction :in)) :category
+   "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetVertexAttribPointervARB" get-vertex-attrib-pointerv-arb :return "void"
+   :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribPointerPropertyARB| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :out :array t :size #x1))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetVertexAttribivARB" get-vertex-attrib-iv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribPropertyARB| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetVertexAttribfvARB" get-vertex-attrib-fv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribPropertyARB| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetVertexAttribdvARB" get-vertex-attrib-dv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribPropertyARB| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetProgramStringARB" get-program-string-arb :return "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |pname| :type |ProgramStringPropertyARB| :direction :in)
+    (:name |string| :type |Void| :direction :out :array t :size
+     (|target| |pname|)))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetProgramivARB" get-program-iv-arb :return "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |pname| :type |ProgramPropertyARB| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x1))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetProgramLocalParameterfvARB" get-program-local-parameter-fv-arb :return
+   "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetProgramLocalParameterdvARB" get-program-local-parameter-dv-arb :return
+   "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetProgramEnvParameterfvARB" get-program-env-parameter-fv-arb :return
+   "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GetProgramEnvParameterdvARB" get-program-env-parameter-dv-arb :return
+   "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramLocalParameter4fvARB" program-local-parameter-4fv-arb :return "void"
+   :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramLocalParameter4fARB" program-local-parameter-4f-arb :return "void"
+   :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramLocalParameter4dvARB" program-local-parameter-4dv-arb :return "void"
+   :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float64| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramLocalParameter4dARB" program-local-parameter-4d-arb :return "void"
+   :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramEnvParameter4fvARB" program-env-parameter-4fv-arb :return "void"
+   :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramEnvParameter4fARB" program-env-parameter-4f-arb :return "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramEnvParameter4dvARB" program-env-parameter-4dv-arb :return "void"
+   :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |params| :type |Float64| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramEnvParameter4dARB" program-env-parameter-4d-arb :return "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("GenProgramsARB" gen-programs-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |programs| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("DeleteProgramsARB" delete-programs-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |programs| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("BindProgramARB" bind-program-arb :return "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |program| :type |UInt32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("ProgramStringARB" program-string-arb :return "void" :args
+   ((:name |target| :type |ProgramTargetARB| :direction :in)
+    (:name |format| :type |ProgramFormatARB| :direction :in)
+    (:name |len| :type |SizeI| :direction :in)
+    (:name |string| :type |Void| :direction :in :array t :size len))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("DisableVertexAttribArrayARB" disable-vertex-attrib-array-arb :return "void"
+   :args ((:name |index| :type |UInt32| :direction :in)) :category
+   "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("EnableVertexAttribArrayARB" enable-vertex-attrib-array-arb :return "void"
+   :args ((:name |index| :type |UInt32| :direction :in)) :category
+   "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttribPointerARB" vertex-attrib-pointer-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexAttribPointerTypeARB| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4usvARB" vertex-attrib-4usv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |UInt16| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4uivARB" vertex-attrib-4uiv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |UInt32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4ubvARB" vertex-attrib-4ubv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |UInt8| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4svARB" vertex-attrib-4sv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4sARB" vertex-attrib-4s-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in)
+    (:name |y| :type |Int16| :direction :in)
+    (:name |z| :type |Int16| :direction :in)
+    (:name |w| :type |Int16| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4ivARB" vertex-attrib-4iv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4fvARB" vertex-attrib-4fv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4fARB" vertex-attrib-4f-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4dvARB" vertex-attrib-4dv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4dARB" vertex-attrib-4d-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4bvARB" vertex-attrib-4bv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int8| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NusvARB" vertex-attrib-4n-usv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |UInt16| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NuivARB" vertex-attrib-4n-uiv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |UInt32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NubvARB" vertex-attrib-4n-ubv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |UInt8| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NubARB" vertex-attrib-4n-ub-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |UInt8| :direction :in)
+    (:name |y| :type |UInt8| :direction :in)
+    (:name |z| :type |UInt8| :direction :in)
+    (:name |w| :type |UInt8| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NsvARB" vertex-attrib-4n-sv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NivARB" vertex-attrib-4n-iv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int32| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib4NbvARB" vertex-attrib-4n-bv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int8| :direction :in :array t :size #x4))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib3svARB" vertex-attrib-3sv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x3))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib3sARB" vertex-attrib-3s-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in)
+    (:name |y| :type |Int16| :direction :in)
+    (:name |z| :type |Int16| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib3fvARB" vertex-attrib-3fv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x3))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib3fARB" vertex-attrib-3f-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib3dvARB" vertex-attrib-3dv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x3))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib3dARB" vertex-attrib-3d-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib2svARB" vertex-attrib-2sv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x2))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib2sARB" vertex-attrib-2s-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in)
+    (:name |y| :type |Int16| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib2fvARB" vertex-attrib-2fv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x2))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib2fARB" vertex-attrib-2f-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib2dvARB" vertex-attrib-2dv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x2))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib2dARB" vertex-attrib-2d-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib1svARB" vertex-attrib-1sv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x1))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib1sARB" vertex-attrib-1s-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib1fvARB" vertex-attrib-1fv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x1))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib1fARB" vertex-attrib-1f-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib1dvARB" vertex-attrib-1dv-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x1))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3")
+  ("VertexAttrib1dARB" vertex-attrib-1d-arb :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in))
+   :category "ARB_vertex_program" :deprecated nil :version "1.3"))) 

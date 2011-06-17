@@ -40,3 +40,22 @@
  ((:name |pname| :type |TexBumpParameterATI| :direction :in)
   (:name |param| :type |Int32| :direction :in :array t :size (|pname|)))
  :category "ATI_envmap_bumpmap" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_envmap_bumpmap|
+ (("GetTexBumpParameterfvATI" get-tex-bump-parameter-fv-ati :return "void"
+   :args
+   ((:name |pname| :type |GetTexBumpParameterATI| :direction :in)
+    (:name |param| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "ATI_envmap_bumpmap" :deprecated nil :version "1.2")
+  ("GetTexBumpParameterivATI" get-tex-bump-parameter-iv-ati :return "void"
+   :args
+   ((:name |pname| :type |GetTexBumpParameterATI| :direction :in)
+    (:name |param| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ATI_envmap_bumpmap" :deprecated nil :version "1.2")
+  ("TexBumpParameterfvATI" tex-bump-parameter-fv-ati :return "void" :args
+   ((:name |pname| :type |TexBumpParameterATI| :direction :in)
+    (:name |param| :type |Float32| :direction :in :array t :size (|pname|)))
+   :category "ATI_envmap_bumpmap" :deprecated nil :version "1.2")
+  ("TexBumpParameterivATI" tex-bump-parameter-iv-ati :return "void" :args
+   ((:name |pname| :type |TexBumpParameterATI| :direction :in)
+    (:name |param| :type |Int32| :direction :in :array t :size (|pname|)))
+   :category "ATI_envmap_bumpmap" :deprecated nil :version "1.2"))) 

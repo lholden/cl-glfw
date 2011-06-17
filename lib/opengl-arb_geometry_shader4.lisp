@@ -54,3 +54,31 @@
   (:name |pname| :type |ProgramParameterPName| :direction :in)
   (:name |value| :type |Int32| :direction :in))
  :category "ARB_geometry_shader4" :deprecated nil :version "3.0") 
+(make-extension-loader |ARB_geometry_shader4|
+ (("FramebufferTextureFaceARB" framebuffer-texture-face-arb :return "void"
+   :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |face| :type |TextureTarget| :direction :in))
+   :category "ARB_geometry_shader4" :deprecated nil :version "3.0")
+  ("FramebufferTextureLayerARB" framebuffer-texture-layer-arb :return "void"
+   :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |layer| :type |CheckedInt32| :direction :in))
+   :category "ARB_geometry_shader4" :deprecated nil :version "3.0")
+  ("FramebufferTextureARB" framebuffer-texture-arb :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in))
+   :category "ARB_geometry_shader4" :deprecated nil :version "3.0")
+  ("ProgramParameteriARB" program-parameter-i-arb :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |pname| :type |ProgramParameterPName| :direction :in)
+    (:name |value| :type |Int32| :direction :in))
+   :category "ARB_geometry_shader4" :deprecated nil :version "3.0"))) 

@@ -30,3 +30,16 @@
   (:name |count| :type |SizeI| :direction :in)
   (:name |params| :type |UInt32| :direction :in :array t :size count))
  :category "NV_gpu_program5" :deprecated nil :version "4.1") 
+(make-extension-loader |NV_gpu_program5|
+ (("GetProgramSubroutineParameteruivNV" get-program-subroutine-parameter-uiv-nv
+   :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |param| :type |UInt32| :direction :out :array t :size (|target|)))
+   :category "NV_gpu_program5" :deprecated nil :version "4.1")
+  ("ProgramSubroutineParametersuivNV" program-subroutine-parameters-uiv-nv
+   :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size count))
+   :category "NV_gpu_program5" :deprecated nil :version "4.1"))) 

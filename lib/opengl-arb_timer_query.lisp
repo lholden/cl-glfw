@@ -21,3 +21,18 @@
  ((:name |id| :type |UInt32| :direction :in)
   (:name |target| :type |GLenum| :direction :in))
  :category "ARB_timer_query" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_timer_query|
+ (("GetQueryObjectui64v" get-query-objectui-64v :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |UInt64| :direction :out :array t :size (|pname|)))
+   :category "ARB_timer_query" :deprecated nil :version "1.2")
+  ("GetQueryObjecti64v" get-query-objecti-64v :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int64| :direction :out :array t :size (|pname|)))
+   :category "ARB_timer_query" :deprecated nil :version "1.2")
+  ("QueryCounter" query-counter :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |target| :type |GLenum| :direction :in))
+   :category "ARB_timer_query" :deprecated nil :version "1.2"))) 

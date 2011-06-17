@@ -6,3 +6,6 @@
 
 (defglextfun "FlushRasterSGIX" flush-raster-sgix :return "void" :args nil
  :category "SGIX_flush_raster" :deprecated nil :version "1.0") 
+(make-extension-loader |SGIX_flush_raster|
+ (("FlushRasterSGIX" flush-raster-sgix :return "void" :args nil :category
+   "SGIX_flush_raster" :deprecated nil :version "1.0"))) 

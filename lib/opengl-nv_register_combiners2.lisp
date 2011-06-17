@@ -53,3 +53,17 @@
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
  :category "NV_register_combiners2" :deprecated nil :version "1.1") 
+(make-extension-loader |NV_register_combiners2|
+ (("GetCombinerStageParameterfvNV" get-combiner-stage-parameter-fv-nv :return
+   "void" :args
+   ((:name |stage| :type |CombinerStageNV| :direction :in)
+    (:name |pname| :type |CombinerParameterNV| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "NV_register_combiners2" :deprecated nil :version "1.1")
+  ("CombinerStageParameterfvNV" combiner-stage-parameter-fv-nv :return "void"
+   :args
+   ((:name |stage| :type |CombinerStageNV| :direction :in)
+    (:name |pname| :type |CombinerParameterNV| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "NV_register_combiners2" :deprecated nil :version "1.1"))) 

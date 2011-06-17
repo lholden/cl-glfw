@@ -41,3 +41,28 @@
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |id| :type |UInt32| :direction :in))
  :category "NV_transform_feedback2" :deprecated nil :version nil) 
+(make-extension-loader |NV_transform_feedback2|
+ (("DrawTransformFeedbackNV" draw-transform-feedback-nv :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "NV_transform_feedback2" :deprecated nil :version nil)
+  ("ResumeTransformFeedbackNV" resume-transform-feedback-nv :return "void"
+   :args nil :category "NV_transform_feedback2" :deprecated nil :version nil)
+  ("PauseTransformFeedbackNV" pause-transform-feedback-nv :return "void" :args
+   nil :category "NV_transform_feedback2" :deprecated nil :version nil)
+  ("IsTransformFeedbackNV" is-transform-feedback-nv :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category
+   "NV_transform_feedback2" :deprecated nil :version nil)
+  ("GenTransformFeedbacksNV" gen-transform-feedbacks-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :out :array t :size n))
+   :category "NV_transform_feedback2" :deprecated nil :version nil)
+  ("DeleteTransformFeedbacksNV" delete-transform-feedbacks-nv :return "void"
+   :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |ids| :type |UInt32| :direction :in :array t :size n))
+   :category "NV_transform_feedback2" :deprecated nil :version nil)
+  ("BindTransformFeedbackNV" bind-transform-feedback-nv :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "NV_transform_feedback2" :deprecated nil :version nil))) 

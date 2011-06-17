@@ -17,3 +17,8 @@
  ((:name |zmin| :type |ClampedFloat64| :direction :in)
   (:name |zmax| :type |ClampedFloat64| :direction :in))
  :category "EXT_depth_bounds_test" :deprecated nil :version "1.2") 
+(make-extension-loader |EXT_depth_bounds_test|
+ (("DepthBoundsEXT" depth-bounds-ext :return "void" :args
+   ((:name |zmin| :type |ClampedFloat64| :direction :in)
+    (:name |zmax| :type |ClampedFloat64| :direction :in))
+   :category "EXT_depth_bounds_test" :deprecated nil :version "1.2"))) 

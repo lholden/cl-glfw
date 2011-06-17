@@ -22,3 +22,22 @@
   (:name |primcount| :type |SizeI| :direction :in)
   (:name |modestride| :type |Int32| :direction :in))
  :category "IBM_multimode_draw_arrays" :deprecated nil :version "1.1") 
+(make-extension-loader |IBM_multimode_draw_arrays|
+ (("MultiModeDrawElementsIBM" multi-mode-draw-elements-ibm :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in :array t :size
+     (|primcount|))
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |ConstVoidPointer| :direction :in :array t :size
+     (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in)
+    (:name |modestride| :type |Int32| :direction :in))
+   :category "IBM_multimode_draw_arrays" :deprecated nil :version "1.1")
+  ("MultiModeDrawArraysIBM" multi-mode-draw-arrays-ibm :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in :array t :size
+     (|primcount|))
+    (:name |first| :type |Int32| :direction :in :array t :size (|primcount|))
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in)
+    (:name |modestride| :type |Int32| :direction :in))
+   :category "IBM_multimode_draw_arrays" :deprecated nil :version "1.1"))) 

@@ -26,3 +26,26 @@
   (:name |buffer| :type |UInt32| :direction :in)
   (:name |offset| :type |UInt32| :direction :in))
  :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_vertex_attrib_array_object|
+ (("GetVertexAttribArrayObjectivATI" get-vertex-attrib-array-object-iv-ati
+   :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |ArrayObjectPNameATI| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size pname))
+   :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2")
+  ("GetVertexAttribArrayObjectfvATI" get-vertex-attrib-array-object-fv-ati
+   :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |ArrayObjectPNameATI| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size pname))
+   :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2")
+  ("VertexAttribArrayObjectATI" vertex-attrib-array-object-ati :return "void"
+   :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexAttribPointerTypeARB| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |UInt32| :direction :in))
+   :category "ATI_vertex_attrib_array_object" :deprecated nil :version "1.2"))) 

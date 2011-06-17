@@ -21,3 +21,20 @@
   (:name |data| :type |Void| :direction :in :array t :size
    (|format| |type| |count|)))
  :category "EXT_color_subtable" :deprecated nil :version "1.2") 
+(make-extension-loader |EXT_color_subtable|
+ (("CopyColorSubTableEXT" copy-color-sub-table-ext :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |start| :type |SizeI| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "EXT_color_subtable" :deprecated nil :version "1.2")
+  ("ColorSubTableEXT" color-sub-table-ext :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |start| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |data| :type |Void| :direction :in :array t :size
+     (|format| |type| |count|)))
+   :category "EXT_color_subtable" :deprecated nil :version "1.2"))) 

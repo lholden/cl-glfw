@@ -24,3 +24,22 @@
   (:name |index| :type |UInt32| :direction :in)
   (:name |name| :type |charARB| :direction :in :array t))
  :category "ARB_vertex_shader" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_vertex_shader|
+ (("GetAttribLocationARB" get-attrib-location-arb :return "Int32" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |name| :type |charARB| :direction :in :array t))
+   :category "ARB_vertex_shader" :deprecated nil :version "1.2")
+  ("GetActiveAttribARB" get-active-attrib-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |maxLength| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |size| :type |Int32| :direction :out :array t :size #x1)
+    (:name |type| :type |GLenum| :direction :out :array t :size #x1)
+    (:name |name| :type |charARB| :direction :out :array t))
+   :category "ARB_vertex_shader" :deprecated nil :version "1.2")
+  ("BindAttribLocationARB" bind-attrib-location-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |name| :type |charARB| :direction :in :array t))
+   :category "ARB_vertex_shader" :deprecated nil :version "1.2"))) 

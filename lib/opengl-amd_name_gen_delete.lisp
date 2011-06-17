@@ -29,3 +29,18 @@
   (:name |num| :type |UInt32| :direction :in)
   (:name |names| :type |UInt32| :direction :out :array t :size num))
  :category "AMD_name_gen_delete" :deprecated nil :version "4.1") 
+(make-extension-loader |AMD_name_gen_delete|
+ (("IsNameAMD" is-name-amd :return "Boolean" :args
+   ((:name |identifier| :type |GLenum| :direction :in)
+    (:name |name| :type |UInt32| :direction :in))
+   :category "AMD_name_gen_delete" :deprecated nil :version "4.1")
+  ("DeleteNamesAMD" delete-names-amd :return "void" :args
+   ((:name |identifier| :type |GLenum| :direction :in)
+    (:name |num| :type |UInt32| :direction :in)
+    (:name |names| :type |UInt32| :direction :in :array t :size num))
+   :category "AMD_name_gen_delete" :deprecated nil :version "4.1")
+  ("GenNamesAMD" gen-names-amd :return "void" :args
+   ((:name |identifier| :type |GLenum| :direction :in)
+    (:name |num| :type |UInt32| :direction :in)
+    (:name |names| :type |UInt32| :direction :out :array t :size num))
+   :category "AMD_name_gen_delete" :deprecated nil :version "4.1"))) 

@@ -8,3 +8,6 @@
 (defconstant +texture-constant-data-sunx+ #x81D6) 
 (defglextfun "FinishTextureSUNX" finish-texture-sunx :return "void" :args nil
  :category "SUNX_constant_data" :deprecated nil :version "1.1") 
+(make-extension-loader |SUNX_constant_data|
+ (("FinishTextureSUNX" finish-texture-sunx :return "void" :args nil :category
+   "SUNX_constant_data" :deprecated nil :version "1.1"))) 

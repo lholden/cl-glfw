@@ -36,3 +36,30 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |fences| :type |FenceNV| :direction :in :array t :size n))
  :category "NV_fence" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_fence|
+ (("SetFenceNV" set-fence-nv :return "void" :args
+   ((:name |fence| :type |FenceNV| :direction :in)
+    (:name |condition| :type |FenceConditionNV| :direction :in))
+   :category "NV_fence" :deprecated nil :version "1.2")
+  ("FinishFenceNV" finish-fence-nv :return "void" :args
+   ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence"
+   :deprecated nil :version "1.2")
+  ("GetFenceivNV" get-fence-iv-nv :return "void" :args
+   ((:name |fence| :type |FenceNV| :direction :in)
+    (:name |pname| :type |FenceParameterNameNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "NV_fence" :deprecated nil :version "1.2")
+  ("TestFenceNV" test-fence-nv :return "Boolean" :args
+   ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence"
+   :deprecated nil :version "1.2")
+  ("IsFenceNV" is-fence-nv :return "Boolean" :args
+   ((:name |fence| :type |FenceNV| :direction :in)) :category "NV_fence"
+   :deprecated nil :version "1.2")
+  ("GenFencesNV" gen-fences-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |fences| :type |FenceNV| :direction :out :array t :size n))
+   :category "NV_fence" :deprecated nil :version "1.2")
+  ("DeleteFencesNV" delete-fences-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |fences| :type |FenceNV| :direction :in :array t :size n))
+   :category "NV_fence" :deprecated nil :version "1.2"))) 

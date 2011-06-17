@@ -85,3 +85,64 @@
    (|size| |type| |stride|) :retained t)
   (:name |ptrstride| :type |Int32| :direction :in))
  :category "IBM_vertex_array_lists" :deprecated nil :version "1.1") 
+(make-extension-loader |IBM_vertex_array_lists|
+ (("VertexPointerListIBM" vertex-pointer-list-ibm :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |VertexPointerType| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("TexCoordPointerListIBM" tex-coord-pointer-list-ibm :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |TexCoordPointerType| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("NormalPointerListIBM" normal-pointer-list-ibm :return "void" :args
+   ((:name |type| :type |NormalPointerType| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("IndexPointerListIBM" index-pointer-list-ibm :return "void" :args
+   ((:name |type| :type |IndexPointerType| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("FogCoordPointerListIBM" fog-coord-pointer-list-ibm :return "void" :args
+   ((:name |type| :type |FogPointerTypeIBM| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("EdgeFlagPointerListIBM" edge-flag-pointer-list-ibm :return "void" :args
+   ((:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |BooleanPointer| :direction :in :array t :size
+     (|stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("SecondaryColorPointerListIBM" secondary-color-pointer-list-ibm :return
+   "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |SecondaryColorPointerTypeIBM| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1")
+  ("ColorPointerListIBM" color-pointer-list-ibm :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |ColorPointerType| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :in :array t :size
+     (|size| |type| |stride|) :retained t)
+    (:name |ptrstride| :type |Int32| :direction :in))
+   :category "IBM_vertex_array_lists" :deprecated nil :version "1.1"))) 

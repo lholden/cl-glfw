@@ -32,3 +32,8 @@
  ((:name |target| :type |ClampColorTargetARB| :direction :in)
   (:name |clamp| :type |ClampColorModeARB| :direction :in))
  :category "ARB_color_buffer_float" :deprecated nil :version "1.5") 
+(make-extension-loader |ARB_color_buffer_float|
+ (("ClampColorARB" clamp-color-arb :return "void" :args
+   ((:name |target| :type |ClampColorTargetARB| :direction :in)
+    (:name |clamp| :type |ClampColorModeARB| :direction :in))
+   :category "ARB_color_buffer_float" :deprecated nil :version "1.5"))) 

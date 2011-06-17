@@ -10,3 +10,10 @@
 (defglextfun "MapObjectBufferATI" map-object-buffer-ati :return "VoidPointer"
  :args ((:name |buffer| :type |UInt32| :direction :in)) :category
  "ATI_map_object_buffer" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_map_object_buffer|
+ (("UnmapObjectBufferATI" unmap-object-buffer-ati :return "void" :args
+   ((:name |buffer| :type |UInt32| :direction :in)) :category
+   "ATI_map_object_buffer" :deprecated nil :version "1.2")
+  ("MapObjectBufferATI" map-object-buffer-ati :return "VoidPointer" :args
+   ((:name |buffer| :type |UInt32| :direction :in)) :category
+   "ATI_map_object_buffer" :deprecated nil :version "1.2"))) 

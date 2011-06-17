@@ -76,3 +76,69 @@
  ((:name |count| :type |SizeI| :direction :in)
   (:name |samplers| :type |UInt32| :direction :out :array t :size count))
  :category "ARB_sampler_objects" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_sampler_objects|
+ (("GetSamplerParameterIuiv" get-sampler-parameter-i-uiv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("GetSamplerParameterfv" get-sampler-parameter-fv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("GetSamplerParameterIiv" get-sampler-parameter-i-iv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("GetSamplerParameteriv" get-sampler-parameter-iv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("SamplerParameterIuiv" sampler-parameter-i-uiv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |param| :type |UInt32| :direction :in :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("SamplerParameterIiv" sampler-parameter-i-iv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |param| :type |Int32| :direction :in :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("SamplerParameterfv" sampler-parameter-fv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |param| :type |Float32| :direction :in :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("SamplerParameterf" sampler-parameter-f :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |param| :type |Float32| :direction :in))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("SamplerParameteriv" sampler-parameter-iv :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |param| :type |Int32| :direction :in :array t :size (|pname|)))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("SamplerParameteri" sampler-parameter-i :return "void" :args
+   ((:name |sampler| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |param| :type |Int32| :direction :in))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("BindSampler" bind-sampler :return "void" :args
+   ((:name |unit| :type |UInt32| :direction :in)
+    (:name |sampler| :type |UInt32| :direction :in))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("IsSampler" is-sampler :return "Boolean" :args
+   ((:name |sampler| :type |UInt32| :direction :in)) :category
+   "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("DeleteSamplers" delete-samplers :return "void" :args
+   ((:name |count| :type |SizeI| :direction :in)
+    (:name |samplers| :type |UInt32| :direction :in :array t :size count))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2")
+  ("GenSamplers" gen-samplers :return "void" :args
+   ((:name |count| :type |SizeI| :direction :in)
+    (:name |samplers| :type |UInt32| :direction :out :array t :size count))
+   :category "ARB_sampler_objects" :deprecated nil :version "1.2"))) 

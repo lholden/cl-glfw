@@ -50,3 +50,38 @@
   (:name |stringlen| :type |Int32| :direction :in)
   (:name |string| :type |Char| :direction :in :array t :size stringlen))
  :category "ARB_shading_language_include" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_shading_language_include|
+ (("GetNamedStringivARB" get-named-string-iv-arb :return "void" :args
+   ((:name |namelen| :type |Int32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size namelen)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_shading_language_include" :deprecated nil :version "1.2")
+  ("GetNamedStringARB" get-named-string-arb :return "void" :args
+   ((:name |namelen| :type |Int32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size namelen)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |stringlen| :type |Int32| :direction :out :array t :size #x1)
+    (:name |string| :type |Char| :direction :out :array t :size bufsize))
+   :category "ARB_shading_language_include" :deprecated nil :version "1.2")
+  ("IsNamedStringARB" is-named-string-arb :return "Boolean" :args
+   ((:name |namelen| :type |Int32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size namelen))
+   :category "ARB_shading_language_include" :deprecated nil :version "1.2")
+  ("CompileShaderIncludeARB" compile-shader-include-arb :return "void" :args
+   ((:name |shader| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |path| :type |CharPointer| :direction :in :array t :size count)
+    (:name |length| :type |Int32| :direction :in :array t :size count))
+   :category "ARB_shading_language_include" :deprecated nil :version "1.2")
+  ("DeleteNamedStringARB" delete-named-string-arb :return "void" :args
+   ((:name |namelen| :type |Int32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size namelen))
+   :category "ARB_shading_language_include" :deprecated nil :version "1.2")
+  ("NamedStringARB" named-string-arb :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |namelen| :type |Int32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size namelen)
+    (:name |stringlen| :type |Int32| :direction :in)
+    (:name |string| :type |Char| :direction :in :array t :size stringlen))
+   :category "ARB_shading_language_include" :deprecated nil :version "1.2"))) 

@@ -32,3 +32,12 @@
  ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
   (:name |param| :type |Int32| :direction :in))
  :category "ATI_pn_triangles" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_pn_triangles|
+ (("PNTrianglesfATI" pntriangles-f-ati :return "void" :args
+   ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
+    (:name |param| :type |Float32| :direction :in))
+   :category "ATI_pn_triangles" :deprecated nil :version "1.2")
+  ("PNTrianglesiATI" pntriangles-i-ati :return "void" :args
+   ((:name |pname| :type |PNTrianglesPNameATI| :direction :in)
+    (:name |param| :type |Int32| :direction :in))
+   :category "ATI_pn_triangles" :deprecated nil :version "1.2"))) 

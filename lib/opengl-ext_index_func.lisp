@@ -14,3 +14,8 @@
  ((:name |func| :type |IndexFunctionEXT| :direction :in)
   (:name |ref| :type |ClampedFloat32| :direction :in))
  :category "EXT_index_func" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_index_func|
+ (("IndexFuncEXT" index-func-ext :return "void" :args
+   ((:name |func| :type |IndexFunctionEXT| :direction :in)
+    (:name |ref| :type |ClampedFloat32| :direction :in))
+   :category "EXT_index_func" :deprecated nil :version "1.1"))) 

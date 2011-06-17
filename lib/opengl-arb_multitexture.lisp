@@ -232,3 +232,162 @@
 (defglextfun "ActiveTextureARB" active-texture-arb :return "void" :args
  ((:name |texture| :type |TextureUnit| :direction :in)) :category
  "ARB_multitexture" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_multitexture|
+ (("MultiTexCoord4svARB" multi-tex-coord-4sv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x4))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4sARB" multi-tex-coord-4s-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in)
+    (:name |t| :type |CoordS| :direction :in)
+    (:name |r| :type |CoordS| :direction :in)
+    (:name |q| :type |CoordS| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4ivARB" multi-tex-coord-4iv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x4))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4iARB" multi-tex-coord-4i-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in)
+    (:name |t| :type |CoordI| :direction :in)
+    (:name |r| :type |CoordI| :direction :in)
+    (:name |q| :type |CoordI| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4fvARB" multi-tex-coord-4fv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x4))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4fARB" multi-tex-coord-4f-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in)
+    (:name |t| :type |CoordF| :direction :in)
+    (:name |r| :type |CoordF| :direction :in)
+    (:name |q| :type |CoordF| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4dvARB" multi-tex-coord-4dv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x4))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord4dARB" multi-tex-coord-4d-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in)
+    (:name |t| :type |CoordD| :direction :in)
+    (:name |r| :type |CoordD| :direction :in)
+    (:name |q| :type |CoordD| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3svARB" multi-tex-coord-3sv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x3))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3sARB" multi-tex-coord-3s-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in)
+    (:name |t| :type |CoordS| :direction :in)
+    (:name |r| :type |CoordS| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3ivARB" multi-tex-coord-3iv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x3))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3iARB" multi-tex-coord-3i-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in)
+    (:name |t| :type |CoordI| :direction :in)
+    (:name |r| :type |CoordI| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3fvARB" multi-tex-coord-3fv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x3))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3fARB" multi-tex-coord-3f-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in)
+    (:name |t| :type |CoordF| :direction :in)
+    (:name |r| :type |CoordF| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3dvARB" multi-tex-coord-3dv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x3))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord3dARB" multi-tex-coord-3d-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in)
+    (:name |t| :type |CoordD| :direction :in)
+    (:name |r| :type |CoordD| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2svARB" multi-tex-coord-2sv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x2))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2sARB" multi-tex-coord-2s-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in)
+    (:name |t| :type |CoordS| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2ivARB" multi-tex-coord-2iv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x2))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2iARB" multi-tex-coord-2i-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in)
+    (:name |t| :type |CoordI| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2fvARB" multi-tex-coord-2fv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x2))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2fARB" multi-tex-coord-2f-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in)
+    (:name |t| :type |CoordF| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2dvARB" multi-tex-coord-2dv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x2))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord2dARB" multi-tex-coord-2d-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in)
+    (:name |t| :type |CoordD| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1svARB" multi-tex-coord-1sv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordS| :direction :in :array t :size #x1))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1sARB" multi-tex-coord-1s-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordS| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1ivARB" multi-tex-coord-1iv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordI| :direction :in :array t :size #x1))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1iARB" multi-tex-coord-1i-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordI| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1fvARB" multi-tex-coord-1fv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordF| :direction :in :array t :size #x1))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1fARB" multi-tex-coord-1f-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordF| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1dvARB" multi-tex-coord-1dv-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |v| :type |CoordD| :direction :in :array t :size #x1))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("MultiTexCoord1dARB" multi-tex-coord-1d-arb :return "void" :args
+   ((:name |target| :type |TextureUnit| :direction :in)
+    (:name |s| :type |CoordD| :direction :in))
+   :category "ARB_multitexture" :deprecated nil :version "1.2")
+  ("ClientActiveTextureARB" client-active-texture-arb :return "void" :args
+   ((:name |texture| :type |TextureUnit| :direction :in)) :category
+   "ARB_multitexture" :deprecated nil :version "1.2")
+  ("ActiveTextureARB" active-texture-arb :return "void" :args
+   ((:name |texture| :type |TextureUnit| :direction :in)) :category
+   "ARB_multitexture" :deprecated nil :version "1.2"))) 

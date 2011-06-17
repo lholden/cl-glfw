@@ -140,3 +140,54 @@
  ((:name |target| :type |BufferTargetARB| :direction :in)
   (:name |buffer| :type |UInt32| :direction :in))
  :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_vertex_buffer_object|
+ (("GetBufferPointervARB" get-buffer-pointerv-arb :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |pname| :type |BufferPointerNameARB| :direction :in)
+    (:name |params| :type |VoidPointer| :direction :out :array t :size #x1))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("GetBufferParameterivARB" get-buffer-parameter-iv-arb :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |pname| :type |BufferPNameARB| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("UnmapBufferARB" unmap-buffer-arb :return "Boolean" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)) :category
+   "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("MapBufferARB" map-buffer-arb :return "VoidPointer" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |access| :type |BufferAccessARB| :direction :in))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("GetBufferSubDataARB" get-buffer-sub-data-arb :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |offset| :type |BufferOffsetARB| :direction :in)
+    (:name |size| :type |BufferSizeARB| :direction :in)
+    (:name |data| :type |Void| :direction :out :array t :size size))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("BufferSubDataARB" buffer-sub-data-arb :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |offset| :type |BufferOffsetARB| :direction :in)
+    (:name |size| :type |BufferSizeARB| :direction :in)
+    (:name |data| :type |ConstVoid| :direction :in :array t :size size))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("BufferDataARB" buffer-data-arb :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |size| :type |BufferSizeARB| :direction :in)
+    (:name |data| :type |ConstVoid| :direction :in :array t :size size)
+    (:name |usage| :type |BufferUsageARB| :direction :in))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("IsBufferARB" is-buffer-arb :return "Boolean" :args
+   ((:name |buffer| :type |UInt32| :direction :in)) :category
+   "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("GenBuffersARB" gen-buffers-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |buffers| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("DeleteBuffersARB" delete-buffers-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |buffers| :type |ConstUInt32| :direction :in :array t :size n))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2")
+  ("BindBufferARB" bind-buffer-arb :return "void" :args
+   ((:name |target| :type |BufferTargetARB| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "ARB_vertex_buffer_object" :deprecated nil :version "1.2"))) 

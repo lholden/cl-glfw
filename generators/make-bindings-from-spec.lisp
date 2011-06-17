@@ -11,11 +11,18 @@
                           :files-output nil
                           :function-category-counts nil))
 
+(defun make-version-syms (&rest versions)
+  (loop for version in versions
+     collecting (intern (concatenate 'string "VERSION_" version))))
+
+(defparameter *core-opengl-versions* 
+  (make-version-syms "1_0" "1_1"))
+
 (defparameter *opengl-versions* 
-  (list "1_0" "1_1" "1_2" "1_3" "1_4" "1_5"
-	"2_0" "2_1"
-	"3_0" "3_1" "3_2" "3_3"
-	"4_0")
+  (make-version-syms "1_0" "1_1" "1_2" "1_3" "1_4" "1_5"
+		     "2_0" "2_1"
+		     "3_0" "3_1" "3_2" "3_3"
+		     "4_0" "4_1")
   "List of versioned extensions for dependency generation. 
 Must be in the correct order.")
 
@@ -66,7 +73,7 @@ with +s."
 (defun lisp-name-of (func-spec) (second func-spec))
 (defun freturn-of (func-spec) (getf (cddr func-spec) :return))
 (defun args-of (func-spec) (getf (cddr func-spec) :args))
-(defun category-of (func-spec) (getf (cddr func-spec) :category))
+(defun category-of (func-spec) (intern (getf (cddr func-spec) :category)))
 ;;; }}}
 
 ;;; {{{ FIX TYPE-MAPS 
@@ -211,7 +218,7 @@ suitable for cl-glfw-types or CFFI."
   ;; categorize functions
   (dolist (function-spec *function-specs*)
     (push function-spec
-          (getf *function-categories* (intern (category-of function-spec)))))
+          (getf *function-categories* (category-of function-spec))))
   (when (getf *reports* :function-category-counts)
     (format t "Category counts:~%")
     (loop for cat-name in *function-categories* by #'cddr
@@ -287,63 +294,87 @@ suitable for cl-glfw-types or CFFI."
          (format out "~&~%;;;; }}}~%"))
        (remf *enum-specs* enum-group))))
 
-(defun output-category (name category-names &optional (core-version nil))
+(defun output-category (name category-names)
   "write out the extension named by category name" 
 
   (let ((enum-specs (copy-tree *enum-specs*))
 	(function-categories (copy-tree *function-categories*)))
 
     ;; collect up the elements of the extension, the enums and functions
-    (let ((enumerations 
-	   (loop for category-name in category-names nconcing
-		(loop while (getf enum-specs category-name) nconcing
-		     (prog1 (loop for enum-name in (getf enum-specs category-name) by #'cddr
-			       for enum-value in (cdr (getf enum-specs category-name)) by #'cddr
-			       unless (find enum-name *predefined-enumerants*)
-			       collecting
-			       (let ((constant-name (constantize enum-name)))
-				 (push constant-name *exports*)
-				 `(defconstant ,constant-name ,enum-value)))
-		       (remf enum-specs category-name)))))
-	  (functions
-	   (loop for category-name in category-names nconcing
-		(loop while (getf function-categories category-name) nconcing
-		     (prog1
-			 (mapcar (if core-version #'gl-function-definition #'gl-extension-function-definition)
-				 (loop for function in (getf function-categories category-name)
-				    unless (find (intern (concatenate 'string "VERSION_" (substitute #\_ #\. (getf function :deprecated))))
-						 category-names)
-				    collect function))
-		       (remf function-categories category-name))))))
-      (format t "~a ~a: ~d functions~%" name category-names (length functions))
+    (let* ((enumerations 
+	    (loop for category-name in category-names nconcing
+		 (loop while (getf enum-specs category-name) nconcing
+		      (prog1 (loop for enum-name in (getf enum-specs category-name) by #'cddr
+				for enum-value in (cdr (getf enum-specs category-name)) by #'cddr
+				unless (find enum-name *predefined-enumerants*)
+				collecting
+				(let ((constant-name (constantize enum-name)))
+				  (push constant-name *exports*)
+				  `(defconstant ,constant-name ,enum-value)))
+			(remf enum-specs category-name)))))
+	   (function-specs
+	    (loop for category-name in category-names nconcing
+		 (loop while (getf function-categories category-name) nconcing
+		      (prog1
+			  (loop for function in (getf function-categories category-name)
+			     unless (find (intern (concatenate 'string "VERSION_" (substitute #\_ #\. (getf function :deprecated))))
+					  category-names)
+			     collect function)
+			(remf function-categories category-name)))))
+	   (extension-specs)
+	   (core-definitions)
+	   (extension-definitions))
+
+      ;;
+      (loop for function-spec in function-specs do
+	   (cond
+	     ((find (category-of function-spec) *core-opengl-versions*)
+	      (push (gl-function-definition function-spec) core-definitions))
+	     (t
+	      (push function-spec extension-specs)
+	      (push (gl-extension-function-definition function-spec) extension-definitions))))
+
+      (setf extension-specs (nreverse extension-specs)
+	    core-definitions (nreverse core-definitions)
+	    extension-definitions (nreverse extension-definitions))
+
+      (format t "~a ~a: ~d functions~%" name category-names (+ (length core-definitions)
+							       (length extension-definitions)))
       ;; only when we have either of these components, actually generate a system
-      (when (or enumerations functions)
-	;; write out the ASD definition
-	(with-output-file (out (format nil "~acl-glfw-opengl-~a.asd" (if core-version "" "lib/") name))
-	  (let* ((system-name (string-downcase (format nil "cl-glfw-opengl-~a" name)))
-		 (system-package (make-symbol (string-upcase (concatenate 'string system-name "-system")))))
-	    (print `(defpackage ,system-package (:use #:asdf #:cl)) out)
-	    (print `(in-package ,system-package) out)
-	    (print `(defsystem ,(intern (string-upcase system-name))
+      (when (or enumerations core-definitions extension-definitions)
+	(let ((core-version (= (length (intersection category-names 
+						     *opengl-versions*))
+			       (length category-names))))
+	  ;; write out the ASD definition
+	  (with-output-file (out (format nil "~acl-glfw-opengl-~a.asd" (if core-version "" "lib/") name))
+	    (let* ((system-name (string-downcase (format nil "cl-glfw-opengl-~a" name)))
+		   (system-package (make-symbol (string-upcase (concatenate 'string system-name "-system")))))
+	      (print `(defpackage ,system-package (:use #:asdf #:cl)) out)
+	      (print `(in-package ,system-package) out)
+	      (print `(defsystem ,(intern (string-upcase system-name))
 			:description ,(format nil "cl-glfw's ~a binding" name)
 			:author ,(format nil "Generated by cl-glfw's ~a" (load-time-value *load-truename*))
 			:licence "Public Domain"
 			:depends-on (cl-glfw-opengl-core)
 			:components ((:file ,(concatenate 'string (if core-version "lib/" "") "opengl-" (string-downcase (symbol-name name))))))
-		   out)))
+		     out)))
 
-	;; write the enumerations and function bindings
-	(with-output-file (out (format nil "lib/opengl-~a.lisp" name)) 
-	  (print '(in-package #:cl-glfw-opengl) out)
-	  (format out "~&~%;;;; ~a~&" name)
-	  (when core-version
-	    (print `(eval-when (:load-toplevel)
-		      (when (and (boundp '*version-loaded*)
-				 (not (eq ',name *version-loaded*)))
-			(warn "Loading cl-glfw-opengl-~a over the top of already-loaded cl-glfw-opengl-~a~%" ',name *version-loaded*))
-		      (defparameter *version-loaded* ',name)) out))
-	  (dolist (enumeration enumerations) (print enumeration out))
-	  (dolist (function functions) (print function out)))))))
+	  ;; write the enumerations and function bindings
+	  (with-output-file (out (format nil "lib/opengl-~a.lisp" name)) 
+	    (print '(in-package #:cl-glfw-opengl) out)
+	    (format out "~&~%;;;; ~a~&" name)
+	    (when core-version
+	      (print `(eval-when (:load-toplevel)
+			(when (and (boundp '*version-loaded*)
+				   (not (eq ',name *version-loaded*)))
+			  (warn "Loading cl-glfw-opengl-~a over the top of already-loaded cl-glfw-opengl-~a~%" ',name *version-loaded*))
+			(defparameter *version-loaded* ',name)) out))
+	    (dolist (enumeration enumerations) (print enumeration out))
+	    (dolist (function core-definitions) (print function out))
+	    (dolist (function extension-definitions) (print function out))
+	    (when extension-specs
+	      (push (format nil "LOAD-~A" name) *exports*)
+	      (print `(make-extension-loader ,name ,extension-specs) out))))))))
 
 
 (defun output-everything ()
@@ -355,9 +386,9 @@ suitable for cl-glfw-types or CFFI."
     (output-core)
 
     (let (current-categories)
-      (loop for name in (loop for version in *opengl-versions* collecting (intern (concatenate 'string "VERSION_" version))) do
+      (loop for name in *opengl-versions* do
 	   (push name current-categories)
-	   (output-category name (reverse current-categories) t))
+	   (output-category name (reverse current-categories)))
       (loop for name in current-categories do
 	   (loop while (getf *function-categories* name) do (remf *function-categories* name))
 	   (loop while (getf *enum-specs* name) do (remf *enum-specs* name))))

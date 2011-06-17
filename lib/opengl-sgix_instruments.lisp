@@ -23,3 +23,22 @@
  :category "SGIX_instruments" :deprecated nil :version "1.0") 
 (defglextfun "GetInstrumentsSGIX" get-instruments-sgix :return "Int32" :args
  nil :category "SGIX_instruments" :deprecated nil :version "1.0") 
+(make-extension-loader |SGIX_instruments|
+ (("StopInstrumentsSGIX" stop-instruments-sgix :return "void" :args
+   ((:name |marker| :type |Int32| :direction :in)) :category "SGIX_instruments"
+   :deprecated nil :version "1.0")
+  ("StartInstrumentsSGIX" start-instruments-sgix :return "void" :args nil
+   :category "SGIX_instruments" :deprecated nil :version "1.0")
+  ("ReadInstrumentsSGIX" read-instruments-sgix :return "void" :args
+   ((:name |marker| :type |Int32| :direction :in)) :category "SGIX_instruments"
+   :deprecated nil :version "1.0")
+  ("PollInstrumentsSGIX" poll-instruments-sgix :return "Int32" :args
+   ((:name |marker_p| :type |Int32| :direction :out :array t :size #x1))
+   :category "SGIX_instruments" :deprecated nil :version "1.0")
+  ("InstrumentsBufferSGIX" instruments-buffer-sgix :return "void" :args
+   ((:name |size| :type |SizeI| :direction :in)
+    (:name |buffer| :type |Int32| :direction :out :array t :size size :retained
+     t))
+   :category "SGIX_instruments" :deprecated nil :version "1.0")
+  ("GetInstrumentsSGIX" get-instruments-sgix :return "Int32" :args nil
+   :category "SGIX_instruments" :deprecated nil :version "1.0"))) 

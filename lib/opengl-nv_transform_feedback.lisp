@@ -161,3 +161,72 @@
 (defglextfun "BeginTransformFeedbackNV" begin-transform-feedback-nv :return
  "void" :args ((:name |primitiveMode| :type |GLenum| :direction :in)) :category
  "NV_transform_feedback" :deprecated nil :version "1.5") 
+(make-extension-loader |NV_transform_feedback|
+ (("TransformFeedbackStreamAttribsNV" transform-feedback-stream-attribs-nv
+   :return "void" :args
+   ((:name |count| :type |SizeI| :direction :in)
+    (:name |attribs| :type |Int32| :direction :in :array t :size count)
+    (:name |nbuffers| :type |SizeI| :direction :in)
+    (:name |bufstreams| :type |Int32| :direction :in :array t :size nbuffers)
+    (:name |bufferMode| :type |GLenum| :direction :in))
+   :category "NV_transform_feedback" :deprecated nil :version "4.1")
+  ("GetTransformFeedbackVaryingNV" get-transform-feedback-varying-nv :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |location| :type |Int32| :direction :out :array t :size #x1))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("GetActiveVaryingNV" get-active-varying-nv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |bufSize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |size| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |type| :type |GLenum| :direction :out :array t :size #x1)
+    (:name |name| :type |Char| :direction :out :array t :size
+     (|program| |index| |bufSize|)))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("GetVaryingLocationNV" get-varying-location-nv :return "Int32" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("ActiveVaryingNV" active-varying-nv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t :size (|name|)))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("TransformFeedbackVaryingsNV" transform-feedback-varyings-nv :return "void"
+   :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |locations| :type |Int32| :direction :in :array t :size count)
+    (:name |bufferMode| :type |GLenum| :direction :in))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("BindBufferBaseNV" bind-buffer-base-nv :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("BindBufferOffsetNV" bind-buffer-offset-nv :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("BindBufferRangeNV" bind-buffer-range-nv :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in)
+    (:name |size| :type |BufferSize| :direction :in))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("TransformFeedbackAttribsNV" transform-feedback-attribs-nv :return "void"
+   :args
+   ((:name |count| :type |UInt32| :direction :in)
+    (:name |attribs| :type |Int32| :direction :in :array t :size (|count|))
+    (:name |bufferMode| :type |GLenum| :direction :in))
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("EndTransformFeedbackNV" end-transform-feedback-nv :return "void" :args nil
+   :category "NV_transform_feedback" :deprecated nil :version "1.5")
+  ("BeginTransformFeedbackNV" begin-transform-feedback-nv :return "void" :args
+   ((:name |primitiveMode| :type |GLenum| :direction :in)) :category
+   "NV_transform_feedback" :deprecated nil :version "1.5"))) 

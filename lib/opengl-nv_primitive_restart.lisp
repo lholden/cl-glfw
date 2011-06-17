@@ -13,3 +13,9 @@
  "NV_primitive_restart" :deprecated nil :version "1.2") 
 (defglextfun "PrimitiveRestartNV" primitive-restart-nv :return "void" :args nil
  :category "NV_primitive_restart" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_primitive_restart|
+ (("PrimitiveRestartIndexNV" primitive-restart-index-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)) :category
+   "NV_primitive_restart" :deprecated nil :version "1.2")
+  ("PrimitiveRestartNV" primitive-restart-nv :return "void" :args nil :category
+   "NV_primitive_restart" :deprecated nil :version "1.2"))) 

@@ -28,3 +28,8 @@
  ((:name |target| :type |HintTargetPGI| :direction :in)
   (:name |mode| :type |Int32| :direction :in))
  :category "PGI_misc_hints" :deprecated nil :version "1.1") 
+(make-extension-loader |PGI_misc_hints|
+ (("HintPGI" hint-pgi :return "void" :args
+   ((:name |target| :type |HintTargetPGI| :direction :in)
+    (:name |mode| :type |Int32| :direction :in))
+   :category "PGI_misc_hints" :deprecated nil :version "1.1"))) 

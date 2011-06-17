@@ -12,3 +12,11 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |points| :type |Float32| :direction :in :array t :size n*2))
  :category "SGIS_fog_function" :deprecated nil :version "1.1") 
+(make-extension-loader |SGIS_fog_function|
+ (("GetFogFuncSGIS" get-fog-func-sgis :return "void" :args
+   ((:name |points| :type |Float32| :direction :out :array t)) :category
+   "SGIS_fog_function" :deprecated nil :version "1.1")
+  ("FogFuncSGIS" fog-func-sgis :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |points| :type |Float32| :direction :in :array t :size n*2))
+   :category "SGIS_fog_function" :deprecated nil :version "1.1"))) 

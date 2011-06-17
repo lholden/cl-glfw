@@ -116,3 +116,64 @@
   (:name |address| :type |UInt64EXT| :direction :in)
   (:name |length| :type |BufferSize| :direction :in))
  :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_vertex_buffer_unified_memory|
+ (("GetIntegerui64i_vNV" get-integerui-64i_v-nv :return "void" :args
+   ((:name |value| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |result| :type |UInt64EXT| :direction :out :array t :size
+     (|value|)))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("VertexAttribIFormatNV" vertex-attrib-iformat-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("VertexAttribFormatNV" vertex-attrib-format-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |normalized| :type |Boolean| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("FogCoordFormatNV" fog-coord-format-nv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("SecondaryColorFormatNV" secondary-color-format-nv :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("EdgeFlagFormatNV" edge-flag-format-nv :return "void" :args
+   ((:name |stride| :type |SizeI| :direction :in)) :category
+   "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("TexCoordFormatNV" tex-coord-format-nv :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("IndexFormatNV" index-format-nv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("ColorFormatNV" color-format-nv :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("NormalFormatNV" normal-format-nv :return "void" :args
+   ((:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("VertexFormatNV" vertex-format-nv :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2")
+  ("BufferAddressRangeNV" buffer-address-range-nv :return "void" :args
+   ((:name |pname| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |address| :type |UInt64EXT| :direction :in)
+    (:name |length| :type |BufferSize| :direction :in))
+   :category "NV_vertex_buffer_unified_memory" :deprecated nil :version "1.2"))) 

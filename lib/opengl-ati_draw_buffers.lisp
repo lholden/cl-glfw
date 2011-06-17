@@ -43,3 +43,8 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |bufs| :type |DrawBufferModeATI| :direction :in :array t :size n))
  :category "ATI_draw_buffers" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_draw_buffers|
+ (("DrawBuffersATI" draw-buffers-ati :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |bufs| :type |DrawBufferModeATI| :direction :in :array t :size n))
+   :category "ATI_draw_buffers" :deprecated nil :version "1.2"))) 

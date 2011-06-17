@@ -26,3 +26,19 @@
   (:name |pointer| :type |Void| :direction :in :array t :size (|type|)
    :retained t))
  :category "ATI_element_array" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_element_array|
+ (("DrawRangeElementArrayATI" draw-range-element-array-ati :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |start| :type |UInt32| :direction :in)
+    (:name |end| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in))
+   :category "ATI_element_array" :deprecated nil :version "1.2")
+  ("DrawElementArrayATI" draw-element-array-ati :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |count| :type |SizeI| :direction :in))
+   :category "ATI_element_array" :deprecated nil :version "1.2")
+  ("ElementPointerATI" element-pointer-ati :return "void" :args
+   ((:name |type| :type |ElementPointerTypeATI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size (|type|)
+     :retained t))
+   :category "ATI_element_array" :deprecated nil :version "1.2"))) 

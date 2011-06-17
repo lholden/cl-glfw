@@ -199,3 +199,195 @@
 (defglextfun "DeleteObjectARB" delete-object-arb :return "void" :args
  ((:name |obj| :type |handleARB| :direction :in)) :category
  "ARB_shader_objects" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_shader_objects|
+ (("GetShaderSourceARB" get-shader-source-arb :return "void" :args
+   ((:name |obj| :type |handleARB| :direction :in)
+    (:name |maxLength| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |source| :type |charARB| :direction :out :array t :size length))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetUniformivARB" get-uniform-iv-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|location|)))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetUniformfvARB" get-uniform-fv-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size
+     (|location|)))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetActiveUniformARB" get-active-uniform-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |maxLength| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |size| :type |Int32| :direction :out :array t :size #x1)
+    (:name |type| :type |GLenum| :direction :out :array t :size #x1)
+    (:name |name| :type |charARB| :direction :out :array t))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetUniformLocationARB" get-uniform-location-arb :return "Int32" :args
+   ((:name |programObj| :type |handleARB| :direction :in)
+    (:name |name| :type |charARB| :direction :in :array t))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetAttachedObjectsARB" get-attached-objects-arb :return "void" :args
+   ((:name |containerObj| :type |handleARB| :direction :in)
+    (:name |maxCount| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |obj| :type |handleARB| :direction :out :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetInfoLogARB" get-info-log-arb :return "void" :args
+   ((:name |obj| :type |handleARB| :direction :in)
+    (:name |maxLength| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |infoLog| :type |charARB| :direction :out :array t :size length))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetObjectParameterivARB" get-object-parameter-iv-arb :return "void" :args
+   ((:name |obj| :type |handleARB| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size pname))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetObjectParameterfvARB" get-object-parameter-fv-arb :return "void" :args
+   ((:name |obj| :type |handleARB| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size pname))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("UniformMatrix4fvARB" uniform-matrix-4fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("UniformMatrix3fvARB" uniform-matrix-3fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("UniformMatrix2fvARB" uniform-matrix-2fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |transpose| :type |Boolean| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform4ivARB" uniform-4iv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform3ivARB" uniform-3iv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform2ivARB" uniform-2iv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform1ivARB" uniform-1iv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Int32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform4fvARB" uniform-4fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform3fvARB" uniform-3fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform2fvARB" uniform-2fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform1fvARB" uniform-1fv-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |value| :type |Float32| :direction :in :array t :size count))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform4iARB" uniform-4i-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in)
+    (:name |v2| :type |Int32| :direction :in)
+    (:name |v3| :type |Int32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform3iARB" uniform-3i-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in)
+    (:name |v2| :type |Int32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform2iARB" uniform-2i-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in)
+    (:name |v1| :type |Int32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform1iARB" uniform-1i-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Int32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform4fARB" uniform-4f-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in)
+    (:name |v2| :type |Float32| :direction :in)
+    (:name |v3| :type |Float32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform3fARB" uniform-3f-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in)
+    (:name |v2| :type |Float32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform2fARB" uniform-2f-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in)
+    (:name |v1| :type |Float32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("Uniform1fARB" uniform-1f-arb :return "void" :args
+   ((:name |location| :type |Int32| :direction :in)
+    (:name |v0| :type |Float32| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("ValidateProgramARB" validate-program-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("UseProgramObjectARB" use-program-object-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("LinkProgramARB" link-program-arb :return "void" :args
+   ((:name |programObj| :type |handleARB| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("AttachObjectARB" attach-object-arb :return "void" :args
+   ((:name |containerObj| :type |handleARB| :direction :in)
+    (:name |obj| :type |handleARB| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("CreateProgramObjectARB" create-program-object-arb :return "handleARB" :args
+   nil :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("CompileShaderARB" compile-shader-arb :return "void" :args
+   ((:name |shaderObj| :type |handleARB| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("ShaderSourceARB" shader-source-arb :return "void" :args
+   ((:name |shaderObj| :type |handleARB| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |string| :type |charPointerARB| :direction :in :array t :size count)
+    (:name |length| :type |Int32| :direction :in :array t :size #x1))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("CreateShaderObjectARB" create-shader-object-arb :return "handleARB" :args
+   ((:name |shaderType| :type |GLenum| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("DetachObjectARB" detach-object-arb :return "void" :args
+   ((:name |containerObj| :type |handleARB| :direction :in)
+    (:name |attachedObj| :type |handleARB| :direction :in))
+   :category "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("GetHandleARB" get-handle-arb :return "handleARB" :args
+   ((:name |pname| :type |GLenum| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2")
+  ("DeleteObjectARB" delete-object-arb :return "void" :args
+   ((:name |obj| :type |handleARB| :direction :in)) :category
+   "ARB_shader_objects" :deprecated nil :version "1.2"))) 

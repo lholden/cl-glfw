@@ -11,3 +11,7 @@
 (defglextfun "TextureNormalEXT" texture-normal-ext :return "void" :args
  ((:name |mode| :type |TextureNormalModeEXT| :direction :in)) :category
  "EXT_texture_perturb_normal" :deprecated nil :version "1.1") 
+(make-extension-loader |EXT_texture_perturb_normal|
+ (("TextureNormalEXT" texture-normal-ext :return "void" :args
+   ((:name |mode| :type |TextureNormalModeEXT| :direction :in)) :category
+   "EXT_texture_perturb_normal" :deprecated nil :version "1.1"))) 

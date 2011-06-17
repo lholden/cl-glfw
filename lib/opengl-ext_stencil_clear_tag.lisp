@@ -12,3 +12,8 @@
  ((:name |stencilTagBits| :type |SizeI| :direction :in)
   (:name |stencilClearTag| :type |UInt32| :direction :in))
  :category "EXT_stencil_clear_tag" :deprecated nil :version "1.5") 
+(make-extension-loader |EXT_stencil_clear_tag|
+ (("StencilClearTagEXT" stencil-clear-tag-ext :return "void" :args
+   ((:name |stencilTagBits| :type |SizeI| :direction :in)
+    (:name |stencilClearTag| :type |UInt32| :direction :in))
+   :category "EXT_stencil_clear_tag" :deprecated nil :version "1.5"))) 

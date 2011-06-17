@@ -1536,34 +1536,36 @@
   (:name |first| :type |Int32| :direction :in)
   (:name |count| :type |SizeI| :direction :in))
  :category "VERSION_1_1" :deprecated nil :version "1.1") 
-(defglfun "ResetMinmax" reset-minmax :return "void" :args
+(defglextfun "ResetMinmax" reset-minmax :return "void" :args
  ((:name |target| :type |MinmaxTarget| :direction :in)) :category "VERSION_1_2"
  :deprecated "3.1" :version "1.2") 
-(defglfun "ResetHistogram" reset-histogram :return "void" :args
+(defglextfun "ResetHistogram" reset-histogram :return "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)) :category
  "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "Minmax" minmax :return "void" :args
+(defglextfun "Minmax" minmax :return "void" :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |sink| :type |Boolean| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "Histogram" histogram :return "void" :args
+(defglextfun "Histogram" histogram :return "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |sink| :type |Boolean| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetMinmaxParameteriv" get-minmax-parameter-iv :return "void" :args
+(defglextfun "GetMinmaxParameteriv" get-minmax-parameter-iv :return "void"
+ :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetMinmaxParameterfv" get-minmax-parameter-fv :return "void" :args
+(defglextfun "GetMinmaxParameterfv" get-minmax-parameter-fv :return "void"
+ :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetMinmax" get-minmax :return "void" :args
+(defglextfun "GetMinmax" get-minmax :return "void" :args
  ((:name |target| :type |MinmaxTarget| :direction :in)
   (:name |reset| :type |Boolean| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
@@ -1571,19 +1573,19 @@
   (:name |values| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetHistogramParameteriv" get-histogram-parameter-iv :return "void"
- :args
+(defglextfun "GetHistogramParameteriv" get-histogram-parameter-iv :return
+ "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |pname| :type |GetHistogramParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetHistogramParameterfv" get-histogram-parameter-fv :return "void"
- :args
+(defglextfun "GetHistogramParameterfv" get-histogram-parameter-fv :return
+ "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |pname| :type |GetHistogramParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetHistogram" get-histogram :return "void" :args
+(defglextfun "GetHistogram" get-histogram :return "void" :args
  ((:name |target| :type |HistogramTarget| :direction :in)
   (:name |reset| :type |Boolean| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
@@ -1591,7 +1593,7 @@
   (:name |values| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "SeparableFilter2D" separable-filter-2d :return "void" :args
+(defglextfun "SeparableFilter2D" separable-filter-2d :return "void" :args
  ((:name |target| :type |SeparableTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1603,7 +1605,7 @@
   (:name |column| :type |Void| :direction :in :array t :size
    (|target| |format| |type| |height|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetSeparableFilter" get-separable-filter :return "void" :args
+(defglextfun "GetSeparableFilter" get-separable-filter :return "void" :args
  ((:name |target| :type |SeparableTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
@@ -1614,27 +1616,27 @@
   (:name |span| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetConvolutionParameteriv" get-convolution-parameter-iv :return
+(defglextfun "GetConvolutionParameteriv" get-convolution-parameter-iv :return
  "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetConvolutionParameterfv" get-convolution-parameter-fv :return
+(defglextfun "GetConvolutionParameterfv" get-convolution-parameter-fv :return
  "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetConvolutionFilter" get-convolution-filter :return "void" :args
+(defglextfun "GetConvolutionFilter" get-convolution-filter :return "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
   (:name |image| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyConvolutionFilter2D" copy-convolution-filter-2d :return "void"
- :args
+(defglextfun "CopyConvolutionFilter2D" copy-convolution-filter-2d :return
+ "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
@@ -1642,39 +1644,41 @@
   (:name |width| :type |SizeI| :direction :in)
   (:name |height| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyConvolutionFilter1D" copy-convolution-filter-1d :return "void"
- :args
+(defglextfun "CopyConvolutionFilter1D" copy-convolution-filter-1d :return
+ "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameteriv" convolution-parameter-iv :return "void"
+(defglextfun "ConvolutionParameteriv" convolution-parameter-iv :return "void"
  :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameteri" convolution-parameter-i :return "void" :args
+(defglextfun "ConvolutionParameteri" convolution-parameter-i :return "void"
+ :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameterfv" convolution-parameter-fv :return "void"
+(defglextfun "ConvolutionParameterfv" convolution-parameter-fv :return "void"
  :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionParameterf" convolution-parameter-f :return "void" :args
+(defglextfun "ConvolutionParameterf" convolution-parameter-f :return "void"
+ :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |pname| :type |ConvolutionParameter| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionFilter2D" convolution-filter-2d :return "void" :args
+(defglextfun "ConvolutionFilter2D" convolution-filter-2d :return "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1684,7 +1688,7 @@
   (:name |image| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ConvolutionFilter1D" convolution-filter-1d :return "void" :args
+(defglextfun "ConvolutionFilter1D" convolution-filter-1d :return "void" :args
  ((:name |target| :type |ConvolutionTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1693,14 +1697,14 @@
   (:name |image| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyColorSubTable" copy-color-sub-table :return "void" :args
+(defglextfun "CopyColorSubTable" copy-color-sub-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |start| :type |SizeI| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorSubTable" color-sub-table :return "void" :args
+(defglextfun "ColorSubTable" color-sub-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |start| :type |SizeI| :direction :in)
   (:name |count| :type |SizeI| :direction :in)
@@ -1709,45 +1713,47 @@
   (:name |data| :type |Void| :direction :in :array t :size
    (|format| |type| |count|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetColorTableParameteriv" get-color-table-parameter-iv :return
+(defglextfun "GetColorTableParameteriv" get-color-table-parameter-iv :return
  "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |GetColorTableParameterPName| :direction :in)
   (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetColorTableParameterfv" get-color-table-parameter-fv :return
+(defglextfun "GetColorTableParameterfv" get-color-table-parameter-fv :return
  "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |GetColorTableParameterPName| :direction :in)
   (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "GetColorTable" get-color-table :return "void" :args
+(defglextfun "GetColorTable" get-color-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |format| :type |PixelFormat| :direction :in)
   (:name |type| :type |PixelType| :direction :in)
   (:name |table| :type |Void| :direction :out :array t :size
    (|target| |format| |type|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyColorTable" copy-color-table :return "void" :args
+(defglextfun "CopyColorTable" copy-color-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |x| :type |WinCoord| :direction :in)
   (:name |y| :type |WinCoord| :direction :in)
   (:name |width| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorTableParameteriv" color-table-parameter-iv :return "void" :args
+(defglextfun "ColorTableParameteriv" color-table-parameter-iv :return "void"
+ :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |ColorTableParameterPName| :direction :in)
   (:name |params| :type |CheckedInt32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorTableParameterfv" color-table-parameter-fv :return "void" :args
+(defglextfun "ColorTableParameterfv" color-table-parameter-fv :return "void"
+ :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |pname| :type |ColorTableParameterPName| :direction :in)
   (:name |params| :type |CheckedFloat32| :direction :in :array t :size
    (|pname|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "ColorTable" color-table :return "void" :args
+(defglextfun "ColorTable" color-table :return "void" :args
  ((:name |target| :type |ColorTableTarget| :direction :in)
   (:name |internalformat| :type |PixelInternalFormat| :direction :in)
   (:name |width| :type |SizeI| :direction :in)
@@ -1756,7 +1762,7 @@
   (:name |table| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "CopyTexSubImage3D" copy-tex-sub-image-3d :return "void" :args
+(defglextfun "CopyTexSubImage3D" copy-tex-sub-image-3d :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -1767,7 +1773,7 @@
   (:name |width| :type |SizeI| :direction :in)
   (:name |height| :type |SizeI| :direction :in))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "TexSubImage3D" tex-sub-image-3d :return "void" :args
+(defglextfun "TexSubImage3D" tex-sub-image-3d :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |xoffset| :type |CheckedInt32| :direction :in)
@@ -1781,7 +1787,7 @@
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "TexImage3D" tex-image-3d :return "void" :args
+(defglextfun "TexImage3D" tex-image-3d :return "void" :args
  ((:name |target| :type |TextureTarget| :direction :in)
   (:name |level| :type |CheckedInt32| :direction :in)
   (:name |internalformat| :type |TextureComponentCount| :direction :in)
@@ -1794,7 +1800,7 @@
   (:name |pixels| :type |Void| :direction :in :array t :size
    (|format| |type| |width| |height| |depth|)))
  :category "VERSION_1_2" :deprecated "3.1" :version "1.2") 
-(defglfun "DrawRangeElements" draw-range-elements :return "void" :args
+(defglextfun "DrawRangeElements" draw-range-elements :return "void" :args
  ((:name |mode| :type |BeginMode| :direction :in)
   (:name |start| :type |UInt32| :direction :in)
   (:name |end| :type |UInt32| :direction :in)
@@ -1803,12 +1809,281 @@
   (:name |indices| :type |Void| :direction :in :array t :size
    (|count| |type|)))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "BlendEquation" blend-equation :return "void" :args
+(defglextfun "BlendEquation" blend-equation :return "void" :args
  ((:name |mode| :type |BlendEquationMode| :direction :in)) :category
  "VERSION_1_2" :deprecated nil :version "1.2") 
-(defglfun "BlendColor" blend-color :return "void" :args
+(defglextfun "BlendColor" blend-color :return "void" :args
  ((:name |red| :type |ClampedColorF| :direction :in)
   (:name |green| :type |ClampedColorF| :direction :in)
   (:name |blue| :type |ClampedColorF| :direction :in)
   (:name |alpha| :type |ClampedColorF| :direction :in))
  :category "VERSION_1_2" :deprecated nil :version "1.2") 
+(make-extension-loader version_1_2
+ (("ResetMinmax" reset-minmax :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)) :category
+   "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ResetHistogram" reset-histogram :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)) :category
+   "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("Minmax" minmax :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |sink| :type |Boolean| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("Histogram" histogram :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |sink| :type |Boolean| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetMinmaxParameteriv" get-minmax-parameter-iv :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetMinmaxParameterfv" get-minmax-parameter-fv :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |pname| :type |GetMinmaxParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetMinmax" get-minmax :return "void" :args
+   ((:name |target| :type |MinmaxTarget| :direction :in)
+    (:name |reset| :type |Boolean| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |values| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetHistogramParameteriv" get-histogram-parameter-iv :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |pname| :type |GetHistogramParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetHistogramParameterfv" get-histogram-parameter-fv :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |pname| :type |GetHistogramParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetHistogram" get-histogram :return "void" :args
+   ((:name |target| :type |HistogramTarget| :direction :in)
+    (:name |reset| :type |Boolean| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |values| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("SeparableFilter2D" separable-filter-2d :return "void" :args
+   ((:name |target| :type |SeparableTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |row| :type |Void| :direction :in :array t :size
+     (|target| |format| |type| |width|))
+    (:name |column| :type |Void| :direction :in :array t :size
+     (|target| |format| |type| |height|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetSeparableFilter" get-separable-filter :return "void" :args
+   ((:name |target| :type |SeparableTarget| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |row| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|))
+    (:name |column| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|))
+    (:name |span| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetConvolutionParameteriv" get-convolution-parameter-iv :return "void"
+   :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetConvolutionParameterfv" get-convolution-parameter-fv :return "void"
+   :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |GetConvolutionParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetConvolutionFilter" get-convolution-filter :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |image| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyConvolutionFilter2D" copy-convolution-filter-2d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyConvolutionFilter1D" copy-convolution-filter-1d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameteriv" convolution-parameter-iv :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameteri" convolution-parameter-i :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameterfv" convolution-parameter-fv :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionParameterf" convolution-parameter-f :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |pname| :type |ConvolutionParameter| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionFilter2D" convolution-filter-2d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |image| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ConvolutionFilter1D" convolution-filter-1d :return "void" :args
+   ((:name |target| :type |ConvolutionTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |image| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyColorSubTable" copy-color-sub-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |start| :type |SizeI| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorSubTable" color-sub-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |start| :type |SizeI| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |data| :type |Void| :direction :in :array t :size
+     (|format| |type| |count|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetColorTableParameteriv" get-color-table-parameter-iv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |GetColorTableParameterPName| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetColorTableParameterfv" get-color-table-parameter-fv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |GetColorTableParameterPName| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("GetColorTable" get-color-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |table| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyColorTable" copy-color-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorTableParameteriv" color-table-parameter-iv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |ColorTableParameterPName| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorTableParameterfv" color-table-parameter-fv :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |pname| :type |ColorTableParameterPName| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("ColorTable" color-table :return "void" :args
+   ((:name |target| :type |ColorTableTarget| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |table| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("CopyTexSubImage3D" copy-tex-sub-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("TexSubImage3D" tex-sub-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("TexImage3D" tex-image-3d :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |TextureComponentCount| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |pixels| :type |Void| :direction :in :array t :size
+     (|format| |type| |width| |height| |depth|)))
+   :category "VERSION_1_2" :deprecated "3.1" :version "1.2")
+  ("DrawRangeElements" draw-range-elements :return "void" :args
+   ((:name |mode| :type |BeginMode| :direction :in)
+    (:name |start| :type |UInt32| :direction :in)
+    (:name |end| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|)))
+   :category "VERSION_1_2" :deprecated nil :version "1.2")
+  ("BlendEquation" blend-equation :return "void" :args
+   ((:name |mode| :type |BlendEquationMode| :direction :in)) :category
+   "VERSION_1_2" :deprecated nil :version "1.2")
+  ("BlendColor" blend-color :return "void" :args
+   ((:name |red| :type |ClampedColorF| :direction :in)
+    (:name |green| :type |ClampedColorF| :direction :in)
+    (:name |blue| :type |ClampedColorF| :direction :in)
+    (:name |alpha| :type |ClampedColorF| :direction :in))
+   :category "VERSION_1_2" :deprecated nil :version "1.2"))) 

@@ -54,3 +54,51 @@
   (:name |table| :type |Void| :direction :in :array t :size
    (|format| |type| |width|)))
  :category "SGI_color_table" :deprecated nil :version "1.0") 
+(make-extension-loader |SGI_color_table|
+ (("GetColorTableParameterivSGI" get-color-table-parameteriv-sgi :return "void"
+   :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |pname| :type |GetColorTableParameterPNameSGI| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "SGI_color_table" :deprecated nil :version "1.0")
+  ("GetColorTableParameterfvSGI" get-color-table-parameterfv-sgi :return "void"
+   :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |pname| :type |GetColorTableParameterPNameSGI| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size (|pname|)))
+   :category "SGI_color_table" :deprecated nil :version "1.0")
+  ("GetColorTableSGI" get-color-table-sgi :return "void" :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |table| :type |Void| :direction :out :array t :size
+     (|target| |format| |type|)))
+   :category "SGI_color_table" :deprecated nil :version "1.0")
+  ("CopyColorTableSGI" copy-color-table-sgi :return "void" :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |x| :type |WinCoord| :direction :in)
+    (:name |y| :type |WinCoord| :direction :in)
+    (:name |width| :type |SizeI| :direction :in))
+   :category "SGI_color_table" :deprecated nil :version "1.0")
+  ("ColorTableParameterivSGI" color-table-parameteriv-sgi :return "void" :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |pname| :type |ColorTableParameterPNameSGI| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "SGI_color_table" :deprecated nil :version "1.0")
+  ("ColorTableParameterfvSGI" color-table-parameterfv-sgi :return "void" :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |pname| :type |ColorTableParameterPNameSGI| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "SGI_color_table" :deprecated nil :version "1.0")
+  ("ColorTableSGI" color-table-sgi :return "void" :args
+   ((:name |target| :type |ColorTableTargetSGI| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |type| :type |PixelType| :direction :in)
+    (:name |table| :type |Void| :direction :in :array t :size
+     (|format| |type| |width|)))
+   :category "SGI_color_table" :deprecated nil :version "1.0"))) 

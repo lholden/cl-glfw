@@ -149,3 +149,36 @@
   (:name |pname| :type |TextureParameterName| :direction :in)
   (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
  :category "EXT_texture_integer" :deprecated nil :version "2.0") 
+(make-extension-loader |EXT_texture_integer|
+ (("ClearColorIuiEXT" clear-color-i-ui-ext :return "void" :args
+   ((:name |red| :type |UInt32| :direction :in)
+    (:name |green| :type |UInt32| :direction :in)
+    (:name |blue| :type |UInt32| :direction :in)
+    (:name |alpha| :type |UInt32| :direction :in))
+   :category "EXT_texture_integer" :deprecated nil :version "2.0")
+  ("ClearColorIiEXT" clear-color-i-i-ext :return "void" :args
+   ((:name |red| :type |Int32| :direction :in)
+    (:name |green| :type |Int32| :direction :in)
+    (:name |blue| :type |Int32| :direction :in)
+    (:name |alpha| :type |Int32| :direction :in))
+   :category "EXT_texture_integer" :deprecated nil :version "2.0")
+  ("GetTexParameterIuivEXT" get-tex-parameter-i-uiv-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size (|pname|)))
+   :category "EXT_texture_integer" :deprecated nil :version "1.0")
+  ("GetTexParameterIivEXT" get-tex-parameter-i-iv-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |GetTextureParameter| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "EXT_texture_integer" :deprecated nil :version "1.0")
+  ("TexParameterIuivEXT" tex-parameter-i-uiv-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |UInt32| :direction :in :array t :size (|pname|)))
+   :category "EXT_texture_integer" :deprecated nil :version "2.0")
+  ("TexParameterIivEXT" tex-parameter-i-iv-ext :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |pname| :type |TextureParameterName| :direction :in)
+    (:name |params| :type |Int32| :direction :in :array t :size (|pname|)))
+   :category "EXT_texture_integer" :deprecated nil :version "2.0"))) 

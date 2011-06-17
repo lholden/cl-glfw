@@ -76,3 +76,12 @@
  ((:name |pname| :type |GLenum| :direction :in)
   (:name |value| :type |Int32| :direction :in))
  :category "ARB_tessellation_shader" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_tessellation_shader|
+ (("PatchParameterfv" patch-parameter-fv :return "void" :args
+   ((:name |pname| :type |GLenum| :direction :in)
+    (:name |values| :type |Float32| :direction :in :array t :size (|pname|)))
+   :category "ARB_tessellation_shader" :deprecated nil :version "1.2")
+  ("PatchParameteri" patch-parameter-i :return "void" :args
+   ((:name |pname| :type |GLenum| :direction :in)
+    (:name |value| :type |Int32| :direction :in))
+   :category "ARB_tessellation_shader" :deprecated nil :version "1.2"))) 

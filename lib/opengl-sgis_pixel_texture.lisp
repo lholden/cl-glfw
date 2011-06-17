@@ -40,3 +40,38 @@
  ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
   (:name |param| :type |CheckedInt32| :direction :in))
  :category "SGIS_pixel_texture" :deprecated nil :version "1.0") 
+(make-extension-loader |SGIS_pixel_texture|
+ (("GetPixelTexGenParameterfvSGIS" get-pixel-tex-gen-parameter-fv-sgis :return
+   "void" :args
+   ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :out :array t :size
+     (|pname|)))
+   :category "SGIS_pixel_texture" :deprecated nil :version "1.0")
+  ("GetPixelTexGenParameterivSGIS" get-pixel-tex-gen-parameter-iv-sgis :return
+   "void" :args
+   ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :out :array t :size
+     (|pname|)))
+   :category "SGIS_pixel_texture" :deprecated nil :version "1.0")
+  ("PixelTexGenParameterfvSGIS" pixel-tex-gen-parameter-fv-sgis :return "void"
+   :args
+   ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "SGIS_pixel_texture" :deprecated nil :version "1.0")
+  ("PixelTexGenParameterfSGIS" pixel-tex-gen-parameter-f-sgis :return "void"
+   :args
+   ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "SGIS_pixel_texture" :deprecated nil :version "1.0")
+  ("PixelTexGenParameterivSGIS" pixel-tex-gen-parameter-iv-sgis :return "void"
+   :args
+   ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
+    (:name |params| :type |CheckedInt32| :direction :in :array t :size
+     (|pname|)))
+   :category "SGIS_pixel_texture" :deprecated nil :version "1.0")
+  ("PixelTexGenParameteriSGIS" pixel-tex-gen-parameter-i-sgis :return "void"
+   :args
+   ((:name |pname| :type |PixelTexGenParameterNameSGIS| :direction :in)
+    (:name |param| :type |CheckedInt32| :direction :in))
+   :category "SGIS_pixel_texture" :deprecated nil :version "1.0"))) 

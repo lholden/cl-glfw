@@ -311,3 +311,101 @@
 (defglextfun "GenFragmentShadersATI" gen-fragment-shaders-ati :return "UInt32"
  :args ((:name |range| :type |UInt32| :direction :in)) :category
  "ATI_fragment_shader" :deprecated nil :version "1.2") 
+(make-extension-loader |ATI_fragment_shader|
+ (("SetFragmentShaderConstantATI" set-fragment-shader-constant-ati :return
+   "void" :args
+   ((:name |dst| :type |UInt32| :direction :in)
+    (:name |value| :type |ConstFloat32| :direction :in :array t :size #x4))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("AlphaFragmentOp3ATI" alpha-fragment-op-3-ati :return "void" :args
+   ((:name |op| :type |FragmentOpATI| :direction :in)
+    (:name |dst| :type |UInt32| :direction :in)
+    (:name |dstMod| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg1Rep| :type |UInt32| :direction :in)
+    (:name |arg1Mod| :type |UInt32| :direction :in)
+    (:name |arg2| :type |UInt32| :direction :in)
+    (:name |arg2Rep| :type |UInt32| :direction :in)
+    (:name |arg2Mod| :type |UInt32| :direction :in)
+    (:name |arg3| :type |UInt32| :direction :in)
+    (:name |arg3Rep| :type |UInt32| :direction :in)
+    (:name |arg3Mod| :type |UInt32| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("AlphaFragmentOp2ATI" alpha-fragment-op-2-ati :return "void" :args
+   ((:name |op| :type |FragmentOpATI| :direction :in)
+    (:name |dst| :type |UInt32| :direction :in)
+    (:name |dstMod| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg1Rep| :type |UInt32| :direction :in)
+    (:name |arg1Mod| :type |UInt32| :direction :in)
+    (:name |arg2| :type |UInt32| :direction :in)
+    (:name |arg2Rep| :type |UInt32| :direction :in)
+    (:name |arg2Mod| :type |UInt32| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("AlphaFragmentOp1ATI" alpha-fragment-op-1-ati :return "void" :args
+   ((:name |op| :type |FragmentOpATI| :direction :in)
+    (:name |dst| :type |UInt32| :direction :in)
+    (:name |dstMod| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg1Rep| :type |UInt32| :direction :in)
+    (:name |arg1Mod| :type |UInt32| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("ColorFragmentOp3ATI" color-fragment-op-3-ati :return "void" :args
+   ((:name |op| :type |FragmentOpATI| :direction :in)
+    (:name |dst| :type |UInt32| :direction :in)
+    (:name |dstMask| :type |UInt32| :direction :in)
+    (:name |dstMod| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg1Rep| :type |UInt32| :direction :in)
+    (:name |arg1Mod| :type |UInt32| :direction :in)
+    (:name |arg2| :type |UInt32| :direction :in)
+    (:name |arg2Rep| :type |UInt32| :direction :in)
+    (:name |arg2Mod| :type |UInt32| :direction :in)
+    (:name |arg3| :type |UInt32| :direction :in)
+    (:name |arg3Rep| :type |UInt32| :direction :in)
+    (:name |arg3Mod| :type |UInt32| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("ColorFragmentOp2ATI" color-fragment-op-2-ati :return "void" :args
+   ((:name |op| :type |FragmentOpATI| :direction :in)
+    (:name |dst| :type |UInt32| :direction :in)
+    (:name |dstMask| :type |UInt32| :direction :in)
+    (:name |dstMod| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg1Rep| :type |UInt32| :direction :in)
+    (:name |arg1Mod| :type |UInt32| :direction :in)
+    (:name |arg2| :type |UInt32| :direction :in)
+    (:name |arg2Rep| :type |UInt32| :direction :in)
+    (:name |arg2Mod| :type |UInt32| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("ColorFragmentOp1ATI" color-fragment-op-1-ati :return "void" :args
+   ((:name |op| :type |FragmentOpATI| :direction :in)
+    (:name |dst| :type |UInt32| :direction :in)
+    (:name |dstMask| :type |UInt32| :direction :in)
+    (:name |dstMod| :type |UInt32| :direction :in)
+    (:name |arg1| :type |UInt32| :direction :in)
+    (:name |arg1Rep| :type |UInt32| :direction :in)
+    (:name |arg1Mod| :type |UInt32| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("SampleMapATI" sample-map-ati :return "void" :args
+   ((:name |dst| :type |UInt32| :direction :in)
+    (:name |interp| :type |UInt32| :direction :in)
+    (:name |swizzle| :type |SwizzleOpATI| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("PassTexCoordATI" pass-tex-coord-ati :return "void" :args
+   ((:name |dst| :type |UInt32| :direction :in)
+    (:name |coord| :type |UInt32| :direction :in)
+    (:name |swizzle| :type |SwizzleOpATI| :direction :in))
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("EndFragmentShaderATI" end-fragment-shader-ati :return "void" :args nil
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("BeginFragmentShaderATI" begin-fragment-shader-ati :return "void" :args nil
+   :category "ATI_fragment_shader" :deprecated nil :version "1.2")
+  ("DeleteFragmentShaderATI" delete-fragment-shader-ati :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "ATI_fragment_shader"
+   :deprecated nil :version "1.2")
+  ("BindFragmentShaderATI" bind-fragment-shader-ati :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "ATI_fragment_shader"
+   :deprecated nil :version "1.2")
+  ("GenFragmentShadersATI" gen-fragment-shaders-ati :return "UInt32" :args
+   ((:name |range| :type |UInt32| :direction :in)) :category
+   "ATI_fragment_shader" :deprecated nil :version "1.2"))) 

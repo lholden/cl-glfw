@@ -91,3 +91,64 @@
  ((:name |index| :type |UInt32| :direction :in)
   (:name |x| :type |Float64| :direction :in))
  :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1") 
+(make-extension-loader |EXT_vertex_attrib_64bit|
+ (("VertexArrayVertexAttribLOffsetEXT" vertex-array-vertex-attrib-loffset-ext
+   :return "void" :args
+   ((:name |vaobj| :type |UInt32| :direction :in)
+    (:name |buffer| :type |UInt32| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |offset| :type |BufferOffset| :direction :in))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("GetVertexAttribLdvEXT" get-vertex-attrib-l-dv-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size (|pname|)))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribLPointerEXT" vertex-attrib-lpointer-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |GLenum| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size size))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL4dvEXT" vertex-attrib-l-4dv-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x4))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL3dvEXT" vertex-attrib-l-3dv-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x3))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL2dvEXT" vertex-attrib-l-2dv-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x2))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL1dvEXT" vertex-attrib-l-1dv-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x1))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL4dEXT" vertex-attrib-l-4d-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL3dEXT" vertex-attrib-l-3d-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL2dEXT" vertex-attrib-l-2d-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1")
+  ("VertexAttribL1dEXT" vertex-attrib-l-1d-ext :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in))
+   :category "EXT_vertex_attrib_64bit" :deprecated nil :version "4.1"))) 

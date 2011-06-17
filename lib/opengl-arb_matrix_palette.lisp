@@ -56,3 +56,26 @@
 (defglextfun "CurrentPaletteMatrixARB" current-palette-matrix-arb :return
  "void" :args ((:name |index| :type |Int32| :direction :in)) :category
  "ARB_matrix_palette" :deprecated nil :version "1.1") 
+(make-extension-loader |ARB_matrix_palette|
+ (("MatrixIndexPointerARB" matrix-index-pointer-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |MatrixIndexPointerTypeARB| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride|) :retained t))
+   :category "ARB_matrix_palette" :deprecated nil :version "1.1")
+  ("MatrixIndexuivARB" matrix-index-uiv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |indices| :type |UInt32| :direction :in :array t :size size))
+   :category "ARB_matrix_palette" :deprecated nil :version "1.1")
+  ("MatrixIndexusvARB" matrix-index-usv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |indices| :type |UInt16| :direction :in :array t :size size))
+   :category "ARB_matrix_palette" :deprecated nil :version "1.1")
+  ("MatrixIndexubvARB" matrix-index-ubv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |indices| :type |UInt8| :direction :in :array t :size size))
+   :category "ARB_matrix_palette" :deprecated nil :version "1.1")
+  ("CurrentPaletteMatrixARB" current-palette-matrix-arb :return "void" :args
+   ((:name |index| :type |Int32| :direction :in)) :category
+   "ARB_matrix_palette" :deprecated nil :version "1.1"))) 

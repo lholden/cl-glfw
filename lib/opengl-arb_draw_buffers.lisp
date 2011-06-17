@@ -42,3 +42,8 @@
  ((:name |n| :type |SizeI| :direction :in)
   (:name |bufs| :type |DrawBufferModeATI| :direction :in :array t :size n))
  :category "ARB_draw_buffers" :deprecated nil :version "1.5") 
+(make-extension-loader |ARB_draw_buffers|
+ (("DrawBuffersARB" draw-buffers-arb :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |bufs| :type |DrawBufferModeATI| :direction :in :array t :size n))
+   :category "ARB_draw_buffers" :deprecated nil :version "1.5"))) 

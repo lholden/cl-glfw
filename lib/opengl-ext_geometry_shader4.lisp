@@ -41,3 +41,9 @@
   (:name |pname| :type |ProgramParameterPName| :direction :in)
   (:name |value| :type |Int32| :direction :in))
  :category "EXT_geometry_shader4" :deprecated nil :version "2.0") 
+(make-extension-loader |EXT_geometry_shader4|
+ (("ProgramParameteriEXT" program-parameter-i-ext :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |pname| :type |ProgramParameterPName| :direction :in)
+    (:name |value| :type |Int32| :direction :in))
+   :category "EXT_geometry_shader4" :deprecated nil :version "2.0"))) 

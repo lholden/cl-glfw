@@ -193,3 +193,114 @@
 (defglextfun "IsRenderbuffer" is-renderbuffer :return "Boolean" :args
  ((:name |renderbuffer| :type |UInt32| :direction :in)) :category
  "ARB_framebuffer_object" :deprecated nil :version "3.0") 
+(make-extension-loader |ARB_framebuffer_object|
+ (("FramebufferTextureLayer" framebuffer-texture-layer :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |texture| :type |Texture| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |layer| :type |CheckedInt32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("RenderbufferStorageMultisample" renderbuffer-storage-multisample :return
+   "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |samples| :type |SizeI| :direction :in)
+    (:name |internalformat| :type |GLenum| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("BlitFramebuffer" blit-framebuffer :return "void" :args
+   ((:name |srcX0| :type |Int32| :direction :in)
+    (:name |srcY0| :type |Int32| :direction :in)
+    (:name |srcX1| :type |Int32| :direction :in)
+    (:name |srcY1| :type |Int32| :direction :in)
+    (:name |dstX0| :type |Int32| :direction :in)
+    (:name |dstY0| :type |Int32| :direction :in)
+    (:name |dstX1| :type |Int32| :direction :in)
+    (:name |dstY1| :type |Int32| :direction :in)
+    (:name |mask| :type |ClearBufferMask| :direction :in)
+    (:name |filter| :type |GLenum| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("GenerateMipmap" generate-mipmap :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)) :category
+   "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("GetFramebufferAttachmentParameteriv"
+   get-framebuffer-attachment-parameter-iv :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("FramebufferRenderbuffer" framebuffer-renderbuffer :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |renderbuffertarget| :type |RenderbufferTarget| :direction :in)
+    (:name |renderbuffer| :type |UInt32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("FramebufferTexture3D" framebuffer-texture-3d :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |textarget| :type |GLenum| :direction :in)
+    (:name |texture| :type |UInt32| :direction :in)
+    (:name |level| :type |Int32| :direction :in)
+    (:name |zoffset| :type |Int32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("FramebufferTexture2D" framebuffer-texture-2d :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |textarget| :type |GLenum| :direction :in)
+    (:name |texture| :type |UInt32| :direction :in)
+    (:name |level| :type |Int32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("FramebufferTexture1D" framebuffer-texture-1d :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |attachment| :type |FramebufferAttachment| :direction :in)
+    (:name |textarget| :type |GLenum| :direction :in)
+    (:name |texture| :type |UInt32| :direction :in)
+    (:name |level| :type |Int32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("CheckFramebufferStatus" check-framebuffer-status :return "GLenum" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)) :category
+   "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("GenFramebuffers" gen-framebuffers :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |framebuffers| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("DeleteFramebuffers" delete-framebuffers :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |framebuffers| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("BindFramebuffer" bind-framebuffer :return "void" :args
+   ((:name |target| :type |FramebufferTarget| :direction :in)
+    (:name |framebuffer| :type |UInt32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("IsFramebuffer" is-framebuffer :return "Boolean" :args
+   ((:name |framebuffer| :type |UInt32| :direction :in)) :category
+   "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("GetRenderbufferParameteriv" get-renderbuffer-parameter-iv :return "void"
+   :args
+   ((:name |target| :type |RenderbufferTarget| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("RenderbufferStorage" renderbuffer-storage :return "void" :args
+   ((:name |target| :type |RenderbufferTarget| :direction :in)
+    (:name |internalformat| :type |GLenum| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("GenRenderbuffers" gen-renderbuffers :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |renderbuffers| :type |UInt32| :direction :out :array t :size n))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("DeleteRenderbuffers" delete-renderbuffers :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |renderbuffers| :type |UInt32| :direction :in :array t :size n))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("BindRenderbuffer" bind-renderbuffer :return "void" :args
+   ((:name |target| :type |RenderbufferTarget| :direction :in)
+    (:name |renderbuffer| :type |UInt32| :direction :in))
+   :category "ARB_framebuffer_object" :deprecated nil :version "3.0")
+  ("IsRenderbuffer" is-renderbuffer :return "Boolean" :args
+   ((:name |renderbuffer| :type |UInt32| :direction :in)) :category
+   "ARB_framebuffer_object" :deprecated nil :version "3.0"))) 

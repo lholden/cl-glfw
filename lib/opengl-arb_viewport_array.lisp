@@ -63,3 +63,56 @@
   (:name |count| :type |SizeI| :direction :in)
   (:name |v| :type |Float32| :direction :in :array t :size (|count|)))
  :category "ARB_viewport_array" :deprecated nil :version "4.1") 
+(make-extension-loader |ARB_viewport_array|
+ (("GetDoublei_v" get-doublei_v :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |data| :type |Float64| :direction :out :array t :size (|target|)))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("GetFloati_v" get-floati_v :return "void" :args
+   ((:name |target| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |data| :type |Float32| :direction :out :array t :size (|target|)))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("DepthRangeIndexed" depth-range-indexed :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |n| :type |ClampedFloat64| :direction :in)
+    (:name |f| :type |ClampedFloat64| :direction :in))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("DepthRangeArrayv" depth-range-arrayv :return "void" :args
+   ((:name |first| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |ClampedFloat64| :direction :in :array t :size (|count|)))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("ScissorIndexedv" scissor-indexed-v :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int32| :direction :in :array t :size #x4))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("ScissorIndexed" scissor-indexe-d :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |left| :type |Int32| :direction :in)
+    (:name |bottom| :type |Int32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("ScissorArrayv" scissor-arrayv :return "void" :args
+   ((:name |first| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Int32| :direction :in :array t :size (|count|)))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("ViewportIndexedfv" viewport-indexed-fv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x4))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("ViewportIndexedf" viewport-indexed-f :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in)
+    (:name |h| :type |Float32| :direction :in))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1")
+  ("ViewportArrayv" viewport-arrayv :return "void" :args
+   ((:name |first| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size (|count|)))
+   :category "ARB_viewport_array" :deprecated nil :version "4.1"))) 

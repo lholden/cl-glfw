@@ -108,3 +108,82 @@
   (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
    imagesize))
  :category "ARB_texture_compression" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_texture_compression|
+ (("GetCompressedTexImageARB" get-compressed-tex-image-arb :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |img| :type |CompressedTextureARB| :direction :out :array t :size
+     (|target| |level|)))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2")
+  ("CompressedTexSubImage1DARB" compressed-tex-sub-image-1d-arb :return "void"
+   :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2")
+  ("CompressedTexSubImage2DARB" compressed-tex-sub-image-2d-arb :return "void"
+   :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2")
+  ("CompressedTexSubImage3DARB" compressed-tex-sub-image-3d-arb :return "void"
+   :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |xoffset| :type |CheckedInt32| :direction :in)
+    (:name |yoffset| :type |CheckedInt32| :direction :in)
+    (:name |zoffset| :type |CheckedInt32| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |format| :type |PixelFormat| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2")
+  ("CompressedTexImage1DARB" compressed-tex-image-1d-arb :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2")
+  ("CompressedTexImage2DARB" compressed-tex-image-2d-arb :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2")
+  ("CompressedTexImage3DARB" compressed-tex-image-3d-arb :return "void" :args
+   ((:name |target| :type |TextureTarget| :direction :in)
+    (:name |level| :type |CheckedInt32| :direction :in)
+    (:name |internalformat| :type |PixelInternalFormat| :direction :in)
+    (:name |width| :type |SizeI| :direction :in)
+    (:name |height| :type |SizeI| :direction :in)
+    (:name |depth| :type |SizeI| :direction :in)
+    (:name |border| :type |CheckedInt32| :direction :in)
+    (:name |imageSize| :type |SizeI| :direction :in)
+    (:name |data| :type |CompressedTextureARB| :direction :in :array t :size
+     imagesize))
+   :category "ARB_texture_compression" :deprecated nil :version "1.2"))) 

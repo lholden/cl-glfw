@@ -10,3 +10,10 @@
   (:name |blue| :type |ClampedColorF| :direction :in)
   (:name |alpha| :type |ClampedColorF| :direction :in))
  :category "EXT_blend_color" :deprecated nil :version "1.0") 
+(make-extension-loader |EXT_blend_color|
+ (("BlendColorEXT" blend-color-ext :return "void" :args
+   ((:name |red| :type |ClampedColorF| :direction :in)
+    (:name |green| :type |ClampedColorF| :direction :in)
+    (:name |blue| :type |ClampedColorF| :direction :in)
+    (:name |alpha| :type |ClampedColorF| :direction :in))
+   :category "EXT_blend_color" :deprecated nil :version "1.0"))) 

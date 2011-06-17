@@ -68,3 +68,14 @@
   (:name |pname| :type |GLenum| :direction :in)
   (:name |params| :type |Int64EXT| :direction :out :array t :size pname))
  :category "EXT_timer_query" :deprecated nil :version "1.5") 
+(make-extension-loader |EXT_timer_query|
+ (("GetQueryObjectui64vEXT" get-query-objectui-64v-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |UInt64EXT| :direction :out :array t :size pname))
+   :category "EXT_timer_query" :deprecated nil :version "1.5")
+  ("GetQueryObjecti64vEXT" get-query-objecti-64v-ext :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |params| :type |Int64EXT| :direction :out :array t :size pname))
+   :category "EXT_timer_query" :deprecated nil :version "1.5"))) 

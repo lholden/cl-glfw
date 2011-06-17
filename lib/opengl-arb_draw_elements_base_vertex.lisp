@@ -42,3 +42,44 @@
   (:name |indices| :type |Void| :direction :in :array t :size (|count| |type|))
   (:name |basevertex| :type |Int32| :direction :in))
  :category "ARB_draw_elements_base_vertex" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_draw_elements_base_vertex|
+ (("MultiDrawElementsBaseVertex" multi-draw-elements-base-vertex :return "void"
+   :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in :array t :size (|primcount|))
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |VoidPointer| :direction :in :array t :size
+     (|primcount|))
+    (:name |primcount| :type |SizeI| :direction :in)
+    (:name |basevertex| :type |Int32| :direction :in :array t :size
+     (|primcount|)))
+   :category "ARB_draw_elements_base_vertex" :deprecated nil :version "1.2")
+  ("DrawElementsInstancedBaseVertex" draw-elements-instanced-base-vertex
+   :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|))
+    (:name |primcount| :type |SizeI| :direction :in)
+    (:name |basevertex| :type |Int32| :direction :in))
+   :category "ARB_draw_elements_base_vertex" :deprecated nil :version "1.2")
+  ("DrawRangeElementsBaseVertex" draw-range-elements-base-vertex :return "void"
+   :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |start| :type |UInt32| :direction :in)
+    (:name |end| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|))
+    (:name |basevertex| :type |Int32| :direction :in))
+   :category "ARB_draw_elements_base_vertex" :deprecated nil :version "1.2")
+  ("DrawElementsBaseVertex" draw-elements-base-vertex :return "void" :args
+   ((:name |mode| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |type| :type |DrawElementsType| :direction :in)
+    (:name |indices| :type |Void| :direction :in :array t :size
+     (|count| |type|))
+    (:name |basevertex| :type |Int32| :direction :in))
+   :category "ARB_draw_elements_base_vertex" :deprecated nil :version "1.2"))) 

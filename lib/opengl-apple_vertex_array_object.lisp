@@ -24,3 +24,18 @@
 (defglextfun "BindVertexArrayAPPLE" bind-vertex-array-apple :return "void"
  :args ((:name |array| :type |UInt32| :direction :in)) :category
  "APPLE_vertex_array_object" :deprecated nil :version "1.2") 
+(make-extension-loader |APPLE_vertex_array_object|
+ (("IsVertexArrayAPPLE" is-vertex-array-apple :return "Boolean" :args
+   ((:name |array| :type |UInt32| :direction :in)) :category
+   "APPLE_vertex_array_object" :deprecated nil :version "1.2")
+  ("GenVertexArraysAPPLE" gen-vertex-arrays-apple :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |arrays| :type |UInt32| :direction :out :array t :size n))
+   :category "APPLE_vertex_array_object" :deprecated nil :version "1.2")
+  ("DeleteVertexArraysAPPLE" delete-vertex-arrays-apple :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |arrays| :type |UInt32| :direction :in :array t :size n))
+   :category "APPLE_vertex_array_object" :deprecated nil :version "1.2")
+  ("BindVertexArrayAPPLE" bind-vertex-array-apple :return "void" :args
+   ((:name |array| :type |UInt32| :direction :in)) :category
+   "APPLE_vertex_array_object" :deprecated nil :version "1.2"))) 

@@ -508,3 +508,332 @@
   (:name |programs| :type |UInt32| :direction :in :array t :size n)
   (:name |residences| :type |Boolean| :direction :out :array t :size n))
  :category "NV_vertex_program" :deprecated nil :version "1.2") 
+(make-extension-loader |NV_vertex_program|
+ (("VertexAttribs4ubvNV" vertex-attribs-4ubv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |ColorUB| :direction :in :array t :size count*4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs4svNV" vertex-attribs-4sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size count*4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs4fvNV" vertex-attribs-4fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size count*4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs4dvNV" vertex-attribs-4dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size count*4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs3svNV" vertex-attribs-3sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size count*3))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs3fvNV" vertex-attribs-3fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size count*3))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs3dvNV" vertex-attribs-3dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size count*3))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs2svNV" vertex-attribs-2sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size count*2))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs2fvNV" vertex-attribs-2fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size count*2))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs2dvNV" vertex-attribs-2dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size count*2))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs1svNV" vertex-attribs-1sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size count))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs1fvNV" vertex-attribs-1fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size count))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribs1dvNV" vertex-attribs-1dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size count))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4ubvNV" vertex-attrib-4ubv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |ColorUB| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4ubNV" vertex-attrib-4ub-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |ColorUB| :direction :in)
+    (:name |y| :type |ColorUB| :direction :in)
+    (:name |z| :type |ColorUB| :direction :in)
+    (:name |w| :type |ColorUB| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4svNV" vertex-attrib-4sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4sNV" vertex-attrib-4s-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in)
+    (:name |y| :type |Int16| :direction :in)
+    (:name |z| :type |Int16| :direction :in)
+    (:name |w| :type |Int16| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4fvNV" vertex-attrib-4fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4fNV" vertex-attrib-4f-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4dvNV" vertex-attrib-4dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib4dNV" vertex-attrib-4d-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib3svNV" vertex-attrib-3sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x3))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib3sNV" vertex-attrib-3s-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in)
+    (:name |y| :type |Int16| :direction :in)
+    (:name |z| :type |Int16| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib3fvNV" vertex-attrib-3fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x3))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib3fNV" vertex-attrib-3f-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib3dvNV" vertex-attrib-3dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x3))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib3dNV" vertex-attrib-3d-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib2svNV" vertex-attrib-2sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x2))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib2sNV" vertex-attrib-2s-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in)
+    (:name |y| :type |Int16| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib2fvNV" vertex-attrib-2fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x2))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib2fNV" vertex-attrib-2f-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib2dvNV" vertex-attrib-2dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x2))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib2dNV" vertex-attrib-2d-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib1svNV" vertex-attrib-1sv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Int16| :direction :in :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib1sNV" vertex-attrib-1s-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Int16| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib1fvNV" vertex-attrib-1fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib1fNV" vertex-attrib-1f-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib1dvNV" vertex-attrib-1dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttrib1dNV" vertex-attrib-1d-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("VertexAttribPointerNV" vertex-attrib-pointer-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |fsize| :type |Int32| :direction :in)
+    (:name |type| :type |VertexAttribEnumNV| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|fsize| |type| |stride|) :retained t))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("TrackMatrixNV" track-matrix-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |address| :type |UInt32| :direction :in)
+    (:name |matrix| :type |VertexAttribEnumNV| :direction :in)
+    (:name |transform| :type |VertexAttribEnumNV| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("RequestResidentProgramsNV" request-resident-programs-nv :return "void"
+   :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |programs| :type |UInt32| :direction :in :array t :size n))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ProgramParameters4fvNV" program-parameters-4fv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size count*4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ProgramParameters4dvNV" program-parameters-4dv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size count*4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ProgramParameter4fvNV" program-parameter-4fv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float32| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ProgramParameter4fNV" program-parameter-4f-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float32| :direction :in)
+    (:name |y| :type |Float32| :direction :in)
+    (:name |z| :type |Float32| :direction :in)
+    (:name |w| :type |Float32| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ProgramParameter4dvNV" program-parameter-4dv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |v| :type |Float64| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ProgramParameter4dNV" program-parameter-4d-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |x| :type |Float64| :direction :in)
+    (:name |y| :type |Float64| :direction :in)
+    (:name |z| :type |Float64| :direction :in)
+    (:name |w| :type |Float64| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("LoadProgramNV" load-program-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |id| :type |UInt32| :direction :in)
+    (:name |len| :type |SizeI| :direction :in)
+    (:name |program| :type |UInt8| :direction :in :array t :size len))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("IsProgramNV" is-program-nv :return "Boolean" :args
+   ((:name |id| :type |UInt32| :direction :in)) :category "NV_vertex_program"
+   :deprecated nil :version "1.2")
+  ("GetVertexAttribPointervNV" get-vertex-attrib-pointerv-nv :return "void"
+   :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |pointer| :type |VoidPointer| :direction :out :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetVertexAttribivNV" get-vertex-attrib-iv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetVertexAttribfvNV" get-vertex-attrib-fv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetVertexAttribdvNV" get-vertex-attrib-dv-nv :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetTrackMatrixivNV" get-track-matrix-iv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |address| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x1))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetProgramStringNV" get-program-string-nv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |program| :type |ProgramCharacterNV| :direction :out :array t :size
+     (|id| |pname|)))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetProgramivNV" get-program-iv-nv :return "void" :args
+   ((:name |id| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Int32| :direction :out :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetProgramParameterfvNV" get-program-parameter-fv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Float32| :direction :out :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GetProgramParameterdvNV" get-program-parameter-dv-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |VertexAttribEnumNV| :direction :in)
+    (:name |params| :type |Float64| :direction :out :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("GenProgramsNV" gen-programs-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |programs| :type |UInt32| :direction :out :array t :size n))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("ExecuteProgramNV" execute-program-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |id| :type |UInt32| :direction :in)
+    (:name |params| :type |Float32| :direction :in :array t :size #x4))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("DeleteProgramsNV" delete-programs-nv :return "void" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |programs| :type |UInt32| :direction :in :array t :size n))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("BindProgramNV" bind-program-nv :return "void" :args
+   ((:name |target| :type |VertexAttribEnumNV| :direction :in)
+    (:name |id| :type |UInt32| :direction :in))
+   :category "NV_vertex_program" :deprecated nil :version "1.2")
+  ("AreProgramsResidentNV" are-programs-resident-nv :return "Boolean" :args
+   ((:name |n| :type |SizeI| :direction :in)
+    (:name |programs| :type |UInt32| :direction :in :array t :size n)
+    (:name |residences| :type |Boolean| :direction :out :array t :size n))
+   :category "NV_vertex_program" :deprecated nil :version "1.2"))) 

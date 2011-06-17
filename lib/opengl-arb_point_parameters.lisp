@@ -21,3 +21,13 @@
  ((:name |pname| :type |PointParameterNameARB| :direction :in)
   (:name |param| :type |CheckedFloat32| :direction :in))
  :category "ARB_point_parameters" :deprecated nil :version "1.0") 
+(make-extension-loader |ARB_point_parameters|
+ (("PointParameterfvARB" point-parameter-fv-arb :return "void" :args
+   ((:name |pname| :type |PointParameterNameARB| :direction :in)
+    (:name |params| :type |CheckedFloat32| :direction :in :array t :size
+     (|pname|)))
+   :category "ARB_point_parameters" :deprecated nil :version "1.0")
+  ("PointParameterfARB" point-parameter-f-arb :return "void" :args
+   ((:name |pname| :type |PointParameterNameARB| :direction :in)
+    (:name |param| :type |CheckedFloat32| :direction :in))
+   :category "ARB_point_parameters" :deprecated nil :version "1.0"))) 

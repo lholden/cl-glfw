@@ -91,3 +91,65 @@
  ((:name |index| :type |UInt32| :direction :in)
   (:name |pname| :type |GLenum| :direction :in))
  :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5") 
+(make-extension-loader |APPLE_vertex_program_evaluators|
+ (("MapVertexAttrib2fAPPLE" map-vertex-attrib-2f-apple :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |UInt32| :direction :in)
+    (:name |u1| :type |CoordF| :direction :in)
+    (:name |u2| :type |CoordF| :direction :in)
+    (:name |ustride| :type |Int32| :direction :in)
+    (:name |uorder| :type |CheckedInt32| :direction :in)
+    (:name |v1| :type |CoordF| :direction :in)
+    (:name |v2| :type |CoordF| :direction :in)
+    (:name |vstride| :type |Int32| :direction :in)
+    (:name |vorder| :type |CheckedInt32| :direction :in)
+    (:name |points| :type |CoordF| :direction :in :array t :size
+     (|size| |ustride| |uorder| |vstride| |vorder|)))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5")
+  ("MapVertexAttrib2dAPPLE" map-vertex-attrib-2d-apple :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |UInt32| :direction :in)
+    (:name |u1| :type |CoordD| :direction :in)
+    (:name |u2| :type |CoordD| :direction :in)
+    (:name |ustride| :type |Int32| :direction :in)
+    (:name |uorder| :type |CheckedInt32| :direction :in)
+    (:name |v1| :type |CoordD| :direction :in)
+    (:name |v2| :type |CoordD| :direction :in)
+    (:name |vstride| :type |Int32| :direction :in)
+    (:name |vorder| :type |CheckedInt32| :direction :in)
+    (:name |points| :type |CoordD| :direction :in :array t :size
+     (|size| |ustride| |uorder| |vstride| |vorder|)))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5")
+  ("MapVertexAttrib1fAPPLE" map-vertex-attrib-1f-apple :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |UInt32| :direction :in)
+    (:name |u1| :type |CoordF| :direction :in)
+    (:name |u2| :type |CoordF| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |order| :type |CheckedInt32| :direction :in)
+    (:name |points| :type |CoordF| :direction :in :array t :size
+     (|size| |stride| |order|)))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5")
+  ("MapVertexAttrib1dAPPLE" map-vertex-attrib-1d-apple :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |size| :type |UInt32| :direction :in)
+    (:name |u1| :type |CoordD| :direction :in)
+    (:name |u2| :type |CoordD| :direction :in)
+    (:name |stride| :type |Int32| :direction :in)
+    (:name |order| :type |CheckedInt32| :direction :in)
+    (:name |points| :type |CoordD| :direction :in :array t :size
+     (|size| |stride| |order|)))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5")
+  ("IsVertexAttribEnabledAPPLE" is-vertex-attrib-enabled-apple :return
+   "Boolean" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5")
+  ("DisableVertexAttribAPPLE" disable-vertex-attrib-apple :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5")
+  ("EnableVertexAttribAPPLE" enable-vertex-attrib-apple :return "void" :args
+   ((:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in))
+   :category "APPLE_vertex_program_evaluators" :deprecated nil :version "1.5"))) 

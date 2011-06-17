@@ -2719,6 +2719,13 @@
 
 ;;;; }}}
 
+;;;; {{{ amd_blend_minmax_factor
+
+(defconstant +factor-min-amd+ #x901C) 
+(defconstant +factor-max-amd+ #x901D) 
+
+;;;; }}}
+
 ;;;; {{{ amd_depth_clamp_separate
 
 (defconstant +depth-clamp-near-amd+ #x901E) 

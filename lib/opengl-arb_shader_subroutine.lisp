@@ -79,3 +79,56 @@
   (:name |shadertype| :type |GLenum| :direction :in)
   (:name |name| :type |Char| :direction :in :array t))
  :category "ARB_shader_subroutine" :deprecated nil :version "1.2") 
+(make-extension-loader |ARB_shader_subroutine|
+ (("GetProgramStageiv" get-program-stage-iv :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |shadertype| :type |GLenum| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |values| :type |Int32| :direction :out :array t :size #x1))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("GetUniformSubroutineuiv" get-uniform-subroutine-uiv :return "void" :args
+   ((:name |shadertype| :type |GLenum| :direction :in)
+    (:name |location| :type |Int32| :direction :in)
+    (:name |params| :type |UInt32| :direction :out :array t :size #x1))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("UniformSubroutinesuiv" uniform-subroutines-uiv :return "void" :args
+   ((:name |shadertype| :type |GLenum| :direction :in)
+    (:name |count| :type |SizeI| :direction :in)
+    (:name |indices| :type |UInt32| :direction :in :array t :size count))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("GetActiveSubroutineName" get-active-subroutine-name :return "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |shadertype| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |bufsize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |name| :type |Char| :direction :out :array t :size bufsize))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("GetActiveSubroutineUniformName" get-active-subroutine-uniform-name :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |shadertype| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |bufsize| :type |SizeI| :direction :in)
+    (:name |length| :type |SizeI| :direction :out :array t :size #x1)
+    (:name |name| :type |Char| :direction :out :array t :size bufsize))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("GetActiveSubroutineUniformiv" get-active-subroutine-uniform-iv :return
+   "void" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |shadertype| :type |GLenum| :direction :in)
+    (:name |index| :type |UInt32| :direction :in)
+    (:name |pname| :type |GLenum| :direction :in)
+    (:name |values| :type |Int32| :direction :out :array t :size (|pname|)))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("GetSubroutineIndex" get-subroutine-index :return "UInt32" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |shadertype| :type |GLenum| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2")
+  ("GetSubroutineUniformLocation" get-subroutine-uniform-location :return
+   "Int32" :args
+   ((:name |program| :type |UInt32| :direction :in)
+    (:name |shadertype| :type |GLenum| :direction :in)
+    (:name |name| :type |Char| :direction :in :array t))
+   :category "ARB_shader_subroutine" :deprecated nil :version "1.2"))) 

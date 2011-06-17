@@ -7,3 +7,7 @@
 (defglextfun "TbufferMask3DFX" tbuffer-mask-3dfx :return "void" :args
  ((:name |mask| :type |UInt32| :direction :in)) :category "3DFX_tbuffer"
  :deprecated nil :version "1.2") 
+(make-extension-loader |3DFX_tbuffer|
+ (("TbufferMask3DFX" tbuffer-mask-3dfx :return "void" :args
+   ((:name |mask| :type |UInt32| :direction :in)) :category "3DFX_tbuffer"
+   :deprecated nil :version "1.2"))) 

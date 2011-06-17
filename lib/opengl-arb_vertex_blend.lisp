@@ -136,3 +136,46 @@
  ((:name |size| :type |Int32| :direction :in)
   (:name |weights| :type |Int8| :direction :in :array t :size size))
  :category "ARB_vertex_blend" :deprecated nil :version "1.1") 
+(make-extension-loader |ARB_vertex_blend|
+ (("VertexBlendARB" vertex-blend-arb :return "void" :args
+   ((:name |count| :type |Int32| :direction :in)) :category "ARB_vertex_blend"
+   :deprecated nil :version "1.1")
+  ("WeightPointerARB" weight-pointer-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |type| :type |WeightPointerTypeARB| :direction :in)
+    (:name |stride| :type |SizeI| :direction :in)
+    (:name |pointer| :type |Void| :direction :in :array t :size
+     (|type| |stride|) :retained t))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightuivARB" weight-uiv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |UInt32| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightusvARB" weight-usv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |UInt16| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightubvARB" weight-ubv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |UInt8| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightdvARB" weight-dv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |Float64| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightfvARB" weight-fv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |Float32| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightivARB" weight-iv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |Int32| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightsvARB" weight-sv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |Int16| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1")
+  ("WeightbvARB" weight-bv-arb :return "void" :args
+   ((:name |size| :type |Int32| :direction :in)
+    (:name |weights| :type |Int8| :direction :in :array t :size size))
+   :category "ARB_vertex_blend" :deprecated nil :version "1.1"))) 

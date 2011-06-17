@@ -6,6 +6,12 @@
 
 (in-package #:cl-glfw-glu)
 
+#+ecl
+(ffi:load-foreign-library #+unix "GLU"
+			  #+windows "glu32"
+			  :system-library t)
+
+#-ecl
 (ignore-errors
   (load-foreign-library '(:or "glu32.dll"
 			  (:default "libGLU")
