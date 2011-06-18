@@ -54,7 +54,7 @@
 
 (define-foreign-library ftgl
   (:unix (:or "libftgl" "libftgl.so.2"))
-  (:win32 "ftgl.dll")
+  (:windows "ftgl.dll")
   (t (:default "libftgl")))
 
 
