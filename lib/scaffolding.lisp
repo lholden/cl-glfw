@@ -2,7 +2,7 @@
   (:use #:cl #:cffi #:cl-glfw-types)
   (:shadowing-import-from #:cl-glfw-types #:boolean #:byte #:float
                           #:char #:pointer)
-  (:export #:defglfun #:defglextfun #:*type-map*))
+  (:export #:defglfun #:defglextfun #:*type-map* #:make-extension-loader))
 
 (in-package #:cl-glfw-scaffolding)
 
