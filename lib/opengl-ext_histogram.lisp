@@ -4,6 +4,7 @@
 
 ;;;; ext_histogram
 
+(defconstant +histogram-luminance-size+ #x802C) 
 (defconstant +unsigned-byte-3-3-2+ #x8032) 
 (defconstant +unsigned-short-4-4-4-4+ #x8033) 
 (defconstant +unsigned-short-5-5-5-1+ #x8034) 

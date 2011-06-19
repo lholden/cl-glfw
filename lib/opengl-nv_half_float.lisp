@@ -5,6 +5,8 @@
 ;;;; nv_half_float
 
 (defconstant +half-float-nv+ #x140B) 
+(defconstant +half-apple+ #x140B) 
+(defconstant +fixed+ #x140C) 
 (defconstant +fixed-oes+ #x140C) 
 (defconstant +half-float-nv+ #x140B) 
 (defglextfun "VertexAttribs4hvNV" vertex-attribs-4hv-nv :return "void" :args

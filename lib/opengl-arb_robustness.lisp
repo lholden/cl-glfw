@@ -5,11 +5,18 @@
 ;;;; arb_robustness
 
 (defconstant +context-flag-robust-access-bit-arb+ #x4) 
+(defconstant +vertex-shader-bit+ #x1) 
+(defconstant +fragment-shader-bit+ #x2) 
+(defconstant +geometry-shader-bit+ #x4) 
+(defconstant +tess-control-shader-bit+ #x8) 
+(defconstant +tess-evaluation-shader-bit+ #x10) 
+(defconstant +all-shader-bits+ #xFFFFFFFF) 
 (defconstant +lose-context-on-reset-arb+ #x8252) 
 (defconstant +guilty-context-reset-arb+ #x8253) 
 (defconstant +innocent-context-reset-arb+ #x8254) 
 (defconstant +unknown-context-reset-arb+ #x8255) 
 (defconstant +reset-notification-strategy-arb+ #x8256) 
+(defconstant +program-binary-retrievable-hint+ #x8257) 
 (defconstant +context-flag-robust-access-bit-arb+ #x4) 
 (defconstant +lose-context-on-reset-arb+ #x8252) 
 (defconstant +guilty-context-reset-arb+ #x8253) 

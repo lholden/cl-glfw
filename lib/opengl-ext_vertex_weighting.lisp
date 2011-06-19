@@ -16,6 +16,8 @@
 (defconstant +vertex-weight-array-type-ext+ #x850E) 
 (defconstant +vertex-weight-array-stride-ext+ #x850F) 
 (defconstant +vertex-weight-array-pointer-ext+ #x8510) 
+(defconstant +normal-map+ #x8511) 
+(defconstant +reflection-map+ #x8512) 
 (defconstant +texture-cube-map+ #x8513) 
 (defconstant +texture-binding-cube-map+ #x8514) 
 (defconstant +texture-cube-map-positive-x+ #x8515) 

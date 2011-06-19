@@ -23,6 +23,7 @@
 (defconstant +matrix-index-array-stride-oes+ #x8848) 
 (defconstant +matrix-index-array-pointer-oes+ #x8849) 
 (defconstant +texture-depth-size+ #x884A) 
+(defconstant +depth-texture-mode+ #x884B) 
 (defconstant +matrix-palette-arb+ #x8840) 
 (defconstant +max-matrix-palette-stack-depth-arb+ #x8841) 
 (defconstant +max-palette-matrices-arb+ #x8842) 

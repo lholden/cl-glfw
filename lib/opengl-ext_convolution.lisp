@@ -4,6 +4,19 @@
 
 ;;;; ext_convolution
 
+(defconstant +histogram+ #x8024) 
+(defconstant +proxy-histogram+ #x8025) 
+(defconstant +histogram-width+ #x8026) 
+(defconstant +histogram-format+ #x8027) 
+(defconstant +histogram-red-size+ #x8028) 
+(defconstant +histogram-green-size+ #x8029) 
+(defconstant +histogram-blue-size+ #x802A) 
+(defconstant +histogram-alpha-size+ #x802B) 
+(defconstant +histogram-sink+ #x802D) 
+(defconstant +minmax+ #x802E) 
+(defconstant +minmax-format+ #x802F) 
+(defconstant +minmax-sink+ #x8030) 
+(defconstant +table-too-large+ #x8031) 
 (defglextfun "SeparableFilter2DEXT" separable-filter-2d-ext :return "void"
  :args
  ((:name |target| :type |SeparableTargetEXT| :direction :in)

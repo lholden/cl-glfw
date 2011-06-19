@@ -4,6 +4,13 @@
 
 ;;;; arb_vertex_shader
 
+(defconstant +vertex-shader-arb+ #x8B31) 
+(defconstant +max-vertex-uniform-components-arb+ #x8B4A) 
+(defconstant +max-varying-floats-arb+ #x8B4B) 
+(defconstant +max-vertex-texture-image-units-arb+ #x8B4C) 
+(defconstant +max-combined-texture-image-units-arb+ #x8B4D) 
+(defconstant +object-active-attributes-arb+ #x8B89) 
+(defconstant +object-active-attribute-max-length-arb+ #x8B8A) 
 (defglextfun "GetAttribLocationARB" get-attrib-location-arb :return "Int32"
  :args
  ((:name |programObj| :type |handleARB| :direction :in)

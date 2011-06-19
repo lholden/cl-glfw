@@ -21,6 +21,8 @@
 (defconstant +discard-nv+ #x8530) 
 (defconstant +e-times-f-nv+ #x8531) 
 (defconstant +spare0-plus-secondary-color-nv+ #x8532) 
+(defconstant +vertex-array-range-without-flush-nv+ #x8533) 
+(defconstant +multisample-filter-hint-nv+ #x8534) 
 (defconstant +register-combiners-nv+ #x8522) 
 (defconstant +variable-a-nv+ #x8523) 
 (defconstant +variable-b-nv+ #x8524) 

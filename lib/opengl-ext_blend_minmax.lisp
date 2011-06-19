@@ -4,6 +4,10 @@
 
 ;;;; ext_blend_minmax
 
+(defconstant +func-add+ #x8006) 
+(defconstant +min+ #x8007) 
+(defconstant +max+ #x8008) 
+(defconstant +blend-equation+ #x8009) 
 (defconstant +blend-equation-rgb+ #x8009) 
 (defconstant +blend-equation-rgb-ext+ #x8009) 
 (defconstant +blend-equation-rgb-oes+ #x8009) 

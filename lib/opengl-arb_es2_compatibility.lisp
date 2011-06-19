@@ -5,6 +5,25 @@
 ;;;; arb_es2_compatibility
 
 (defconstant +shader-binary-formats+ #x8DF8) 
+(defconstant +num-shader-binary-formats+ #x8DF9) 
+(defconstant +shader-compiler+ #x8DFA) 
+(defconstant +max-vertex-uniform-vectors+ #x8DFB) 
+(defconstant +max-varying-vectors+ #x8DFC) 
+(defconstant +max-fragment-uniform-vectors+ #x8DFD) 
+(defconstant +fixed+ #x140C) 
+(defconstant +implementation-color-read-type+ #x8B9A) 
+(defconstant +implementation-color-read-format+ #x8B9B) 
+(defconstant +low-float+ #x8DF0) 
+(defconstant +medium-float+ #x8DF1) 
+(defconstant +high-float+ #x8DF2) 
+(defconstant +low-int+ #x8DF3) 
+(defconstant +medium-int+ #x8DF4) 
+(defconstant +high-int+ #x8DF5) 
+(defconstant +shader-compiler+ #x8DFA) 
+(defconstant +num-shader-binary-formats+ #x8DF9) 
+(defconstant +max-vertex-uniform-vectors+ #x8DFB) 
+(defconstant +max-varying-vectors+ #x8DFC) 
+(defconstant +max-fragment-uniform-vectors+ #x8DFD) 
 (defglextfun "ClearDepthf" clear-depth-f :return "void" :args
  ((:name |d| :type |ClampedFloat32| :direction :in)) :category
  "ARB_ES2_compatibility" :deprecated nil :version "4.1") 

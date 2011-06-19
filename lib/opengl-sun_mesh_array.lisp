@@ -4,6 +4,8 @@
 
 ;;;; sun_mesh_array
 
+(defconstant +quad-mesh-sun+ #x8614) 
+(defconstant +triangle-mesh-sun+ #x8615) 
 (defglextfun "DrawMeshArraysSUN" draw-mesh-arrays-sun :return "void" :args
  ((:name |mode| :type |BeginMode| :direction :in)
   (:name |first| :type |Int32| :direction :in)

@@ -4,11 +4,17 @@
 
 ;;;; arb_get_program_binary
 
+(defconstant +num-program-binary-formats+ #x87FE) 
+(defconstant +program-binary-formats+ #x87FF) 
 (defconstant +stencil-back-func+ #x8800) 
 (defconstant +stencil-back-fail+ #x8801) 
 (defconstant +stencil-back-pass-depth-fail+ #x8802) 
 (defconstant +stencil-back-pass-depth-pass+ #x8803) 
 (defconstant +stencil-back-fail-ati+ #x8801) 
+(defconstant +program-binary-retrievable-hint+ #x8257) 
+(defconstant +program-binary-length+ #x8741) 
+(defconstant +num-program-binary-formats+ #x87FE) 
+(defconstant +program-binary-formats+ #x87FF) 
 (defglextfun "ProgramParameteri" program-parameter-i :return "void" :args
  ((:name |program| :type |UInt32| :direction :in)
   (:name |pname| :type |ProgramParameterPName| :direction :in)

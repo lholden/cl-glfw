@@ -6,6 +6,7 @@
 
 (defconstant +rgba32ui+ #x8D70) 
 (defconstant +rgba32ui-ext+ #x8D70) 
+(defconstant +rgb32ui+ #x8D71) 
 (defconstant +rgb32ui-ext+ #x8D71) 
 (defconstant +alpha32ui-ext+ #x8D72) 
 (defconstant +intensity32ui-ext+ #x8D73) 
@@ -29,6 +30,7 @@
 (defconstant +luminance-alpha8ui-ext+ #x8D81) 
 (defconstant +rgba32i+ #x8D82) 
 (defconstant +rgba32i-ext+ #x8D82) 
+(defconstant +rgb32i+ #x8D83) 
 (defconstant +rgb32i-ext+ #x8D83) 
 (defconstant +alpha32i-ext+ #x8D84) 
 (defconstant +intensity32i-ext+ #x8D85) 
@@ -56,6 +58,7 @@
 (defconstant +green-integer-ext+ #x8D95) 
 (defconstant +blue-integer+ #x8D96) 
 (defconstant +blue-integer-ext+ #x8D96) 
+(defconstant +alpha-integer+ #x8D97) 
 (defconstant +alpha-integer-ext+ #x8D97) 
 (defconstant +rgb-integer+ #x8D98) 
 (defconstant +rgb-integer-ext+ #x8D98) 

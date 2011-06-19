@@ -5,6 +5,7 @@
 ;;;; sgi_color_table
 
 (defconstant +bgr+ #x80E0) 
+(defconstant +bgra+ #x80E1) 
 (defglextfun "GetColorTableParameterivSGI" get-color-table-parameteriv-sgi
  :return "void" :args
  ((:name |target| :type |ColorTableTargetSGI| :direction :in)

@@ -6,6 +6,7 @@
 
 (defconstant +timestamp+ #x8E28) 
 (defconstant +depth-component16-nonlinear-nv+ #x8E2C) 
+(defconstant +time-elapsed+ #x88BF) 
 (defconstant +timestamp+ #x8E28) 
 (defglextfun "GetQueryObjectui64v" get-query-objectui-64v :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)

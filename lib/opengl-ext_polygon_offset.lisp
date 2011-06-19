@@ -6,6 +6,7 @@
 
 (defconstant +polygon-offset-ext+ #x8037) 
 (defconstant +polygon-offset-factor-ext+ #x8038) 
+(defconstant +rescale-normal+ #x803A) 
 (defconstant +polygon-offset-ext+ #x8037) 
 (defconstant +polygon-offset-factor-ext+ #x8038) 
 (defglextfun "PolygonOffsetEXT" polygon-offset-ext :return "void" :args

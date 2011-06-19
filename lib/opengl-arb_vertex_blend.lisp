@@ -52,6 +52,8 @@
 (defconstant +weight-array-stride-oes+ #x86AA) 
 (defconstant +weight-array-size-oes+ #x86AB) 
 (defconstant +weight-array-pointer-oes+ #x86AC) 
+(defconstant +dot3-rgb+ #x86AE) 
+(defconstant +dot3-rgba+ #x86AF) 
 (defconstant +max-vertex-units-arb+ #x86A4) 
 (defconstant +active-vertex-units-arb+ #x86A5) 
 (defconstant +weight-sum-unity-arb+ #x86A6) 

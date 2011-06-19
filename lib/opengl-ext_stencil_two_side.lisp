@@ -6,6 +6,7 @@
 
 (defconstant +stencil-test-two-side-ext+ #x8910) 
 (defconstant +active-stencil-face-ext+ #x8911) 
+(defconstant +mirror-clamp-to-border-ext+ #x8912) 
 (defconstant +samples-passed+ #x8914) 
 (defconstant +samples-passed-arb+ #x8914) 
 (defconstant +stencil-test-two-side-ext+ #x8910) 

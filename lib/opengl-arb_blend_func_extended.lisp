@@ -9,6 +9,7 @@
 (defconstant +one-minus-src1-alpha+ #x88FB) 
 (defconstant +max-dual-source-draw-buffers+ #x88FC) 
 (defconstant +src1-color+ #x88F9) 
+(defconstant +src1-alpha+ #x8589) 
 (defconstant +one-minus-src1-color+ #x88FA) 
 (defconstant +one-minus-src1-alpha+ #x88FB) 
 (defconstant +max-dual-source-draw-buffers+ #x88FC) 

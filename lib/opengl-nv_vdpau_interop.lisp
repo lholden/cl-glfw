@@ -5,11 +5,13 @@
 ;;;; nv_vdpau_interop
 
 (defconstant +surface-state-nv+ #x86EB) 
+(defconstant +dot-product-texture-3d-nv+ #x86EF) 
 (defconstant +surface-registered-nv+ #x86FD) 
 (defconstant +surface-mapped-nv+ #x8700) 
 (defconstant +surface-state-nv+ #x86EB) 
 (defconstant +surface-registered-nv+ #x86FD) 
 (defconstant +surface-mapped-nv+ #x8700) 
+(defconstant +write-discard-nv+ #x88BE) 
 (defglextfun "VDPAUUnmapSurfacesNV" vdpauunmap-surfaces-nv :return "void" :args
  ((:name |numSurface| :type |SizeI| :direction :in)
   (:name |surfaces| :type |vdpauSurfaceNV| :direction :in :array t :size

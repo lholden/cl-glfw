@@ -12,6 +12,7 @@
 (defconstant +vertex-array-range-length-apple+ #x851E) 
 (defconstant +vertex-array-storage-hint-apple+ #x851F) 
 (defconstant +vertex-array-range-pointer-apple+ #x8521) 
+(defconstant +storage-client-apple+ #x85B4) 
 (defconstant +storage-cached-apple+ #x85BE) 
 (defconstant +storage-shared-apple+ #x85BF) 
 (defglextfun "VertexArrayParameteriAPPLE" vertex-array-parameter-i-apple

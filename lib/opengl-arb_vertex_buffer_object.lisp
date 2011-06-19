@@ -44,6 +44,8 @@
 (defconstant +program-under-native-limits-arb+ #x88B6) 
 (defconstant +transpose-current-matrix-arb+ #x88B7) 
 (defconstant +read-only+ #x88B8) 
+(defconstant +write-only+ #x88B9) 
+(defconstant +read-write+ #x88BA) 
 (defconstant +buffer-access+ #x88BB) 
 (defconstant +buffer-mapped+ #x88BC) 
 (defconstant +buffer-map-pointer+ #x88BD) 

@@ -10,6 +10,7 @@
 (defconstant +read-pixel-data-range-length-nv+ #x887B) 
 (defconstant +write-pixel-data-range-pointer-nv+ #x887C) 
 (defconstant +read-pixel-data-range-pointer-nv+ #x887D) 
+(defconstant +geometry-shader-invocations+ #x887F) 
 (defconstant +write-pixel-data-range-nv+ #x8878) 
 (defconstant +read-pixel-data-range-nv+ #x8879) 
 (defconstant +write-pixel-data-range-length-nv+ #x887A) 

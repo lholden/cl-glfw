@@ -141,13 +141,15 @@
 (defmacro make-extension-loader (extension-name (&rest function-specs))
   #-win32 (declare (ignore function-specs))
   `(defun ,(intern (format nil "LOAD-~A" extension-name)) ()
-     #+win32
-     (setf 
-      ;;Won't refer to gl:get-proc-address symbol directly here, as it's loaded after the scaffolding
-      ,@(let ((get-proc-address-func (find-symbol "GET-PROC-ADDRESS" (find-package '#:cl-glfw-opengl))))
-	     (loop for function-spec in function-specs nconcing
-		  (list (proc-parameter-name-of function-spec)
-			(list get-proc-address-func (gl-function-name-of function-spec))))))))
+     (when (extension-available-p ,extension-name)
+       #+win32
+       (setf 
+	;;Won't refer to gl:get-proc-address symbol directly here, as it's loaded after the scaffolding
+	,@(let ((get-proc-address-func (find-symbol "GET-PROC-ADDRESS" (find-package '#:cl-glfw-opengl))))
+	       (loop for function-spec in function-specs nconcing
+		    (list (proc-parameter-name-of function-spec)
+			  (list get-proc-address-func (gl-function-name-of function-spec))))))
+       t)))
 
 (defun wrapped-gl-function-definition (func-spec)
   (let ((args (args-of func-spec)))

@@ -5,7 +5,10 @@
 ;;;; arb_transform_feedback3
 
 (defconstant +max-transform-feedback-buffers+ #x8E70) 
+(defconstant +max-vertex-streams+ #x8E71) 
+(defconstant +max-vertex-streams+ :unable-to-resolve) 
 (defconstant +max-transform-feedback-buffers+ #x8E70) 
+(defconstant +max-vertex-streams+ #x8E71) 
 (defglextfun "GetQueryIndexediv" get-query-indexed-iv :return "void" :args
  ((:name |target| :type |GLenum| :direction :in)
   (:name |index| :type |UInt32| :direction :in)

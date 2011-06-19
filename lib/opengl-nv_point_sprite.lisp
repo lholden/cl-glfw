@@ -6,6 +6,8 @@
 
 (defconstant +point-sprite-nv+ #x8861) 
 (defconstant +coord-replace-nv+ #x8862) 
+(defconstant +point-sprite-arb+ #x8861) 
+(defconstant +coord-replace-arb+ #x8862) 
 (defconstant +point-sprite-r-mode-nv+ #x8863) 
 (defconstant +query-counter-bits+ #x8864) 
 (defconstant +current-query+ #x8865) 

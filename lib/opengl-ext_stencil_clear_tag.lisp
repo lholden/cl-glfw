@@ -6,6 +6,8 @@
 
 (defconstant +stencil-tag-bits-ext+ #x88F2) 
 (defconstant +stencil-clear-tag-value-ext+ #x88F3) 
+(defconstant +max-program-exec-instructions-nv+ #x88F4) 
+(defconstant +max-program-call-depth-nv+ #x88F5) 
 (defconstant +stencil-tag-bits-ext+ #x88F2) 
 (defconstant +stencil-clear-tag-value-ext+ #x88F3) 
 (defglextfun "StencilClearTagEXT" stencil-clear-tag-ext :return "void" :args

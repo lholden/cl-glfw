@@ -5,6 +5,7 @@
 ;;;; arb_color_buffer_float
 
 (defconstant +rgba-float-mode-arb+ #x8820) 
+(defconstant +type-rgba-float-ati+ #x8820) 
 (defconstant +writeonly-rendering-qcom+ #x8823) 
 (defconstant +max-draw-buffers+ #x8824) 
 (defconstant +draw-buffer0+ #x8825) 

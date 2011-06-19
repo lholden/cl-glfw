@@ -9,6 +9,7 @@
 (defconstant +retained-apple+ #x8A1B) 
 (defconstant +undefined-apple+ #x8A1C) 
 (defconstant +purgeable-apple+ #x8A1D) 
+(defconstant +buffer-object-apple+ #x85B3) 
 (defconstant +released-apple+ #x8A19) 
 (defconstant +volatile-apple+ #x8A1A) 
 (defconstant +retained-apple+ #x8A1B) 

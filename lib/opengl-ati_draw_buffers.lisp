@@ -21,6 +21,7 @@
 (defconstant +draw-buffer13-ati+ #x8832) 
 (defconstant +draw-buffer14-ati+ #x8833) 
 (defconstant +draw-buffer15-ati+ #x8834) 
+(defconstant +color-clear-unclamped-value-ati+ #x8835) 
 (defconstant +blend-equation-alpha+ #x883D) 
 (defconstant +max-draw-buffers-ati+ #x8824) 
 (defconstant +draw-buffer0-ati+ #x8825) 

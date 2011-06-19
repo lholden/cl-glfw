@@ -22,14 +22,3 @@
 (defun extension-available-p (extension)
   (declare (type string extension))
   (find extension (available-extensions) :test 'equalp))
-
-(defun load-extension (extension)
-  "Try to load an opengl extension where the extension name is a string of the form
-     \"ARB_vertex_buffer_object\". Returns t if the extension is available and loads,
-     otherwise, nil."
-  (let ((extension (extension-available-p extension)))
-    (when extension
-      ;; (handler-case
-      ;;     (asdf:oos 'asdf:load-op (string-downcase (format nil "cl-glfw-opengl-~a" extension)))
-      ;;   (asdf:missing-component () (warn "Extension ~a has nothing to load~%" extension)))
-      t)))

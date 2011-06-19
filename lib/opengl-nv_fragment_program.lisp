@@ -10,6 +10,11 @@
 (defconstant +max-vertex-attribs-arb+ #x8869) 
 (defconstant +vertex-attrib-array-normalized-arb+ #x886A) 
 (defconstant +max-fragment-program-local-parameters-nv+ #x8868) 
+(defconstant +fragment-program-nv+ #x8870) 
+(defconstant +max-texture-coords-nv+ #x8871) 
+(defconstant +max-texture-image-units-nv+ #x8872) 
+(defconstant +fragment-program-binding-nv+ #x8873) 
+(defconstant +program-error-string-nv+ #x8874) 
 (defglextfun "GetProgramNamedParameterdvNV" get-program-named-parameter-dv-nv
  :return "void" :args
  ((:name |id| :type |UInt32| :direction :in)

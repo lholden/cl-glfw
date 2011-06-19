@@ -4,6 +4,7 @@
 
 ;;;; arb_vertex_attrib_64bit
 
+(defconstant +rgb32i+ #x8D83) 
 (defconstant +double-vec2+ #x8FFC) 
 (defconstant +double-vec3+ #x8FFD) 
 (defconstant +double-vec4+ #x8FFE) 

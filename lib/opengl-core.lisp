@@ -2,7 +2,7 @@
 
 (in-package #:cl-glfw-opengl) 
 
-;;;; {{{ attribmask
+;;;; {{{ AttribMask
 
 (defconstant +current-bit+ #x1) 
 (defconstant +point-bit+ #x2) 
@@ -29,19 +29,13 @@
 
 ;;;; }}}
 
-;;;; {{{ 3dfx_multisample
-
-(defconstant +multisample-bit-3dfx+ #x20000000) 
-
-;;;; }}}
-
-;;;; {{{ clearbuffermask
+;;;; {{{ ClearBufferMask
 
 (defconstant +coverage-buffer-bit-nv+ #x8000) 
 
 ;;;; }}}
 
-;;;; {{{ clientattribmask
+;;;; {{{ ClientAttribMask
 
 (defconstant +client-pixel-store-bit+ #x1) 
 (defconstant +client-vertex-array-bit+ #x2) 
@@ -49,14 +43,14 @@
 
 ;;;; }}}
 
-;;;; {{{ boolean
+;;;; {{{ Boolean
 
 (defconstant +false+ #x0) 
 (defconstant +true+ #x1) 
 
 ;;;; }}}
 
-;;;; {{{ beginmode
+;;;; {{{ BeginMode
 
 (defconstant +points+ #x0) 
 (defconstant +lines+ #x1) 
@@ -71,7 +65,7 @@
 
 ;;;; }}}
 
-;;;; {{{ accumop
+;;;; {{{ AccumOp
 
 (defconstant +accum+ #x100) 
 (defconstant +load+ #x101) 
@@ -81,7 +75,7 @@
 
 ;;;; }}}
 
-;;;; {{{ alphafunction
+;;;; {{{ AlphaFunction
 
 (defconstant +never+ #x200) 
 (defconstant +less+ #x201) 
@@ -94,7 +88,7 @@
 
 ;;;; }}}
 
-;;;; {{{ blendingfactordest
+;;;; {{{ BlendingFactorDest
 
 (defconstant +zero+ #x0) 
 (defconstant +one+ #x1) 
@@ -111,7 +105,7 @@
 
 ;;;; }}}
 
-;;;; {{{ blendingfactorsrc
+;;;; {{{ BlendingFactorSrc
 
 (defconstant +dst-color+ #x306) 
 (defconstant +one-minus-dst-color+ #x307) 
@@ -119,7 +113,7 @@
 
 ;;;; }}}
 
-;;;; {{{ blendequationmodeext
+;;;; {{{ BlendEquationModeEXT
 
 (defconstant +logic-op+ #xBF1) 
 (defconstant +func-add-ext+ #x8006) 
@@ -132,7 +126,7 @@
 
 ;;;; }}}
 
-;;;; {{{ colormaterialface
+;;;; {{{ ColorMaterialFace
 
 (defconstant +front+ #x404) 
 (defconstant +back+ #x405) 
@@ -140,7 +134,7 @@
 
 ;;;; }}}
 
-;;;; {{{ colormaterialparameter
+;;;; {{{ ColorMaterialParameter
 
 (defconstant +ambient+ #x1200) 
 (defconstant +diffuse+ #x1201) 
@@ -150,7 +144,7 @@
 
 ;;;; }}}
 
-;;;; {{{ colorpointertype
+;;;; {{{ ColorPointerType
 
 (defconstant +byte+ #x1400) 
 (defconstant +unsigned-byte+ #x1401) 
@@ -163,14 +157,14 @@
 
 ;;;; }}}
 
-;;;; {{{ colortableparameterpnamesgi
+;;;; {{{ ColorTableParameterPNameSGI
 
 (defconstant +color-table-scale-sgi+ #x80D6) 
 (defconstant +color-table-bias-sgi+ #x80D7) 
 
 ;;;; }}}
 
-;;;; {{{ colortabletargetsgi
+;;;; {{{ ColorTableTargetSGI
 
 (defconstant +color-table-sgi+ #x80D0) 
 (defconstant +post-convolution-color-table-sgi+ #x80D1) 
@@ -183,13 +177,13 @@
 
 ;;;; }}}
 
-;;;; {{{ convolutionbordermodeext
+;;;; {{{ ConvolutionBorderModeEXT
 
 (defconstant +reduce-ext+ #x8016) 
 
 ;;;; }}}
 
-;;;; {{{ convolutionparameterext
+;;;; {{{ ConvolutionParameterEXT
 
 (defconstant +convolution-border-mode-ext+ #x8013) 
 (defconstant +convolution-filter-scale-ext+ #x8014) 
@@ -197,14 +191,14 @@
 
 ;;;; }}}
 
-;;;; {{{ convolutiontargetext
+;;;; {{{ ConvolutionTargetEXT
 
 (defconstant +convolution-1d-ext+ #x8010) 
 (defconstant +convolution-2d-ext+ #x8011) 
 
 ;;;; }}}
 
-;;;; {{{ drawbuffermode
+;;;; {{{ DrawBufferMode
 
 (defconstant +none+ #x0) 
 (defconstant +front-left+ #x400) 
@@ -220,7 +214,7 @@
 
 ;;;; }}}
 
-;;;; {{{ enablecap
+;;;; {{{ EnableCap
 
 (defconstant +fog+ #xB60) 
 (defconstant +lighting+ #xB50) 
@@ -325,7 +319,7 @@
 
 ;;;; }}}
 
-;;;; {{{ errorcode
+;;;; {{{ ErrorCode
 
 (defconstant +no-error+ #x0) 
 (defconstant +invalid-enum+ #x500) 
@@ -339,7 +333,7 @@
 
 ;;;; }}}
 
-;;;; {{{ feedbacktype
+;;;; {{{ FeedbackType
 
 (defconstant +2d+ #x600) 
 (defconstant +3d+ #x601) 
@@ -349,7 +343,7 @@
 
 ;;;; }}}
 
-;;;; {{{ feedbacktoken
+;;;; {{{ FeedBackToken
 
 (defconstant +pass-through-token+ #x700) 
 (defconstant +point-token+ #x701) 
@@ -362,21 +356,21 @@
 
 ;;;; }}}
 
-;;;; {{{ ffdmasksgix
+;;;; {{{ FfdMaskSGIX
 
 (defconstant +texture-deformation-bit-sgix+ #x1) 
 (defconstant +geometry-deformation-bit-sgix+ #x2) 
 
 ;;;; }}}
 
-;;;; {{{ ffdtargetsgix
+;;;; {{{ FfdTargetSGIX
 
 (defconstant +geometry-deformation-sgix+ #x8194) 
 (defconstant +texture-deformation-sgix+ #x8195) 
 
 ;;;; }}}
 
-;;;; {{{ fogmode
+;;;; {{{ FogMode
 
 (defconstant +linear+ #x2601) 
 (defconstant +exp+ #x800) 
@@ -385,7 +379,7 @@
 
 ;;;; }}}
 
-;;;; {{{ fogparameter
+;;;; {{{ FogParameter
 
 (defconstant +fog-color+ #xB66) 
 (defconstant +fog-density+ #xB62) 
@@ -397,7 +391,7 @@
 
 ;;;; }}}
 
-;;;; {{{ fragmentlightmodelparametersgix
+;;;; {{{ FragmentLightModelParameterSGIX
 
 (defconstant +fragment-light-model-local-viewer-sgix+ #x8408) 
 (defconstant +fragment-light-model-two-side-sgix+ #x8409) 
@@ -406,14 +400,14 @@
 
 ;;;; }}}
 
-;;;; {{{ frontfacedirection
+;;;; {{{ FrontFaceDirection
 
 (defconstant +cw+ #x900) 
 (defconstant +ccw+ #x901) 
 
 ;;;; }}}
 
-;;;; {{{ getcolortableparameterpnamesgi
+;;;; {{{ GetColorTableParameterPNameSGI
 
 (defconstant +color-table-format-sgi+ #x80D8) 
 (defconstant +color-table-width-sgi+ #x80D9) 
@@ -426,7 +420,7 @@
 
 ;;;; }}}
 
-;;;; {{{ getconvolutionparameter
+;;;; {{{ GetConvolutionParameter
 
 (defconstant +convolution-format-ext+ #x8017) 
 (defconstant +convolution-width-ext+ #x8018) 
@@ -436,7 +430,7 @@
 
 ;;;; }}}
 
-;;;; {{{ gethistogramparameterpnameext
+;;;; {{{ GetHistogramParameterPNameEXT
 
 (defconstant +histogram-width-ext+ #x8026) 
 (defconstant +histogram-format-ext+ #x8027) 
@@ -449,7 +443,7 @@
 
 ;;;; }}}
 
-;;;; {{{ getmapquery
+;;;; {{{ GetMapQuery
 
 (defconstant +coeff+ #xA00) 
 (defconstant +order+ #xA01) 
@@ -457,14 +451,14 @@
 
 ;;;; }}}
 
-;;;; {{{ getminmaxparameterpnameext
+;;;; {{{ GetMinmaxParameterPNameEXT
 
 (defconstant +minmax-format-ext+ #x802F) 
 (defconstant +minmax-sink-ext+ #x8030) 
 
 ;;;; }}}
 
-;;;; {{{ getpixelmap
+;;;; {{{ GetPixelMap
 
 (defconstant +pixel-map-i-to-i+ #xC70) 
 (defconstant +pixel-map-s-to-s+ #xC71) 
@@ -479,7 +473,7 @@
 
 ;;;; }}}
 
-;;;; {{{ getpointervpname
+;;;; {{{ GetPointervPName
 
 (defconstant +vertex-array-pointer+ #x808E) 
 (defconstant +normal-array-pointer+ #x808F) 
@@ -493,7 +487,7 @@
 
 ;;;; }}}
 
-;;;; {{{ getpname
+;;;; {{{ GetPName
 
 (defconstant +current-color+ #xB00) 
 (defconstant +current-index+ #xB01) 
@@ -766,7 +760,7 @@
 
 ;;;; }}}
 
-;;;; {{{ gettextureparameter
+;;;; {{{ GetTextureParameter
 
 (defconstant +texture-mag-filter+ #x2800) 
 (defconstant +texture-min-filter+ #x2801) 
@@ -824,7 +818,7 @@
 
 ;;;; }}}
 
-;;;; {{{ hintmode
+;;;; {{{ HintMode
 
 (defconstant +dont-care+ #x1100) 
 (defconstant +fastest+ #x1101) 
@@ -832,33 +826,33 @@
 
 ;;;; }}}
 
-;;;; {{{ hinttarget
+;;;; {{{ HintTarget
 
 (defconstant +texture-multi-buffer-hint-sgix+ #x812E) 
 
 ;;;; }}}
 
-;;;; {{{ histogramtargetext
+;;;; {{{ HistogramTargetEXT
 
 (defconstant +proxy-histogram-ext+ #x8025) 
 
 ;;;; }}}
 
-;;;; {{{ lightenvmodesgix
+;;;; {{{ LightEnvModeSGIX
 
 (defconstant +replace+ #x1E01) 
 (defconstant +modulate+ #x2100) 
 
 ;;;; }}}
 
-;;;; {{{ lightmodelcolorcontrol
+;;;; {{{ LightModelColorControl
 
 (defconstant +single-color+ #x81F9) 
 (defconstant +separate-specular-color+ #x81FA) 
 
 ;;;; }}}
 
-;;;; {{{ lightparameter
+;;;; {{{ LightParameter
 
 (defconstant +position+ #x1203) 
 (defconstant +spot-direction+ #x1204) 
@@ -870,14 +864,14 @@
 
 ;;;; }}}
 
-;;;; {{{ listmode
+;;;; {{{ ListMode
 
 (defconstant +compile+ #x1300) 
 (defconstant +compile-and-execute+ #x1301) 
 
 ;;;; }}}
 
-;;;; {{{ datatype
+;;;; {{{ DataType
 
 (defconstant +2-bytes+ #x1407) 
 (defconstant +3-bytes+ #x1408) 
@@ -886,19 +880,13 @@
 
 ;;;; }}}
 
-;;;; {{{ arb_half_float_pixel
-
-(defconstant +half-float-arb+ #x140B) 
-
-;;;; }}}
-
-;;;; {{{ listparametername
+;;;; {{{ ListParameterName
 
 (defconstant +list-priority-sgix+ #x8182) 
 
 ;;;; }}}
 
-;;;; {{{ logicop
+;;;; {{{ LogicOp
 
 (defconstant +clear+ #x1500) 
 (defconstant +and+ #x1501) 
@@ -919,14 +907,14 @@
 
 ;;;; }}}
 
-;;;; {{{ materialparameter
+;;;; {{{ MaterialParameter
 
 (defconstant +shininess+ #x1601) 
 (defconstant +color-indexes+ #x1603) 
 
 ;;;; }}}
 
-;;;; {{{ matrixmode
+;;;; {{{ MatrixMode
 
 (defconstant +modelview+ #x1700) 
 (defconstant +projection+ #x1701) 
@@ -934,20 +922,20 @@
 
 ;;;; }}}
 
-;;;; {{{ meshmode1
+;;;; {{{ MeshMode1
 
 (defconstant +point+ #x1B00) 
 (defconstant +line+ #x1B01) 
 
 ;;;; }}}
 
-;;;; {{{ meshmode2
+;;;; {{{ MeshMode2
 
 (defconstant +fill+ #x1B02) 
 
 ;;;; }}}
 
-;;;; {{{ pixelcopytype
+;;;; {{{ PixelCopyType
 
 (defconstant +color+ #x1800) 
 (defconstant +depth+ #x1801) 
@@ -958,7 +946,7 @@
 
 ;;;; }}}
 
-;;;; {{{ pixelformat
+;;;; {{{ PixelFormat
 
 (defconstant +color-index+ #x1900) 
 (defconstant +stencil-index+ #x1901) 
@@ -984,7 +972,7 @@
 
 ;;;; }}}
 
-;;;; {{{ pixelstoreresamplemode
+;;;; {{{ PixelStoreResampleMode
 
 (defconstant +resample-replicate-sgix+ #x842E) 
 (defconstant +resample-zero-fill-sgix+ #x842F) 
@@ -992,7 +980,7 @@
 
 ;;;; }}}
 
-;;;; {{{ pixelstoresubsamplerate
+;;;; {{{ PixelStoreSubsampleRate
 
 (defconstant +pixel-subsample-4444-sgix+ #x85A2) 
 (defconstant +pixel-subsample-2424-sgix+ #x85A3) 
@@ -1000,7 +988,7 @@
 
 ;;;; }}}
 
-;;;; {{{ pixeltexgenmode
+;;;; {{{ PixelTexGenMode
 
 (defconstant +pixel-tex-gen-alpha-replace-sgix+ #x8187) 
 (defconstant +pixel-tex-gen-alpha-no-replace-sgix+ #x8188) 
@@ -1009,14 +997,14 @@
 
 ;;;; }}}
 
-;;;; {{{ pixeltexgenparameternamesgis
+;;;; {{{ PixelTexGenParameterNameSGIS
 
 (defconstant +pixel-fragment-rgb-source-sgis+ #x8354) 
 (defconstant +pixel-fragment-alpha-source-sgis+ #x8355) 
 
 ;;;; }}}
 
-;;;; {{{ pixeltype
+;;;; {{{ PixelType
 
 (defconstant +bitmap+ #x1A00) 
 (defconstant +unsigned-byte-3-3-2-ext+ #x8032) 
@@ -1027,7 +1015,7 @@
 
 ;;;; }}}
 
-;;;; {{{ renderingmode
+;;;; {{{ RenderingMode
 
 (defconstant +render+ #x1C00) 
 (defconstant +feedback+ #x1C01) 
@@ -1035,7 +1023,7 @@
 
 ;;;; }}}
 
-;;;; {{{ samplepatternsgis
+;;;; {{{ SamplePatternSGIS
 
 (defconstant +1pass-sgis+ #x80A1) 
 (defconstant +2pass-0-sgis+ #x80A2) 
@@ -1047,14 +1035,14 @@
 
 ;;;; }}}
 
-;;;; {{{ shadingmodel
+;;;; {{{ ShadingModel
 
 (defconstant +flat+ #x1D00) 
 (defconstant +smooth+ #x1D01) 
 
 ;;;; }}}
 
-;;;; {{{ stencilop
+;;;; {{{ StencilOp
 
 (defconstant +keep+ #x1E00) 
 (defconstant +incr+ #x1E02) 
@@ -1062,7 +1050,7 @@
 
 ;;;; }}}
 
-;;;; {{{ stringname
+;;;; {{{ StringName
 
 (defconstant +vendor+ #x1F00) 
 (defconstant +renderer+ #x1F01) 
@@ -1071,7 +1059,7 @@
 
 ;;;; }}}
 
-;;;; {{{ texturecoordname
+;;;; {{{ TextureCoordName
 
 (defconstant +s+ #x2000) 
 (defconstant +t+ #x2001) 
@@ -1080,7 +1068,7 @@
 
 ;;;; }}}
 
-;;;; {{{ textureenvmode
+;;;; {{{ TextureEnvMode
 
 (defconstant +decal+ #x2101) 
 (defconstant +replace-ext+ #x8062) 
@@ -1088,26 +1076,26 @@
 
 ;;;; }}}
 
-;;;; {{{ textureenvparameter
+;;;; {{{ TextureEnvParameter
 
 (defconstant +texture-env-mode+ #x2200) 
 (defconstant +texture-env-color+ #x2201) 
 
 ;;;; }}}
 
-;;;; {{{ textureenvtarget
+;;;; {{{ TextureEnvTarget
 
 (defconstant +texture-env+ #x2300) 
 
 ;;;; }}}
 
-;;;; {{{ texturefilterfuncsgis
+;;;; {{{ TextureFilterFuncSGIS
 
 (defconstant +filter4-sgis+ #x8146) 
 
 ;;;; }}}
 
-;;;; {{{ texturegenmode
+;;;; {{{ TextureGenMode
 
 (defconstant +eye-linear+ #x2400) 
 (defconstant +object-linear+ #x2401) 
@@ -1119,7 +1107,7 @@
 
 ;;;; }}}
 
-;;;; {{{ texturegenparameter
+;;;; {{{ TextureGenParameter
 
 (defconstant +texture-gen-mode+ #x2500) 
 (defconstant +object-plane+ #x2501) 
@@ -1131,7 +1119,7 @@
 
 ;;;; }}}
 
-;;;; {{{ texturemagfilter
+;;;; {{{ TextureMagFilter
 
 (defconstant +nearest+ #x2600) 
 (defconstant +linear-detail-sgis+ #x8097) 
@@ -1146,7 +1134,7 @@
 
 ;;;; }}}
 
-;;;; {{{ textureminfilter
+;;;; {{{ TextureMinFilter
 
 (defconstant +nearest-mipmap-nearest+ #x2700) 
 (defconstant +linear-mipmap-nearest+ #x2701) 
@@ -1159,7 +1147,7 @@
 
 ;;;; }}}
 
-;;;; {{{ texturetarget
+;;;; {{{ TextureTarget
 
 (defconstant +proxy-texture-1d+ #x8063) 
 (defconstant +proxy-texture-2d+ #x8064) 
@@ -1169,7 +1157,7 @@
 
 ;;;; }}}
 
-;;;; {{{ texturewrapmode
+;;;; {{{ TextureWrapMode
 
 (defconstant +clamp+ #x2900) 
 (defconstant +repeat+ #x2901) 
@@ -1178,7 +1166,7 @@
 
 ;;;; }}}
 
-;;;; {{{ pixelinternalformat
+;;;; {{{ PixelInternalFormat
 
 (defconstant +r3-g3-b2+ #x2A10) 
 (defconstant +alpha4+ #x803B) 
@@ -1247,7 +1235,7 @@
 
 ;;;; }}}
 
-;;;; {{{ interleavedarrayformat
+;;;; {{{ InterleavedArrayFormat
 
 (defconstant +v2f+ #x2A20) 
 (defconstant +v3f+ #x2A21) 
@@ -1266,7 +1254,7 @@
 
 ;;;; }}}
 
-;;;; {{{ clipplanename
+;;;; {{{ ClipPlaneName
 
 (defconstant +clip-distance0+ #x3000) 
 (defconstant +clip-distance1+ #x3001) 
@@ -1276,1946 +1264,5 @@
 (defconstant +clip-distance5+ #x3005) 
 (defconstant +clip-distance6+ #x3006) 
 (defconstant +clip-distance7+ #x3007) 
-
-;;;; }}}
-
-;;;; {{{ ext_abgr
-
-(defconstant +constant-color+ #x8001) 
-(defconstant +one-minus-constant-color+ #x8002) 
-(defconstant +constant-alpha+ #x8003) 
-(defconstant +one-minus-constant-alpha+ #x8004) 
-(defconstant +blend-color+ #x8005) 
-
-;;;; }}}
-
-;;;; {{{ ext_blend_subtract
-
-(defconstant +func-subtract+ #x800A) 
-(defconstant +func-reverse-subtract+ #x800B) 
-(defconstant +func-add-oes+ #x8006) 
-(defconstant +blend-equation-oes+ #x8009) 
-(defconstant +func-subtract-oes+ #x800A) 
-(defconstant +func-reverse-subtract-oes+ #x800B) 
-
-;;;; }}}
-
-;;;; {{{ ext_cmyka
-
-(defconstant +convolution-1d+ #x8010) 
-(defconstant +convolution-2d+ #x8011) 
-(defconstant +separable-2d+ #x8012) 
-(defconstant +convolution-border-mode+ #x8013) 
-(defconstant +convolution-filter-scale+ #x8014) 
-(defconstant +convolution-filter-bias+ #x8015) 
-(defconstant +reduce+ #x8016) 
-(defconstant +convolution-format+ #x8017) 
-(defconstant +convolution-width+ #x8018) 
-(defconstant +convolution-height+ #x8019) 
-(defconstant +max-convolution-width+ #x801A) 
-(defconstant +max-convolution-height+ #x801B) 
-(defconstant +post-convolution-red-scale+ #x801C) 
-(defconstant +post-convolution-green-scale+ #x801D) 
-(defconstant +post-convolution-blue-scale+ #x801E) 
-(defconstant +post-convolution-alpha-scale+ #x801F) 
-(defconstant +post-convolution-red-bias+ #x8020) 
-(defconstant +post-convolution-green-bias+ #x8021) 
-(defconstant +post-convolution-blue-bias+ #x8022) 
-(defconstant +post-convolution-alpha-bias+ #x8023) 
-
-;;;; }}}
-
-;;;; {{{ ext_packed_pixels
-
-(defconstant +unsigned-byte-2-3-3-rev-ext+ #x8362) 
-(defconstant +unsigned-short-5-6-5-ext+ #x8363) 
-(defconstant +unsigned-short-5-6-5-rev-ext+ #x8364) 
-(defconstant +unsigned-short-4-4-4-4-rev-ext+ #x8365) 
-(defconstant +unsigned-short-1-5-5-5-rev-ext+ #x8366) 
-(defconstant +unsigned-int-8-8-8-8-rev-ext+ #x8367) 
-(defconstant +unsigned-int-2-10-10-10-rev-ext+ #x8368) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture
-
-(defconstant +alpha4-ext+ #x803B) 
-(defconstant +alpha8-ext+ #x803C) 
-(defconstant +alpha12-ext+ #x803D) 
-(defconstant +alpha16-ext+ #x803E) 
-(defconstant +luminance4-ext+ #x803F) 
-(defconstant +luminance8-ext+ #x8040) 
-(defconstant +luminance12-ext+ #x8041) 
-(defconstant +luminance16-ext+ #x8042) 
-(defconstant +luminance4-alpha4-ext+ #x8043) 
-(defconstant +luminance6-alpha2-ext+ #x8044) 
-(defconstant +luminance8-alpha8-ext+ #x8045) 
-(defconstant +luminance12-alpha4-ext+ #x8046) 
-(defconstant +luminance12-alpha12-ext+ #x8047) 
-(defconstant +luminance16-alpha16-ext+ #x8048) 
-(defconstant +intensity-ext+ #x8049) 
-(defconstant +intensity4-ext+ #x804A) 
-(defconstant +intensity8-ext+ #x804B) 
-(defconstant +intensity12-ext+ #x804C) 
-(defconstant +intensity16-ext+ #x804D) 
-(defconstant +rgb4-ext+ #x804F) 
-(defconstant +rgb5-ext+ #x8050) 
-(defconstant +rgb8-ext+ #x8051) 
-(defconstant +rgb10-ext+ #x8052) 
-(defconstant +rgb12-ext+ #x8053) 
-(defconstant +rgb16-ext+ #x8054) 
-(defconstant +rgba2-ext+ #x8055) 
-(defconstant +rgba4-ext+ #x8056) 
-(defconstant +rgb5-a1-ext+ #x8057) 
-(defconstant +rgba8-ext+ #x8058) 
-(defconstant +rgb10-a2-ext+ #x8059) 
-(defconstant +rgba12-ext+ #x805A) 
-(defconstant +rgba16-ext+ #x805B) 
-(defconstant +texture-red-size-ext+ #x805C) 
-(defconstant +texture-green-size-ext+ #x805D) 
-(defconstant +texture-blue-size-ext+ #x805E) 
-(defconstant +texture-alpha-size-ext+ #x805F) 
-(defconstant +texture-luminance-size-ext+ #x8060) 
-(defconstant +texture-intensity-size-ext+ #x8061) 
-(defconstant +proxy-texture-1d-ext+ #x8063) 
-(defconstant +proxy-texture-2d-ext+ #x8064) 
-(defconstant +rgba4-oes+ #x8056) 
-(defconstant +rgb5-a1-oes+ #x8057) 
-
-;;;; }}}
-
-;;;; {{{ sgix_shadow_ambient
-
-(defconstant +blend-dst-rgb+ #x80C8) 
-(defconstant +blend-src-rgb+ #x80C9) 
-(defconstant +blend-dst-alpha+ #x80CA) 
-(defconstant +blend-src-alpha+ #x80CB) 
-
-;;;; }}}
-
-;;;; {{{ ext_422_pixels
-
-(defconstant +422-ext+ #x80CC) 
-(defconstant +422-rev-ext+ #x80CD) 
-(defconstant +422-average-ext+ #x80CE) 
-(defconstant +422-rev-average-ext+ #x80CF) 
-(defconstant +color-table+ #x80D0) 
-(defconstant +post-convolution-color-table+ #x80D1) 
-(defconstant +post-color-matrix-color-table+ #x80D2) 
-(defconstant +proxy-color-table+ #x80D3) 
-(defconstant +proxy-post-convolution-color-table+ #x80D4) 
-(defconstant +proxy-post-color-matrix-color-table+ #x80D5) 
-(defconstant +color-table-scale+ #x80D6) 
-(defconstant +color-table-bias+ #x80D7) 
-(defconstant +color-table-format+ #x80D8) 
-(defconstant +color-table-width+ #x80D9) 
-(defconstant +color-table-red-size+ #x80DA) 
-(defconstant +color-table-green-size+ #x80DB) 
-(defconstant +color-table-blue-size+ #x80DC) 
-(defconstant +color-table-alpha-size+ #x80DD) 
-(defconstant +color-table-luminance-size+ #x80DE) 
-(defconstant +color-table-intensity-size+ #x80DF) 
-
-;;;; }}}
-
-;;;; {{{ ext_bgra
-
-(defconstant +bgr-ext+ #x80E0) 
-(defconstant +bgra-ext+ #x80E1) 
-
-;;;; }}}
-
-;;;; {{{ sgis_texture_select
-
-(defconstant +point-size-min+ #x8126) 
-(defconstant +point-size-max+ #x8127) 
-(defconstant +point-fade-threshold-size+ #x8128) 
-(defconstant +point-distance-attenuation+ #x8129) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_border_clamp
-
-(defconstant +clamp-to-border-arb+ #x812D) 
-
-;;;; }}}
-
-;;;; {{{ sgix_texture_multi_buffer
-
-(defconstant +clamp-to-edge+ #x812F) 
-
-;;;; }}}
-
-;;;; {{{ hp_convolution_border_modes
-
-(defconstant +ignore-border-hp+ #x8150) 
-(defconstant +constant-border-hp+ #x8151) 
-(defconstant +replicate-border-hp+ #x8153) 
-(defconstant +convolution-border-color-hp+ #x8154) 
-
-;;;; }}}
-
-;;;; {{{ sgix_texture_lod_bias
-
-(defconstant +generate-mipmap+ #x8191) 
-(defconstant +generate-mipmap-hint+ #x8192) 
-
-;;;; }}}
-
-;;;; {{{ sgix_shadow
-
-(defconstant +depth-component16+ #x81A5) 
-(defconstant +depth-component24+ #x81A6) 
-(defconstant +depth-component32+ #x81A7) 
-
-;;;; }}}
-
-;;;; {{{ arb_depth_texture
-
-(defconstant +depth-component16-arb+ #x81A5) 
-(defconstant +depth-component24-arb+ #x81A6) 
-(defconstant +depth-component32-arb+ #x81A7) 
-
-;;;; }}}
-
-;;;; {{{ sgix_depth_texture
-
-(defconstant +depth-component16-oes+ #x81A5) 
-(defconstant +depth-component24-oes+ #x81A6) 
-(defconstant +depth-component32-oes+ #x81A7) 
-
-;;;; }}}
-
-;;;; {{{ ext_index_array_formats
-
-(defconstant +iui-v2f-ext+ #x81AD) 
-(defconstant +iui-v3f-ext+ #x81AE) 
-(defconstant +iui-n3f-v2f-ext+ #x81AF) 
-(defconstant +iui-n3f-v3f-ext+ #x81B0) 
-(defconstant +t2f-iui-v2f-ext+ #x81B1) 
-(defconstant +t2f-iui-v3f-ext+ #x81B2) 
-(defconstant +t2f-iui-n3f-v2f-ext+ #x81B3) 
-(defconstant +t2f-iui-n3f-v3f-ext+ #x81B4) 
-
-;;;; }}}
-
-;;;; {{{ ext_separate_specular_color
-
-(defconstant +light-model-color-control-ext+ #x81F8) 
-(defconstant +single-color-ext+ #x81F9) 
-(defconstant +separate-specular-color-ext+ #x81FA) 
-
-;;;; }}}
-
-;;;; {{{ ati_text_fragment_shader
-
-(defconstant +text-fragment-shader-ati+ #x8200) 
-
-;;;; }}}
-
-;;;; {{{ sgix_ycrcba
-
-(defconstant +ycrcb-sgix+ #x8318) 
-(defconstant +ycrcba-sgix+ #x8319) 
-
-;;;; }}}
-
-;;;; {{{ sgix_slim
-
-(defconstant +unpack-compressed-size-sgix+ #x831A) 
-(defconstant +pack-max-compressed-size-sgix+ #x831B) 
-(defconstant +pack-compressed-size-sgix+ #x831C) 
-(defconstant +slim8u-sgix+ #x831D) 
-(defconstant +slim10u-sgix+ #x831E) 
-(defconstant +slim12s-sgix+ #x831F) 
-
-;;;; }}}
-
-;;;; {{{ sgix_scalebias_hint
-
-(defconstant +scalebias-hint-sgix+ #x8322) 
-
-;;;; }}}
-
-;;;; {{{ sgix_line_quality_hint
-
-(defconstant +line-quality-hint-sgix+ #x835B) 
-
-;;;; }}}
-
-;;;; {{{ sgix_texture_coordinate_clamp
-
-(defconstant +fog-factor-to-alpha-sgix+ #x836F) 
-(defconstant +mirrored-repeat+ #x8370) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_mirrored_repeat
-
-(defconstant +mirrored-repeat-arb+ #x8370) 
-
-;;;; }}}
-
-;;;; {{{ ibm_texture_mirrored_repeat
-
-(defconstant +mirrored-repeat-ibm+ #x8370) 
-(defconstant +mirrored-repeat-oes+ #x8370) 
-
-;;;; }}}
-
-;;;; {{{ s3_s3tc
-
-(defconstant +rgb-s3tc+ #x83A0) 
-(defconstant +rgb4-s3tc+ #x83A1) 
-(defconstant +rgba-s3tc+ #x83A2) 
-(defconstant +rgba4-s3tc+ #x83A3) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_compression_s3tc
-
-(defconstant +compressed-rgb-s3tc-dxt1-ext+ #x83F0) 
-(defconstant +compressed-rgba-s3tc-dxt1-ext+ #x83F1) 
-(defconstant +compressed-rgba-s3tc-dxt3-ext+ #x83F2) 
-(defconstant +compressed-rgba-s3tc-dxt5-ext+ #x83F3) 
-
-;;;; }}}
-
-;;;; {{{ sgix_resample
-
-(defconstant +fog-coord-src+ #x8450) 
-(defconstant +fog-coord+ #x8451) 
-(defconstant +current-fog-coord+ #x8453) 
-(defconstant +fog-coord-array-type+ #x8454) 
-(defconstant +fog-coord-array-stride+ #x8455) 
-(defconstant +fog-coord-array-pointer+ #x8456) 
-(defconstant +fog-coord-array+ #x8457) 
-(defconstant +fog-coordinate-source+ #x8450) 
-(defconstant +fog-coordinate+ #x8451) 
-(defconstant +fragment-depth+ #x8452) 
-(defconstant +current-fog-coordinate+ #x8453) 
-(defconstant +fog-coordinate-array-type+ #x8454) 
-(defconstant +fog-coordinate-array-stride+ #x8455) 
-(defconstant +fog-coordinate-array-pointer+ #x8456) 
-(defconstant +fog-coordinate-array+ #x8457) 
-
-;;;; }}}
-
-;;;; {{{ rend_screen_coordinates
-
-(defconstant +screen-coordinates-rend+ #x8490) 
-(defconstant +inverted-screen-w-rend+ #x8491) 
-(defconstant +texture0+ #x84C0) 
-(defconstant +texture1+ #x84C1) 
-(defconstant +texture2+ #x84C2) 
-(defconstant +texture3+ #x84C3) 
-(defconstant +texture4+ #x84C4) 
-(defconstant +texture5+ #x84C5) 
-(defconstant +texture6+ #x84C6) 
-(defconstant +texture7+ #x84C7) 
-(defconstant +texture8+ #x84C8) 
-(defconstant +texture9+ #x84C9) 
-(defconstant +texture10+ #x84CA) 
-(defconstant +texture11+ #x84CB) 
-(defconstant +texture12+ #x84CC) 
-(defconstant +texture13+ #x84CD) 
-(defconstant +texture14+ #x84CE) 
-(defconstant +texture15+ #x84CF) 
-(defconstant +texture16+ #x84D0) 
-(defconstant +texture17+ #x84D1) 
-(defconstant +texture18+ #x84D2) 
-(defconstant +texture19+ #x84D3) 
-(defconstant +texture20+ #x84D4) 
-(defconstant +texture21+ #x84D5) 
-(defconstant +texture22+ #x84D6) 
-(defconstant +texture23+ #x84D7) 
-(defconstant +texture24+ #x84D8) 
-(defconstant +texture25+ #x84D9) 
-(defconstant +texture26+ #x84DA) 
-(defconstant +texture27+ #x84DB) 
-(defconstant +texture28+ #x84DC) 
-(defconstant +texture29+ #x84DD) 
-(defconstant +texture30+ #x84DE) 
-(defconstant +texture31+ #x84DF) 
-(defconstant +active-texture+ #x84E0) 
-(defconstant +client-active-texture+ #x84E1) 
-(defconstant +max-texture-units+ #x84E2) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_env_combine
-
-(defconstant +subtract-arb+ #x84E7) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_rectangle
-
-(defconstant +texture-rectangle-arb+ #x84F5) 
-(defconstant +texture-binding-rectangle-arb+ #x84F6) 
-(defconstant +proxy-texture-rectangle-arb+ #x84F7) 
-(defconstant +max-rectangle-texture-size-arb+ #x84F8) 
-
-;;;; }}}
-
-;;;; {{{ nv_texture_rectangle
-
-(defconstant +texture-rectangle-nv+ #x84F5) 
-(defconstant +texture-binding-rectangle-nv+ #x84F6) 
-(defconstant +proxy-texture-rectangle-nv+ #x84F7) 
-(defconstant +max-rectangle-texture-size-nv+ #x84F8) 
-
-;;;; }}}
-
-;;;; {{{ ext_packed_depth_stencil
-
-(defconstant +depth-stencil-ext+ #x84F9) 
-(defconstant +unsigned-int-24-8-ext+ #x84FA) 
-
-;;;; }}}
-
-;;;; {{{ nv_packed_depth_stencil
-
-(defconstant +depth-stencil-nv+ #x84F9) 
-(defconstant +unsigned-int-24-8-nv+ #x84FA) 
-(defconstant +depth-stencil-oes+ #x84F9) 
-(defconstant +unsigned-int-24-8-oes+ #x84FA) 
-(defconstant +max-texture-lod-bias+ #x84FD) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_lod_bias
-
-(defconstant +max-texture-lod-bias-ext+ #x84FD) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_filter_anisotropic
-
-(defconstant +texture-max-anisotropy-ext+ #x84FE) 
-(defconstant +max-texture-max-anisotropy-ext+ #x84FF) 
-(defconstant +texture-filter-control+ #x8500) 
-(defconstant +texture-lod-bias+ #x8501) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_lod_bias
-
-(defconstant +texture-filter-control-ext+ #x8500) 
-(defconstant +texture-lod-bias-ext+ #x8501) 
-
-;;;; }}}
-
-;;;; {{{ nv_light_max_exponent
-
-(defconstant +max-shininess-nv+ #x8504) 
-(defconstant +max-spot-exponent-nv+ #x8505) 
-
-;;;; }}}
-
-;;;; {{{ ext_stencil_wrap
-
-(defconstant +incr-wrap-ext+ #x8507) 
-(defconstant +decr-wrap-ext+ #x8508) 
-(defconstant +incr-wrap-oes+ #x8507) 
-(defconstant +decr-wrap-oes+ #x8508) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_cube_map
-
-(defconstant +normal-map-ext+ #x8511) 
-(defconstant +reflection-map-ext+ #x8512) 
-(defconstant +texture-cube-map-ext+ #x8513) 
-(defconstant +texture-binding-cube-map-ext+ #x8514) 
-(defconstant +texture-cube-map-positive-x-ext+ #x8515) 
-(defconstant +texture-cube-map-negative-x-ext+ #x8516) 
-(defconstant +texture-cube-map-positive-y-ext+ #x8517) 
-(defconstant +texture-cube-map-negative-y-ext+ #x8518) 
-(defconstant +texture-cube-map-positive-z-ext+ #x8519) 
-(defconstant +texture-cube-map-negative-z-ext+ #x851A) 
-(defconstant +proxy-texture-cube-map-ext+ #x851B) 
-(defconstant +max-cube-map-texture-size-ext+ #x851C) 
-
-;;;; }}}
-
-;;;; {{{ nv_texgen_reflection
-
-(defconstant +normal-map+ #x8511) 
-(defconstant +reflection-map+ #x8512) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_cube_map
-
-(defconstant +normal-map-arb+ #x8511) 
-(defconstant +reflection-map-arb+ #x8512) 
-(defconstant +texture-cube-map-arb+ #x8513) 
-(defconstant +texture-binding-cube-map-arb+ #x8514) 
-(defconstant +texture-cube-map-positive-x-arb+ #x8515) 
-(defconstant +texture-cube-map-negative-x-arb+ #x8516) 
-(defconstant +texture-cube-map-positive-y-arb+ #x8517) 
-(defconstant +texture-cube-map-negative-y-arb+ #x8518) 
-(defconstant +texture-cube-map-positive-z-arb+ #x8519) 
-(defconstant +texture-cube-map-negative-z-arb+ #x851A) 
-(defconstant +proxy-texture-cube-map-arb+ #x851B) 
-(defconstant +max-cube-map-texture-size-arb+ #x851C) 
-(defconstant +normal-map-oes+ #x8511) 
-(defconstant +reflection-map-oes+ #x8512) 
-(defconstant +texture-cube-map-oes+ #x8513) 
-(defconstant +texture-binding-cube-map-oes+ #x8514) 
-(defconstant +texture-cube-map-positive-x-oes+ #x8515) 
-(defconstant +texture-cube-map-negative-x-oes+ #x8516) 
-(defconstant +texture-cube-map-positive-y-oes+ #x8517) 
-(defconstant +texture-cube-map-negative-y-oes+ #x8518) 
-(defconstant +texture-cube-map-positive-z-oes+ #x8519) 
-(defconstant +texture-cube-map-negative-z-oes+ #x851A) 
-(defconstant +max-cube-map-texture-size-oes+ #x851C) 
-
-;;;; }}}
-
-;;;; {{{ nv_fog_distance
-
-(defconstant +fog-gen-mode-nv+ #x855A) 
-(defconstant +eye-radial-nv+ #x855B) 
-(defconstant +eye-plane-absolute-nv+ #x855C) 
-
-;;;; }}}
-
-;;;; {{{ nv_texgen_emboss
-
-(defconstant +emboss-light-nv+ #x855D) 
-(defconstant +emboss-constant-nv+ #x855E) 
-(defconstant +emboss-map-nv+ #x855F) 
-
-;;;; }}}
-
-;;;; {{{ ingr_color_clamp
-
-(defconstant +red-min-clamp-ingr+ #x8560) 
-(defconstant +green-min-clamp-ingr+ #x8561) 
-(defconstant +blue-min-clamp-ingr+ #x8562) 
-(defconstant +alpha-min-clamp-ingr+ #x8563) 
-(defconstant +red-max-clamp-ingr+ #x8564) 
-(defconstant +green-max-clamp-ingr+ #x8565) 
-(defconstant +blue-max-clamp-ingr+ #x8566) 
-(defconstant +alpha-max-clamp-ingr+ #x8567) 
-
-;;;; }}}
-
-;;;; {{{ ingr_interlace_read
-
-(defconstant +interlace-read-ingr+ #x8568) 
-(defconstant +src0-rgb+ #x8580) 
-(defconstant +src1-rgb+ #x8581) 
-(defconstant +src2-rgb+ #x8582) 
-(defconstant +src0-alpha+ #x8588) 
-(defconstant +src1-alpha+ #x8589) 
-(defconstant +src2-alpha+ #x858A) 
-(defconstant +combine+ #x8570) 
-(defconstant +combine-rgb+ #x8571) 
-(defconstant +combine-alpha+ #x8572) 
-(defconstant +rgb-scale+ #x8573) 
-(defconstant +add-signed+ #x8574) 
-(defconstant +interpolate+ #x8575) 
-(defconstant +constant+ #x8576) 
-(defconstant +primary-color+ #x8577) 
-(defconstant +previous+ #x8578) 
-(defconstant +source0-rgb+ #x8580) 
-(defconstant +source1-rgb+ #x8581) 
-(defconstant +source2-rgb+ #x8582) 
-(defconstant +source0-alpha+ #x8588) 
-(defconstant +source1-alpha+ #x8589) 
-(defconstant +source2-alpha+ #x858A) 
-(defconstant +operand0-rgb+ #x8590) 
-(defconstant +operand1-rgb+ #x8591) 
-(defconstant +operand2-rgb+ #x8592) 
-(defconstant +operand0-alpha+ #x8598) 
-(defconstant +operand1-alpha+ #x8599) 
-(defconstant +operand2-alpha+ #x859A) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_env_combine
-
-(defconstant +combine-ext+ #x8570) 
-(defconstant +combine-rgb-ext+ #x8571) 
-(defconstant +combine-alpha-ext+ #x8572) 
-(defconstant +rgb-scale-ext+ #x8573) 
-(defconstant +add-signed-ext+ #x8574) 
-(defconstant +interpolate-ext+ #x8575) 
-(defconstant +constant-ext+ #x8576) 
-(defconstant +primary-color-ext+ #x8577) 
-(defconstant +previous-ext+ #x8578) 
-(defconstant +source0-rgb-ext+ #x8580) 
-(defconstant +source1-rgb-ext+ #x8581) 
-(defconstant +source2-rgb-ext+ #x8582) 
-(defconstant +source0-alpha-ext+ #x8588) 
-(defconstant +source1-alpha-ext+ #x8589) 
-(defconstant +source2-alpha-ext+ #x858A) 
-(defconstant +operand0-rgb-ext+ #x8590) 
-(defconstant +operand1-rgb-ext+ #x8591) 
-(defconstant +operand2-rgb-ext+ #x8592) 
-(defconstant +operand0-alpha-ext+ #x8598) 
-(defconstant +operand1-alpha-ext+ #x8599) 
-(defconstant +operand2-alpha-ext+ #x859A) 
-
-;;;; }}}
-
-;;;; {{{ nv_texture_env_combine4
-
-(defconstant +combine4-nv+ #x8503) 
-(defconstant +source3-rgb-nv+ #x8583) 
-(defconstant +source3-alpha-nv+ #x858B) 
-(defconstant +operand3-rgb-nv+ #x8593) 
-(defconstant +operand3-alpha-nv+ #x859B) 
-
-;;;; }}}
-
-;;;; {{{ apple_specular_vector
-
-(defconstant +light-model-specular-vector-apple+ #x85B0) 
-
-;;;; }}}
-
-;;;; {{{ apple_transform_hint
-
-(defconstant +transform-hint-apple+ #x85B1) 
-
-;;;; }}}
-
-;;;; {{{ apple_client_storage
-
-(defconstant +unpack-client-storage-apple+ #x85B2) 
-(defconstant +buffer-object-apple+ #x85B3) 
-(defconstant +storage-client-apple+ #x85B4) 
-
-;;;; }}}
-
-;;;; {{{ apple_ycbcr_422
-
-(defconstant +ycbcr-422-apple+ #x85B9) 
-(defconstant +unsigned-short-8-8-apple+ #x85BA) 
-(defconstant +unsigned-short-8-8-rev-apple+ #x85BB) 
-(defconstant +unsigned-short-8-8-mesa+ #x85BA) 
-(defconstant +unsigned-short-8-8-rev-mesa+ #x85BB) 
-
-;;;; }}}
-
-;;;; {{{ sun_slice_accum
-
-(defconstant +slice-accum-sun+ #x85CC) 
-(defconstant +quad-mesh-sun+ #x8614) 
-(defconstant +triangle-mesh-sun+ #x8615) 
-
-;;;; }}}
-
-;;;; {{{ arb_depth_clamp
-
-(defconstant +depth-clamp+ #x864F) 
-
-;;;; }}}
-
-;;;; {{{ nv_depth_clamp
-
-(defconstant +depth-clamp-nv+ #x864F) 
-(defconstant +vertex-attrib-array-enabled+ #x8622) 
-(defconstant +vertex-attrib-array-size+ #x8623) 
-(defconstant +vertex-attrib-array-stride+ #x8624) 
-(defconstant +vertex-attrib-array-type+ #x8625) 
-(defconstant +current-vertex-attrib+ #x8626) 
-(defconstant +vertex-program-point-size+ #x8642) 
-(defconstant +vertex-program-two-side+ #x8643) 
-(defconstant +vertex-attrib-array-pointer+ #x8645) 
-(defconstant +vertex-program-arb+ #x8620) 
-(defconstant +vertex-attrib-array-enabled-arb+ #x8622) 
-(defconstant +vertex-attrib-array-size-arb+ #x8623) 
-(defconstant +vertex-attrib-array-stride-arb+ #x8624) 
-(defconstant +vertex-attrib-array-type-arb+ #x8625) 
-(defconstant +current-vertex-attrib-arb+ #x8626) 
-(defconstant +program-length-arb+ #x8627) 
-(defconstant +program-string-arb+ #x8628) 
-(defconstant +max-program-matrix-stack-depth-arb+ #x862E) 
-(defconstant +max-program-matrices-arb+ #x862F) 
-(defconstant +current-matrix-stack-depth-arb+ #x8640) 
-(defconstant +current-matrix-arb+ #x8641) 
-(defconstant +vertex-program-point-size-arb+ #x8642) 
-(defconstant +vertex-program-two-side-arb+ #x8643) 
-(defconstant +vertex-attrib-array-pointer-arb+ #x8645) 
-(defconstant +program-error-position-arb+ #x864B) 
-(defconstant +program-binding-arb+ #x8677) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_env_dot3
-
-(defconstant +dot3-rgb-arb+ #x86AE) 
-(defconstant +dot3-rgba-arb+ #x86AF) 
-(defconstant +dot3-rgba-img+ #x86AF) 
-
-;;;; }}}
-
-;;;; {{{ 3dfx_texture_compression_fxt1
-
-(defconstant +compressed-rgb-fxt1-3dfx+ #x86B0) 
-(defconstant +compressed-rgba-fxt1-3dfx+ #x86B1) 
-
-;;;; }}}
-
-;;;; {{{ 3dfx_multisample
-
-(defconstant +multisample-3dfx+ #x86B2) 
-(defconstant +sample-buffers-3dfx+ #x86B3) 
-(defconstant +samples-3dfx+ #x86B4) 
-
-;;;; }}}
-
-;;;; {{{ nv_tessellation_program5
-
-(defconstant +max-program-patch-attribs-nv+ #x86D8) 
-
-;;;; }}}
-
-;;;; {{{ nv_texture_shader
-
-(defconstant +offset-texture-rectangle-nv+ #x864C) 
-(defconstant +offset-texture-rectangle-scale-nv+ #x864D) 
-(defconstant +dot-product-texture-rectangle-nv+ #x864E) 
-(defconstant +rgba-unsigned-dot-product-mapping-nv+ #x86D9) 
-(defconstant +unsigned-int-s8-s8-8-8-nv+ #x86DA) 
-(defconstant +unsigned-int-8-8-s8-s8-rev-nv+ #x86DB) 
-(defconstant +dsdt-mag-intensity-nv+ #x86DC) 
-(defconstant +shader-consistent-nv+ #x86DD) 
-(defconstant +texture-shader-nv+ #x86DE) 
-(defconstant +shader-operation-nv+ #x86DF) 
-(defconstant +cull-modes-nv+ #x86E0) 
-(defconstant +offset-texture-matrix-nv+ #x86E1) 
-(defconstant +offset-texture-scale-nv+ #x86E2) 
-(defconstant +offset-texture-bias-nv+ #x86E3) 
-(defconstant +offset-texture-2d-matrix-nv+ #x86E1) 
-(defconstant +offset-texture-2d-scale-nv+ #x86E2) 
-(defconstant +offset-texture-2d-bias-nv+ #x86E3) 
-(defconstant +previous-texture-input-nv+ #x86E4) 
-(defconstant +const-eye-nv+ #x86E5) 
-(defconstant +pass-through-nv+ #x86E6) 
-(defconstant +cull-fragment-nv+ #x86E7) 
-(defconstant +offset-texture-2d-nv+ #x86E8) 
-(defconstant +dependent-ar-texture-2d-nv+ #x86E9) 
-(defconstant +dependent-gb-texture-2d-nv+ #x86EA) 
-(defconstant +dot-product-nv+ #x86EC) 
-(defconstant +dot-product-depth-replace-nv+ #x86ED) 
-(defconstant +dot-product-texture-2d-nv+ #x86EE) 
-(defconstant +dot-product-texture-cube-map-nv+ #x86F0) 
-(defconstant +dot-product-diffuse-cube-map-nv+ #x86F1) 
-(defconstant +dot-product-reflect-cube-map-nv+ #x86F2) 
-(defconstant +dot-product-const-eye-reflect-cube-map-nv+ #x86F3) 
-(defconstant +hilo-nv+ #x86F4) 
-(defconstant +dsdt-nv+ #x86F5) 
-(defconstant +dsdt-mag-nv+ #x86F6) 
-(defconstant +dsdt-mag-vib-nv+ #x86F7) 
-(defconstant +hilo16-nv+ #x86F8) 
-(defconstant +signed-hilo-nv+ #x86F9) 
-(defconstant +signed-hilo16-nv+ #x86FA) 
-(defconstant +signed-rgba-nv+ #x86FB) 
-(defconstant +signed-rgba8-nv+ #x86FC) 
-(defconstant +signed-rgb-nv+ #x86FE) 
-(defconstant +signed-rgb8-nv+ #x86FF) 
-(defconstant +signed-luminance-nv+ #x8701) 
-(defconstant +signed-luminance8-nv+ #x8702) 
-(defconstant +signed-luminance-alpha-nv+ #x8703) 
-(defconstant +signed-luminance8-alpha8-nv+ #x8704) 
-(defconstant +signed-alpha-nv+ #x8705) 
-(defconstant +signed-alpha8-nv+ #x8706) 
-(defconstant +signed-intensity-nv+ #x8707) 
-(defconstant +signed-intensity8-nv+ #x8708) 
-(defconstant +dsdt8-nv+ #x8709) 
-(defconstant +dsdt8-mag8-nv+ #x870A) 
-(defconstant +dsdt8-mag8-intensity8-nv+ #x870B) 
-(defconstant +signed-rgb-unsigned-alpha-nv+ #x870C) 
-(defconstant +signed-rgb8-unsigned-alpha8-nv+ #x870D) 
-(defconstant +hi-scale-nv+ #x870E) 
-(defconstant +lo-scale-nv+ #x870F) 
-(defconstant +ds-scale-nv+ #x8710) 
-(defconstant +dt-scale-nv+ #x8711) 
-(defconstant +magnitude-scale-nv+ #x8712) 
-(defconstant +vibrance-scale-nv+ #x8713) 
-(defconstant +hi-bias-nv+ #x8714) 
-(defconstant +lo-bias-nv+ #x8715) 
-(defconstant +ds-bias-nv+ #x8716) 
-(defconstant +dt-bias-nv+ #x8717) 
-(defconstant +magnitude-bias-nv+ #x8718) 
-(defconstant +vibrance-bias-nv+ #x8719) 
-(defconstant +texture-border-values-nv+ #x871A) 
-(defconstant +texture-hi-size-nv+ #x871B) 
-(defconstant +texture-lo-size-nv+ #x871C) 
-(defconstant +texture-ds-size-nv+ #x871D) 
-(defconstant +texture-dt-size-nv+ #x871E) 
-(defconstant +texture-mag-size-nv+ #x871F) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_env_dot3
-
-(defconstant +dot3-rgb-ext+ #x8740) 
-(defconstant +dot3-rgba-ext+ #x8741) 
-(defconstant +z400-binary-amd+ #x8740) 
-(defconstant +program-binary-length-oes+ #x8741) 
-(defconstant +program-binary-length+ #x8741) 
-
-;;;; }}}
-
-;;;; {{{ ati_texture_mirror_once
-
-(defconstant +mirror-clamp-ati+ #x8742) 
-(defconstant +mirror-clamp-to-edge-ati+ #x8743) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_mirror_clamp
-
-(defconstant +mirror-clamp-ext+ #x8742) 
-(defconstant +mirror-clamp-to-edge-ext+ #x8743) 
-
-;;;; }}}
-
-;;;; {{{ ati_texture_env_combine3
-
-(defconstant +modulate-add-ati+ #x8744) 
-(defconstant +modulate-signed-add-ati+ #x8745) 
-(defconstant +modulate-subtract-ati+ #x8746) 
-
-;;;; }}}
-
-;;;; {{{ mesa_packed_depth_stencil
-
-(defconstant +depth-stencil-mesa+ #x8750) 
-(defconstant +unsigned-int-24-8-mesa+ #x8751) 
-(defconstant +unsigned-int-8-24-rev-mesa+ #x8752) 
-(defconstant +unsigned-short-15-1-mesa+ #x8753) 
-(defconstant +unsigned-short-1-15-rev-mesa+ #x8754) 
-
-;;;; }}}
-
-;;;; {{{ mesa_trace
-
-(defconstant +trace-all-bits-mesa+ #xFFFF) 
-(defconstant +trace-operations-bit-mesa+ #x1) 
-(defconstant +trace-primitives-bit-mesa+ #x2) 
-(defconstant +trace-arrays-bit-mesa+ #x4) 
-(defconstant +trace-textures-bit-mesa+ #x8) 
-(defconstant +trace-pixels-bit-mesa+ #x10) 
-(defconstant +trace-errors-bit-mesa+ #x20) 
-(defconstant +trace-mask-mesa+ #x8755) 
-(defconstant +trace-name-mesa+ #x8756) 
-
-;;;; }}}
-
-;;;; {{{ mesa_ycbcr_texture
-
-(defconstant +ycbcr-mesa+ #x8757) 
-
-;;;; }}}
-
-;;;; {{{ mesa_pack_invert
-
-(defconstant +pack-invert-mesa+ #x8758) 
-
-;;;; }}}
-
-;;;; {{{ mesax_texture_stack
-
-(defconstant +texture-1d-stack-mesax+ #x8759) 
-(defconstant +texture-2d-stack-mesax+ #x875A) 
-(defconstant +proxy-texture-1d-stack-mesax+ #x875B) 
-(defconstant +proxy-texture-2d-stack-mesax+ #x875C) 
-(defconstant +texture-1d-stack-binding-mesax+ #x875D) 
-(defconstant +texture-2d-stack-binding-mesax+ #x875E) 
-
-;;;; }}}
-
-;;;; {{{ mesa_shader_debug
-
-(defconstant +debug-object-mesa+ #x8759) 
-(defconstant +debug-print-mesa+ #x875A) 
-(defconstant +debug-assert-mesa+ #x875B) 
-
-;;;; }}}
-
-;;;; {{{ ati_meminfo
-
-(defconstant +vbo-free-memory-ati+ #x87FB) 
-(defconstant +texture-free-memory-ati+ #x87FC) 
-(defconstant +renderbuffer-free-memory-ati+ #x87FD) 
-(defconstant +num-program-binary-formats-oes+ #x87FE) 
-(defconstant +program-binary-formats-oes+ #x87FF) 
-
-;;;; }}}
-
-;;;; {{{ arb_fragment_program
-
-(defconstant +fragment-program-arb+ #x8804) 
-(defconstant +program-alu-instructions-arb+ #x8805) 
-(defconstant +program-tex-instructions-arb+ #x8806) 
-(defconstant +program-tex-indirections-arb+ #x8807) 
-(defconstant +program-native-alu-instructions-arb+ #x8808) 
-(defconstant +program-native-tex-instructions-arb+ #x8809) 
-(defconstant +program-native-tex-indirections-arb+ #x880A) 
-(defconstant +max-program-alu-instructions-arb+ #x880B) 
-(defconstant +max-program-tex-instructions-arb+ #x880C) 
-(defconstant +max-program-tex-indirections-arb+ #x880D) 
-(defconstant +max-program-native-alu-instructions-arb+ #x880E) 
-(defconstant +max-program-native-tex-instructions-arb+ #x880F) 
-(defconstant +max-program-native-tex-indirections-arb+ #x8810) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_float
-
-(defconstant +rgba32f-arb+ #x8814) 
-(defconstant +rgb32f-arb+ #x8815) 
-(defconstant +alpha32f-arb+ #x8816) 
-(defconstant +intensity32f-arb+ #x8817) 
-(defconstant +luminance32f-arb+ #x8818) 
-(defconstant +luminance-alpha32f-arb+ #x8819) 
-(defconstant +rgba16f-arb+ #x881A) 
-(defconstant +rgb16f-arb+ #x881B) 
-(defconstant +alpha16f-arb+ #x881C) 
-(defconstant +intensity16f-arb+ #x881D) 
-(defconstant +luminance16f-arb+ #x881E) 
-(defconstant +luminance-alpha16f-arb+ #x881F) 
-
-;;;; }}}
-
-;;;; {{{ ati_texture_float
-
-(defconstant +rgba-float32-ati+ #x8814) 
-(defconstant +rgb-float32-ati+ #x8815) 
-(defconstant +alpha-float32-ati+ #x8816) 
-(defconstant +intensity-float32-ati+ #x8817) 
-(defconstant +luminance-float32-ati+ #x8818) 
-(defconstant +luminance-alpha-float32-ati+ #x8819) 
-(defconstant +rgba-float16-ati+ #x881A) 
-(defconstant +rgb-float16-ati+ #x881B) 
-(defconstant +alpha-float16-ati+ #x881C) 
-(defconstant +intensity-float16-ati+ #x881D) 
-(defconstant +luminance-float16-ati+ #x881E) 
-(defconstant +luminance-alpha-float16-ati+ #x881F) 
-(defconstant +rgba-float32-apple+ #x8814) 
-(defconstant +rgb-float32-apple+ #x8815) 
-(defconstant +alpha-float32-apple+ #x8816) 
-(defconstant +intensity-float32-apple+ #x8817) 
-(defconstant +luminance-float32-apple+ #x8818) 
-(defconstant +luminance-alpha-float32-apple+ #x8819) 
-(defconstant +rgba-float16-apple+ #x881A) 
-(defconstant +rgb-float16-apple+ #x881B) 
-(defconstant +alpha-float16-apple+ #x881C) 
-(defconstant +intensity-float16-apple+ #x881D) 
-(defconstant +luminance-float16-apple+ #x881E) 
-(defconstant +luminance-alpha-float16-apple+ #x881F) 
-
-;;;; }}}
-
-;;;; {{{ arb_depth_texture
-
-(defconstant +texture-depth-size-arb+ #x884A) 
-(defconstant +depth-texture-mode-arb+ #x884B) 
-(defconstant +compare-ref-to-texture+ #x884E) 
-(defconstant +texture-compare-mode+ #x884C) 
-(defconstant +texture-compare-func+ #x884D) 
-(defconstant +compare-r-to-texture+ #x884E) 
-
-;;;; }}}
-
-;;;; {{{ arb_shadow
-
-(defconstant +texture-compare-mode-arb+ #x884C) 
-(defconstant +texture-compare-func-arb+ #x884D) 
-(defconstant +compare-r-to-texture-arb+ #x884E) 
-(defconstant +compare-ref-depth-to-texture-ext+ #x884E) 
-
-;;;; }}}
-
-;;;; {{{ arb_seamless_cube_map
-
-(defconstant +texture-cube-map-seamless+ #x884F) 
-
-;;;; }}}
-
-;;;; {{{ nv_texture_shader3
-
-(defconstant +offset-projective-texture-2d-nv+ #x8850) 
-(defconstant +offset-projective-texture-2d-scale-nv+ #x8851) 
-(defconstant +offset-projective-texture-rectangle-nv+ #x8852) 
-(defconstant +offset-projective-texture-rectangle-scale-nv+ #x8853) 
-(defconstant +offset-hilo-texture-2d-nv+ #x8854) 
-(defconstant +offset-hilo-texture-rectangle-nv+ #x8855) 
-(defconstant +offset-hilo-projective-texture-2d-nv+ #x8856) 
-(defconstant +offset-hilo-projective-texture-rectangle-nv+ #x8857) 
-(defconstant +dependent-hilo-texture-2d-nv+ #x8858) 
-(defconstant +dependent-rgb-texture-3d-nv+ #x8859) 
-(defconstant +dependent-rgb-texture-cube-map-nv+ #x885A) 
-(defconstant +dot-product-pass-through-nv+ #x885B) 
-(defconstant +dot-product-texture-1d-nv+ #x885C) 
-(defconstant +dot-product-affine-depth-replace-nv+ #x885D) 
-(defconstant +hilo8-nv+ #x885E) 
-(defconstant +signed-hilo8-nv+ #x885F) 
-(defconstant +force-blue-to-one-nv+ #x8860) 
-(defconstant +point-sprite+ #x8861) 
-(defconstant +coord-replace+ #x8862) 
-
-;;;; }}}
-
-;;;; {{{ arb_point_sprite
-
-(defconstant +point-sprite-arb+ #x8861) 
-(defconstant +coord-replace-arb+ #x8862) 
-
-;;;; }}}
-
-;;;; {{{ nv_copy_depth_to_color
-
-(defconstant +depth-stencil-to-rgba-nv+ #x886E) 
-(defconstant +depth-stencil-to-bgra-nv+ #x886F) 
-(defconstant +fragment-program-nv+ #x8870) 
-(defconstant +max-texture-coords-nv+ #x8871) 
-(defconstant +max-texture-image-units-nv+ #x8872) 
-(defconstant +fragment-program-binding-nv+ #x8873) 
-(defconstant +program-error-string-nv+ #x8874) 
-(defconstant +max-texture-coords+ #x8871) 
-(defconstant +max-texture-image-units+ #x8872) 
-(defconstant +max-texture-coords-arb+ #x8871) 
-(defconstant +max-texture-image-units-arb+ #x8872) 
-(defconstant +program-error-string-arb+ #x8874) 
-(defconstant +program-format-ascii-arb+ #x8875) 
-(defconstant +program-format-arb+ #x8876) 
-
-;;;; }}}
-
-;;;; {{{ nv_float_buffer
-
-(defconstant +float-r-nv+ #x8880) 
-(defconstant +float-rg-nv+ #x8881) 
-(defconstant +float-rgb-nv+ #x8882) 
-(defconstant +float-rgba-nv+ #x8883) 
-(defconstant +float-r16-nv+ #x8884) 
-(defconstant +float-r32-nv+ #x8885) 
-(defconstant +float-rg16-nv+ #x8886) 
-(defconstant +float-rg32-nv+ #x8887) 
-(defconstant +float-rgb16-nv+ #x8888) 
-(defconstant +float-rgb32-nv+ #x8889) 
-(defconstant +float-rgba16-nv+ #x888A) 
-(defconstant +float-rgba32-nv+ #x888B) 
-(defconstant +texture-float-components-nv+ #x888C) 
-(defconstant +float-clear-color-value-nv+ #x888D) 
-(defconstant +float-rgba-mode-nv+ #x888E) 
-
-;;;; }}}
-
-;;;; {{{ nv_texture_expand_normal
-
-(defconstant +texture-unsigned-remap-mode-nv+ #x888F) 
-
-;;;; }}}
-
-;;;; {{{ nv_shader_buffer_store
-
-(defconstant +read-write+ #x88BA) 
-(defconstant +write-only+ #x88B9) 
-(defconstant +write-discard-nv+ #x88BE) 
-(defconstant +time-elapsed+ #x88BF) 
-
-;;;; }}}
-
-;;;; {{{ arb_pixel_buffer_object
-
-(defconstant +pixel-pack-buffer-arb+ #x88EB) 
-(defconstant +pixel-unpack-buffer-arb+ #x88EC) 
-(defconstant +pixel-pack-buffer-binding-arb+ #x88ED) 
-(defconstant +pixel-unpack-buffer-binding-arb+ #x88EF) 
-
-;;;; }}}
-
-;;;; {{{ ext_pixel_buffer_object
-
-(defconstant +pixel-pack-buffer-ext+ #x88EB) 
-(defconstant +pixel-unpack-buffer-ext+ #x88EC) 
-(defconstant +pixel-pack-buffer-binding-ext+ #x88ED) 
-(defconstant +pixel-unpack-buffer-binding-ext+ #x88EF) 
-
-;;;; }}}
-
-;;;; {{{ nv_fragment_program2
-
-(defconstant +max-program-exec-instructions-nv+ #x88F4) 
-(defconstant +max-program-call-depth-nv+ #x88F5) 
-(defconstant +max-program-if-depth-nv+ #x88F6) 
-(defconstant +max-program-loop-depth-nv+ #x88F7) 
-(defconstant +max-program-loop-count-nv+ #x88F8) 
-
-;;;; }}}
-
-;;;; {{{ nv_tessellation_program5
-
-(defconstant +tess-control-program-nv+ #x891E) 
-(defconstant +tess-evaluation-program-nv+ #x891F) 
-
-;;;; }}}
-
-;;;; {{{ oml_interlace
-
-(defconstant +interlace-oml+ #x8980) 
-(defconstant +interlace-read-oml+ #x8981) 
-
-;;;; }}}
-
-;;;; {{{ oml_subsample
-
-(defconstant +format-subsample-24-24-oml+ #x8982) 
-(defconstant +format-subsample-244-244-oml+ #x8983) 
-
-;;;; }}}
-
-;;;; {{{ oml_resample
-
-(defconstant +pack-resample-oml+ #x8984) 
-(defconstant +unpack-resample-oml+ #x8985) 
-(defconstant +resample-replicate-oml+ #x8986) 
-(defconstant +resample-zero-fill-oml+ #x8987) 
-(defconstant +resample-average-oml+ #x8988) 
-(defconstant +resample-decimate-oml+ #x8989) 
-(defconstant +point-size-array-type-oes+ #x898A) 
-(defconstant +point-size-array-stride-oes+ #x898B) 
-(defconstant +point-size-array-pointer-oes+ #x898C) 
-(defconstant +modelview-matrix-float-as-int-bits-oes+ #x898D) 
-(defconstant +projection-matrix-float-as-int-bits-oes+ #x898E) 
-(defconstant +texture-matrix-float-as-int-bits-oes+ #x898F) 
-
-;;;; }}}
-
-;;;; {{{ apple_float_pixels
-
-(defconstant +color-float-apple+ #x8A0F) 
-
-;;;; }}}
-
-;;;; {{{ apple_aux_depth_stencil
-
-(defconstant +aux-depth-stencil-apple+ #x8A14) 
-
-;;;; }}}
-
-;;;; {{{ apple_row_bytes
-
-(defconstant +pack-row-bytes-apple+ #x8A15) 
-(defconstant +unpack-row-bytes-apple+ #x8A16) 
-
-;;;; }}}
-
-;;;; {{{ apple_rgb_422
-
-(defconstant +rgb-422-apple+ #x8A1F) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_srgb_decode
-
-(defconstant +texture-srgb-decode-ext+ #x8A48) 
-(defconstant +decode-ext+ #x8A49) 
-(defconstant +skip-decode-ext+ #x8A4A) 
-(defconstant +sampler-2d-rect+ #x8B63) 
-(defconstant +sampler-2d-rect-shadow+ #x8B64) 
-(defconstant +fragment-shader+ #x8B30) 
-(defconstant +fragment-shader-arb+ #x8B30) 
-(defconstant +vertex-shader+ #x8B31) 
-(defconstant +vertex-shader-arb+ #x8B31) 
-(defconstant +program-object-arb+ #x8B40) 
-(defconstant +shader-object-arb+ #x8B48) 
-(defconstant +max-fragment-uniform-components+ #x8B49) 
-(defconstant +max-fragment-uniform-components-arb+ #x8B49) 
-(defconstant +max-vertex-uniform-components+ #x8B4A) 
-(defconstant +max-vertex-uniform-components-arb+ #x8B4A) 
-(defconstant +max-varying-floats+ #x8B4B) 
-(defconstant +max-varying-floats-arb+ #x8B4B) 
-(defconstant +max-vertex-texture-image-units+ #x8B4C) 
-(defconstant +max-vertex-texture-image-units-arb+ #x8B4C) 
-(defconstant +max-combined-texture-image-units+ #x8B4D) 
-(defconstant +max-combined-texture-image-units-arb+ #x8B4D) 
-(defconstant +object-type-arb+ #x8B4E) 
-(defconstant +shader-type+ #x8B4F) 
-(defconstant +object-subtype-arb+ #x8B4F) 
-(defconstant +float-vec2+ #x8B50) 
-(defconstant +float-vec2-arb+ #x8B50) 
-(defconstant +float-vec3+ #x8B51) 
-(defconstant +float-vec3-arb+ #x8B51) 
-(defconstant +float-vec4+ #x8B52) 
-(defconstant +float-vec4-arb+ #x8B52) 
-(defconstant +int-vec2+ #x8B53) 
-(defconstant +int-vec2-arb+ #x8B53) 
-(defconstant +int-vec3+ #x8B54) 
-(defconstant +int-vec3-arb+ #x8B54) 
-(defconstant +int-vec4+ #x8B55) 
-(defconstant +int-vec4-arb+ #x8B55) 
-(defconstant +bool+ #x8B56) 
-(defconstant +bool-arb+ #x8B56) 
-(defconstant +bool-vec2+ #x8B57) 
-(defconstant +bool-vec2-arb+ #x8B57) 
-(defconstant +bool-vec3+ #x8B58) 
-(defconstant +bool-vec3-arb+ #x8B58) 
-(defconstant +bool-vec4+ #x8B59) 
-(defconstant +bool-vec4-arb+ #x8B59) 
-(defconstant +float-mat2+ #x8B5A) 
-(defconstant +float-mat2-arb+ #x8B5A) 
-(defconstant +float-mat3+ #x8B5B) 
-(defconstant +float-mat3-arb+ #x8B5B) 
-(defconstant +float-mat4+ #x8B5C) 
-(defconstant +float-mat4-arb+ #x8B5C) 
-(defconstant +sampler-1d+ #x8B5D) 
-(defconstant +sampler-1d-arb+ #x8B5D) 
-(defconstant +sampler-2d+ #x8B5E) 
-(defconstant +sampler-2d-arb+ #x8B5E) 
-(defconstant +sampler-3d+ #x8B5F) 
-(defconstant +sampler-3d-arb+ #x8B5F) 
-(defconstant +sampler-cube+ #x8B60) 
-(defconstant +sampler-cube-arb+ #x8B60) 
-(defconstant +sampler-1d-shadow+ #x8B61) 
-(defconstant +sampler-1d-shadow-arb+ #x8B61) 
-(defconstant +sampler-2d-shadow+ #x8B62) 
-(defconstant +sampler-2d-shadow-arb+ #x8B62) 
-(defconstant +sampler-2d-rect-arb+ #x8B63) 
-(defconstant +sampler-2d-rect-shadow-arb+ #x8B64) 
-(defconstant +float-mat2x3+ #x8B65) 
-(defconstant +float-mat2x4+ #x8B66) 
-(defconstant +float-mat3x2+ #x8B67) 
-(defconstant +float-mat3x4+ #x8B68) 
-(defconstant +float-mat4x2+ #x8B69) 
-(defconstant +float-mat4x3+ #x8B6A) 
-(defconstant +delete-status+ #x8B80) 
-(defconstant +object-delete-status-arb+ #x8B80) 
-(defconstant +compile-status+ #x8B81) 
-(defconstant +object-compile-status-arb+ #x8B81) 
-(defconstant +link-status+ #x8B82) 
-(defconstant +object-link-status-arb+ #x8B82) 
-(defconstant +validate-status+ #x8B83) 
-(defconstant +object-validate-status-arb+ #x8B83) 
-(defconstant +info-log-length+ #x8B84) 
-(defconstant +object-info-log-length-arb+ #x8B84) 
-(defconstant +attached-shaders+ #x8B85) 
-(defconstant +object-attached-objects-arb+ #x8B85) 
-(defconstant +active-uniforms+ #x8B86) 
-(defconstant +object-active-uniforms-arb+ #x8B86) 
-(defconstant +active-uniform-max-length+ #x8B87) 
-(defconstant +object-active-uniform-max-length-arb+ #x8B87) 
-(defconstant +shader-source-length+ #x8B88) 
-(defconstant +object-shader-source-length-arb+ #x8B88) 
-(defconstant +active-attributes+ #x8B89) 
-(defconstant +object-active-attributes-arb+ #x8B89) 
-(defconstant +active-attribute-max-length+ #x8B8A) 
-(defconstant +object-active-attribute-max-length-arb+ #x8B8A) 
-(defconstant +fragment-shader-derivative-hint+ #x8B8B) 
-(defconstant +fragment-shader-derivative-hint-arb+ #x8B8B) 
-(defconstant +shading-language-version+ #x8B8C) 
-(defconstant +shading-language-version-arb+ #x8B8C) 
-(defconstant +sampler-3d-oes+ #x8B5F) 
-(defconstant +fragment-shader-derivative-hint-oes+ #x8B8B) 
-
-;;;; }}}
-
-;;;; {{{ mesa_program_debug
-
-(defconstant +fragment-program-position-mesa+ #x8BB0) 
-(defconstant +fragment-program-callback-mesa+ #x8BB1) 
-(defconstant +fragment-program-callback-func-mesa+ #x8BB2) 
-(defconstant +fragment-program-callback-data-mesa+ #x8BB3) 
-(defconstant +vertex-program-callback-mesa+ #x8BB4) 
-(defconstant +vertex-program-position-mesa+ #x8BB4) 
-(defconstant +vertex-program-callback-func-mesa+ #x8BB6) 
-(defconstant +vertex-program-callback-data-mesa+ #x8BB7) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_array
-
-(defconstant +texture-1d-array-ext+ #x8C18) 
-(defconstant +proxy-texture-1d-array-ext+ #x8C19) 
-(defconstant +texture-2d-array-ext+ #x8C1A) 
-(defconstant +proxy-texture-2d-array-ext+ #x8C1B) 
-(defconstant +texture-binding-1d-array-ext+ #x8C1C) 
-(defconstant +texture-binding-2d-array-ext+ #x8C1D) 
-
-;;;; }}}
-
-;;;; {{{ arb_occlusion_query2
-
-(defconstant +any-samples-passed+ #x8C2F) 
-
-;;;; }}}
-
-;;;; {{{ ext_packed_float
-
-(defconstant +r11f-g11f-b10f-ext+ #x8C3A) 
-(defconstant +unsigned-int-10f-11f-11f-rev-ext+ #x8C3B) 
-(defconstant +rgba-signed-components-ext+ #x8C3C) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_shared_exponent
-
-(defconstant +rgb9-e5-ext+ #x8C3D) 
-(defconstant +unsigned-int-5-9-9-9-rev-ext+ #x8C3E) 
-(defconstant +texture-shared-size-ext+ #x8C3F) 
-(defconstant +srgb+ #x8C40) 
-(defconstant +srgb8+ #x8C41) 
-(defconstant +srgb-alpha+ #x8C42) 
-(defconstant +srgb8-alpha8+ #x8C43) 
-(defconstant +sluminance-alpha+ #x8C44) 
-(defconstant +sluminance8-alpha8+ #x8C45) 
-(defconstant +sluminance+ #x8C46) 
-(defconstant +sluminance8+ #x8C47) 
-(defconstant +compressed-srgb+ #x8C48) 
-(defconstant +compressed-srgb-alpha+ #x8C49) 
-(defconstant +compressed-sluminance+ #x8C4A) 
-(defconstant +compressed-sluminance-alpha+ #x8C4B) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_srgb
-
-(defconstant +srgb-ext+ #x8C40) 
-(defconstant +srgb8-ext+ #x8C41) 
-(defconstant +srgb-alpha-ext+ #x8C42) 
-(defconstant +srgb8-alpha8-ext+ #x8C43) 
-(defconstant +sluminance-alpha-ext+ #x8C44) 
-(defconstant +sluminance8-alpha8-ext+ #x8C45) 
-(defconstant +sluminance-ext+ #x8C46) 
-(defconstant +sluminance8-ext+ #x8C47) 
-(defconstant +compressed-srgb-ext+ #x8C48) 
-(defconstant +compressed-srgb-alpha-ext+ #x8C49) 
-(defconstant +compressed-sluminance-ext+ #x8C4A) 
-(defconstant +compressed-sluminance-alpha-ext+ #x8C4B) 
-(defconstant +compressed-srgb-s3tc-dxt1-ext+ #x8C4C) 
-(defconstant +compressed-srgb-alpha-s3tc-dxt1-ext+ #x8C4D) 
-(defconstant +compressed-srgb-alpha-s3tc-dxt3-ext+ #x8C4E) 
-(defconstant +compressed-srgb-alpha-s3tc-dxt5-ext+ #x8C4F) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_compression_latc
-
-(defconstant +compressed-luminance-latc1-ext+ #x8C70) 
-(defconstant +compressed-signed-luminance-latc1-ext+ #x8C71) 
-(defconstant +compressed-luminance-alpha-latc2-ext+ #x8C72) 
-(defconstant +compressed-signed-luminance-alpha-latc2-ext+ #x8C73) 
-
-;;;; }}}
-
-;;;; {{{ nv_tessellation_program5
-
-(defconstant +tess-control-program-parameter-buffer-nv+ #x8C74) 
-(defconstant +tess-evaluation-program-parameter-buffer-nv+ #x8C75) 
-
-;;;; }}}
-
-;;;; {{{ ext_framebuffer_srgb
-
-(defconstant +framebuffer-srgb-ext+ #x8DB9) 
-(defconstant +framebuffer-srgb-capable-ext+ #x8DBA) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_compression_rgtc
-
-(defconstant +compressed-red-rgtc1-ext+ #x8DBB) 
-(defconstant +compressed-signed-red-rgtc1-ext+ #x8DBC) 
-(defconstant +compressed-red-green-rgtc2-ext+ #x8DBD) 
-(defconstant +compressed-signed-red-green-rgtc2-ext+ #x8DBE) 
-
-;;;; }}}
-
-;;;; {{{ nv_multisample_coverage
-
-(defconstant +color-samples-nv+ #x8E20) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_swizzle
-
-(defconstant +texture-swizzle-r+ #x8E42) 
-(defconstant +texture-swizzle-g+ #x8E43) 
-(defconstant +texture-swizzle-b+ #x8E44) 
-(defconstant +texture-swizzle-a+ #x8E45) 
-(defconstant +texture-swizzle-rgba+ #x8E46) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_swizzle
-
-(defconstant +texture-swizzle-r-ext+ #x8E42) 
-(defconstant +texture-swizzle-g-ext+ #x8E43) 
-(defconstant +texture-swizzle-b-ext+ #x8E44) 
-(defconstant +texture-swizzle-a-ext+ #x8E45) 
-(defconstant +texture-swizzle-rgba-ext+ #x8E46) 
-
-;;;; }}}
-
-;;;; {{{ arb_gpu_shader5
-
-(defconstant +max-geometry-shader-invocations+ #x8E5A) 
-(defconstant +min-fragment-interpolation-offset+ #x8E5B) 
-(defconstant +max-fragment-interpolation-offset+ #x8E5C) 
-(defconstant +fragment-interpolation-offset-bits+ #x8E5D) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_gather
-
-(defconstant +min-program-texture-gather-offset+ #x8E5E) 
-(defconstant +max-program-texture-gather-offset+ #x8E5F) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_compression_bptc
-
-(defconstant +compressed-rgba-bptc-unorm-arb+ #x8E8C) 
-(defconstant +compressed-srgb-alpha-bptc-unorm-arb+ #x8E8D) 
-(defconstant +compressed-rgb-bptc-signed-float-arb+ #x8E8E) 
-(defconstant +compressed-rgb-bptc-unsigned-float-arb+ #x8E8F) 
-(defconstant +coverage-component-nv+ #x8ED0) 
-(defconstant +coverage-component4-nv+ #x8ED1) 
-(defconstant +coverage-attachment-nv+ #x8ED2) 
-(defconstant +coverage-buffers-nv+ #x8ED3) 
-(defconstant +coverage-samples-nv+ #x8ED4) 
-(defconstant +coverage-all-fragments-nv+ #x8ED5) 
-(defconstant +coverage-edge-fragments-nv+ #x8ED6) 
-(defconstant +coverage-automatic-nv+ #x8ED7) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_cube_map_array
-
-(defconstant +texture-cube-map-array+ #x9009) 
-(defconstant +texture-binding-cube-map-array+ #x900A) 
-(defconstant +proxy-texture-cube-map-array+ #x900B) 
-(defconstant +sampler-cube-map-array+ #x900C) 
-(defconstant +sampler-cube-map-array-shadow+ #x900D) 
-(defconstant +int-sampler-cube-map-array+ #x900E) 
-(defconstant +unsigned-int-sampler-cube-map-array+ #x900F) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_snorm
-
-(defconstant +alpha-snorm+ #x9010) 
-(defconstant +luminance-snorm+ #x9011) 
-(defconstant +luminance-alpha-snorm+ #x9012) 
-(defconstant +intensity-snorm+ #x9013) 
-(defconstant +alpha8-snorm+ #x9014) 
-(defconstant +luminance8-snorm+ #x9015) 
-(defconstant +luminance8-alpha8-snorm+ #x9016) 
-(defconstant +intensity8-snorm+ #x9017) 
-(defconstant +alpha16-snorm+ #x9018) 
-(defconstant +luminance16-snorm+ #x9019) 
-(defconstant +luminance16-alpha16-snorm+ #x901A) 
-(defconstant +intensity16-snorm+ #x901B) 
-
-;;;; }}}
-
-;;;; {{{ amd_blend_minmax_factor
-
-(defconstant +factor-min-amd+ #x901C) 
-(defconstant +factor-max-amd+ #x901D) 
-
-;;;; }}}
-
-;;;; {{{ amd_depth_clamp_separate
-
-(defconstant +depth-clamp-near-amd+ #x901E) 
-(defconstant +depth-clamp-far-amd+ #x901F) 
-
-;;;; }}}
-
-;;;; {{{ nv_shader_buffer_store
-
-(defconstant +shader-global-access-barrier-bit-nv+ #x10) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_rgb10_a2ui
-
-(defconstant +rgb10-a2ui+ #x906F) 
-
-;;;; }}}
-
-;;;; {{{ version_1_2_deprecated
-
-(defconstant +rescale-normal+ #x803A) 
-
-;;;; }}}
-
-;;;; {{{ arb_imaging
-
-(defconstant +func-add+ #x8006) 
-(defconstant +min+ #x8007) 
-(defconstant +max+ #x8008) 
-(defconstant +blend-equation+ #x8009) 
-
-;;;; }}}
-
-;;;; {{{ arb_imaging_deprecated
-
-(defconstant +histogram+ #x8024) 
-(defconstant +proxy-histogram+ #x8025) 
-(defconstant +histogram-width+ #x8026) 
-(defconstant +histogram-format+ #x8027) 
-(defconstant +histogram-red-size+ #x8028) 
-(defconstant +histogram-green-size+ #x8029) 
-(defconstant +histogram-blue-size+ #x802A) 
-(defconstant +histogram-alpha-size+ #x802B) 
-(defconstant +histogram-luminance-size+ #x802C) 
-(defconstant +histogram-sink+ #x802D) 
-(defconstant +minmax+ #x802E) 
-(defconstant +minmax-format+ #x802F) 
-(defconstant +minmax-sink+ #x8030) 
-(defconstant +table-too-large+ #x8031) 
-(defconstant +color-matrix+ #x80B1) 
-(defconstant +color-matrix-stack-depth+ #x80B2) 
-(defconstant +max-color-matrix-stack-depth+ #x80B3) 
-(defconstant +post-color-matrix-red-scale+ #x80B4) 
-(defconstant +post-color-matrix-green-scale+ #x80B5) 
-(defconstant +post-color-matrix-blue-scale+ #x80B6) 
-(defconstant +post-color-matrix-alpha-scale+ #x80B7) 
-(defconstant +post-color-matrix-red-bias+ #x80B8) 
-(defconstant +post-color-matrix-green-bias+ #x80B9) 
-(defconstant +post-color-matrix-blue-bias+ #x80BA) 
-(defconstant +post-color-matrix-alpha-bias+ #x80BB) 
-(defconstant +constant-border+ #x8151) 
-(defconstant +replicate-border+ #x8153) 
-(defconstant +convolution-border-color+ #x8154) 
-
-;;;; }}}
-
-;;;; {{{ version_1_3_deprecated
-
-(defconstant +transpose-modelview-matrix+ #x84E3) 
-(defconstant +transpose-projection-matrix+ #x84E4) 
-(defconstant +transpose-texture-matrix+ #x84E5) 
-(defconstant +transpose-color-matrix+ #x84E6) 
-(defconstant +compressed-alpha+ #x84E9) 
-(defconstant +compressed-luminance+ #x84EA) 
-(defconstant +compressed-luminance-alpha+ #x84EB) 
-(defconstant +compressed-intensity+ #x84EC) 
-(defconstant +subtract+ #x84E7) 
-(defconstant +dot3-rgb+ #x86AE) 
-(defconstant +dot3-rgba+ #x86AF) 
-
-;;;; }}}
-
-;;;; {{{ version_1_4_deprecated
-
-(defconstant +color-sum+ #x8458) 
-(defconstant +current-secondary-color+ #x8459) 
-(defconstant +secondary-color-array-size+ #x845A) 
-(defconstant +secondary-color-array-type+ #x845B) 
-(defconstant +secondary-color-array-stride+ #x845C) 
-(defconstant +secondary-color-array-pointer+ #x845D) 
-(defconstant +secondary-color-array+ #x845E) 
-(defconstant +depth-texture-mode+ #x884B) 
-
-;;;; }}}
-
-;;;; {{{ version_1_5_deprecated
-
-(defconstant +vertex-array-buffer-binding+ #x8896) 
-(defconstant +normal-array-buffer-binding+ #x8897) 
-(defconstant +color-array-buffer-binding+ #x8898) 
-(defconstant +index-array-buffer-binding+ #x8899) 
-(defconstant +texture-coord-array-buffer-binding+ #x889A) 
-(defconstant +edge-flag-array-buffer-binding+ #x889B) 
-(defconstant +secondary-color-array-buffer-binding+ #x889C) 
-(defconstant +fog-coordinate-array-buffer-binding+ #x889D) 
-(defconstant +weight-array-buffer-binding+ #x889E) 
-(defconstant +fog-coord-array-buffer-binding+ #x889D) 
-
-;;;; }}}
-
-;;;; {{{ version_2_1_deprecated
-
-(defconstant +current-raster-secondary-color+ #x845F) 
-
-;;;; }}}
-
-;;;; {{{ version_3_0_deprecated
-
-(defconstant +clamp-vertex-color+ #x891A) 
-(defconstant +clamp-fragment-color+ #x891B) 
-(defconstant +alpha-integer+ #x8D97) 
-(defconstant +texture-luminance-type+ #x8C14) 
-(defconstant +texture-intensity-type+ #x8C15) 
-
-;;;; }}}
-
-;;;; {{{ version_4_1
-
-(defconstant +fixed+ #x140C) 
-(defconstant +implementation-color-read-type+ #x8B9A) 
-(defconstant +implementation-color-read-format+ #x8B9B) 
-(defconstant +low-float+ #x8DF0) 
-(defconstant +medium-float+ #x8DF1) 
-(defconstant +high-float+ #x8DF2) 
-(defconstant +low-int+ #x8DF3) 
-(defconstant +medium-int+ #x8DF4) 
-(defconstant +high-int+ #x8DF5) 
-(defconstant +shader-compiler+ #x8DFA) 
-(defconstant +num-shader-binary-formats+ #x8DF9) 
-(defconstant +max-vertex-uniform-vectors+ #x8DFB) 
-(defconstant +max-varying-vectors+ #x8DFC) 
-(defconstant +max-fragment-uniform-vectors+ #x8DFD) 
-(defconstant +program-binary-retrievable-hint+ #x8257) 
-(defconstant +num-program-binary-formats+ #x87FE) 
-(defconstant +program-binary-formats+ #x87FF) 
-(defconstant +vertex-shader-bit+ #x1) 
-(defconstant +fragment-shader-bit+ #x2) 
-(defconstant +geometry-shader-bit+ #x4) 
-(defconstant +tess-control-shader-bit+ #x8) 
-(defconstant +tess-evaluation-shader-bit+ #x10) 
-(defconstant +all-shader-bits+ #xFFFFFFFF) 
-(defconstant +program-separable+ #x8258) 
-(defconstant +active-program+ #x8259) 
-(defconstant +program-pipeline-binding+ #x825A) 
-(defconstant +max-viewports+ #x825B) 
-(defconstant +viewport-subpixel-bits+ #x825C) 
-(defconstant +viewport-bounds-range+ #x825D) 
-(defconstant +layer-provoking-vertex+ #x825E) 
-(defconstant +viewport-index-provoking-vertex+ #x825F) 
-(defconstant +undefined-vertex+ #x8260) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_env_combine
-
-(defconstant +combine-arb+ #x8570) 
-(defconstant +combine-rgb-arb+ #x8571) 
-(defconstant +combine-alpha-arb+ #x8572) 
-(defconstant +source0-rgb-arb+ #x8580) 
-(defconstant +source1-rgb-arb+ #x8581) 
-(defconstant +source2-rgb-arb+ #x8582) 
-(defconstant +source0-alpha-arb+ #x8588) 
-(defconstant +source1-alpha-arb+ #x8589) 
-(defconstant +source2-alpha-arb+ #x858A) 
-(defconstant +operand0-rgb-arb+ #x8590) 
-(defconstant +operand1-rgb-arb+ #x8591) 
-(defconstant +operand2-rgb-arb+ #x8592) 
-(defconstant +operand0-alpha-arb+ #x8598) 
-(defconstant +operand1-alpha-arb+ #x8599) 
-(defconstant +operand2-alpha-arb+ #x859A) 
-(defconstant +rgb-scale-arb+ #x8573) 
-(defconstant +add-signed-arb+ #x8574) 
-(defconstant +interpolate-arb+ #x8575) 
-(defconstant +constant-arb+ #x8576) 
-(defconstant +primary-color-arb+ #x8577) 
-(defconstant +previous-arb+ #x8578) 
-
-;;;; }}}
-
-;;;; {{{ arb_shadow_ambient
-
-(defconstant +texture-compare-fail-value-arb+ #x80BF) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_float
-
-(defconstant +texture-red-type-arb+ #x8C10) 
-(defconstant +texture-green-type-arb+ #x8C11) 
-(defconstant +texture-blue-type-arb+ #x8C12) 
-(defconstant +texture-alpha-type-arb+ #x8C13) 
-(defconstant +texture-luminance-type-arb+ #x8C14) 
-(defconstant +texture-intensity-type-arb+ #x8C15) 
-(defconstant +texture-depth-type-arb+ #x8C16) 
-(defconstant +unsigned-normalized-arb+ #x8C17) 
-
-;;;; }}}
-
-;;;; {{{ arb_depth_buffer_float
-
-(defconstant +depth-component32f+ #x8CAC) 
-(defconstant +depth32f-stencil8+ #x8CAD) 
-(defconstant +float-32-unsigned-int-24-8-rev+ #x8DAD) 
-
-;;;; }}}
-
-;;;; {{{ arb_framebuffer_object_deprecated
-
-(defconstant +index+ #x8222) 
-
-;;;; }}}
-
-;;;; {{{ arb_framebuffer_srgb
-
-(defconstant +framebuffer-srgb+ #x8DB9) 
-
-;;;; }}}
-
-;;;; {{{ arb_half_float_vertex
-
-(defconstant +half-float+ #x140B) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_compression_rgtc
-
-(defconstant +compressed-red-rgtc1+ #x8DBB) 
-(defconstant +compressed-signed-red-rgtc1+ #x8DBC) 
-(defconstant +compressed-rg-rgtc2+ #x8DBD) 
-(defconstant +compressed-signed-rg-rgtc2+ #x8DBE) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_rg
-
-(defconstant +rg+ #x8227) 
-(defconstant +rg-integer+ #x8228) 
-(defconstant +r8+ #x8229) 
-(defconstant +r16+ #x822A) 
-(defconstant +rg8+ #x822B) 
-(defconstant +rg16+ #x822C) 
-(defconstant +r16f+ #x822D) 
-(defconstant +r32f+ #x822E) 
-(defconstant +rg16f+ #x822F) 
-(defconstant +rg32f+ #x8230) 
-(defconstant +r8i+ #x8231) 
-(defconstant +r8ui+ #x8232) 
-(defconstant +r16i+ #x8233) 
-(defconstant +r16ui+ #x8234) 
-(defconstant +r32i+ #x8235) 
-(defconstant +r32ui+ #x8236) 
-(defconstant +rg8i+ #x8237) 
-(defconstant +rg8ui+ #x8238) 
-(defconstant +rg16i+ #x8239) 
-(defconstant +rg16ui+ #x823A) 
-(defconstant +rg32i+ #x823B) 
-(defconstant +rg32ui+ #x823C) 
-
-;;;; }}}
-
-;;;; {{{ arb_vertex_array_bgra
-
-(defconstant +bgra+ #x80E1) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_cube_map_array
-
-(defconstant +texture-cube-map-array-arb+ #x9009) 
-(defconstant +texture-binding-cube-map-array-arb+ #x900A) 
-(defconstant +proxy-texture-cube-map-array-arb+ #x900B) 
-(defconstant +sampler-cube-map-array-arb+ #x900C) 
-(defconstant +sampler-cube-map-array-shadow-arb+ #x900D) 
-(defconstant +int-sampler-cube-map-array-arb+ #x900E) 
-(defconstant +unsigned-int-sampler-cube-map-array-arb+ #x900F) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_gather
-
-(defconstant +min-program-texture-gather-offset-arb+ #x8E5E) 
-(defconstant +max-program-texture-gather-offset-arb+ #x8E5F) 
-
-;;;; }}}
-
-;;;; {{{ arb_gpu_shader5
-
-(defconstant +geometry-shader-invocations+ #x887F) 
-(defconstant +max-vertex-streams+ #x8E71) 
-
-;;;; }}}
-
-;;;; {{{ arb_texture_buffer_object_rgb32
-
-(defconstant +rgb32f+ #x8815) 
-(defconstant +rgb32ui+ #x8D71) 
-(defconstant +rgb32i+ #x8D83) 
-
-;;;; }}}
-
-;;;; {{{ pgi_vertex_hints
-
-(defconstant +vertex-data-hint-pgi+ #x1A22A) 
-(defconstant +vertex-consistent-hint-pgi+ #x1A22B) 
-(defconstant +material-side-hint-pgi+ #x1A22C) 
-(defconstant +max-vertex-hint-pgi+ #x1A22D) 
-(defconstant +color3-bit-pgi+ #x10000) 
-(defconstant +color4-bit-pgi+ #x20000) 
-(defconstant +edgeflag-bit-pgi+ #x40000) 
-(defconstant +index-bit-pgi+ #x80000) 
-(defconstant +mat-ambient-bit-pgi+ #x100000) 
-(defconstant +mat-ambient-and-diffuse-bit-pgi+ #x200000) 
-(defconstant +mat-diffuse-bit-pgi+ #x400000) 
-(defconstant +mat-emission-bit-pgi+ #x800000) 
-(defconstant +mat-color-indexes-bit-pgi+ #x1000000) 
-(defconstant +mat-shininess-bit-pgi+ #x2000000) 
-(defconstant +mat-specular-bit-pgi+ #x4000000) 
-(defconstant +normal-bit-pgi+ #x8000000) 
-(defconstant +texcoord1-bit-pgi+ #x10000000) 
-(defconstant +texcoord2-bit-pgi+ #x20000000) 
-(defconstant +texcoord3-bit-pgi+ #x40000000) 
-(defconstant +texcoord4-bit-pgi+ #x80000000) 
-(defconstant +vertex23-bit-pgi+ #x4) 
-(defconstant +vertex4-bit-pgi+ #x8) 
-
-;;;; }}}
-
-;;;; {{{ ext_clip_volume_hint
-
-(defconstant +clip-volume-clipping-hint-ext+ #x80F0) 
-
-;;;; }}}
-
-;;;; {{{ ibm_rasterpos_clip
-
-(defconstant +raster-position-unclipped-ibm+ #x19262) 
-
-;;;; }}}
-
-;;;; {{{ hp_texture_lighting
-
-(defconstant +texture-lighting-mode-hp+ #x8167) 
-(defconstant +texture-post-specular-hp+ #x8168) 
-(defconstant +texture-pre-specular-hp+ #x8169) 
-
-;;;; }}}
-
-;;;; {{{ win_phong_shading
-
-(defconstant +phong-win+ #x80EA) 
-(defconstant +phong-hint-win+ #x80EB) 
-
-;;;; }}}
-
-;;;; {{{ win_specular_fog
-
-(defconstant +fog-specular-texture-win+ #x80EC) 
-
-;;;; }}}
-
-;;;; {{{ hp_occlusion_test
-
-(defconstant +occlusion-test-hp+ #x8165) 
-(defconstant +occlusion-test-result-hp+ #x8166) 
-
-;;;; }}}
-
-;;;; {{{ sgix_fog_scale
-
-(defconstant +fog-scale-sgix+ #x81FC) 
-(defconstant +fog-scale-value-sgix+ #x81FD) 
-
-;;;; }}}
-
-;;;; {{{ nv_texgen_reflection
-
-(defconstant +normal-map-nv+ #x8511) 
-(defconstant +reflection-map-nv+ #x8512) 
-
-;;;; }}}
-
-;;;; {{{ sun_convolution_border_modes
-
-(defconstant +wrap-border-sun+ #x81D4) 
-
-;;;; }}}
-
-;;;; {{{ nv_fog_distance
-
-(defconstant +fog-distance-mode-nv+ #x855A) 
-
-;;;; }}}
-
-;;;; {{{ ibm_cull_vertex
-
-(defconstant +cull-vertex-ibm+ #x1928A) 
-
-;;;; }}}
-
-;;;; {{{ sgi_depth_pass_instrument
-
-(defconstant +depth-pass-instrument-sgix+ #x8310) 
-(defconstant +depth-pass-instrument-counters-sgix+ #x8311) 
-(defconstant +depth-pass-instrument-max-sgix+ #x8312) 
-
-;;;; }}}
-
-;;;; {{{ nv_texture_shader2
-
-(defconstant +dot-product-texture-3d-nv+ #x86EF) 
-
-;;;; }}}
-
-;;;; {{{ nv_vertex_array_range2
-
-(defconstant +vertex-array-range-without-flush-nv+ #x8533) 
-
-;;;; }}}
-
-;;;; {{{ nv_multisample_filter_hint
-
-(defconstant +multisample-filter-hint-nv+ #x8534) 
-
-;;;; }}}
-
-;;;; {{{ ati_pixel_format_float
-
-(defconstant +type-rgba-float-ati+ #x8820) 
-(defconstant +color-clear-unclamped-value-ati+ #x8835) 
-
-;;;; }}}
-
-;;;; {{{ oes_read_format
-
-(defconstant +implementation-color-read-type-oes+ #x8B9A) 
-(defconstant +implementation-color-read-format-oes+ #x8B9B) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_mirror_clamp
-
-(defconstant +mirror-clamp-to-border-ext+ #x8912) 
-
-;;;; }}}
-
-;;;; {{{ ext_packed_depth_stencil
-
-(defconstant +depth24-stencil8-ext+ #x88F0) 
-(defconstant +texture-stencil-size-ext+ #x88F1) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_array
-
-(defconstant +max-array-texture-layers-ext+ #x88FF) 
-(defconstant +framebuffer-attachment-texture-layer-ext+ #x8CD4) 
-
-;;;; }}}
-
-;;;; {{{ ext_texture_snorm
-
-(defconstant +red-snorm+ #x8F90) 
-(defconstant +rg-snorm+ #x8F91) 
-(defconstant +rgb-snorm+ #x8F92) 
-(defconstant +rgba-snorm+ #x8F93) 
-(defconstant +r8-snorm+ #x8F94) 
-(defconstant +rg8-snorm+ #x8F95) 
-(defconstant +rgb8-snorm+ #x8F96) 
-(defconstant +rgba8-snorm+ #x8F97) 
-(defconstant +r16-snorm+ #x8F98) 
-(defconstant +rg16-snorm+ #x8F99) 
-(defconstant +rgb16-snorm+ #x8F9A) 
-(defconstant +rgba16-snorm+ #x8F9B) 
-(defconstant +signed-normalized+ #x8F9C) 
-
-;;;; }}}
-
-;;;; {{{ apple_float_pixels
-
-(defconstant +half-apple+ #x140B) 
 
 ;;;; }}}

@@ -22,6 +22,7 @@
 (defconstant +sample-mask-invert-ext+ #x80AB) 
 (defconstant +sample-pattern-ext+ #x80AC) 
 (defconstant +multisample-bit-ext+ #x20000000) 
+(defconstant +coverage-samples-nv+ #x80A9) 
 (defconstant +multisample-ext+ #x809D) 
 (defconstant +sample-alpha-to-mask-ext+ #x809E) 
 (defconstant +sample-alpha-to-one-ext+ #x809F) 

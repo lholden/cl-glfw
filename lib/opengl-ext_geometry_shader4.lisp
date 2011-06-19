@@ -34,6 +34,7 @@
 (defconstant +framebuffer-incomplete-layer-targets-ext+ #x8DA8) 
 (defconstant +framebuffer-incomplete-layer-count-ext+ #x8DA9) 
 (defconstant +framebuffer-attachment-layered-ext+ #x8DA7) 
+(defconstant +framebuffer-attachment-texture-layer-ext+ #x8CD4) 
 (defconstant +program-point-size-ext+ #x8642) 
 (defglextfun "ProgramParameteriEXT" program-parameter-i-ext :return "void"
  :args

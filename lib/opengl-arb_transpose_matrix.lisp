@@ -8,6 +8,7 @@
 (defconstant +transpose-projection-matrix-arb+ #x84E4) 
 (defconstant +transpose-texture-matrix-arb+ #x84E5) 
 (defconstant +transpose-color-matrix-arb+ #x84E6) 
+(defconstant +subtract+ #x84E7) 
 (defconstant +transpose-modelview-matrix-arb+ #x84E3) 
 (defconstant +transpose-projection-matrix-arb+ #x84E4) 
 (defconstant +transpose-texture-matrix-arb+ #x84E5) 

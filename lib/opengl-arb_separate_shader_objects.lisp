@@ -4,6 +4,18 @@
 
 ;;;; arb_separate_shader_objects
 
+(defconstant +program-separable+ #x8258) 
+(defconstant +active-program+ #x8259) 
+(defconstant +program-pipeline-binding+ #x825A) 
+(defconstant +vertex-shader-bit+ #x1) 
+(defconstant +fragment-shader-bit+ #x2) 
+(defconstant +geometry-shader-bit+ #x4) 
+(defconstant +tess-control-shader-bit+ #x8) 
+(defconstant +tess-evaluation-shader-bit+ #x10) 
+(defconstant +all-shader-bits+ #xFFFFFFFF) 
+(defconstant +program-separable+ #x8258) 
+(defconstant +active-program+ #x8259) 
+(defconstant +program-pipeline-binding+ #x825A) 
 (defglextfun "GetProgramPipelineInfoLog" get-program-pipeline-info-log :return
  "void" :args
  ((:name |pipeline| :type |UInt32| :direction :in)
