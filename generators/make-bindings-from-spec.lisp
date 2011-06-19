@@ -38,7 +38,20 @@ Must be in the correct order.")
 (defparameter *enum-specs* nil)
 (defparameter *function-specs* nil)
 
-(defparameter *exports* nil)
+(defparameter *exports* (list '#:check-linked-program-arb '#:with-push-attrib '#:with-new-list
+			      '#:check-linked-program '#:fallback-synchronizing-program
+			      '#:check-compiled-shader '#:*fallback-synchronizing-program-arb*
+			      '#:*fallback-synchronizing-program* '#:with-begin-query
+			      '#:shader-source-from-stream-arb '#:with-setup-projection
+			      '#:with-bind-buffer '#:with-use-program-arb '#:with-push-client-attrib
+			      '#:fallback-synchronizing-program-arb '#:shader-source-from-stream
+			      '#:with-use-program '#:synchronizing-program-arb '#:with-begin
+			      '#:with-push-matrix '#:make-program '#:make-program-arb '#:make-shader
+			      '#:synchronizing-shader-arb '#:with-projection-matrix
+			      '#:clear-synchronizing-shaders '#:make-shader-arb
+			      '#:check-compiled-shader-arb '#:with-map-buffer-arb
+			      '#:with-bind-buffer-arb '#:with-push-name '#:with-map-buffer
+			      '#:synchronizing-shader '#:synchronizing-program))
 
 (defparameter *function-categories* nil)
 

@@ -140,8 +140,8 @@
 
 (defmacro make-extension-loader (extension-name (&rest function-specs))
   #-win32 (declare (ignore function-specs))
-  `(defun ,(intern (format nil "LOAD-~A" extension-name)) ()
-     (when (extension-available-p ,extension-name)
+  `(defun ,(intern (concatenate 'string "LOAD-" (string-upcase (string extension-name)))) ()
+     (when (,(find-symbol "EXTENSION-AVAILABLE-P" (find-package '#:cl-glfw-opengl-extensions)) ,(string extension-name))
        #+win32
        (setf 
 	;;Won't refer to gl:get-proc-address symbol directly here, as it's loaded after the scaffolding

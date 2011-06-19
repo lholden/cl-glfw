@@ -33,6 +33,40 @@
            #:char
            #:string
            #:half
+           #:synchronizing-program
+           #:synchronizing-shader
+           #:with-map-buffer
+           #:with-push-name
+           #:with-bind-buffer-arb
+           #:with-map-buffer-arb
+           #:check-compiled-shader-arb
+           #:make-shader-arb
+           #:clear-synchronizing-shaders
+           #:with-projection-matrix
+           #:synchronizing-shader-arb
+           #:make-shader
+           #:make-program-arb
+           #:make-program
+           #:with-push-matrix
+           #:with-begin
+           #:synchronizing-program-arb
+           #:with-use-program
+           #:shader-source-from-stream
+           #:fallback-synchronizing-program-arb
+           #:with-push-client-attrib
+           #:with-use-program-arb
+           #:with-bind-buffer
+           #:with-setup-projection
+           #:shader-source-from-stream-arb
+           #:with-begin-query
+           #:*fallback-synchronizing-program*
+           #:*fallback-synchronizing-program-arb*
+           #:check-compiled-shader
+           #:fallback-synchronizing-program
+           #:check-linked-program
+           #:with-new-list
+           #:with-push-attrib
+           #:check-linked-program-arb
            #:+current-bit+
            #:+point-bit+
            #:+line-bit+
