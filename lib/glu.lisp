@@ -212,7 +212,7 @@
 (defcfun ("gluEndCurve" end-curve) :void (nurb :pointer))
 (defcfun ("gluEndSurface" end-surface) :void (nurb :pointer))
 (defcfun ("gluEndTrim" end-trim) :void (nurb :pointer))
-(defcfun ("gluErrorString" error-string) :pointer (error enum))
+(defcfun ("gluErrorString" error-string) :string (error enum))
 (defcfun ("gluGetNurbsProperty" get-nurbs-property) :void (nurb :pointer) (property enum) (data :pointer))
 (defcfun ("gluLoadSamplingMatrices" load-sampling-matrices) :void (nurb :pointer) (model :pointer) (perspective :pointer) (view :pointer))
 (defcfun ("gluLookAt" look-at) :void (eyeX double) (eyeY double) (eyeZ double) (centerX double) (centerY double) (centerZ double) (upX double) (upY double) (upZ double))
