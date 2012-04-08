@@ -6,7 +6,7 @@
 
 #-ecl
 (cffi:define-foreign-library libglfw
-  (:darwin (:framework "GLFW"))
+  (:darwin (:or "libglfw.dylib" (:framework "GLFW")))
   (:unix (:or "glfw" "libglfw.so" "libglfw.so.2"  #P"/usr/local/lib/libglfw.so"))
   (:windows (:or "glfw.dll" "libglfw.dll")) 
   (t (:default "libglfw")))
